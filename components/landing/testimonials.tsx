@@ -8,7 +8,7 @@ const testimonials = [
     name: 'Ahmed Hassan',
     role: 'Owner, Pizza Palace Lahore',
     content:
-      'WhatsOrder increased our order volume by 45% in the first month. Our customers love it, and our team is way more efficient.',
+      'OrderPilot increased our order volume by 45% in the first month. Our customers love it, and our team is way more efficient.',
     rating: 5,
   },
   {
@@ -43,7 +43,7 @@ export function Testimonials() {
             Loved by Restaurant Owners
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            See what our customers are saying about WhatsOrder.
+            See what our customers are saying about OrderPilot.
           </p>
         </div>
 

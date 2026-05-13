@@ -21,7 +21,7 @@ export function Hero() {
             </h1>
             
             <p className="text-lg text-foreground/60 leading-relaxed max-w-xl">
-              WhatsOrder streamlines your restaurant&apos;s ordering process. Customers order via WhatsApp, your team manages orders efficiently, and you increase revenue with minimal effort.
+              OrderPilot streamlines your restaurant&apos;s ordering process. Customers order via WhatsApp, your team manages orders efficiently, and you increase revenue with minimal effort.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">

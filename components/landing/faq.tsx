@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'Do my customers need an app?',
     answer:
-      'No! That\'s the beauty of WhatsOrder. Everything happens on WhatsApp, which 95% of Pakistanis already have. No app downloads, no new platforms to learn.',
+      'No! That\'s the beauty of OrderPilot. Everything happens on WhatsApp, which 95% of Pakistanis already have. No app downloads, no new platforms to learn.',
   },
   {
     question: 'Can I use it with my existing POS system?',

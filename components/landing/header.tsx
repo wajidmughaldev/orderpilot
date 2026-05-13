@@ -26,9 +26,9 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">W</span>
+              <span className="text-white font-bold text-lg">O</span>
             </div>
-            <span className="font-bold text-xl text-foreground">WhatsOrder</span>
+            <span className="font-bold text-xl text-foreground">OrderPilot</span>
           </div>
 
           {/* Desktop Navigation */}

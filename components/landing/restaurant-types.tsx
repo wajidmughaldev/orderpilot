@@ -32,7 +32,7 @@ export function RestaurantTypes() {
             Perfect for All Restaurant Types
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            From quick bites to fine dining, WhatsOrder works for every business model.
+            From quick bites to fine dining, OrderPilot works for every business model.
           </p>
         </div>
 

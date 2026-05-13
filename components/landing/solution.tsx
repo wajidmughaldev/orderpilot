@@ -27,7 +27,7 @@ const steps = [
     number: '3',
     icon: Package,
     title: 'You Receive Orders',
-    description: 'Orders appear instantly in your WhatsOrder dashboard and team WhatsApp group.',
+    description: 'Orders appear instantly in your OrderPilot dashboard and team WhatsApp group.',
   },
   {
     number: '4',
@@ -55,7 +55,7 @@ export function Solution() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            How WhatsOrder Works
+            How OrderPilot Works
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             A simple, elegant flow that turns WhatsApp into your ordering system.

@@ -54,7 +54,7 @@ export function Roadmap() {
             Product Roadmap
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            We&apos;re constantly evolving WhatsOrder based on customer feedback.
+            We&apos;re constantly evolving OrderPilot based on customer feedback.
           </p>
         </div>
 

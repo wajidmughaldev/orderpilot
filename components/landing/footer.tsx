@@ -11,9 +11,9 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">W</span>
+                <span className="text-white font-bold">O</span>
               </div>
-              <span className="font-bold text-foreground">WhatsOrder</span>
+              <span className="font-bold text-foreground">OrderPilot</span>
             </div>
             <p className="text-sm text-foreground/60">
               The simplest way to take orders on WhatsApp for your restaurant.
@@ -63,13 +63,26 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-bold text-foreground">Legal</h4>
             <ul className="space-y-2 text-sm">
-              {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Compliance'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href="/privacy-policy" className="text-foreground/60 hover:text-primary transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="/terms-of-service" className="text-foreground/60 hover:text-primary transition-colors">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="/data-deletion" className="text-foreground/60 hover:text-primary transition-colors">
+                  Data Deletion
+                </a>
+              </li>
+              <li>
+                <a href="/cookie-policy" className="text-foreground/60 hover:text-primary transition-colors">
+                  Cookie Policy
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -87,7 +100,7 @@ export function Footer() {
             <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm text-foreground/60">Email</p>
-              <p className="text-foreground font-medium">hello@whatsorder.pk</p>
+              <p className="text-foreground font-medium">hello@orderpilot.pk</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -101,8 +114,8 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-foreground/60">
-          <p>&copy; 2024 WhatsOrder. All rights reserved.</p>
-          <p>Made with ❤️ for Pakistani restaurants</p>
+          <p>&copy; 2026 OrderPilot. All rights reserved.</p>
+          <p>Built for Pakistani restaurants</p>
         </div>
       </div>
     </footer>

@@ -7,7 +7,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'WhatsOrder - Restaurant Ordering on WhatsApp',
+  title: 'OrderPilot - Restaurant Ordering on WhatsApp',
   description: 'Streamline restaurant ordering with WhatsApp. Fast, easy, and integrated ordering system for restaurants in Pakistan.',
   generator: 'v0.app',
   icons: {

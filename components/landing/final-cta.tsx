@@ -12,7 +12,7 @@ export function FinalCTA() {
         </h2>
         
         <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-          Join 500+ restaurants already using WhatsOrder. Get started with a 30-day free trial, no credit card required.
+          Join 500+ restaurants already using OrderPilot. Get started with a 30-day free trial, no credit card required.
         </p>
 
         {/* Benefits */}
