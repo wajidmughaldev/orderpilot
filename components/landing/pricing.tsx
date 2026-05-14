@@ -59,7 +59,7 @@ const plans = [
     monthlyPrice: 29999,
     annualPrice: 299990,
     extraOrderCost: 12,
-    description: 'For large chains and enterprise restaurants',
+    description: 'For larger teams and multi-branch restaurants',
     features: [
       { name: 'Monthly Orders Limit', value: '5,000', tooltip: 'Number of orders you can process per month' },
       { name: 'WhatsApp Bot', value: true, tooltip: 'Automated replies and order taking via WhatsApp' },

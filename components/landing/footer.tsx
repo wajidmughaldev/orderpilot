@@ -1,6 +1,19 @@
 'use client';
 
+import Link from 'next/link';
 import { MessageCircle, Mail, Phone } from 'lucide-react';
+
+const productLinks = [
+  { label: 'Features', href: '/#features' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'FAQ', href: '/#faq' },
+];
+
+const companyLinks = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Contact', href: 'mailto:hello@orderpilot.pk' },
+];
 
 export function Footer() {
   return (
@@ -9,36 +22,22 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">O</span>
-              </div>
-              <span className="font-bold text-foreground">OrderPilot</span>
-            </div>
+            <Link href="/" className="inline-flex items-center" aria-label="OrderPilot home">
+              <img src="/logo.png" alt="OrderPilot" className="h-16 w-auto" />
+            </Link>
             <p className="text-sm text-foreground/60">
               The simplest way to take orders on WhatsApp for your restaurant.
             </p>
-            <div className="flex gap-4 pt-2">
-              {['Facebook', 'Instagram', 'LinkedIn'].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-foreground/10 hover:bg-primary hover:text-white flex items-center justify-center text-sm transition-colors"
-                >
-                  {social[0]}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Product */}
           <div className="space-y-4">
             <h4 className="font-bold text-foreground">Product</h4>
             <ul className="space-y-2 text-sm">
-              {['Features', 'Pricing', 'Dashboard', 'Security'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-                    {link}
+              {productLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-foreground/60 hover:text-primary transition-colors">
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -49,10 +48,10 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-bold text-foreground">Company</h4>
             <ul className="space-y-2 text-sm">
-              {['About Us', 'Blog', 'Careers', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-                    {link}
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-foreground/60 hover:text-primary transition-colors">
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -93,28 +92,33 @@ export function Footer() {
             <MessageCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm text-foreground/60">WhatsApp Support</p>
-              <p className="text-foreground font-medium">+92-300-1234567</p>
+              <p className="text-foreground font-medium">+923361815141</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm text-foreground/60">Email</p>
-              <p className="text-foreground font-medium">hello@orderpilot.pk</p>
+              <p className="text-foreground font-medium">orderpilot@gmail.com</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm text-foreground/60">Phone</p>
-              <p className="text-foreground font-medium">+92-21-9999999</p>
+              <p className="text-foreground font-medium">+923361815141</p>
             </div>
           </div>
         </div>
 
         {/* Bottom */}
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-foreground/60">
-          <p>&copy; 2026 OrderPilot. All rights reserved.</p>
+          <p>
+            &copy; 2026 OrderPilot. All rights reserved | Developed by{' '}
+            <a href="https://100xlift.com" className="hover:text-primary transition-colors">
+              100xlift.com
+            </a>
+          </p>
           <p>Built for Pakistani restaurants</p>
         </div>
       </div>

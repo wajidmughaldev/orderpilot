@@ -21,6 +21,7 @@ export function FastCheckout() {
                   {[
                     { name: 'Pizza Margherita', qty: '1', price: '1,200' },
                     { name: 'Garlic Bread', qty: '1', price: '400' },
+                    { name: 'Loaded Fries', qty: '1', price: '300' },
                   ].map((item, i) => (
                     <div key={i} className="flex justify-between text-sm">
                       <span className="text-foreground/60">{item.qty}x {item.name}</span>
@@ -33,7 +34,7 @@ export function FastCheckout() {
                 <div className="p-4 space-y-2 border-b border-border/50">
                   <div className="flex justify-between text-sm">
                     <span className="text-foreground/60">Subtotal</span>
-                    <span className="text-foreground">PKR 1,600</span>
+                    <span className="text-foreground">PKR 1,900</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-foreground/60">Delivery</span>
@@ -45,14 +46,11 @@ export function FastCheckout() {
                 <div className="p-4">
                   <div className="flex justify-between font-bold mb-4">
                     <span className="text-foreground">Total</span>
-                    <span className="text-secondary">PKR 1,800</span>
+                    <span className="text-secondary">PKR 2,100</span>
                   </div>
                   <button className="w-full bg-secondary text-white rounded-lg py-2 text-sm font-bold hover:bg-secondary/90 transition-colors">
-                    Proceed to Pay
+                    Confirm
                   </button>
-                  <p className="text-xs text-foreground/60 text-center mt-2">
-                    JazzCash, EasyPaisa, Card, or COD
-                  </p>
                 </div>
               </div>
             </div>
@@ -70,7 +68,6 @@ export function FastCheckout() {
               {[
                 'One-tap checkout on return visits',
                 'Save favorite addresses',
-                'Multiple payment options',
                 'Instant order confirmation',
                 'Real-time delivery tracking',
               ].map((feature, i) => (

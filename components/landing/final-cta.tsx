@@ -12,7 +12,7 @@ export function FinalCTA() {
         </h2>
         
         <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-          Join 500+ restaurants already using OrderPilot. Get started with a 30-day free trial, no credit card required.
+          OrderPilot makes WhatsApp ordering easier for restaurants, from menu browsing to order collection, without extra manual work. Start with a 14-day free trial, no credit card required.
         </p>
 
         {/* Benefits */}
@@ -38,18 +38,6 @@ export function FinalCTA() {
           <Button size="lg" variant="outline" className="px-8 h-14">
             Schedule a Demo
           </Button>
-        </div>
-
-        {/* Social Proof */}
-        <div className="pt-8 border-t border-border/50">
-          <p className="text-sm text-foreground/60 mb-4">Trusted by restaurant owners across Pakistan</p>
-          <div className="flex items-center justify-center gap-6 flex-wrap">
-            {['Lahore', 'Karachi', 'Islamabad', 'Rawalpindi', 'Multan'].map((city, i) => (
-              <span key={i} className="text-xs text-foreground/50 font-medium">
-                {city}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

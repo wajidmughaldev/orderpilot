@@ -144,7 +144,8 @@ export function NativeCatalog() {
           </div>
 
           {/* Right: Mock Catalog - Mobile Phone Frame */}
-          <div className="relative flex justify-center">
+          <div className="relative min-h-[500px] flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-primary/5 rounded-2xl" />
             {/* Phone Frame */}
             <div className="relative w-[280px] bg-black rounded-[40px] p-2 shadow-2xl">
               {/* Phone Notch */}
@@ -175,7 +176,7 @@ export function NativeCatalog() {
                 </div>
 
                 {/* Products Section */}
-                <div className="bg-white mx-3 mt-3 rounded-xl shadow-sm flex flex-col" style={{ maxHeight: '320px' }}>
+                <div className="bg-white mx-3 mt-3 rounded-xl shadow-sm flex flex-col" style={{ maxHeight: '350px' }}>
                   {/* Products Header */}
                   <div className="flex justify-between items-center px-4 py-3 border-b border-gray-100 flex-shrink-0">
                     <span className="font-semibold text-gray-900 text-sm">Products</span>
