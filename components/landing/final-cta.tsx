@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 
 export function FinalCTA() {
@@ -31,12 +32,14 @@ export function FinalCTA() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14">
-            Start Your Free Trial
-            <ArrowRight className="w-4 h-4 ml-2" />
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14">
+            <Link href="/#pricing">
+              Start Your Free Trial
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
           </Button>
-          <Button size="lg" variant="outline" className="px-8 h-14">
-            Schedule a Demo
+          <Button asChild size="lg" variant="outline" className="px-8 h-14">
+            <Link href="/book-demo">Book a Demo</Link>
           </Button>
         </div>
       </div>

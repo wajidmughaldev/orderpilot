@@ -135,7 +135,7 @@
 }
 
 .chat-message-pop {
-  animation: chat-pop 420ms ease both;
+  animation: chat-pop 620ms ease both;
 }
 
 .mobile-menu-glass-backdrop {
@@ -189,6 +189,15 @@
 .deliver-ticks {
   color: #9bd1ff;
   animation: ticks-delivered 1.8s ease-in-out infinite;
+}
+
+.native-catalog-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.native-catalog-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes chat-pop {

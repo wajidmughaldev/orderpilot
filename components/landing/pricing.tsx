@@ -225,7 +225,7 @@ export function Pricing() {
           {/* Bottom Note */}
           <p className="text-center text-sm text-foreground/50 mt-10 max-w-xl mx-auto">
             All plans include a 14-day free trial. No credit card required. 
-            Need a custom plan? <a href="#contact" className="text-primary hover:underline">Contact us</a>
+            Need a custom plan? <a href="/book-demo" className="text-primary hover:underline">Book a demo</a>
           </p>
         </div>
       </section>

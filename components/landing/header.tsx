@@ -47,8 +47,8 @@ export function Header() {
             <Button variant="outline" size="sm">
               Sign In
             </Button>
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
-              Book Demo
+            <Button asChild size="sm" className="bg-primary hover:bg-primary/90">
+              <Link href="/book-demo">Book a Demo</Link>
             </Button>
           </div>
 
@@ -104,8 +104,10 @@ export function Header() {
               <Button variant="outline" className="mobile-menu-glass-secondary h-12 rounded-2xl" onClick={handleNavClick}>
                 Sign In
               </Button>
-              <Button className="h-12 rounded-2xl bg-primary/95 shadow-lg shadow-primary/20 hover:bg-primary" onClick={handleNavClick}>
-                Book Demo
+              <Button asChild className="h-12 rounded-2xl bg-primary/95 shadow-lg shadow-primary/20 hover:bg-primary">
+                <Link href="/book-demo" onClick={handleNavClick}>
+                  Book a Demo
+                </Link>
               </Button>
             </div>
           </div>

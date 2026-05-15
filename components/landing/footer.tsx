@@ -12,7 +12,7 @@ const productLinks = [
 
 const companyLinks = [
   { label: 'About Us', href: '/about' },
-  { label: 'Contact', href: 'mailto:hello@orderpilot.pk' },
+  { label: 'Book a Demo', href: '/book-demo' },
 ];
 
 export function Footer() {
