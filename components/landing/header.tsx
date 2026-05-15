@@ -68,7 +68,7 @@ export function Header() {
       </div>
 
       <div
-        className={`md:hidden fixed inset-x-0 top-16 z-[55] h-[calc(100dvh-4rem)] overflow-hidden transition-all duration-300 ${
+        className={`md:hidden fixed inset-x-0 top-16 z-[55] h-[calc(100dvh-4rem)] overflow-hidden bg-background transition-all duration-300 ${
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >

@@ -65,7 +65,7 @@ export function Hero() {
               </Button>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 pt-4 text-sm text-foreground/60">
+            <div className="flex flex-col gap-2 pt-2 text-sm text-foreground/60 sm:flex-row sm:gap-6 sm:pt-4">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full" />
                 No credit card required
@@ -78,7 +78,7 @@ export function Hero() {
           </div>
 
           {/* Right: Mockup */}
-          <div className="relative h-[570px] md:h-[660px]">
+          <div className="relative h-[620px] overflow-hidden md:h-[660px] md:overflow-visible">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 rounded-3xl" />
 
             <div className="absolute inset-0 flex items-center justify-center">
@@ -231,7 +231,7 @@ export function Hero() {
             </div>
 
             {/* Floating Badge */}
-            <div className="absolute -bottom-8 -right-8 bg-accent text-accent-foreground rounded-full p-4 shadow-lg">
+            <div className="absolute -bottom-8 -right-8 hidden bg-accent text-accent-foreground rounded-full p-4 shadow-lg md:block">
               <p className="font-bold text-sm">90 Sec Avg Order</p>
             </div>
           </div>
