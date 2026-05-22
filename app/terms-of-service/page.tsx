@@ -13,6 +13,17 @@ export default function TermsOfServicePage() {
       description="These terms describe the rules for using OrderPilot, including restaurant dashboards, WhatsApp ordering automation, and Meta integrations."
     >
       <section className="space-y-4">
+        <p>
+          <strong>Effective date:</strong> May 22, 2026
+        </p>
+        <p>
+          OrderPilot.pk is operated by Digipex Solutions. These Terms apply to the OrderPilot
+          website, dashboard, WhatsApp ordering automation, Meta integrations, and related
+          services.
+        </p>
+      </section>
+
+      <section className="space-y-4">
         <h2>1. Acceptance of terms</h2>
         <p>
           By accessing or using OrderPilot, you agree to these Terms of Service. If you use
@@ -24,7 +35,7 @@ export default function TermsOfServicePage() {
       <section className="space-y-4">
         <h2>2. Service description</h2>
         <p>
-          OrderPilot provides software that helps restaurants receive and manage orders through
+          OrderPilot.pk provides software that helps restaurants receive and manage orders through
           WhatsApp. Features may include restaurant onboarding, menu management, WhatsApp Cloud API
           connection, automated bot replies, order dashboards, status updates, logs, and catalogue
           support.
@@ -50,6 +61,11 @@ export default function TermsOfServicePage() {
           services are provided by Meta and may change, fail, be delayed, or require additional
           review. OrderPilot is not responsible for Meta approval decisions, WhatsApp account
           restrictions, messaging limits, template approvals, or third-party outages.
+        </p>
+        <p>
+          Restaurants are responsible for ensuring they have authority to connect their Meta
+          Business Portfolio, WhatsApp Business Account, phone number, and catalogues to
+          OrderPilot.pk.
         </p>
       </section>
 
@@ -109,6 +125,7 @@ export default function TermsOfServicePage() {
           <a className="text-primary hover:underline" href="mailto:hello@orderpilot.pk">
             hello@orderpilot.pk
           </a>
+          . Digipex Solutions handles OrderPilot.pk support and legal requests
           .
         </p>
       </section>

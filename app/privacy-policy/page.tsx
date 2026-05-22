@@ -13,9 +13,20 @@ export default function PrivacyPolicyPage() {
       description="This policy explains how OrderPilot collects, uses, stores, and protects information when restaurants and their customers use our WhatsApp ordering platform."
     >
       <section className="space-y-4">
+        <p>
+          <strong>Effective date:</strong> May 22, 2026
+        </p>
+        <p>
+          OrderPilot.pk is operated by Digipex Solutions. This Privacy Policy applies to the
+          OrderPilot website, restaurant dashboard, WhatsApp ordering tools, Meta integrations,
+          and related services.
+        </p>
+      </section>
+
+      <section className="space-y-4">
         <h2>1. Who we are</h2>
         <p>
-          OrderPilot provides WhatsApp-based ordering tools for restaurants. Restaurants use
+          OrderPilot.pk provides WhatsApp-based ordering tools for restaurants. Restaurants use
           OrderPilot to manage menus, receive customer orders, connect WhatsApp Cloud API,
           and track order status from receipt to delivery.
         </p>
@@ -27,7 +38,7 @@ export default function PrivacyPolicyPage() {
         <ul>
           <li>Restaurant account information, including business name, address, contact number, owner name, and owner email.</li>
           <li>Menu and catalogue information, including categories, item names, prices, descriptions, and item images.</li>
-          <li>WhatsApp integration information, including WhatsApp Business Account IDs, phone number IDs, catalogue IDs, webhook events, and access tokens stored securely on our backend.</li>
+          <li>WhatsApp integration information, including WhatsApp Business Account IDs, phone number IDs, catalogue IDs, webhook events, authorization codes, and access tokens stored securely on our backend.</li>
           <li>Customer order information, including customer phone number, customer name, delivery address, selected items, payment method, receipt image metadata, order status, and conversation session state.</li>
           <li>Technical information, including browser type, IP address, device information, API logs, error logs, and usage events needed to operate and secure the service.</li>
         </ul>
@@ -53,6 +64,12 @@ export default function PrivacyPolicyPage() {
           WhatsApp Business assets selected during Meta Embedded Signup or Facebook Login for
           Business. We use this access only to operate the restaurant ordering workflow, including
           message sending, webhook processing, catalogue support, and account configuration.
+        </p>
+        <p>
+          Meta access tokens and connected asset IDs are used only to operate the WhatsApp and
+          catalogue features selected by the restaurant. We do not use Meta data, WhatsApp
+          customer messages, or catalogue data for unrelated advertising, and we do not sell or
+          rent this data to third parties.
         </p>
         <p>
           OrderPilot does not sell WhatsApp customer data. We do not use customer messages for
@@ -95,7 +112,7 @@ export default function PrivacyPolicyPage() {
         <h2>8. Your choices</h2>
         <ul>
           <li>Restaurants may request account export, correction, disconnection, or deletion.</li>
-          <li>Restaurants may disconnect Meta/WhatsApp access from Meta Business settings.</li>
+          <li>Restaurants may disconnect Meta/WhatsApp access from Meta Business Settings or Business Integrations.</li>
           <li>Customers may contact the restaurant directly to request order data correction or deletion.</li>
         </ul>
       </section>
@@ -107,6 +124,8 @@ export default function PrivacyPolicyPage() {
           <a className="text-primary hover:underline" href="mailto:hello@orderpilot.pk">
             hello@orderpilot.pk
           </a>
+          . You may also contact Digipex Solutions through OrderPilot.pk for privacy and
+          platform-related requests
           .
         </p>
       </section>

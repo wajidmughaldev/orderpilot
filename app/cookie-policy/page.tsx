@@ -13,6 +13,16 @@ export default function CookiePolicyPage() {
       description="This policy explains how OrderPilot may use cookies and similar technologies on our website and product pages."
     >
       <section className="space-y-4">
+        <p>
+          <strong>Effective date:</strong> May 22, 2026
+        </p>
+        <p>
+          OrderPilot.pk is operated by Digipex Solutions. This Cookie Policy applies to our
+          website, product pages, and dashboard experiences.
+        </p>
+      </section>
+
+      <section className="space-y-4">
         <h2>1. What cookies are</h2>
         <p>
           Cookies are small files stored on your device by a website. Similar technologies may
@@ -55,6 +65,7 @@ export default function CookiePolicyPage() {
           <a className="text-primary hover:underline" href="mailto:hello@orderpilot.pk">
             hello@orderpilot.pk
           </a>
+          . Digipex Solutions handles OrderPilot.pk privacy and cookie requests
           .
         </p>
       </section>

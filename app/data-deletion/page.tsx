@@ -13,6 +13,17 @@ export default function DataDeletionPage() {
       description="Use this page for Meta app setup and for restaurants or users who want to request deletion of data connected to OrderPilot."
     >
       <section className="space-y-4">
+        <p>
+          <strong>Effective date:</strong> May 22, 2026
+        </p>
+        <p>
+          OrderPilot.pk is operated by Digipex Solutions. These instructions explain how
+          restaurants and users can request deletion of data connected to OrderPilot and Meta
+          integrations.
+        </p>
+      </section>
+
+      <section className="space-y-4">
         <h2>1. How to request deletion</h2>
         <p>
           To request deletion of your OrderPilot account data or Meta/WhatsApp connected data, email
@@ -37,7 +48,7 @@ export default function DataDeletionPage() {
         <ul>
           <li>Restaurant profile information stored in OrderPilot.</li>
           <li>Owner or staff account access connected to the restaurant.</li>
-          <li>WhatsApp connection details stored by OrderPilot, including tokens and connected IDs.</li>
+          <li>WhatsApp connection details stored by OrderPilot, including Meta authorization codes, tokens, connected IDs, webhook routing details, and catalogue IDs.</li>
           <li>Menu, category, item, and catalogue sync data stored in OrderPilot.</li>
           <li>WhatsApp message logs and conversation sessions where deletion is allowed.</li>
         </ul>
@@ -57,7 +68,7 @@ export default function DataDeletionPage() {
         <p>
           You can also remove OrderPilot access from your Meta Business settings. Go to Meta
           Business settings, review connected apps or business integrations, and remove OrderPilot
-          or WA_Bot access. Removing access may stop WhatsApp ordering automation.
+          access. Removing access may stop WhatsApp ordering automation.
         </p>
       </section>
 
@@ -66,6 +77,17 @@ export default function DataDeletionPage() {
         <p>
           We aim to process verified deletion requests within 30 days. If we need more information
           to verify the request, we will contact you using the email address provided.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2>6. Contact</h2>
+        <p>
+          For deletion requests or questions, contact Digipex Solutions at{' '}
+          <a className="text-primary hover:underline" href="mailto:hello@orderpilot.pk">
+            hello@orderpilot.pk
+          </a>
+          .
         </p>
       </section>
     </LegalPage>
