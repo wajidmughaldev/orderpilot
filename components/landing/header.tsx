@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -11,6 +11,8 @@ const navLinks = [
   { label: 'Pricing', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
 ];
+
+const APP_URL = 'https://app.orderpilot.pk';
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -46,9 +48,10 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" size="sm">
-              Sign In
+            <Button variant="outline" size="sm" asChild>
+              <a href={APP_URL}>Sign In</a>
             </Button>
+
             <Button size="sm" className="bg-primary hover:bg-primary/90">
               Book Demo
             </Button>
@@ -61,6 +64,7 @@ export function Header() {
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
+
             <SheetContent side="right">
               <div className="flex flex-col gap-6 mt-8">
                 {navLinks.map((link) => (
@@ -73,10 +77,14 @@ export function Header() {
                     {link.label}
                   </a>
                 ))}
+
                 <div className="flex flex-col gap-2 pt-4 border-t">
-                  <Button variant="outline" className="w-full">
-                    Sign In
+                  <Button variant="outline" className="w-full" asChild>
+                    <a href={APP_URL} onClick={handleNavClick}>
+                      Sign In
+                    </a>
                   </Button>
+
                   <Button className="w-full bg-primary hover:bg-primary/90">
                     Book Demo
                   </Button>
