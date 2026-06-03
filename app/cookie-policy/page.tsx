@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { LegalPage } from '@/components/legal/legal-page';
+import { BUSINESS_INFO } from '@/lib/business-info';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy - OrderPilot',
-  description: 'Cookie Policy for OrderPilot.',
+  description: 'Cookie Policy for OrderPilot.pk, operated by Digipex Solutions LLC.',
 };
 
 export default function CookiePolicyPage() {
@@ -17,8 +18,8 @@ export default function CookiePolicyPage() {
           <strong>Effective date:</strong> May 22, 2026
         </p>
         <p>
-          OrderPilot.pk is operated by Digipex Solutions. This Cookie Policy applies to our
-          website, product pages, and dashboard experiences.
+          OrderPilot.pk is operated by {BUSINESS_INFO.legalName}. This Cookie Policy applies to
+          our website, product pages, and dashboard experiences.
         </p>
       </section>
 
@@ -62,11 +63,10 @@ export default function CookiePolicyPage() {
         <h2>5. Contact</h2>
         <p>
           For questions about this Cookie Policy, contact{' '}
-          <a className="text-primary hover:underline" href="mailto:hello@orderpilot.pk">
-            hello@orderpilot.pk
+          <a className="text-primary hover:underline" href={`mailto:${BUSINESS_INFO.email}`}>
+            {BUSINESS_INFO.email}
           </a>
-          . Digipex Solutions handles OrderPilot.pk privacy and cookie requests
-          .
+          . {BUSINESS_INFO.legalName} handles OrderPilot.pk privacy and cookie requests.
         </p>
       </section>
     </LegalPage>

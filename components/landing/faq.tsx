@@ -36,7 +36,7 @@ const faqs = [
   {
     question: 'Is my data secure?',
     answer:
-      'Absolutely. We use enterprise-grade encryption, comply with all Pakistani data protection laws, and maintain 99.9% uptime with regular backups.',
+      'We use security safeguards, operational controls, and regular backups to protect restaurant and customer order data.',
   },
   {
     question: 'What if I need help?',

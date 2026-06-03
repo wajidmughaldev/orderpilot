@@ -1,56 +1,77 @@
 import type { Metadata } from 'next';
 import { LegalPage } from '@/components/legal/legal-page';
+import { BUSINESS_INFO } from '@/lib/business-info';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - OrderPilot',
-  description: 'Privacy Policy for OrderPilot, a WhatsApp ordering platform for restaurants.',
+  title: 'Privacy Policy | OrderPilot.pk',
+  description: 'Privacy Policy for OrderPilot.pk, operated by Digipex Solutions LLC.',
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      description="This policy explains how OrderPilot collects, uses, stores, and protects information when restaurants and their customers use our WhatsApp ordering platform."
+      description="This policy explains how OrderPilot.pk, operated by Digipex Solutions LLC, handles information for restaurants, customers, and users."
     >
       <section className="space-y-4">
         <p>
           <strong>Effective date:</strong> May 22, 2026
         </p>
         <p>
-          OrderPilot.pk is operated by Digipex Solutions. This Privacy Policy applies to the
-          OrderPilot website, restaurant dashboard, WhatsApp ordering tools, Meta integrations,
-          and related services.
+          This Privacy Policy explains how OrderPilot.pk, operated by Digipex Solutions LLC,
+          collects, uses, stores, and protects information when restaurants, customers, or users
+          interact with our website, WhatsApp ordering system, dashboard, or related services.
         </p>
       </section>
 
       <section className="space-y-4">
-        <h2>1. Who we are</h2>
+        <h2>1. Operator Information</h2>
         <p>
-          OrderPilot.pk provides WhatsApp-based ordering tools for restaurants. Restaurants use
-          OrderPilot to manage menus, receive customer orders, connect WhatsApp Cloud API,
-          and track order status from receipt to delivery.
+          <strong>Operator:</strong>
+          <br />
+          {BUSINESS_INFO.legalName}
+        </p>
+        <p>
+          <strong>Registered Address:</strong>
+          <br />
+          {BUSINESS_INFO.registeredAddressLine1},
+          <br />
+          {BUSINESS_INFO.registeredAddressLine2},
+          <br />
+          {BUSINESS_INFO.registeredCountry}
+        </p>
+        <p>
+          <strong>Contact:</strong>
+          <br />
+          <a className="text-primary hover:underline" href={`mailto:${BUSINESS_INFO.email}`}>
+            {BUSINESS_INFO.email}
+          </a>
         </p>
       </section>
 
       <section className="space-y-4">
-        <h2>2. Information we collect</h2>
-        <p>We may collect the following information:</p>
+        <h2>2. Information We Collect</h2>
+        <p>We may collect information needed to provide and support OrderPilot.pk, including:</p>
         <ul>
-          <li>Restaurant account information, including business name, address, contact number, owner name, and owner email.</li>
-          <li>Menu and catalogue information, including categories, item names, prices, descriptions, and item images.</li>
-          <li>WhatsApp integration information, including WhatsApp Business Account IDs, phone number IDs, catalogue IDs, webhook events, authorization codes, and access tokens stored securely on our backend.</li>
-          <li>Customer order information, including customer phone number, customer name, delivery address, selected items, payment method, receipt image metadata, order status, and conversation session state.</li>
-          <li>Technical information, including browser type, IP address, device information, API logs, error logs, and usage events needed to operate and secure the service.</li>
+          <li>Restaurant business information.</li>
+          <li>Restaurant menu/catalog data.</li>
+          <li>Customer names.</li>
+          <li>Customer phone numbers.</li>
+          <li>WhatsApp messages related to orders.</li>
+          <li>Delivery or pickup details.</li>
+          <li>Order items and order status.</li>
+          <li>Payment status if applicable.</li>
+          <li>Technical logs needed for security and support.</li>
         </ul>
       </section>
 
       <section className="space-y-4">
-        <h2>3. How we use information</h2>
+        <h2>3. How We Use Information</h2>
         <p>We use information to:</p>
         <ul>
-          <li>Provide WhatsApp ordering, menu, catalogue, order tracking, and dashboard features.</li>
-          <li>Route WhatsApp webhook messages to the correct restaurant.</li>
-          <li>Send automated customer replies and order status updates through WhatsApp Cloud API.</li>
+          <li>Provide WhatsApp ordering, menu, catalog, order tracking, and dashboard features.</li>
+          <li>Route WhatsApp messages and order events to the correct restaurant.</li>
+          <li>Send automated customer replies and order status updates through WhatsApp.</li>
           <li>Help restaurants manage incoming orders and customer communication.</li>
           <li>Improve reliability, security, support, and product performance.</li>
           <li>Comply with legal, platform, and Meta requirements.</li>
@@ -58,58 +79,69 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <section className="space-y-4">
-        <h2>4. Meta and WhatsApp data</h2>
+        <h2>4. WhatsApp and Meta Services</h2>
         <p>
-          When a restaurant connects WhatsApp through Meta, OrderPilot may receive access to
+          OrderPilot.pk may use WhatsApp Business Platform and related Meta services to help
+          restaurants receive and manage customer orders. Messages sent through WhatsApp may be
+          processed according to WhatsApp&apos;s and Meta&apos;s applicable terms and privacy
+          policies.
+        </p>
+        <p>
+          When a restaurant connects WhatsApp through Meta, OrderPilot.pk may receive access to
           WhatsApp Business assets selected during Meta Embedded Signup or Facebook Login for
           Business. We use this access only to operate the restaurant ordering workflow, including
-          message sending, webhook processing, catalogue support, and account configuration.
+          message sending, webhook processing, catalog support, and account configuration.
         </p>
         <p>
-          Meta access tokens and connected asset IDs are used only to operate the WhatsApp and
-          catalogue features selected by the restaurant. We do not use Meta data, WhatsApp
-          customer messages, or catalogue data for unrelated advertising, and we do not sell or
-          rent this data to third parties.
-        </p>
-        <p>
-          OrderPilot does not sell WhatsApp customer data. We do not use customer messages for
-          unrelated advertising.
+          We do not sell WhatsApp customer data, and we do not use customer messages for unrelated
+          advertising.
         </p>
       </section>
 
       <section className="space-y-4">
-        <h2>5. Sharing of information</h2>
+        <h2>5. Sharing of Information</h2>
         <p>We may share information only when needed to provide or secure the service:</p>
         <ul>
           <li>With Meta/WhatsApp to send and receive WhatsApp messages.</li>
-          <li>With hosting, database, storage, analytics, and infrastructure providers used to run OrderPilot.</li>
+          <li>With hosting, database, storage, analytics, and infrastructure providers used to run OrderPilot.pk.</li>
           <li>With a restaurant account owner or authorized staff for their own restaurant data.</li>
           <li>When required by law, regulation, legal process, or platform compliance.</li>
         </ul>
       </section>
 
       <section className="space-y-4">
-        <h2>6. Data storage and security</h2>
+        <h2>6. Data Storage and Security</h2>
         <p>
           We use reasonable technical and organizational safeguards to protect data. Sensitive
-          integration values such as access tokens are stored encrypted where supported by the
+          integration values such as access tokens are stored securely where supported by the
           application backend. No internet service can guarantee complete security, but we work to
           reduce risk and restrict access to operational needs.
         </p>
       </section>
 
       <section className="space-y-4">
-        <h2>7. Data retention</h2>
+        <h2>7. Data Retention</h2>
         <p>
           We retain restaurant, order, WhatsApp log, and account data for as long as needed to
           operate the service, provide support, comply with legal obligations, resolve disputes,
-          and maintain audit history. Restaurants may request deletion as described in our Data
-          Deletion page.
+          prevent fraud, and maintain audit history.
         </p>
       </section>
 
       <section className="space-y-4">
-        <h2>8. Your choices</h2>
+        <h2>8. Data Deletion Requests</h2>
+        <p>
+          Restaurants or users may request deletion of their data by contacting{' '}
+          <a className="text-primary hover:underline" href={`mailto:${BUSINESS_INFO.email}`}>
+            {BUSINESS_INFO.email}
+          </a>
+          . Requests should include the business name, registered phone number, and details of the
+          data they want deleted.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2>9. Your Choices</h2>
         <ul>
           <li>Restaurants may request account export, correction, disconnection, or deletion.</li>
           <li>Restaurants may disconnect Meta/WhatsApp access from Meta Business Settings or Business Integrations.</li>
@@ -118,14 +150,12 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <section className="space-y-4">
-        <h2>9. Contact</h2>
+        <h2>10. Contact</h2>
         <p>
-          For privacy questions or deletion requests, contact us at{' '}
-          <a className="text-primary hover:underline" href="mailto:hello@orderpilot.pk">
-            hello@orderpilot.pk
+          For privacy questions or deletion requests, contact{' '}
+          <a className="text-primary hover:underline" href={`mailto:${BUSINESS_INFO.email}`}>
+            {BUSINESS_INFO.email}
           </a>
-          . You may also contact Digipex Solutions through OrderPilot.pk for privacy and
-          platform-related requests
           .
         </p>
       </section>
