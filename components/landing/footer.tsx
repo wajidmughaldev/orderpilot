@@ -96,11 +96,23 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6 py-8 border-t border-border/50">
+        <div className="grid md:grid-cols-5 gap-6 py-8 border-t border-border/50">
           <div className="flex items-start gap-3">
             <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm text-foreground/60">Business Contact</p>
+              <a
+                href={`mailto:${BUSINESS_INFO.email}`}
+                className="text-foreground font-medium hover:text-primary transition-colors break-words"
+              >
+                {BUSINESS_INFO.email}
+              </a>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm text-foreground/60">Product Support</p>
               <a
                 href={`mailto:${BUSINESS_INFO.email}`}
                 className="text-foreground font-medium hover:text-primary transition-colors break-words"
