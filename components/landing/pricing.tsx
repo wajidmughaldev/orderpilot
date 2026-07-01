@@ -59,7 +59,7 @@ const plans = [
     monthlyPrice: 29999,
     annualPrice: 299990,
     extraOrderCost: 12,
-    description: 'For large chains and enterprise restaurants',
+    description: 'For larger teams and multi-branch restaurants',
     features: [
       { name: 'Monthly Orders Limit', value: '5,000', tooltip: 'Number of orders you can process per month' },
       { name: 'WhatsApp Bot', value: true, tooltip: 'Automated replies and order taking via WhatsApp' },
@@ -225,7 +225,7 @@ export function Pricing() {
           {/* Bottom Note */}
           <p className="text-center text-sm text-foreground/50 mt-10 max-w-xl mx-auto">
             All plans include a 14-day free trial. No credit card required. 
-            Need a custom plan? <a href="#contact" className="text-primary hover:underline">Contact us</a>
+            Need a custom plan? <a href="/book-demo" className="text-primary hover:underline">Book a demo</a>
           </p>
         </div>
       </section>

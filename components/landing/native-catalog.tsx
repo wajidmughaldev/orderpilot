@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 // Realistic food SVG icons
 const PizzaIcon = () => (
   <svg viewBox="0 0 32 32" className="w-7 h-7">
@@ -115,6 +117,42 @@ const FriesIcon = () => (
 
 
 export function NativeCatalog() {
+  const products = [
+    { id: 'cheese-paratha', name: 'Cheese Paratha', price: 'PKR 1,200', oldPrice: 'PKR 1,500', icon: 'pasta' },
+    { id: 'chicken-burger', name: 'Chicken Burger', price: 'PKR 890', icon: 'burger' },
+    { id: 'shawarma', name: 'Shawarma', price: 'PKR 480', icon: 'bread' },
+    { id: 'chicken-curry', name: 'Chicken Curry', price: 'PKR 950', icon: 'wings' },
+    { id: 'fajita-pizza', name: 'Fajita Pizza', price: 'PKR 1,100', oldPrice: 'PKR 1,450', icon: 'pizza2' },
+    { id: 'tender-chicken', name: 'Tender Chicken', price: 'PKR 620', icon: 'fries' },
+    { id: 'spicy-sandwich', name: 'Spicy Chicken Sandwich', price: 'PKR 790', icon: 'burger' },
+    { id: 'biryani', name: 'Chicken Biryani', price: 'PKR 1,050', icon: 'salad' },
+    { id: 'pepperoni-pizza', name: 'Pepperoni Pizza', price: 'PKR 950', oldPrice: 'PKR 1,100', icon: 'pizza1' },
+  ];
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
+  const cartCount = Object.values(quantities).reduce((total, quantity) => total + quantity, 0);
+
+  const increment = (id: string) => {
+    setQuantities((current) => ({
+      ...current,
+      [id]: (current[id] ?? 0) + 1,
+    }));
+  };
+
+  const decrement = (id: string) => {
+    setQuantities((current) => {
+      const nextQuantity = Math.max((current[id] ?? 0) - 1, 0);
+      const next = { ...current };
+
+      if (nextQuantity === 0) {
+        delete next[id];
+        return next;
+      }
+
+      next[id] = nextQuantity;
+      return next;
+    });
+  };
+
   return (
     <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="max-w-7xl mx-auto">
@@ -132,7 +170,6 @@ export function NativeCatalog() {
                 'Rich product photos & descriptions',
                 'Real-time inventory sync',
                 'Instant price updates',
-                'Variant selection (sizes, toppings)',
                 'Customer favorites saved',
               ].map((feature, i) => (
                 <li key={i} className="flex items-start gap-3">
@@ -144,63 +181,61 @@ export function NativeCatalog() {
           </div>
 
           {/* Right: Mock Catalog - Mobile Phone Frame */}
-          <div className="relative flex justify-center">
+          <div className="relative min-h-[620px] flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-primary/5 rounded-2xl" />
             {/* Phone Frame */}
-            <div className="relative w-[280px] bg-black rounded-[40px] p-2 shadow-2xl">
+            <div className="relative w-[320px] bg-black rounded-[40px] p-2 shadow-2xl">
               {/* Phone Notch */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-b-2xl z-10" />
               
               {/* Phone Screen */}
-              <div className="bg-[#E8F5F3] rounded-[32px] overflow-hidden">
+              <div className="bg-[#050b0f] rounded-[32px] overflow-hidden">
                 {/* Status Bar */}
-                <div className="flex justify-between items-center px-6 pt-2 pb-1 text-xs text-gray-800">
-                  <span className="font-medium">9:41</span>
-                  <div className="flex items-center gap-1">
+                <div className="flex justify-between items-center px-4 pt-2 pb-1 text-xs text-white">
+                  <span className="font-semibold">9:00</span>
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-white" />
+                    <span className="text-[9px] font-bold leading-none">Vo<br />LTE</span>
                     <div className="flex gap-0.5 items-end">
-                      <div className="w-1 h-1.5 bg-gray-800 rounded-sm" />
-                      <div className="w-1 h-2 bg-gray-800 rounded-sm" />
-                      <div className="w-1 h-2.5 bg-gray-800 rounded-sm" />
-                      <div className="w-1 h-3 bg-gray-800 rounded-sm" />
+                      <div className="w-1 h-1.5 bg-white rounded-sm" />
+                      <div className="w-1 h-2 bg-white rounded-sm" />
+                      <div className="w-1 h-2.5 bg-white rounded-sm" />
+                      <div className="w-1 h-3 bg-white rounded-sm" />
                     </div>
                   </div>
                 </div>
 
-                {/* Header */}
-                <div className="bg-[#1A6B5C] px-4 py-3 flex items-center justify-between">
-                  <div className="w-6" />
-                  <h3 className="text-white font-semibold text-base">Catalog</h3>
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                {/* Native Product Collection Header */}
+                <div className="flex items-center gap-3 px-3 py-2.5 text-white">
+                  <svg className="h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
+                  <h3 className="min-w-0 flex-1 text-[17px] font-normal leading-tight">Product collections</h3>
+                  <div className="relative flex-shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    {cartCount > 0 && (
+                      <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#25d366] px-1 text-[10px] font-bold text-[#07130d]">
+                        {cartCount}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                {/* Products Section */}
-                <div className="bg-white mx-3 mt-3 rounded-xl shadow-sm flex flex-col" style={{ maxHeight: '320px' }}>
-                  {/* Products Header */}
-                  <div className="flex justify-between items-center px-4 py-3 border-b border-gray-100 flex-shrink-0">
-                    <span className="font-semibold text-gray-900 text-sm">Products</span>
-                    <span className="text-[#1A6B5C] text-xs font-medium cursor-pointer hover:underline">See All</span>
-                  </div>
+                {/* Product List - Scrollable */}
+                <div className="px-3 pb-3">
+                  <div className="native-catalog-scroll h-[458px] overflow-y-auto pr-0.5 pb-16">
+                    {products.map((item) => {
+                      const quantity = quantities[item.id] ?? 0;
 
-                  {/* Product List - Scrollable */}
-                  <div className="divide-y divide-gray-100 overflow-y-auto flex-1">
-                    {[
-                      { name: 'Margherita Pizza', size: 'Large', price: '1,200', oldPrice: '1,500', icon: 'pizza1' },
-                      { name: 'Pepperoni Special', size: 'Medium', price: '950', oldPrice: '1,100', icon: 'pizza2' },
-                      { name: 'Garlic Bread', size: '4 Pieces', price: '400', oldPrice: '500', icon: 'bread' },
-                      { name: 'Chicken Wings', size: '6 Pieces', price: '650', oldPrice: '750', icon: 'wings' },
-                      { name: 'Pasta Alfredo', size: '1 Serving', price: '750', oldPrice: '900', icon: 'pasta' },
-                      { name: 'Cold Drink', size: '500ml', price: '120', oldPrice: '150', icon: 'drink' },
-                      { name: 'Caesar Salad', size: '1 Bowl', price: '550', oldPrice: '650', icon: 'salad' },
-                      { name: 'Cheese Burger', size: 'Regular', price: '480', oldPrice: '580', icon: 'burger' },
-                      { name: 'French Fries', size: 'Large', price: '250', oldPrice: '320', icon: 'fries' },
-                    ].map((item, i) => (
+                      return (
                       <div 
-                        key={i} 
-                        className="flex items-center gap-3 px-4 py-2.5 cursor-pointer transition-colors duration-150 hover:bg-[#E8F5F3] active:bg-[#D0EBE6]"
+                        key={item.id}
+                        className="grid grid-cols-[52px_minmax(0,1fr)_auto] items-center gap-2.5 py-2"
                       >
-                        <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-50 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
-                          <div className="text-lg">
+                        <div className="w-[52px] h-[52px] bg-[#0b1115] rounded-md flex items-center justify-center flex-shrink-0 overflow-hidden ring-1 ring-white/10">
+                          <div className="scale-105">
                             {item.icon === 'pizza1' && <PizzaIcon />}
                             {item.icon === 'pizza2' && <PizzaIcon2 />}
                             {item.icon === 'bread' && <BreadIcon />}
@@ -213,22 +248,52 @@ export function NativeCatalog() {
                           </div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-gray-900 text-xs truncate">{item.name}</p>
-                          <p className="text-[10px] text-gray-500">{item.size}</p>
+                          <p className="font-semibold text-white text-[13px] leading-tight truncate">{item.name}</p>
+                          <p className="mt-0.5 text-[11px] leading-tight text-white/55">
+                            <span>{item.price}</span>
+                            {item.oldPrice && <span className="ml-2 line-through">{item.oldPrice}</span>}
+                          </p>
                         </div>
-                        <div className="text-right">
-                          <p className="text-[10px] text-gray-400 line-through">PKR {item.oldPrice}</p>
-                          <p className="text-xs font-semibold text-[#1A6B5C]">PKR {item.price}</p>
-                        </div>
+                        {quantity > 0 ? (
+                          <div className="flex items-center gap-1 rounded-lg bg-[#11181d] px-1 py-1 text-white">
+                            <button
+                              type="button"
+                              onClick={() => decrement(item.id)}
+                              className="flex h-6 w-5 items-center justify-center rounded-md text-base leading-none"
+                              aria-label={`Remove ${item.name}`}
+                            >
+                              -
+                            </button>
+                            <span className="w-3.5 text-center text-[11px] font-semibold">{quantity}</span>
+                            <button
+                              type="button"
+                              onClick={() => increment(item.id)}
+                              className="flex h-6 w-5 items-center justify-center rounded-md text-base leading-none"
+                              aria-label={`Add ${item.name}`}
+                            >
+                              +
+                            </button>
+                          </div>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => increment(item.id)}
+                            className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#11181d] text-lg leading-none text-white"
+                            aria-label={`Add ${item.name}`}
+                          >
+                            +
+                          </button>
+                        )}
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 
-                {/* Go to Cart Button */}
-                <div className="px-3 py-4">
-                  <button className="w-full bg-[#1A6B5C] text-white rounded-full py-3 text-sm font-semibold shadow-lg hover:bg-[#155248] transition-colors">
-                    Go to Cart
+                {/* Checkout Button */}
+                <div className="px-3 pb-4">
+                  <button className="w-full bg-[#25d366] text-[#07130d] rounded-full py-3 text-sm font-bold shadow-lg hover:bg-[#20bd5a] transition-colors">
+                    {cartCount > 0 ? `Cart item (${cartCount})` : 'Checkout'}
                   </button>
                 </div>
               </div>

@@ -31,22 +31,22 @@ const faqs = [
   {
     question: 'Can I manage multiple locations?',
     answer:
-      'Yes. Our Professional and Enterprise plans support multiple locations with a unified dashboard.',
+      'Yes. Our Professional and Business plans support multiple locations with a unified dashboard.',
   },
   {
     question: 'Is my data secure?',
     answer:
-      'We use security safeguards, operational controls, and regular backups to protect restaurant and customer order data.',
+      'Yes. We use secure infrastructure, restricted access, and practical safeguards to protect restaurant, order, and WhatsApp integration data.',
   },
   {
     question: 'What if I need help?',
     answer:
-      'Our support team is available via chat, email, and phone. We offer priority support on Professional and Enterprise plans.',
+      'Our support team is available via chat, email, and phone. We offer priority support on Professional and Business plans.',
   },
   {
     question: 'Can I customize the experience for my brand?',
     answer:
-      'Yes! You can customize your menu, colors, and messaging. Enterprise customers get full white-label solutions.',
+      'Yes. You can customize your menu, customer messages, and ordering flow to match your restaurant.',
   },
 ];
 

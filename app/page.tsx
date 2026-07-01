@@ -7,8 +7,8 @@ import { FastCheckout } from '@/components/landing/fast-checkout';
 import { Features } from '@/components/landing/features';
 import { RestaurantTypes } from '@/components/landing/restaurant-types';
 import { DashboardPreview } from '@/components/landing/dashboard-preview';
-import { Testimonials } from '@/components/landing/testimonials';
 import { Pricing } from '@/components/landing/pricing';
+import { Testimonials } from '@/components/landing/testimonials';
 import { Roadmap } from '@/components/landing/roadmap';
 import { FAQ } from '@/components/landing/faq';
 import { FinalCTA } from '@/components/landing/final-cta';
@@ -26,8 +26,8 @@ export default function Home() {
       <Features />
       <RestaurantTypes />
       <DashboardPreview />
-      <Testimonials />
       <Pricing />
+      <Testimonials />
       <Roadmap />
       <FAQ />
       <FinalCTA />

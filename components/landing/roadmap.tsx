@@ -4,43 +4,42 @@ import { Check, Sparkles } from 'lucide-react';
 
 const roadmapItems = [
   {
-    quarter: 'Q1 2025',
-    title: 'Foundation',
+    quarter: 'Q1 2026',
+    title: 'Launch Foundation',
     status: 'completed',
     features: [
       'Core WhatsApp ordering system',
-      'Multi-location support',
-      'Basic analytics dashboard',
+      'Interactive menu catalogue',
+      'Restaurant order dashboard',
     ],
   },
   {
-    quarter: 'Q2 2025',
-    title: 'Growth',
+    quarter: 'Q2 2026',
+    title: 'Operations',
     status: 'completed',
+    features: [
+      'Order status updates',
+      'Advanced reporting & insights',
+      '14-day free trial onboarding',
+    ],
+  },
+  {
+    quarter: 'Coming Soon',
+    title: 'Growth Tools',
+    status: 'upcoming',
     features: [
       'Payment gateway integration',
       'Inventory management',
-      'Customer loyalty program',
-    ],
-  },
-  {
-    quarter: 'Q3 2025',
-    title: 'Intelligence',
-    status: 'completed',
-    features: [
-      'Advanced reporting & insights',
-      'AI chatbot for FAQs',
       'Marketing automation tools',
     ],
   },
   {
-    quarter: 'Q1 2026',
-    title: 'Expansion',
+    quarter: 'Next Steps',
+    title: 'Intelligence',
     status: 'upcoming',
     features: [
       'Voice ordering on WhatsApp',
-      'Telegram integration',
-      'Table reservation system',
+      'Smarter customer reordering',
     ],
   },
 ];

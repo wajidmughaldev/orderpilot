@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 
 export function FinalCTA() {
@@ -12,7 +13,7 @@ export function FinalCTA() {
         </h2>
         
         <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-          Join 500+ restaurants already using OrderPilot. Get started with a 30-day free trial, no credit card required.
+          OrderPilot makes WhatsApp ordering easier for restaurants, from menu browsing to order collection, without extra manual work. Start with a 14-day free trial, no credit card required.
         </p>
 
         {/* Benefits */}
@@ -31,25 +32,15 @@ export function FinalCTA() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14">
-            Start Your Free Trial
-            <ArrowRight className="w-4 h-4 ml-2" />
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14">
+            <Link href="/#pricing">
+              Start Your Free Trial
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
           </Button>
-          <Button size="lg" variant="outline" className="px-8 h-14">
-            Schedule a Demo
+          <Button asChild size="lg" variant="outline" className="px-8 h-14">
+            <Link href="/book-demo">Book a Demo</Link>
           </Button>
-        </div>
-
-        {/* Social Proof */}
-        <div className="pt-8 border-t border-border/50">
-          <p className="text-sm text-foreground/60 mb-4">Trusted by restaurant owners across Pakistan</p>
-          <div className="flex items-center justify-center gap-6 flex-wrap">
-            {['Lahore', 'Karachi', 'Islamabad', 'Rawalpindi', 'Multan'].map((city, i) => (
-              <span key={i} className="text-xs text-foreground/50 font-medium">
-                {city}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

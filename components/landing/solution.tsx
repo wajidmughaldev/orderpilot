@@ -27,7 +27,7 @@ const steps = [
     number: '3',
     icon: Package,
     title: 'You Receive Orders',
-    description: 'Orders appear instantly in your OrderPilot dashboard and team WhatsApp group.',
+    description: 'Orders appear instantly in your restaurant dashboard.',
   },
   {
     number: '4',

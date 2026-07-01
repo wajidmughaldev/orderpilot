@@ -1,58 +1,67 @@
 'use client';
 
+import { Check, MessageCircle } from 'lucide-react';
+
 export function FastCheckout() {
   return (
     <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left: Mock Checkout */}
-          <div className="relative h-96 order-2 md:order-1">
+          <div className="relative h-[480px] order-2 md:order-1">
             <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-primary/5 rounded-2xl" />
             
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-72 bg-white rounded-2xl shadow-2xl border-4 border-white overflow-hidden">
-                {/* Header */}
-                <div className="bg-secondary/10 border-b border-border p-4">
-                  <p className="font-bold text-sm text-foreground">Order Summary</p>
-                </div>
-
-                {/* Items */}
-                <div className="p-4 space-y-2 border-b border-border/50">
-                  {[
-                    { name: 'Pizza Margherita', qty: '1', price: '1,200' },
-                    { name: 'Garlic Bread', qty: '1', price: '400' },
-                  ].map((item, i) => (
-                    <div key={i} className="flex justify-between text-sm">
-                      <span className="text-foreground/60">{item.qty}x {item.name}</span>
-                      <span className="text-foreground font-medium">PKR {item.price}</span>
+              <div className="relative w-80 h-[450px] overflow-hidden rounded-[28px] border-[8px] border-[#101820] bg-[#0b141a] shadow-2xl">
+                <div className="absolute inset-0 opacity-30 whatsapp-pattern" />
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="bg-[#101820] px-4 py-3 text-white">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25d366] text-[#07130d]">
+                        <MessageCircle className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold">OrderPilot.pk</p>
+                      </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
 
-                {/* Totals */}
-                <div className="p-4 space-y-2 border-b border-border/50">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/60">Subtotal</span>
-                    <span className="text-foreground">PKR 1,600</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/60">Delivery</span>
-                    <span className="text-foreground">PKR 200</span>
-                  </div>
-                </div>
+                  <div className="flex-1 px-3 py-4">
+                    <div className="max-w-[286px] overflow-hidden rounded-xl rounded-tl-sm bg-[#202c33] text-white shadow-lg">
+                      <div className="p-4">
+                        <div className="space-y-3 text-sm leading-snug">
+                          <p className="text-lg font-bold leading-tight">Order Details</p>
 
-                {/* Total */}
-                <div className="p-4">
-                  <div className="flex justify-between font-bold mb-4">
-                    <span className="text-foreground">Total</span>
-                    <span className="text-secondary">PKR 1,800</span>
+                          <div className="space-y-1">
+                            <p>ID : #7</p>
+                            <p>Date : Fri May 15 2026</p>
+                          </div>
+
+                          <div className="space-y-1 border-l-4 border-white/55 pl-3 text-white/70">
+                            <p>Chicken Burger x 1 : PKR 890</p>
+                            <p>Zinger Wrap x 1 : PKR 600</p>
+                            <p>Loaded Fries x 1 : PKR 550</p>
+                          </div>
+
+                          <div className="space-y-1">
+                            <p>Subtotal Amount : PKR 2,040</p>
+                            <p>Delivery : PKR 200</p>
+                          </div>
+
+                          <p className="text-base font-semibold">Net Amount : PKR 2,240</p>
+                        </div>
+
+                        <div className="mt-2 flex justify-end gap-1 text-[11px] text-white/65">
+                          9:46 PM <span className="deliver-ticks">&#10003;&#10003;</span>
+                        </div>
+                      </div>
+
+                      <button className="flex w-full items-center justify-center gap-2 border-t border-white/10 py-2.5 text-sm font-semibold text-[#25d366] transition-colors hover:bg-white/5">
+                        <Check className="h-4 w-4" />
+                        Confirm
+                      </button>
+                    </div>
                   </div>
-                  <button className="w-full bg-secondary text-white rounded-lg py-2 text-sm font-bold hover:bg-secondary/90 transition-colors">
-                    Proceed to Pay
-                  </button>
-                  <p className="text-xs text-foreground/60 text-center mt-2">
-                    JazzCash, EasyPaisa, Card, or COD
-                  </p>
                 </div>
               </div>
             </div>
@@ -70,7 +79,6 @@ export function FastCheckout() {
               {[
                 'One-tap checkout on return visits',
                 'Save favorite addresses',
-                'Multiple payment options',
                 'Instant order confirmation',
                 'Real-time delivery tracking',
               ].map((feature, i) => (

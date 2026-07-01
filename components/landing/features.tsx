@@ -51,7 +51,7 @@ const features = [
   {
     icon: Shield,
     title: 'Secure & Reliable',
-    description: 'Enterprise-grade security with 99.9% uptime. Your data is safe.',
+    description: 'Protected restaurant, order, and WhatsApp data with practical access controls.',
   },
 ];
 
