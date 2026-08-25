@@ -9,11 +9,11 @@ export function FinalCTA() {
     <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary/10 via-secondary/5 to-background">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-          Ready to Transform Your Restaurant?
+          Ready to Bring Restaurant Ordering to WhatsApp?
         </h2>
         
         <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-          OrderPilot makes WhatsApp ordering easier for restaurants, from menu browsing to order collection, without extra manual work. Start with a 14-day free trial, no credit card required.
+          See how OrderPilot can simplify ordering for your restaurant.
         </p>
 
         {/* Benefits */}
@@ -34,12 +34,12 @@ export function FinalCTA() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14">
             <Link href="/#pricing">
-              Start Your Free Trial
+              Get Started
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="px-8 h-14">
-            <Link href="/book-demo">Book a Demo</Link>
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
       </div>

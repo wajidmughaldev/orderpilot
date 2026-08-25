@@ -3,21 +3,21 @@ import { LegalPage } from '@/components/legal/legal-page';
 import { BUSINESS_INFO } from '@/lib/business-info';
 
 export const metadata: Metadata = {
-  title: 'Data Deletion | OrderPilot.pk',
-  description: 'Data deletion request instructions for OrderPilot.pk, operated by Digipex Solutions LLC.',
+  title: 'Data Deletion | OrderPilot',
+  description: `Data deletion request instructions for OrderPilot, backed by ${BUSINESS_INFO.backerLegalName}.`,
 };
 
 export default function DataDeletionPage() {
   return (
     <LegalPage
       title="Data Deletion Request"
-      description="Users, restaurants, or customers may request deletion of personal or business data associated with OrderPilot.pk."
+      description="Users, restaurants, or customers may request deletion of personal or business data associated with OrderPilot."
     >
       <section className="space-y-4">
         <p>
           <strong>Effective date:</strong> May 22, 2026
         </p>
-        <p>{BUSINESS_INFO.productName} is operated by {BUSINESS_INFO.legalName}.</p>
+        <p>{BUSINESS_INFO.productName} is built by the OrderPilot team and backed by {BUSINESS_INFO.backerLegalName}.</p>
         <p>
           Users, restaurants, or customers may request deletion of personal or business data
           associated with {BUSINESS_INFO.productName}.
@@ -37,7 +37,7 @@ export default function DataDeletionPage() {
           <li>Your full name.</li>
           <li>Business name, if applicable.</li>
           <li>Registered phone number.</li>
-          <li>WhatsApp number used with OrderPilot.pk.</li>
+          <li>WhatsApp number used with {BUSINESS_INFO.productDomain}.</li>
           <li>Description of the data you want deleted.</li>
         </ul>
         <p>
@@ -49,13 +49,13 @@ export default function DataDeletionPage() {
       <section className="space-y-4">
         <h2>Registered Address</h2>
         <address className="not-italic leading-7">
-          {BUSINESS_INFO.legalName}
+          {BUSINESS_INFO.backerLegalName}
           <br />
-          {BUSINESS_INFO.registeredAddressLine1},
+          {BUSINESS_INFO.backerAddressLine1},
           <br />
-          {BUSINESS_INFO.registeredAddressLine2},
+          {BUSINESS_INFO.backerAddressLine2},
           <br />
-          {BUSINESS_INFO.registeredCountry}.
+          {BUSINESS_INFO.backerCountry}.
         </address>
       </section>
     </LegalPage>

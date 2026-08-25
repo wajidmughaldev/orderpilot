@@ -7,9 +7,33 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'OrderPilot - Restaurant Ordering on WhatsApp',
-  description: 'Streamline restaurant ordering with WhatsApp. Fast, easy, and integrated ordering system for restaurants in Pakistan.',
+  metadataBase: new URL('https://orderpilot.pk'),
+  title: 'OrderPilot — AI-Powered WhatsApp Ordering Software for Restaurants',
+  description: 'OrderPilot is an AI-powered SaaS platform that helps restaurants automate customer conversations, ordering, checkout, and order management through WhatsApp.',
   generator: 'v0.app',
+  alternates: {
+    canonical: 'https://orderpilot.pk/',
+  },
+  openGraph: {
+    title: 'OrderPilot — AI-Powered WhatsApp Ordering Software for Restaurants',
+    description: 'OrderPilot is an AI-powered SaaS platform that helps restaurants automate customer conversations, ordering, checkout, and order management through WhatsApp.',
+    url: 'https://orderpilot.pk/',
+    type: 'website',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'OrderPilot - WhatsApp Ordering for Restaurants',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'OrderPilot — AI-Powered WhatsApp Ordering Software for Restaurants',
+    description: 'OrderPilot is an AI-powered SaaS platform that helps restaurants automate customer conversations, ordering, checkout, and order management through WhatsApp.',
+    images: ['/logo.png'],
+  },
   icons: {
     icon: [
       {
@@ -35,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

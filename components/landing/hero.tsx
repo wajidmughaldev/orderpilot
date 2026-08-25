@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight, List, MessageCircle, Minus, Plus, ShoppingCart, X } from 'lucide-react';
+import { BUSINESS_INFO } from '@/lib/business-info';
 
 const TOTAL_CHAT_STEPS = 15;
 
@@ -48,21 +49,38 @@ export function Hero() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left: Text Content */}
           <div className="space-y-6">
+            <span className="inline-flex px-3.5 py-1.5 bg-primary/10 text-primary text-xs font-semibold rounded-full border border-primary/10 tracking-wide uppercase">
+              AI-powered restaurant SaaS
+            </span>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Restaurant Orders Through <span className="text-primary">WhatsApp</span>
             </h1>
 
             <p className="text-lg text-foreground/60 leading-relaxed max-w-xl">
-              OrderPilot streamlines your restaurant&apos;s ordering process. Customers order via WhatsApp, your team manages orders efficiently, and you increase revenue with minimal effort.
+              OrderPilot is an AI-powered SaaS platform that helps restaurants automate customer conversations, ordering, checkout, and order management directly through WhatsApp.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                <a href="#pricing">
-                  Start Free Trial
-                  <ArrowRight className="w-4 h-4 ml-2" />
+            <div className="flex flex-col gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">
+                  <a href="#pricing">
+                    Start Free Trial
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </a>
+                </Button>
+              </div>
+              <p className="text-xs text-foreground/50 font-medium">
+                Built by the OrderPilot team · Backed by{' '}
+                <a
+                  href={BUSINESS_INFO.backerWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors underline"
+                >
+                  {BUSINESS_INFO.backerName}
                 </a>
-              </Button>
+              </p>
             </div>
 
             <div className="flex flex-col gap-2 pt-2 text-sm text-foreground/60 sm:flex-row sm:gap-6 sm:pt-4">

@@ -5,9 +5,9 @@ import { Header } from '@/components/landing/header';
 import { BUSINESS_INFO, LEGAL_OPERATOR_LINE } from '@/lib/business-info';
 
 export const metadata: Metadata = {
-  title: 'About Us | OrderPilot.pk',
+  title: 'About OrderPilot — AI-Powered Restaurant Ordering Software',
   description:
-    'Learn about OrderPilot.pk, a WhatsApp ordering platform for restaurants operated by Digipex Solutions LLC.',
+    'Learn about OrderPilot, a WhatsApp ordering platform for restaurants built by the OrderPilot team and backed by Digipex Solutions.',
 };
 
 const values = [
@@ -34,8 +34,9 @@ const values = [
 ];
 
 const team = [
-  { name: 'Abdul Wajid', role: 'Founder & CEO' },
-  { name: 'Ebad Khan', role: 'Co-Founder & COO' },
+  { name: 'Abdul Wajid Khan', role: 'Founder & CEO' },
+  { name: 'Muhammad Ebad Khan', role: 'Co-Founder & COO' },
+  { name: 'Muhammad Hunain Memon', role: 'CTO', additionalRole: 'Founder, Digipex Solutions' },
 ];
 
 export default function AboutPage() {
@@ -146,26 +147,27 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Company Information</h2>
-              <p className="text-foreground/60 leading-relaxed">{LEGAL_OPERATOR_LINE}</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Business Verification</h2>
+              <p className="text-foreground/60 leading-relaxed">
+                OrderPilot is a restaurant technology startup built by the OrderPilot team and backed by Digipex Solutions. Digipex Solutions provides the registered backing and operational support enabling our product development.
+              </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="rounded-xl border border-border/60 bg-background p-6">
-                <p className="text-sm text-foreground/60 mb-2">Legal Operator</p>
-                <p className="font-semibold text-foreground">{BUSINESS_INFO.legalName}</p>
+                <p className="text-sm text-foreground/60 mb-2">Backing Entity</p>
+                <p className="font-semibold text-foreground">{BUSINESS_INFO.backerLegalName}</p>
                 <p className="text-sm leading-6 text-foreground/60 mt-2">
-                  Responsible for the operation, management, and business administration of{' '}
-                  {BUSINESS_INFO.productName}.
+                  Responsible for the technological, operational support, and development backing of {BUSINESS_INFO.productName}.
                 </p>
               </div>
               <div className="rounded-xl border border-border/60 bg-background p-6">
                 <p className="text-sm text-foreground/60 mb-2">Registered Address</p>
                 <address className="not-italic leading-7 text-foreground/80">
-                  {BUSINESS_INFO.registeredAddressLine1}
+                  {BUSINESS_INFO.backerAddressLine1}
                   <br />
-                  {BUSINESS_INFO.registeredAddressLine2}
+                  {BUSINESS_INFO.backerAddressLine2}
                   <br />
-                  {BUSINESS_INFO.registeredCountry}
+                  {BUSINESS_INFO.backerCountry}
                 </address>
               </div>
               <div className="rounded-xl border border-border/60 bg-background p-6 sm:col-span-2">
@@ -182,7 +184,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-foreground/[0.035]">
+      <section id="team" className="py-16 md:py-24 bg-foreground/[0.035]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Meet the Team</h2>
@@ -190,14 +192,19 @@ export default function AboutPage() {
               The founding team building OrderPilot around practical restaurant workflows.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {team.map((member) => (
-              <div key={member.name} className="text-center group">
-                <div className="w-32 h-32 mx-auto mb-5 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center ring-1 ring-primary/10 group-hover:from-primary/30 group-hover:to-secondary/30 group-hover:scale-105 transition-all duration-300">
-                  <span className="text-4xl font-bold text-primary/65">{member.name[0]}</span>
+              <div key={member.name} className="text-center bg-background rounded-2xl border border-border/60 p-6 group shadow-xs">
+                <div className="w-28 h-28 mx-auto mb-5 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center ring-1 ring-primary/10 group-hover:from-primary/30 group-hover:to-secondary/30 group-hover:scale-105 transition-all duration-300">
+                  <span className="text-3xl font-bold text-primary/65">
+                    {member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                  </span>
                 </div>
                 <h3 className="font-bold text-foreground">{member.name}</h3>
                 <p className="text-sm text-foreground/60">{member.role}</p>
+                {member.additionalRole && (
+                  <p className="text-xs text-foreground/40 mt-1 font-semibold">{member.additionalRole}</p>
+                )}
               </div>
             ))}
           </div>

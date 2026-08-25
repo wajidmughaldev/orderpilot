@@ -13,8 +13,8 @@ const productLinks = [
 
 const companyLinks = [
   { label: 'About Us', href: '/about' },
-  { label: 'Book a Demo', href: '/book-demo' },
-  { label: 'Contact', href: `mailto:${BUSINESS_INFO.email}` },
+  { label: 'Team', href: '/#team' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export function Footer() {
@@ -27,18 +27,17 @@ export function Footer() {
               <img src="/logo.png" alt="OrderPilot" className="h-16 w-auto" />
             </Link>
             <p className="text-sm text-foreground/60">
-              The simplest way to take orders on WhatsApp for your restaurant.
+              AI-powered WhatsApp ordering software for restaurants.
             </p>
-            <p className="text-xs leading-5 text-foreground/60">{LEGAL_OPERATOR_LINE}</p>
+            <p className="text-xs leading-5 text-foreground/65">{LEGAL_OPERATOR_LINE}</p>
             <div className="flex gap-4 pt-2">
               {['Facebook', 'Instagram', 'LinkedIn'].map((social) => (
-                <a
+                <span
                   key={social}
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-foreground/10 hover:bg-primary hover:text-white flex items-center justify-center text-sm transition-colors"
+                  className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center text-sm text-foreground/60 cursor-default"
                 >
                   {social[0]}
-                </a>
+                </span>
               ))}
             </div>
           </div>
@@ -73,12 +72,12 @@ export function Footer() {
             <h4 className="font-bold text-foreground">Legal</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/privacy-policy" className="text-foreground/60 hover:text-primary transition-colors">
+                <a href="/privacy" className="text-foreground/60 hover:text-primary transition-colors">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="/terms-of-service" className="text-foreground/60 hover:text-primary transition-colors">
+                <a href="/terms" className="text-foreground/60 hover:text-primary transition-colors">
                   Terms of Service
                 </a>
               </li>
@@ -136,34 +135,48 @@ export function Footer() {
                 href={BUSINESS_INFO.website}
                 className="text-foreground font-medium hover:text-primary transition-colors"
               >
-                orderpilot.pk
+                {BUSINESS_INFO.productDomain}
               </a>
             </div>
           </div>
           <div>
             <p className="text-sm text-foreground/60">Registered Address</p>
             <address className="not-italic text-sm leading-6 text-foreground/70">
-              {BUSINESS_INFO.legalName}
+              {BUSINESS_INFO.backerLegalName}
               <br />
-              {BUSINESS_INFO.registeredAddressLine1},
+              {BUSINESS_INFO.backerAddressLine1},
               <br />
-              {BUSINESS_INFO.registeredAddressLine2},
+              {BUSINESS_INFO.backerAddressLine2},
               <br />
-              {BUSINESS_INFO.registeredCountry}.
+              {BUSINESS_INFO.backerCountry}.
             </address>
           </div>
         </div>
 
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-foreground/60">
-          <p>
-            &copy; 2026 {BUSINESS_INFO.productName}. All rights reserved | Developed by{' '}
-            <a href="https://100xlift.com" className="hover:text-primary transition-colors">
-              100xlift.com
-            </a>
-          </p>
+          <div className="flex flex-col gap-1 text-center md:text-left">
+            <p>
+              &copy; 2026 {BUSINESS_INFO.productName}. All rights reserved | Developed by{' '}
+              <a href="https://100xlift.com" className="hover:text-primary transition-colors">
+                100xlift.com
+              </a>
+            </p>
+            <p className="text-xs text-foreground/50">
+              Built by the OrderPilot team. Backed by{' '}
+              <a
+                href={BUSINESS_INFO.backerWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors underline"
+              >
+                {BUSINESS_INFO.backerName}
+              </a>.
+            </p>
+          </div>
           <p>Built for Pakistani restaurants</p>
         </div>
       </div>
     </footer>
   );
 }
+

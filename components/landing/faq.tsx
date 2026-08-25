@@ -9,6 +9,36 @@ import {
 
 const faqs = [
   {
+    question: 'What is OrderPilot?',
+    answer:
+      'OrderPilot is an AI-powered SaaS platform that helps restaurants automate customer conversations, ordering, checkout, and order management directly through WhatsApp.',
+  },
+  {
+    question: 'Who is OrderPilot built for?',
+    answer:
+      'OrderPilot is designed for restaurants, cafes, cloud kitchens, bakeries, and food businesses that want to offer customers a convenient, WhatsApp-first ordering experience.',
+  },
+  {
+    question: 'Is OrderPilot a restaurant?',
+    answer:
+      'No. OrderPilot is a software platform, not a restaurant or food delivery marketplace. We provide the conversational ordering technology that allows restaurants to take and manage their own orders directly.',
+  },
+  {
+    question: 'Who is behind OrderPilot?',
+    answer:
+      'OrderPilot is built by its founding team led by Abdul Wajid Khan (Founder & CEO), Muhammad Ebad Khan (Co-Founder & COO), and Muhammad Hunain Memon (CTO).',
+  },
+  {
+    question: 'Is OrderPilot backed by another company?',
+    answer:
+      'Yes. OrderPilot is built by the OrderPilot team and backed by Digipex Solutions, a registered technology business supporting the product\'s technology and continued growth.',
+  },
+  {
+    question: 'How can I contact OrderPilot?',
+    answer:
+      'You can reach us directly via email at info@digipexsolutions.com, or through our public Contact page at orderpilot.pk/contact.',
+  },
+  {
     question: 'How long does setup take?',
     answer:
       'Setup is incredibly simple and takes less than 10 minutes. You create an account, upload your menu items, and share your WhatsApp link with customers. No technical knowledge required.',
