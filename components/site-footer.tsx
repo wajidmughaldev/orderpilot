@@ -1,20 +1,39 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import { Globe2, Mail, MapPin, MessageCircle } from 'lucide-react'
+
+const linkGroups = [
+  { title: 'Product', links: [['Features', '/#features'], ['How It Works', '/#how-it-works'], ['Pricing', '/pricing'], ['FAQ', '/#faq']] },
+  { title: 'Company', links: [['About Us', '/#about'], ['Book a Demo', '/book-demo'], ['Contact', 'mailto:info@digipexsolutions.com']] },
+  { title: 'Legal', links: [['Privacy Policy', '#'], ['Terms of Service', '#'], ['Data Deletion', '#'], ['Cookie Policy', '#']] },
+]
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink text-white">
-      <div className="site-shell grid gap-10 py-14 md:grid-cols-[1fr_auto] md:items-end">
-        <div>
-          <Link href="/" className="text-2xl font-bold">order<span className="text-leaf">pilot</span><span className="text-sm text-white/45">.pk</span></Link>
-          <p className="mt-3 max-w-sm text-white/60">Connected ordering for restaurants.</p>
-          <p className="mt-8 text-sm text-white/40">Built for Pakistani restaurants.</p>
+    <footer className="bg-[#101820] text-white">
+      <div className="site-shell py-14 sm:py-18">
+        <div className="grid gap-12 border-b border-white/10 pb-12 lg:grid-cols-[1.2fr_2fr]">
+          <div>
+            <Link href="/" aria-label="OrderPilot home"><Image src="/assets/orderpilot-logo.png" alt="OrderPilot" width={230} height={92} className="h-16 w-auto brightness-0 invert" /></Link>
+            <p className="mt-5 max-w-sm leading-7 text-white/60">AI-powered connected ordering software built for Pakistani restaurants.</p>
+            <p className="mt-5 max-w-sm text-sm leading-6 text-white/45">OrderPilot is built by the OrderPilot team and backed by Digipex Solutions LLC, a Colorado limited liability company.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+            {linkGroups.map((group) => <nav key={group.title} aria-label={`${group.title} links`}><h3 className="font-bold text-leaf">{group.title}</h3><ul className="mt-5 flex flex-col gap-3">{group.links.map(([label, href]) => <li key={label}><Link href={href} className="text-sm text-white/60 transition-colors hover:text-white">{label}</Link></li>)}</ul></nav>)}
+          </div>
         </div>
-        <nav className="flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold" aria-label="Footer navigation">
-          <Link href="/" className="hover:text-leaf">Home</Link>
-          <Link href="/pricing" className="hover:text-leaf">Pricing</Link>
-          <Link href="/book-demo" className="hover:text-leaf">Book a Demo</Link>
-        </nav>
+        <div className="grid gap-7 border-b border-white/10 py-10 sm:grid-cols-2 lg:grid-cols-4">
+          <FooterContact icon={Mail} label="Business Contact" value="info@digipexsolutions.com" href="mailto:info@digipexsolutions.com" />
+          <FooterContact icon={MessageCircle} label="WhatsApp Support" value="+92 336 1815141" href="https://wa.me/923361815141" />
+          <FooterContact icon={Globe2} label="Website" value="orderpilot.pk" href="https://orderpilot.pk" />
+          <div className="flex gap-3"><MapPin className="mt-1 size-5 shrink-0 text-leaf" /><div><p className="text-sm text-white/45">Registered Address</p><address className="mt-1 text-sm not-italic leading-6 text-white/75">Digipex Solutions LLC<br />1500 N Grant St Ste R<br />Denver, CO 80203, United States</address></div></div>
+        </div>
+        <div className="flex flex-col gap-3 pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 OrderPilot. All rights reserved.</p><p>Built for Pakistani restaurants.</p></div>
       </div>
     </footer>
   )
+}
+
+function FooterContact({ icon: Icon, label, value, href }: { icon: typeof Mail; label: string; value: string; href: string }) {
+  return <div className="flex gap-3"><Icon className="mt-1 size-5 shrink-0 text-leaf" /><div><p className="text-sm text-white/45">{label}</p><a href={href} className="mt-1 block text-sm font-semibold text-white/80 hover:text-leaf">{value}</a></div></div>
 }

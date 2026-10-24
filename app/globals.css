@@ -49,6 +49,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .panel { border: 1px solid rgba(0,69,0,.12); border-radius: 1.75rem; background: white; box-shadow: 0 18px 55px rgba(16,24,32,.06); }
 .form-control { min-height: 3rem; width: 100%; border: 1px solid #cbd4ca; border-radius: .85rem; background: white; padding: .75rem .9rem; font: inherit; }
 .form-control:focus { border-color: #005f00; box-shadow: 0 0 0 3px rgba(0,95,0,.12); outline: none; }
+.problem-orbit { position: relative; min-height: 36rem; }
+.orbit-center { position: absolute; left: 50%; top: 50%; display: grid; place-content: center; width: 14rem; height: 14rem; translate: -50% -50%; border-radius: 999px; background: #004500; color: white; text-align: center; box-shadow: 0 30px 70px rgba(0,69,0,.24); font-size: 1.65rem; font-weight: 800; }
+.orbit-center strong { color: #5ed44f; }
+.orbit-center small { display: block; margin-top: .55rem; color: rgba(255,255,255,.55); font-size: .7rem; font-weight: 600; }
+.orbit-bubble { position: absolute; display: grid; justify-items: center; width: 10rem; min-height: 10rem; padding: 1rem; border: 1px solid rgba(0,69,0,.18); border-radius: 999px; background: #fff; color: #101820; text-align: center; box-shadow: 0 18px 45px rgba(16,24,32,.1); transition: transform .28s, background .28s, color .28s, border-radius .28s; }
+.orbit-bubble:hover { transform: scale(1.06); }
+.orbit-bubble.is-solved { border-radius: 2rem; background: #ddf4db; color: #004500; animation: bubble-pop .42s ease both; }
+.orbit-icon { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; background: #ddf4db; color: #004500; }
+.orbit-icon svg { width: 1.25rem; height: 1.25rem; }
+.orbit-bubble.is-solved .orbit-icon { background: #004500; color: white; }
+.orbit-bubble > span:nth-child(2) { margin-top: .55rem; font-size: .82rem; font-weight: 800; }
+.orbit-bubble small { margin-top: .2rem; color: color-mix(in srgb, currentColor 55%, transparent); font-size: .65rem; }
+.orbit-bubble-1 { left: 5%; top: 3%; }
+.orbit-bubble-2 { right: 3%; top: 5%; }
+.orbit-bubble-3 { bottom: 2%; left: 8%; }
+.orbit-bubble-4 { bottom: 3%; right: 5%; }
+@keyframes bubble-pop { 0% { transform: scale(1); } 45% { transform: scale(.82); opacity: .55; } 75% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@media (max-width: 640px) { .problem-orbit { min-height: 34rem; } .orbit-center { width: 10rem; height: 10rem; font-size: 1.25rem; } .orbit-bubble { width: 8rem; min-height: 8rem; padding: .75rem; } .orbit-bubble-1 { left: 0; } .orbit-bubble-2 { right: 0; } .orbit-bubble-3 { left: 0; } .orbit-bubble-4 { right: 0; } }
 .desktop-cta { display: none; }
 @media (min-width: 1024px) { .desktop-cta { display: inline-flex; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
