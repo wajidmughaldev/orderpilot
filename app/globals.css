@@ -47,6 +47,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .button-secondary:hover { background: #ddf4db; }
 .image-frame { overflow: hidden; border: 1px solid rgba(0,69,0,.12); border-radius: 2rem; background: white; box-shadow: 0 30px 80px rgba(0,69,0,.12); }
 .panel { border: 1px solid rgba(0,69,0,.12); border-radius: 1.75rem; background: white; box-shadow: 0 18px 55px rgba(16,24,32,.06); }
+.partner-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; gap: clamp(1.5rem, 4vw, 4rem); }
+.partner-grid figure { display: grid; min-height: 4rem; place-items: center; }
+.partner-grid img { width: auto; max-width: 100%; height: 3.5rem; object-fit: contain; filter: grayscale(1); opacity: .58; mix-blend-mode: multiply; transition: filter .2s, opacity .2s; }
+.partner-grid figure:first-child img { height: 4.5rem; }
+.partner-grid figure:last-child img { height: 2.8rem; }
+.partner-grid img:hover { filter: grayscale(0); opacity: 1; }
+.ops-board { overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 2rem; background: #101820; color: white; box-shadow: 0 30px 70px rgba(16,24,32,.18); }
+.ops-board-head, .ops-board-foot { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; font: 700 .64rem/1 var(--font-space), sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.ops-board-head { border-bottom: 1px solid rgba(255,255,255,.1); color: #5ed44f; }
+.ops-board-foot { border-top: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.45); }
+.ops-board-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,.09); }
+.ops-card { position: relative; min-height: 13rem; padding: 1.6rem; background: #101820; }
+.ops-card-active { background: linear-gradient(140deg, #004500, #101820 72%); }
+.ops-card svg { width: 1.5rem; height: 1.5rem; color: #5ed44f; }
+.ops-card h3 { margin-top: 2.2rem; max-width: 15rem; font-size: 1.1rem; font-weight: 800; }
+.ops-card p { margin-top: .65rem; max-width: 18rem; color: rgba(255,255,255,.52); font-size: .78rem; line-height: 1.6; }
+.ops-number { position: absolute; right: 1.3rem; top: 1.3rem; color: rgba(255,255,255,.25); font: 700 .7rem/1 var(--font-space), sans-serif; }
 .form-control { min-height: 3rem; width: 100%; border: 1px solid #cbd4ca; border-radius: .85rem; background: white; padding: .75rem .9rem; font: inherit; }
 .form-control:focus { border-color: #005f00; box-shadow: 0 0 0 3px rgba(0,95,0,.12); outline: none; }
 .problem-orbit { position: relative; min-height: 36rem; }
@@ -66,7 +83,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .orbit-bubble-3 { bottom: 2%; left: 8%; }
 .orbit-bubble-4 { bottom: 3%; right: 5%; }
 @keyframes bubble-pop { 0% { transform: scale(1); } 45% { transform: scale(.82); opacity: .55; } 75% { transform: scale(1.08); } 100% { transform: scale(1); } }
-@media (max-width: 640px) { .problem-orbit { min-height: 34rem; } .orbit-center { width: 10rem; height: 10rem; font-size: 1.25rem; } .orbit-bubble { width: 8rem; min-height: 8rem; padding: .75rem; } .orbit-bubble-1 { left: 0; } .orbit-bubble-2 { right: 0; } .orbit-bubble-3 { left: 0; } .orbit-bubble-4 { right: 0; } }
+@media (max-width: 640px) { .partner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .partner-grid figure:last-child { grid-column: 1 / -1; } .partner-grid img { height: 2.8rem; } .ops-board-grid { grid-template-columns: 1fr; } .problem-orbit { min-height: 34rem; } .orbit-center { width: 10rem; height: 10rem; font-size: 1.25rem; } .orbit-bubble { width: 8rem; min-height: 8rem; padding: .75rem; } .orbit-bubble-1 { left: 0; } .orbit-bubble-2 { right: 0; } .orbit-bubble-3 { left: 0; } .orbit-bubble-4 { right: 0; } }
 .desktop-cta { display: none; }
 @media (min-width: 1024px) { .desktop-cta { display: inline-flex; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
