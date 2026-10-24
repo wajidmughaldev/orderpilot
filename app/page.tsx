@@ -4,7 +4,6 @@ import { ArrowRight, MessageCircle, Files, RefreshCw, Eye, ChefHat, Users, Store
 import { AppShell } from '@/components/app-shell'
 import OrderWorkflow from '@/components/order-workflow'
 import { FaqList } from '@/components/faq-list'
-import { ProblemOrbit } from '@/components/problem-orbit'
 
 const faqs = [
   { question: 'Do customers need to download an app?', answer: 'No separate OrderPilot customer app is needed for WhatsApp or web-based ordering.' },
@@ -40,9 +39,7 @@ export default function HomePage() {
 
     <section className="section-pad bg-white"><div className="site-shell"><p className="eyebrow">Sound familiar?</p><div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_.8fr]"><h2 className="section-title">Busy service is hard enough. Orders shouldn&apos;t add to the chaos.</h2><p className="lede self-end">A few missed details can turn a normal shift into extra work.</p></div><div className="mt-16 grid gap-px overflow-hidden rounded-[2rem] border border-forest/10 bg-forest/10 md:grid-cols-3">{[[MessageCircle,'Messages keep coming.','Questions and order requests pile up while your team serves customers.'],[Files,'Details are scattered.','Orders across chats, notes, and counters are harder to follow.'],[RefreshCw,'Everyone asks for an update.','The counter, kitchen, and customer all need to know what’s happening.']].map(([Icon,title,copy], index) => { const I = Icon as typeof MessageCircle; return <article key={title as string} className={`bg-cream p-8 sm:p-10 ${index === 1 ? 'md:translate-y-4' : ''}`}><I className="size-8 text-brand" /><p className="mt-12 font-mono text-xs text-brand">0{index+1}</p><h3 className="mt-3 text-2xl font-bold">{title as string}</h3><p className="mt-3 leading-7 text-ink/60">{copy as string}</p></article>})}</div><p className="mt-10 text-center font-semibold text-brand">There&apos;s a clearer way to manage it.</p></div></section>
 
-    <section className="section-pad overflow-hidden bg-white"><div className="site-shell grid items-center gap-12 lg:grid-cols-[.72fr_1.28fr]"><div><p className="eyebrow">Tap a problem</p><h2 className="section-title mt-6">The pressure surrounds you. OrderPilot clears it.</h2><p className="lede mt-5">Select any restaurant challenge to see how one connected system turns it into a solved task.</p></div><ProblemOrbit /></div></section>
-
-    <section id="how-it-works" className="scroll-mt-20 bg-[#fbfaf7]"><OrderWorkflow /></section>
+    <section id="how-it-works" className="scroll-mt-20 bg-[#fbfaf7] pt-16 sm:pt-24"><div className="site-shell"><p className="eyebrow">How OrderPilot works</p><h2 className="section-title mt-6 max-w-4xl">From customer order to kitchen, without the confusion.</h2><p className="lede mt-5 max-w-2xl">One connected flow helps your team see what came in and what comes next.</p></div><OrderWorkflow /></section>
 
     <section id="features" className="section-pad bg-forest text-white"><div className="site-shell"><p className="eyebrow !text-leaf">Made for your customers</p><div className="mt-6 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><h2 className="section-title max-w-3xl">However they order, you&apos;re ready.</h2><p className="max-w-md text-lg leading-8 text-white/65">Familiar ways to order, all arriving in one manageable flow.</p></div><div className="mt-12 grid gap-5 md:grid-cols-3">
       <CustomerChannel image="/assets/whatsapp_food_ordering_flow.png" title="WhatsApp ordering" copy="Turn familiar conversations into clear, confirmed orders." />

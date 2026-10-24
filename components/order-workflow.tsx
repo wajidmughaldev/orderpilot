@@ -63,7 +63,6 @@ export default function OrderWorkflow() {
           <div className="journey" dangerouslySetInnerHTML={{ __html: rightPanel(channel) }} />
         </div>
       </section>
-      <p className="demo-footnote">Illustrative ordering experience · Sample menu items and prices</p>
     </div>
   );
 }
