@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, MessageCircle, Files, RefreshCw, Eye, ChefHat, Users, Store, Quote } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
-import { ChannelJourney } from '@/components/channel-journey'
+import OrderWorkflow from '@/components/order-workflow'
 import { FaqList } from '@/components/faq-list'
 import { ProblemOrbit } from '@/components/problem-orbit'
 
@@ -42,7 +42,7 @@ export default function HomePage() {
 
     <section className="section-pad overflow-hidden bg-white"><div className="site-shell grid items-center gap-12 lg:grid-cols-[.72fr_1.28fr]"><div><p className="eyebrow">Tap a problem</p><h2 className="section-title mt-6">The pressure surrounds you. OrderPilot clears it.</h2><p className="lede mt-5">Select any restaurant challenge to see how one connected system turns it into a solved task.</p></div><ProblemOrbit /></div></section>
 
-    <section id="how-it-works" className="section-pad scroll-mt-20"><div className="site-shell"><p className="eyebrow">How OrderPilot works</p><h2 className="section-title mt-6 max-w-4xl">From customer order to kitchen, without the confusion.</h2><p className="lede mt-5 max-w-2xl">One connected flow helps your team see what came in and what comes next.</p><div className="mt-14"><ChannelJourney /></div></div></section>
+    <section id="how-it-works" className="scroll-mt-20 bg-[#fbfaf7]"><OrderWorkflow /></section>
 
     <section id="features" className="section-pad bg-forest text-white"><div className="site-shell"><p className="eyebrow !text-leaf">Made for your customers</p><div className="mt-6 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><h2 className="section-title max-w-3xl">However they order, you&apos;re ready.</h2><p className="max-w-md text-lg leading-8 text-white/65">Familiar ways to order, all arriving in one manageable flow.</p></div><div className="mt-12 grid gap-5 md:grid-cols-3">
       <CustomerChannel image="/assets/whatsapp_food_ordering_flow.png" title="WhatsApp ordering" copy="Turn familiar conversations into clear, confirmed orders." />

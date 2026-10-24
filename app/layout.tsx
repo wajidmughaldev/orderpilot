@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import './workflow.css'
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap' })
 const space = Space_Grotesk({ subsets: ['latin'], variable: '--font-space', display: 'swap' })
