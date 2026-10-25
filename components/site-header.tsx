@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
@@ -26,9 +27,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-forest/10 bg-cream/90 backdrop-blur-xl">
       <div className="site-shell flex h-20 items-center justify-between">
-        <Link href="/" className="group flex items-center gap-2" aria-label="OrderPilot home">
-          <span className="grid size-9 place-items-center rounded-xl bg-forest text-lg font-extrabold text-white">O</span>
-          <span className="text-xl font-bold tracking-tight text-ink">order<span className="text-brand">pilot</span><span className="text-xs font-medium text-ink/45">.pk</span></span>
+        <Link href="/" className="flex min-h-11 items-center" aria-label="OrderPilot home">
+          <Image src="/assets/orderpilot-logo.png" alt="OrderPilot.pk — Smart Orders Simplified" width={560} height={225} priority className="h-14 w-auto object-contain" />
         </Link>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
           {links.map((link) => (

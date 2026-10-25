@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Globe2, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { Mail, MessageCircle } from 'lucide-react'
 
 const linkGroups = [
   { title: 'Product', links: [['Features', '/#features'], ['How It Works', '/#how-it-works'], ['Pricing', '/pricing'], ['FAQ', '/#faq']] },
@@ -22,11 +22,9 @@ export function SiteFooter() {
             {linkGroups.map((group) => <nav key={group.title} aria-label={`${group.title} links`}><h3 className="font-bold text-leaf">{group.title}</h3><ul className="mt-5 flex flex-col gap-3">{group.links.map(([label, href]) => <li key={label}><Link href={href} className="text-sm text-white/60 transition-colors hover:text-white">{label}</Link></li>)}</ul></nav>)}
           </div>
         </div>
-        <div className="grid gap-7 border-b border-white/10 py-10 sm:grid-cols-2 lg:grid-cols-4">
-          <FooterContact icon={Mail} label="Business Contact" value="info@digipexsolutions.com" href="mailto:info@digipexsolutions.com" />
-          <FooterContact icon={MessageCircle} label="WhatsApp Support" value="+92 336 1815141" href="https://wa.me/923361815141" />
-          <FooterContact icon={Globe2} label="Website" value="orderpilot.pk" href="https://orderpilot.pk" />
-          <div className="flex gap-3"><MapPin className="mt-1 size-5 shrink-0 text-leaf" /><div><p className="text-sm text-white/45">Registered Address</p><address className="mt-1 text-sm not-italic leading-6 text-white/75">Digipex Solutions LLC<br />1500 N Grant St Ste R<br />Denver, CO 80203, United States</address></div></div>
+        <div className="flex flex-col gap-6 border-b border-white/10 py-8 sm:flex-row sm:items-center">
+          <FooterContact icon={Mail} label="Email" value="info@digipexsolutions.com" href="mailto:info@digipexsolutions.com" />
+          <FooterContact icon={MessageCircle} label="WhatsApp" value="+92 336 1815141" href="https://wa.me/923361815141" />
         </div>
         <div className="flex flex-col gap-3 pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 OrderPilot. All rights reserved.</p><p>Built for Pakistani restaurants.</p></div>
       </div>

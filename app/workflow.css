@@ -15,14 +15,14 @@ html { min-height: 100%; }
 body { margin: 0; background: #fbfaf7; color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
 button { font: inherit; cursor: pointer; }
 .icon { display: inline-block; flex-shrink: 0; vertical-align: middle; }
-.page-container { padding: 60px 20px 24px; overflow-x: clip; }
+.page-container { padding: 40px 0 0; overflow-x: clip; }
 .workflow-shell {
-  width: 100%; max-width: 1452px; margin: 0 auto; padding: 20px 13px 13px;
+  width: 100%; max-width: 1180px; margin: 0 auto; padding: 20px 13px 13px;
   border-radius: 31px; border: 1px solid #d6efdc;
   background: linear-gradient(112deg, #f0fbf1 0%, #f3fff2 58%, #edf9ed 100%);
   box-shadow: 0 12px 42px rgba(16, 61, 29, .035); position: relative;
 }
-.workflow-shell::before { content: ''; position: absolute; right:-66px; top:-16px; width:125px;height:125px; background:#e0fce5;transform: rotate(29deg);border-radius:40px; z-index:-1; }
+.workflow-shell::before { content: none; }
 .channel-tabbar { display:flex; gap: 12px; align-items:center; margin: 0 0 24px 9px; min-height:56px; }
 .channel-tab {
   height:55px; padding:0 22px; display:inline-flex; align-items:center; justify-content:center; gap:10px;
@@ -43,7 +43,7 @@ button { font: inherit; cursor: pointer; }
 .showcase-intro { position:relative; z-index:3; margin:36px 40px 0 52px; }
 .eyebrow { display:block; color:#58cb71; font-size:12px; font-weight:800; letter-spacing:.15em; }
 .green-eye { color:#4fe368; }
-.showcase-intro h2 { font-size:34px; line-height:1.19; letter-spacing:-.052em; margin:14px 0 12px; font-weight:800; white-space:nowrap; }
+.showcase-intro h2 { font-size:34px; line-height:1.19; letter-spacing:-.02em; margin:14px 0 12px; font-weight:800; white-space:nowrap; }
 .showcase-intro p { font-size:16.5px; line-height:1.52; font-weight:500; max-width:365px; color:#c5d7c7; margin:0; }
 .showcase-scene { position:absolute; inset:0; z-index:2; pointer-events:none; }
 .showcase-decoration.one { position:absolute; right:24px; top:290px; width:58px; height:45px; border-top:2px solid #43dc6d; border-right:2px solid #43dc6d; transform:rotate(32deg); border-radius:50%; }
@@ -165,14 +165,14 @@ button { font: inherit; cursor: pointer; }
 /* Right workflow content */
 .journey { min-width:0;height:724px;background:linear-gradient(155deg,#fff 0%,#fff 80%,#fcfffa 100%); border-radius:19px; padding:29px 38px 16px 17px; }
 .journey-heading {margin:0 0 0 0;}
-.journey-heading h2 {margin:13px 0 7px;font-size:33px;line-height:1.18;font-weight:800;letter-spacing:-.051em;color:#101721;white-space:nowrap;}
+.journey-heading h2 {margin:13px 0 7px;font-size:33px;line-height:1.18;font-weight:800;letter-spacing:-.02em;color:#101721;white-space:nowrap;}
 .journey-heading p{font-size:17px;line-height:1.45;color:#8f95a6;margin:0;letter-spacing:-.012em;}
 .steps-wrap {position:relative;margin-top:31px;}
 .steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:27px 55px;position:relative;z-index:1;}
 .step-card {position:relative;background:#fff;border:1px solid #ebefed;border-radius:18px;box-shadow:0 5px 22px #113f1609;height:263px;min-width:0;padding:13px 18px 18px;overflow:hidden;}
-.step-card h3 { font-size:21px;line-height:1.27;letter-spacing:-.045em;font-weight:800;margin:0 0 8px;white-space:nowrap; }
-.step-card p {color:#8b92a3;margin:0;font-size:16px;line-height:1.45;letter-spacing:-.018em;max-width:300px;}
-.step-number{position:absolute;left:15px;top:14px;z-index:4;display:grid;place-items:center;width:41px;height:41px;border-radius:100%;background:#e1fbe8;color:#00752b;font-weight:800;font-size:16px;}
+.step-card h3 { font-size:21px;line-height:1.27;letter-spacing:-.01em;font-weight:800;margin:0 0 8px;white-space:nowrap; }
+.step-card p {color:#596273;margin:0;font-size:16px;font-weight:500;line-height:1.45;letter-spacing:0;max-width:300px;}
+.step-number{position:absolute;right:15px;left:auto;top:14px;z-index:4;display:grid;place-items:center;width:41px;height:41px;border-radius:100%;background:#e1fbe8;color:#00752b;font-weight:800;font-size:16px;}
 .step-illustration {height:149px;width:100%;display:flex;align-items:center;justify-content:center;}
 .step-third,.step-fourth {height:254px;}
 .step-third .step-illustration,.step-fourth .step-illustration{height:144px;}
@@ -290,7 +290,7 @@ button { font: inherit; cursor: pointer; }
  .steps-grid{grid-template-columns:1fr;gap:12px;}
  .step-card,.step-third,.step-fourth{height:201px;padding:12px 15px 15px;}
  .step-illustration,.step-third .step-illustration,.step-fourth .step-illustration{height:115px;}
- .step-number{width:33px;height:33px;font-size:13px;left:12px;top:12px;}
+ .step-number{width:33px;height:33px;font-size:13px;right:12px;left:auto;top:12px;}
  .step-card h3{font-size:16px;margin-bottom:4px;white-space:nowrap;}
  .step-card p{font-size:12px;line-height:1.45;}
  .mini-checked-product{transform:scale(.9);}
