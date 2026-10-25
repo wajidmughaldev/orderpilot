@@ -5,6 +5,7 @@ import { AppShell } from '@/components/app-shell'
 import OrderWorkflow from '@/components/order-workflow'
 import { FaqList } from '@/components/faq-list'
 import { ContactSection } from '@/components/contact-section'
+import { PartnersSection } from '@/components/partners-section'
 
 const faqs = [
   { question: 'Do customers need to download an app?', answer: 'No separate OrderPilot customer app is needed for WhatsApp or web-based ordering.' },
@@ -30,13 +31,7 @@ export default function HomePage() {
       </div>
     </section>
 
-    <section className="border-y border-forest/10 bg-white py-9"><div className="site-shell"><p className="text-center font-mono text-[10px] font-bold uppercase tracking-[.2em] text-ink/40">Backed by Pakistan&apos;s innovation ecosystem</p><div className="partner-grid mt-7">
-      <figure><Image src="/assets/partner-nic.png" alt="Funded by Ignite and MoITT through NIC Hyderabad" width={500} height={500} /></figure>
-      <figure><Image src="/assets/partner-ignite.png" alt="Ignite National Technology Fund" width={300} height={89} /></figure>
-      <figure><Image src="/assets/partner-ntf.png" alt="National Technology Fund" width={105} height={41} /></figure>
-      <figure><Image src="/assets/partner-moit.png" alt="Ministry of IT and Telecom, Government of Pakistan" width={749} height={428} /></figure>
-      <figure><Image src="/assets/partner-digipex.png" alt="Digipex Solutions" width={2048} height={849} /></figure>
-    </div></div></section>
+    <PartnersSection />
 
     <section className="section-pad bg-white"><div className="site-shell"><p className="eyebrow">Sound familiar?</p><div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_.8fr]"><h2 className="section-title">Busy service is hard enough. Orders shouldn&apos;t add to the chaos.</h2><p className="lede self-end">A few missed details can turn a normal shift into extra work.</p></div><div className="mt-16 grid gap-px overflow-hidden rounded-[2rem] border border-forest/10 bg-forest/10 md:grid-cols-3">{[[MessageCircle,'Messages keep coming.','Questions and order requests pile up while your team serves customers.'],[Files,'Details are scattered.','Orders across chats, notes, and counters are harder to follow.'],[RefreshCw,'Everyone asks for an update.','The counter, kitchen, and customer all need to know what’s happening.']].map(([Icon,title,copy], index) => { const I = Icon as typeof MessageCircle; return <article key={title as string} className={`bg-cream p-8 sm:p-10 ${index === 1 ? 'md:translate-y-4' : ''}`}><I className="size-8 text-brand" /><p className="mt-12 font-mono text-xs text-brand">0{index+1}</p><h3 className="mt-3 text-2xl font-bold">{title as string}</h3><p className="mt-3 leading-7 text-ink/60">{copy as string}</p></article>})}</div><p className="mt-10 text-center font-semibold text-brand">There&apos;s a clearer way to manage it.</p></div></section>
 
