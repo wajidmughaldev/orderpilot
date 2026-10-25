@@ -8,9 +8,10 @@ import { useEffect, useState } from 'react'
 
 const links = [
   { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'Features', href: '/#features' },
-  { label: 'Why OrderPilot', href: '/#why-orderpilot' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Product', href: '/#product' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'Talk to Us', href: '/#contact' },
 ]
 
 export function SiteHeader() {

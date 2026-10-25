@@ -22,7 +22,7 @@ export function DemoForm() {
       const response = await fetch('/api/demo-request', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       const result = await response.json()
       if (!response.ok) throw new Error(result.message || 'Your request could not be sent.')
-      setStatus('success'); setMessage('Your request was sent. Our team will contact you to arrange the next step.'); form.reset()
+      setStatus('success'); setMessage('Your request was sent. Our team will get in touch to agree the next step.'); form.reset()
     } catch (error) { setStatus('error'); setMessage(error instanceof Error ? error.message : 'Your request could not be sent. Please try again.') }
   }
 

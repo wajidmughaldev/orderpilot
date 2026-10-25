@@ -86,7 +86,7 @@ function rightPanel(mode) {const c=channels[mode];return `<div class="journey-he
  ${stepCard('01',miniFirst(mode),c.step1,c.step1desc,'step-first')}
  ${stepCard('02',miniChecked(mode),'Order details are checked',c.step2desc,'step-second')}
  ${stepCard('03',miniOrderBoard(mode),'Your team sees the order','A clear order view keeps everyone on the same page.','step-third')}
- ${stepCard('04',kitchenProgress(),'Kitchen moves it forward','Follow the order from new to preparing to ready.','step-fourth')}
+ ${stepCard('04',kitchenProgress(),'Your team updates the order','Move it from new to preparing to ready as work progresses.','step-fourth')}
  </div></div>`;}
 
 export {channels, ico, leftPanel, rightPanel};

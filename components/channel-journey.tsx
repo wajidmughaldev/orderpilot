@@ -12,7 +12,7 @@ const steps = [
   ['01', 'Customer orders', 'Through WhatsApp, your online menu, or a table QR.'],
   ['02', 'Order details are checked', 'Items, quantities, and other details are confirmed.'],
   ['03', 'Your team sees the order', 'A clear order view keeps everyone on the same page.'],
-  ['04', 'Kitchen moves it forward', 'Follow the order from new to preparing to ready.'],
+  ['04', 'Your team updates the order', 'Move it from new to preparing to ready as work progresses.'],
 ]
 
 export function ChannelJourney() {
