@@ -35,9 +35,9 @@ function ico(name, className = '', size = 20) {
   return `<svg aria-hidden="true" class="icon ${className}" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON_PATHS[name] || ICON_PATHS.check}</svg>`;
 }
 const channels = {
-  whatsapp: { tab: 'WhatsApp', icon: 'whatsapp', leftTitle: 'New order via WhatsApp', leftDescription: 'A customer places an order directly from WhatsApp using your menu.', heading: 'From message to preparation', description: 'A smooth, connected workflow from your customer to your kitchen.', step1: 'Customer orders', step1desc: 'Through WhatsApp, your online menu, or a table QR.', step2desc: 'Items, quantities, and other details are confirmed.' },
-  web: { tab: 'Web', icon: 'globe', leftTitle: 'New order via Web', leftDescription: 'A customer places an order directly from your online menu.', heading: 'From online order to preparation', description: 'A smooth, connected workflow from your customer to your kitchen.', step1: 'Customer orders', step1desc: 'Through your restaurant’s online menu.', step2desc: 'Items, quantities, and other details are confirmed.' },
-  qr: { tab: 'Table QR', icon: 'qr', leftTitle: 'New order via Table QR', leftDescription: 'A guest scans the table QR and places an order from the menu.', heading: 'From table scan to preparation', description: 'A smooth, connected workflow from your guest to your kitchen.', step1: 'Guest scans and orders', step1desc: 'Through a table QR and digital menu.', step2desc: 'Items, quantities, and table details are confirmed.' },
+  whatsapp: { tab: 'WhatsApp', icon: 'whatsapp', leftTitle: 'New order on WhatsApp', leftDescription: 'A customer messages your menu and places an order.' },
+  web: { tab: 'Web', icon: 'globe', leftTitle: 'New order from your website', leftDescription: 'A customer opens your menu online and orders from their phone.' },
+  qr: { tab: 'Table QR', icon: 'qr', leftTitle: 'New order from a table', leftDescription: 'A guest scans the QR code at the table and orders from their seat.' },
 };
 const asset = (name) => `/orderpilot-workflow/${name}`;
 function statusBar() { return `<div class="status-bar"><strong>9:41</strong><span class="status-icons"><span class="signal-bars"><i></i><i></i><i></i><i></i></span>${ico('wifi','',14)}${ico('battery','',20)}</span></div>`; }
@@ -69,7 +69,7 @@ function phoneQr() {return `${qrSign('showcase-qr-stand')}<div class="device dev
  <div class="qr-menu-item"><img src="${asset('fries.webp')}" alt="Loaded fries"/><span><b>Loaded Fries</b><strong>Rs. 450</strong></span><i>${ico('plus','',17)}</i></div>
  <div class="qr-menu-item"><img src="${asset('wings.webp')}" alt="Chicken wings"/><span><b>Chicken Wings</b><strong>Rs. 690</strong></span><i>${ico('plus','',17)}</i></div>${confirmed()}
  </div></div>`;}
-function leftPanel(mode) {const c=channels[mode];return `<div class="showcase-intro"><span class="eyebrow green-eye">EXAMPLE WORKFLOW</span><h2>${c.leftTitle}</h2><p>${c.leftDescription}</p></div><div class="showcase-decoration one"></div><div class="showcase-decoration two"></div><div class="showcase-scene">${mode==='whatsapp'?phoneWhatsApp():mode==='web'?phoneWeb():phoneQr()}</div>`;}
+function leftPanel(mode) {const c=channels[mode];return `<div class="showcase-intro"><span class="eyebrow green-eye">EXAMPLE</span><h2>${c.leftTitle}</h2><p>${c.leftDescription}</p></div><div class="showcase-decoration one"></div><div class="showcase-decoration two"></div><div class="showcase-scene">${mode==='whatsapp'?phoneWhatsApp():mode==='web'?phoneWeb():phoneQr()}</div>`;}
 function miniOrderBoard(mode) {return `<div class="mini-board"><div class="mini-sidebar">${ico('store','',12)}${ico('receipt','',12)}${ico('dashboard','',12)}</div><div class="mini-orders"><strong>Orders</strong><div><b>#1042</b><span>${mode==='qr'?'Table 12':'1 Zinger Burger + Fries'}</span><em class="mini-new">New</em></div><div><b>#1041</b><span>${mode==='qr'?'Table 8':'2 Chicken Wraps'}</span><em class="mini-preparing">Preparing</em></div><div><b>#1040</b><span>${mode==='qr'?'Table 3':'1 Beef Burger'}</span><em class="mini-ready">Ready</em></div></div></div>`; }
 function miniFirst(mode) {
  if (mode==='whatsapp') return `<div class="mini-whatsapp"><span class="mini-person">${ico('user','',24)}</span><div class="mini-bubble"><b>1 Zinger Burger<br>+ Fries</b><small>9:41 AM <span>✓✓</span></small></div><span class="mini-spark">〃</span></div>`;
@@ -79,14 +79,14 @@ function miniFirst(mode) {
 function miniChecked(mode) {return `<div class="mini-check-row"><div class="mini-checked-product"><img src="${asset('burger.webp')}" alt=""/><div><b>Zinger Burger + Fries</b><small>Rs. 850 ${mode==='qr'?'· Table 12':''}</small>${quantity()}</div></div><span class="round-checked">${ico('check','',25)}</span></div>`;}
 function kitchenProgress() {return `<div class="kitchen-progress"><div><span>${ico('chef','',31)}</span><small>New</small></div>${ico('chevron','kitchen-arrow',19)}<div><span>${ico('spoon','',29)}</span><small>Preparing</small></div>${ico('chevron','kitchen-arrow',19)}<div><span>${ico('cloche','',29)}</span><small>Ready</small></div></div>`;}
 function stepCard(number, art, title, text, extraClass='') {return `<article class="step-card ${extraClass}"><span class="step-number">${number}</span><div class="step-illustration">${art}</div><h3>${title}</h3><p>${text}</p></article>`;}
-function rightPanel(mode) {const c=channels[mode];return `<div class="journey-heading"><span class="eyebrow">SIMPLE ORDER JOURNEY</span><h2>${c.heading}</h2><p>${c.description}</p></div><div class="steps-wrap">
+function rightPanel(mode) {return `<div class="journey-heading"><span class="eyebrow">WHAT HAPPENS NEXT</span><h2>The same four steps, whichever way they order.</h2></div><div class="steps-wrap">
  <svg aria-hidden="true" class="connector-track" viewBox="0 0 792 552" preserveAspectRatio="none"><path d="M761 135 H777 Q789 135 789 148 V270 Q789 280 779 280 H292 Q282 280 282 293" stroke="#b8e3d4" stroke-width="1.6" stroke-dasharray="5 5" stroke-linecap="round" fill="none"/></svg>
  <span aria-hidden="true" class="connector-arrow arrow-top">${ico('arrowThin','',32)}</span><span aria-hidden="true" class="connector-arrow arrow-bottom">${ico('arrowThin','',32)}</span>
  <div class="steps-grid">
- ${stepCard('01',miniFirst(mode),c.step1,c.step1desc,'step-first')}
- ${stepCard('02',miniChecked(mode),'Order details are checked',c.step2desc,'step-second')}
- ${stepCard('03',miniOrderBoard(mode),'Your team sees the order','A clear order view keeps everyone on the same page.','step-third')}
- ${stepCard('04',kitchenProgress(),'Your team updates the order','Move it from new to preparing to ready as work progresses.','step-fourth')}
+ ${stepCard('01',miniFirst(mode),'Customer orders.','On WhatsApp, on your website, or from the table QR.','step-first')}
+ ${stepCard('02',miniChecked(mode),'The order is checked.','Items, quantity and total are confirmed before it goes to the kitchen.','step-second')}
+ ${stepCard('03',miniOrderBoard(mode),'Your team sees it.','It shows up on your screen, already written down.','step-third')}
+ ${stepCard('04',kitchenProgress(),'Mark it as it moves.','New, preparing, ready. Everyone can see where each order stands.','step-fourth')}
  </div></div>`;}
 
 export {channels, ico, leftPanel, rightPanel};
