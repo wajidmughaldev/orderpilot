@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 const links = [
   { label: 'How It Works', href: '/#how' },
   { label: 'Product', href: '/#product' },
-  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'FAQ', href: '/#faq' },
   { label: 'Talk to Us', href: '/#contact' },
 ]

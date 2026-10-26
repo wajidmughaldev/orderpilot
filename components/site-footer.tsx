@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Mail, MessageCircle } from 'lucide-react'
 
 const linkGroups = [
-  { title: 'Product', links: [['Features', '/#product'], ['How It Works', '/#how'], ['Pricing', '/#pricing'], ['FAQ', '/#faq']] },
+  { title: 'Product', links: [['Features', '/#product'], ['How It Works', '/#how'], ['Pricing', '/pricing'], ['FAQ', '/#faq']] },
   { title: 'Company', links: [['Book a Demo', '/#contact'], ['Contact', '/#contact']] },
   { title: 'Legal', links: [['Privacy Policy', '#'], ['Terms of Service', '#'], ['Data Deletion', '#'], ['Cookie Policy', '#']] },
 ]
