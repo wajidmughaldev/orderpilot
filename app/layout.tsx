@@ -18,5 +18,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: '#FAF9F4', width: 'device-width', initialScale: 1, userScalable: true }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${jakarta.variable} ${space.variable} antialiased`}>{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
+  return <html lang="en" suppressHydrationWarning><body suppressHydrationWarning className={`${jakarta.variable} ${space.variable} antialiased`}>{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
 }
