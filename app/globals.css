@@ -55,7 +55,7 @@ h3 { letter-spacing: -.01em; }
 .ops-board-head, .ops-board-foot { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; font: 700 .64rem/1 var(--font-space), sans-serif; letter-spacing: .08em; text-transform: uppercase; }
 .ops-board-head { border-bottom: 1px solid rgba(255,255,255,.1); color: #5ed44f; }
 .ops-board-foot { border-top: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.45); }
-.ops-board-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,.09); }
+.ops-board-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,.09); }
 .ops-card { position: relative; min-height: 12rem; padding: 1.6rem; background: #004500; }
 .ops-card-active { background: #004500; }
 .ops-card svg { width: 1.5rem; height: 1.5rem; color: #5ed44f; }

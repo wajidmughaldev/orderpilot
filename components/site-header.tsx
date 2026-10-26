@@ -7,7 +7,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const links = [
-  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'How It Works', href: '/#how' },
   { label: 'Product', href: '/#product' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'FAQ', href: '/#faq' },
