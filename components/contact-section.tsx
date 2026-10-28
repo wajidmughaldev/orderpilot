@@ -1,18 +1,53 @@
 'use client'
 
-import { FormEvent } from 'react'
-import { Clock3, Mail, Phone } from 'lucide-react'
+import { FormEvent, useState } from 'react'
+import { Clock3, LoaderCircle, Mail, Phone } from 'lucide-react'
+import { trackEvent } from '@/lib/track'
 
 const whatsappUrl = 'https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20OrderPilot%20with%20my%20restaurant%27s%20menu.'
 
 export function ContactSection() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'error' | 'success'>('idle')
+  const [message, setMessage] = useState('')
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    if (status === 'loading') return
     const form = event.currentTarget
     if (!form.reportValidity()) return
-    const data = new FormData(form)
-    const body = encodeURIComponent(`Name: ${data.get('name')}\nPhone / WhatsApp: ${data.get('phone')}\nRestaurant: ${data.get('restaurant')}\nCity: ${data.get('city')}\n\nHow orders reach them today:\n${data.get('message')}`)
-    window.location.href = `mailto:info@digipexsolutions.com?subject=OrderPilot demo request&body=${body}`
+
+    setStatus('loading')
+    setMessage('')
+
+    const formData = new FormData(form)
+    const payload = {
+      source: 'homepage',
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      restaurant: formData.get('restaurant'),
+      city: formData.get('city'),
+      message: formData.get('message'),
+      website: formData.get('website'),
+    }
+
+    try {
+      const response = await fetch('/api/demo-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const result = await response.json()
+      if (!response.ok) {
+        throw new Error(result.message || 'Your request could not be sent.')
+      }
+      setStatus('success')
+      setMessage(result.message || 'Your request was sent. Our team will get in touch to agree the next step.')
+      form.reset()
+      trackEvent('demo_form_submit_success')
+    } catch (error) {
+      setStatus('error')
+      setMessage(error instanceof Error ? error.message : 'Your request could not be sent. Please try again.')
+    }
   }
 
   return <section id="contact" className="section-pad scroll-mt-20 bg-forest text-white">
@@ -31,12 +66,15 @@ export function ContactSection() {
       </div>
       <form className="grid gap-5 rounded-[2rem] bg-white p-7 text-ink sm:grid-cols-2 sm:p-9" onSubmit={handleSubmit}>
         <h3 className="text-3xl font-bold sm:col-span-2">Book your demo</h3>
-        <Field label="Name" name="name" placeholder="Your name" autoComplete="name" required />
-        <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="[+0-9() -]{7,20}" />
-        <Field label="Restaurant name" name="restaurant" placeholder="Your restaurant" autoComplete="organization" required />
-        <Field label="City" name="city" placeholder="Lahore" autoComplete="address-level2" />
+        <Field label="Name" name="name" placeholder="Your name" autoComplete="name" required maxLength={80} />
+        <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="^\+?[0-9 ()-]{7,20}$" aria-describedby="contact-phone-help" />
+        <span id="contact-phone-help" className="sr-only">Pakistan +92 or an international number.</span>
+        <Field label="Restaurant name" name="restaurant" placeholder="Your restaurant" autoComplete="organization" required maxLength={100} />
+        <Field label="City" name="city" placeholder="Lahore" autoComplete="address-level2" required maxLength={80} />
         <label className="sm:col-span-2"><span className="mb-2 block text-sm font-bold">How do orders reach you today?</span><textarea className="form-control min-h-32 resize-y" name="message" placeholder="WhatsApp, calls, notebook..." maxLength={600} /></label>
-        <button type="submit" className="button-primary justify-center sm:col-span-2">Send my details</button>
+        <div className="sr-only" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
+        {message && <div role="status" aria-live="polite" className={`rounded-xl p-4 text-sm sm:col-span-2 ${status === 'success' ? 'bg-mint text-forest' : 'bg-red-50 text-red-800'}`}>{message}</div>}
+        <button type="submit" className="button-primary justify-center sm:col-span-2" disabled={status === 'loading'}>{status === 'loading' ? <><LoaderCircle className="animate-spin inline-block mr-2" /> Sending details...</> : 'Send my details'}</button>
       </form>
     </div>
   </section>

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, MessageCircle, Files, RefreshCw, Eye, ChefHat, Users, Store, Check, UtensilsCrossed, Coffee, Sandwich, Cloud, Building2, Croissant, Martini, Soup } from 'lucide-react'
@@ -6,6 +7,39 @@ import OrderWorkflow from '@/components/order-workflow'
 import { FaqList } from '@/components/faq-list'
 import { ContactSection } from '@/components/contact-section'
 import { PartnersSection } from '@/components/partners-section'
+import { DemoLink } from '@/components/demo-link'
+
+export const metadata: Metadata = {
+  title: 'OrderPilot — Restaurant Order Management for Pakistan',
+  description: 'Manage WhatsApp, branded web menu, and table QR orders on one shared screen for your counter and kitchen.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'OrderPilot — Every order, on one screen',
+    description: 'Manage WhatsApp, branded web menu, and table QR orders on one shared screen for your counter and kitchen.',
+    url: '/',
+    images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot restaurant dashboard' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'OrderPilot — Every order, on one screen',
+    description: 'Manage WhatsApp, branded web menu, and table QR orders on one shared screen for your counter and kitchen.',
+    images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
+  },
+}
+
+const softwareAppJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'OrderPilot',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, WhatsApp',
+  description: 'Multi-channel restaurant order management software for WhatsApp, online web menus, and table QR ordering.',
+  offers: [
+    { '@type': 'Offer', name: 'WhatsApp Plan', price: '9999', priceCurrency: 'PKR', billingDuration: 'P1M' },
+    { '@type': 'Offer', name: 'Web + Table Plan', price: '9999', priceCurrency: 'PKR', billingDuration: 'P1M' },
+    { '@type': 'Offer', name: 'Complete Plan', price: '14999', priceCurrency: 'PKR', billingDuration: 'P1M' },
+  ],
+}
 
 const faqs = [
   { question: 'How much does it cost?', answer: 'Plans start at PKR 9,999 a month. Complete, with everything included, is PKR 14,999. Or you can pay 10% to 15% of each order, depending on your usage. Message us on WhatsApp and we’ll tell you which one costs less for you.' },
@@ -28,18 +62,29 @@ const benefits = [
 
 export default function HomePage() {
   return <AppShell><main>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }} />
     <section className="hero-section">
       <div className="site-shell grid items-center gap-10 lg:grid-cols-[.88fr_1.12fr]">
-        <div><p className="eyebrow">Order management for Pakistani restaurants</p><h1 className="display mt-6">Every order, <span className="text-brand">on one screen.</span></h1><p className="lede mt-6 max-w-xl">Orders from WhatsApp, your website and table QR show up in one place. Your kitchen sees each one as it comes in. Plans start at PKR 9,999 a month.</p><div className="mt-8 flex flex-wrap gap-3"><Link href="#contact" className="button-primary">Book a Demo <ArrowRight /></Link><Link href="https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20OrderPilot%20with%20my%20restaurant%27s%20menu." className="button-secondary">Chat on WhatsApp</Link></div><p className="mt-5 text-sm font-medium text-ink/70">Plans from PKR 9,999 a month. We&apos;ll show it with your own menu. No pressure to decide.</p></div>
-        <figure className="image-frame"><Image src="/assets/orderpilot_restaurant_dashboard_showcase.png" alt="OrderPilot restaurant dashboard beside a WhatsApp ordering flow" width={1456} height={1092} priority className="h-auto w-full scale-[1.03]" /></figure>
+        <div>
+          <p className="eyebrow">Order management for Pakistani restaurants</p>
+          <h1 className="display mt-6">Every order, <span className="text-brand">on one screen.</span></h1>
+          <p className="lede mt-6 max-w-xl">Customers order through WhatsApp, your website menu, or table QR codes. Every order lands on one shared screen for your counter and kitchen, helping your team keep track of orders in one place.</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <DemoLink href="#contact" location="hero" className="button-primary">Book a Demo <ArrowRight /></DemoLink>
+            <Link href="https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20OrderPilot%20with%20my%20restaurant%27s%20menu." className="button-secondary">Chat on WhatsApp</Link>
+          </div>
+          <p className="mt-5 text-sm font-medium text-ink/70">We&apos;ll demonstrate OrderPilot with your restaurant&apos;s own menu. Plans start from PKR 9,999/month.</p>
+        </div>
+        <figure className="image-frame">
+          <Image src="/assets/orderpilot_restaurant_dashboard_showcase.webp" alt="OrderPilot restaurant dashboard beside a WhatsApp ordering flow" width={1456} height={1092} priority sizes="(min-width: 1024px) 50vw, 100vw" className="h-auto w-full scale-[1.03]" />
+          <figcaption className="px-4 py-3 font-mono text-xs text-ink/70">Concept preview · restaurant dashboard and customer ordering flow</figcaption>
+        </figure>
       </div>
     </section>
 
     <PartnersSection />
 
     <section className="section-pad bg-cream"><div className="site-shell"><SectionHeading eyebrow="The problem" title="Orders come from too many places." description="On a busy night, that gets messy." /><div className="mt-10 grid gap-5 md:grid-cols-3">{[[MessageCircle,'Orders get buried in chats.','A message comes in at 8:40, another at 8:42. By 9:00 you’re scrolling up to find the first one.'],[Files,'The kitchen hears it late.','Someone reads the order out, someone writes it down, and something gets missed.'],[RefreshCw,'Customers keep calling.','“Bhai, mera order kahan hai?” Your staff stop what they’re doing to check.']].map(([Icon,title,copy], index) => { const I = Icon as typeof MessageCircle; return <article key={title as string} className="panel flex h-full flex-col p-7 sm:p-8"><I className="size-9 text-brand" /><p className="mt-10 font-mono text-xs font-bold text-brand">0{index+1}</p><h3 className="mt-3 text-2xl font-bold">{title as string}</h3><p className="mt-3 leading-7 text-ink/75">{copy as string}</p></article>})}</div><p className="mt-8 max-w-4xl text-lg font-semibold text-brand">You&apos;re not doing anything wrong. There are just too many places to look. OrderPilot puts them in one.</p></div></section>
-
-    <section className="section-pad bg-white"><div className="site-shell"><h2 className="section-title max-w-4xl">You don&apos;t have to change how customers order.</h2><p className="lede mt-5 max-w-4xl">Your team already has a way of handling orders. We&apos;re not here to change your menu or your customers. We give every order one place to land, so it&apos;s written down where your whole team can see it.</p></div></section>
 
     <section id="how" className="section-pad scroll-mt-20 bg-white"><div className="site-shell"><OrderWorkflow /></div></section>
 
@@ -49,9 +94,17 @@ export default function HomePage() {
 
     <section className="section-pad bg-mint"><div className="site-shell"><SectionHeading eyebrow="What you get" title="Problems we fix." description="Use all of it, or only the parts you need." /><div className="ops-board mt-10"><div className="ops-board-head"><span>Your screen</span><span>All orders in one place</span></div><div className="ops-board-grid">{benefits.map(([Icon,title,copy], index) => <article key={title} className="ops-card"><span className="ops-number">0{index + 1}</span><Icon /><h3>{title}</h3><p>{copy}</p></article>)}</div><div className="ops-board-foot"><span>3 ways to order</span><span>1 screen</span></div></div></div></section>
 
-    <section id="product" className="section-pad scroll-mt-20 bg-white"><div className="site-shell"><SectionHeading eyebrow="See the product" title="Take a look." description="This is the screen your team uses during service." /><figure className="image-frame mt-10"><Image src="/assets/orderpilot_kitchen_dashboard.png" alt="Kitchen board with new, preparing, and ready order columns" width={1456} height={1092} className="h-auto w-full" /></figure></div></section>
+    <section id="product" className="section-pad scroll-mt-20 bg-white">
+      <div className="site-shell">
+        <SectionHeading eyebrow="See the product" title="Take a look." description="This is the screen your team uses during service." />
+        <figure className="image-frame mt-10">
+          <Image src="/assets/orderpilot_kitchen_dashboard.webp" alt="Kitchen board with new, preparing, and ready order columns" width={1456} height={1092} loading="lazy" sizes="(min-width: 1024px) 960px, 100vw" className="h-auto w-full" />
+          <figcaption className="px-4 py-3 font-mono text-xs text-ink/70">Concept preview · kitchen order board</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <section className="bg-forest py-10 text-white"><div className="site-shell flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between"><div><h2 className="text-3xl font-bold">Want to see it with your own menu?</h2><p className="mt-2 text-white/75">Tell us how orders reach you now. We&apos;ll show you how they would look on OrderPilot.</p></div><div className="flex flex-wrap gap-3"><Link href="#contact" className="button-primary !bg-leaf !text-forest">Book a Demo</Link><Link href="https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20OrderPilot%20with%20my%20restaurant%27s%20menu." className="button-secondary !border-white/35 !bg-transparent !text-white">Chat on WhatsApp</Link></div></div></section>
+    <section className="bg-forest py-10 text-white"><div className="site-shell flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between"><div><h2 className="text-3xl font-bold">Want to see it with your own menu?</h2><p className="mt-2 text-white/75">Tell us how orders reach you now. We&apos;ll show you how they would look on OrderPilot.</p></div><div className="flex flex-wrap gap-3"><DemoLink href="#contact" location="mid_page_banner" className="button-primary !bg-leaf !text-forest">Book a Demo</DemoLink><Link href="https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20OrderPilot%20with%20my%20restaurant%27s%20menu." className="button-secondary !border-white/35 !bg-transparent !text-white">Chat on WhatsApp</Link></div></div></section>
 
     <section id="pricing" className="section-pad scroll-mt-20 bg-cream"><div className="site-shell"><SectionHeading eyebrow="Pricing" title="Two ways to pay." description="Choose a predictable subscription or pay as orders come in. See the full plan comparison on our pricing page." /><div className="mt-10 grid items-stretch gap-5 md:grid-cols-2"><PricingPreview title="Monthly subscription" price="From PKR 9,999 / month" features={['Choose WhatsApp, Web + Table, or Complete','Predictable monthly billing','Annual billing available']} cta="Compare subscription plans" href="/pricing#monthly" /><PricingPreview title="Pay per order" price="10% to 15% of each order" features={['Everything in Complete','No fixed monthly fee','Best for lower order volume']} cta="See pay-per-order details" href="/pricing#pay-per-order" /></div></div></section>
 

@@ -32,7 +32,7 @@ export default function OrderWorkflow() {
 
   return (
     <div className="page-container">
-      <div className="mb-10"><p className="eyebrow">How it works</p><h2 className="section-title mt-5">From order to kitchen, in four steps.</h2><p className="lede mt-5 max-w-2xl">Customers order the way they already do. Your team sees it all in one place.</p></div>
+      <div className="mb-10"><p className="eyebrow">The OrderPilot solution</p><h2 className="section-title mt-5">Keep how they order. Fix where it lands.</h2><p className="lede mt-5 max-w-3xl">Customers order through WhatsApp, your web menu, or table QR codes. We give your kitchen and counter one shared board to manage orders in four simple steps.</p></div>
       <section className="workflow-shell" aria-label="OrderPilot ordering workflow" data-current-channel={channel}>
         <div className="channel-tabbar" role="tablist" aria-label="Ordering channel">
           {ORDER_CHANNELS.map((item, i) => (
