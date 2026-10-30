@@ -56,7 +56,7 @@ export function ContactSection() {
   }
 
   return (
-    <section ref={sectionRef} id="contact" className="section-pad scroll-mt-20 bg-forest text-white">
+    <section ref={sectionRef} id="contact" className="section-pad scroll-mt-20 bg-forest dark:bg-[#07260c] text-white">
       <div className="site-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
         <div>
           <p className="eyebrow !text-leaf">TALK TO US</p>
@@ -81,7 +81,7 @@ export function ContactSection() {
             <ContactDetail icon={Clock3} label="Hours" value="Monday to Friday, 9:00 AM to 6:00 PM PKT" />
           </div>
         </div>
-        <form className="grid gap-5 rounded-[2rem] bg-white p-7 text-ink sm:grid-cols-2 sm:p-9" onSubmit={handleSubmit}>
+        <form className="grid gap-5 rounded-[2rem] bg-white p-7 text-ink sm:grid-cols-2 sm:p-9 dark:bg-[#121e15] dark:border dark:border-white/10 dark:text-white" onSubmit={handleSubmit}>
           <h3 className="text-3xl font-bold sm:col-span-2">Book your demo</h3>
           <Field label="Name" name="name" placeholder="Your name" autoComplete="name" required maxLength={80} />
           <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="^\+?[0-9 ()-]{7,20}$" aria-describedby="contact-phone-help" />

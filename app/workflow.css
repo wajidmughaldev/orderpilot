@@ -321,3 +321,92 @@
  .showcase-qr-stand{left:calc(50% - 145px);transform:scale(.64) perspective(350px) rotateY(-10deg);}
  .step-card h3{font-size:15px;}
 }
+
+
+/* Dark mode workflow styles */
+.dark .workflow-shell {
+  --border: rgba(255, 255, 255, 0.12);
+  --paper: #121e15;
+  background: linear-gradient(112deg, #0c1810 0%, #102214 58%, #0c1810 100%);
+  border-color: rgba(94, 212, 79, 0.2);
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.4);
+}
+.dark .channel-tab {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #142419;
+  color: #a0ac9e;
+}
+.dark .channel-tab:hover {
+  background: #1a2f20;
+  color: #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+.dark .channel-tab.active {
+  color: #fff;
+  background: linear-gradient(160deg, #187730, #004500);
+  border-color: #38a149;
+}
+.dark .journey {
+  background: #101c13;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.dark .journey-heading h2 {
+  color: #f2f5f1;
+}
+.dark .journey-heading p {
+  color: #a0ac9e;
+}
+.dark .step-card {
+  background: #142418;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3);
+}
+.dark .step-card h3 {
+  color: #f2f5f1;
+}
+.dark .step-card p {
+  color: #a0ac9e;
+}
+.dark .step-number {
+  background: #183820;
+  color: #4fe368;
+}
+.dark .mini-whatsapp .mini-person {
+  background: #1f3045;
+  color: #cbd5e1;
+}
+.dark .mini-bubble {
+  background: #152d19;
+  border-color: rgba(94, 212, 79, 0.25);
+  color: #f2f5f1;
+}
+.dark .mini-checked-product {
+  background: #142418;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #f2f5f1;
+}
+.dark .mini-board {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: #111e14;
+}
+.dark .mini-orders > div {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+.dark .mini-storefront {
+  background: #142418;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.dark .mini-browser-bar {
+  background: #1a2e1f;
+  color: #9ba79b;
+}
+.dark .kitchen-progress > div:nth-of-type(3) > span {
+  background: #1a2a1e;
+  color: #839485;
+}
+.dark .kitchen-progress small {
+  color: #f2f5f1;
+}
+.dark .demo-footnote {
+  color: #8fa091;
+}

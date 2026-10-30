@@ -27,7 +27,7 @@ export function PricingSectionView() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }}
             whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl"
+            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/10 dark:bg-[#121e15]"
           >
             {/* Ambient background shade that intensifies and expands on hover */}
             <div
@@ -53,7 +53,7 @@ export function PricingSectionView() {
 
             {/* Content */}
             <div className="relative z-10 flex flex-1 flex-col">
-              <h3 className="text-3xl font-bold">Monthly subscription</h3>
+              <h3 className="text-3xl font-bold dark:text-white">Monthly subscription</h3>
               <p className="mt-4 text-2xl sm:text-3xl font-extrabold text-brand">
                 From PKR 9,999 <span className="text-base font-medium text-ink/70">/ month</span>
               </p>
@@ -85,7 +85,7 @@ export function PricingSectionView() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.08 }}
             whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl"
+            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/10 dark:bg-[#121e15]"
           >
             {/* Ambient background shade that intensifies and expands on hover */}
             <div
@@ -111,7 +111,7 @@ export function PricingSectionView() {
 
             {/* Content */}
             <div className="relative z-10 flex flex-1 flex-col">
-              <h3 className="text-3xl font-bold">Pay as you go</h3>
+              <h3 className="text-3xl font-bold dark:text-white">Pay as you go</h3>
               <p className="mt-4 text-2xl sm:text-3xl font-extrabold text-brand">
                 10% to 15% <span className="text-base font-medium text-ink/70">of each order</span>
               </p>

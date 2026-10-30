@@ -15,7 +15,7 @@ export function FaqList({ items }: { items: FaqItem[] }) {
   }
 
   return (
-    <div className="w-full divide-y divide-forest/15 border-y border-forest/15">
+    <div className="w-full divide-y divide-forest/15 border-y border-forest/15 dark:divide-white/10 dark:border-white/10">
       {items.map((item, index) => {
         const isOpen = openIndex === index
 
@@ -26,11 +26,11 @@ export function FaqList({ items }: { items: FaqItem[] }) {
               onClick={() => toggle(index)}
               aria-expanded={isOpen}
               aria-controls={`faq-answer-${index}`}
-              className="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left text-lg font-bold"
+              className="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left text-lg font-bold dark:text-white"
             >
               <span>{item.question}</span>
               <ChevronDown
-                className={`shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                className={`shrink-0 transition-transform duration-300 dark:text-leaf ${isOpen ? 'rotate-180' : ''}`}
                 aria-hidden="true"
               />
             </button>

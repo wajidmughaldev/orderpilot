@@ -52,7 +52,7 @@ export function SeeProductMockup() {
             ? { y: { duration: 4.2, repeat: Infinity, ease: 'easeInOut' } }
             : { duration: 0.5, ease: 'easeOut' }
         }
-        className="pointer-events-none absolute -left-6 top-10 z-20 hidden lg:flex flex-col gap-1 rounded-2xl border border-forest/15 bg-white/95 p-4 shadow-xl backdrop-blur-md w-64"
+        className="pointer-events-none absolute -left-6 top-10 z-20 hidden lg:flex flex-col gap-1 rounded-2xl border border-forest/15 bg-white/95 p-4 shadow-xl backdrop-blur-md w-64 dark:border-white/15 dark:bg-[#121f15]/95 dark:border-white/15 dark:bg-[#121f15]/95 dark:border-white/15 dark:bg-[#121f15]/95"
       >
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-1.5 text-xs font-bold text-forest">
@@ -62,7 +62,7 @@ export function SeeProductMockup() {
             New
           </span>
         </div>
-        <p className="text-sm font-bold text-ink">1 Zinger Burger + Fries</p>
+        <p className="text-sm font-bold text-ink dark:text-white">1 Zinger Burger + Fries</p>
         <span className="font-mono text-xs font-semibold text-brand">PKR 850</span>
       </motion.div>
 
@@ -87,7 +87,7 @@ export function SeeProductMockup() {
             Preparing
           </span>
         </div>
-        <p className="text-sm font-bold text-ink">2 Chicken Wraps</p>
+        <p className="text-sm font-bold text-ink dark:text-white">2 Chicken Wraps</p>
         <span className="font-mono text-xs font-semibold text-brand">PKR 1,200</span>
       </motion.div>
 
@@ -112,7 +112,7 @@ export function SeeProductMockup() {
             Ready
           </span>
         </div>
-        <p className="text-sm font-bold text-ink">1 Beef Burger</p>
+        <p className="text-sm font-bold text-ink dark:text-white">1 Beef Burger</p>
         <span className="font-mono text-xs font-semibold text-brand">PKR 950</span>
       </motion.div>
     </div>

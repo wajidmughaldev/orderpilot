@@ -122,7 +122,7 @@ export default function HomePage() {
         <ProblemSection />
 
         {/* REPLACE THE ORDERPILOT SOLUTION */}
-        <section className="section-pad bg-white border-y border-forest/10">
+        <section className="section-pad bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/10">
           <div className="site-shell max-w-3xl">
             <h2 className="section-title">You don&apos;t have to change how customers order.</h2>
             <p className="section-description mt-5 max-w-[640px] text-base sm:text-lg">
@@ -132,7 +132,7 @@ export default function HomePage() {
         </section>
 
         {/* HOW IT WORKS */}
-        <section id="how" className="section-pad scroll-mt-20 bg-white">
+        <section id="how" className="section-pad scroll-mt-20 bg-white dark:bg-[#0b140d]">
           <div className="site-shell">
             <OrderWorkflow />
           </div>
@@ -145,7 +145,7 @@ export default function HomePage() {
         <WhatYouGetSection />
 
         {/* SEE THE PRODUCT */}
-        <section id="product" className="section-pad scroll-mt-20 bg-white">
+        <section id="product" className="section-pad scroll-mt-20 bg-white dark:bg-[#0b140d]">
           <div className="site-shell">
             <header className="section-heading">
               <p className="eyebrow section-heading-eyebrow">SEE THE PRODUCT</p>
@@ -183,7 +183,7 @@ export default function HomePage() {
         <PricingSectionView />
 
         {/* FAQ */}
-        <section id="faq" className="section-pad scroll-mt-20 bg-cream">
+        <section id="faq" className="section-pad scroll-mt-20 bg-cream dark:bg-[#0c150f]">
           <div className="site-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
             <div className="lg:sticky lg:top-28 lg:self-start">
               <header className="section-heading">
