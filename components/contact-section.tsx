@@ -1,12 +1,17 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { FormEvent, useRef, useState } from 'react'
 import { Clock3, LoaderCircle, Mail, Phone } from 'lucide-react'
+import { motion, useInView, useReducedMotion } from 'motion/react'
 import { trackEvent } from '@/lib/track'
 
 const whatsappUrl = 'https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20OrderPilot%20with%20my%20restaurant%27s%20menu.'
 
 export function ContactSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const prefersReduced = useReducedMotion()
+
   const [status, setStatus] = useState<'idle' | 'loading' | 'error' | 'success'>('idle')
   const [message, setMessage] = useState('')
 
@@ -50,38 +55,47 @@ export function ContactSection() {
     }
   }
 
-  return <section id="contact" className="section-pad scroll-mt-20 bg-forest text-white">
-    <div className="site-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
-      <div>
-        <p className="eyebrow !text-leaf">TALK TO US</p>
-        <h2 className="section-title mt-5">Let&apos;s set it up.</h2>
-        <p className="mt-4 text-lg font-medium leading-8 text-white/95">Here&apos;s what happens next:</p>
-        <ol className="mt-5 space-y-3.5 text-base sm:text-lg font-semibold text-white">
-          <li>1. You tell us how orders reach you now.</li>
-          <li>2. We set up your menu and your screen.</li>
-          <li>3. We show your staff how to use it. Then you go live.</li>
-        </ol>
-        <a href={whatsappUrl} className="button-primary mt-7 !bg-leaf !text-forest">Chat on WhatsApp</a>
-        <div className="mt-10 grid gap-5">
-          <ContactDetail icon={Phone} label="WhatsApp" value="+92 336 1815141" href="https://wa.me/923361815141" />
-          <ContactDetail icon={Mail} label="Email" value="info@digipexsolutions.com" href="mailto:info@digipexsolutions.com" />
-          <ContactDetail icon={Clock3} label="Hours" value="Monday to Friday, 9:00 AM to 6:00 PM PKT" />
+  return (
+    <section ref={sectionRef} id="contact" className="section-pad scroll-mt-20 bg-forest text-white">
+      <div className="site-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+        <div>
+          <p className="eyebrow !text-leaf">TALK TO US</p>
+          <h2 className="section-title mt-5">Let&apos;s set it up.</h2>
+          <p className="mt-4 text-lg font-medium leading-8 text-white/95">Here&apos;s what happens next:</p>
+          <ol className="mt-5 space-y-3.5 text-base sm:text-lg font-semibold text-white">
+            <li>1. You tell us how orders reach you now.</li>
+            <li>2. We set up your menu and your screen.</li>
+            <li>3. We show your staff how to use it. Then you go live.</li>
+          </ol>
+          <motion.a
+            href={whatsappUrl}
+            animate={isInView && !prefersReduced ? { scale: [1, 1.05, 1] } : { scale: 1 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="button-primary mt-7 !bg-leaf !text-forest inline-flex"
+          >
+            Chat on WhatsApp
+          </motion.a>
+          <div className="mt-10 grid gap-5">
+            <ContactDetail icon={Phone} label="WhatsApp" value="+92 336 1815141" href="https://wa.me/923361815141" />
+            <ContactDetail icon={Mail} label="Email" value="info@digipexsolutions.com" href="mailto:info@digipexsolutions.com" />
+            <ContactDetail icon={Clock3} label="Hours" value="Monday to Friday, 9:00 AM to 6:00 PM PKT" />
+          </div>
         </div>
+        <form className="grid gap-5 rounded-[2rem] bg-white p-7 text-ink sm:grid-cols-2 sm:p-9" onSubmit={handleSubmit}>
+          <h3 className="text-3xl font-bold sm:col-span-2">Book your demo</h3>
+          <Field label="Name" name="name" placeholder="Your name" autoComplete="name" required maxLength={80} />
+          <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="^\+?[0-9 ()-]{7,20}$" aria-describedby="contact-phone-help" />
+          <span id="contact-phone-help" className="sr-only">Pakistan +92 or an international number.</span>
+          <Field label="Restaurant name" name="restaurant" placeholder="Your restaurant" autoComplete="organization" required maxLength={100} />
+          <Field label="City (optional)" name="city" placeholder="Lahore" autoComplete="address-level2" maxLength={80} />
+          <label className="sm:col-span-2"><span className="mb-2 block text-sm font-bold">How do orders reach you today?</span><textarea className="form-control min-h-32 resize-y" name="message" placeholder="WhatsApp, calls, notebook..." maxLength={600} /></label>
+          <div className="sr-only" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
+          {message && <div role="status" aria-live="polite" className={`rounded-xl p-4 text-sm sm:col-span-2 ${status === 'success' ? 'bg-mint text-forest' : 'bg-red-50 text-red-800'}`}>{message}</div>}
+          <button type="submit" className="button-primary justify-center sm:col-span-2" disabled={status === 'loading'}>{status === 'loading' ? <><LoaderCircle className="animate-spin inline-block mr-2" /> Sending details...</> : 'Send my details'}</button>
+        </form>
       </div>
-      <form className="grid gap-5 rounded-[2rem] bg-white p-7 text-ink sm:grid-cols-2 sm:p-9" onSubmit={handleSubmit}>
-        <h3 className="text-3xl font-bold sm:col-span-2">Book your demo</h3>
-        <Field label="Name" name="name" placeholder="Your name" autoComplete="name" required maxLength={80} />
-        <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="^\+?[0-9 ()-]{7,20}$" aria-describedby="contact-phone-help" />
-        <span id="contact-phone-help" className="sr-only">Pakistan +92 or an international number.</span>
-        <Field label="Restaurant name" name="restaurant" placeholder="Your restaurant" autoComplete="organization" required maxLength={100} />
-        <Field label="City (optional)" name="city" placeholder="Lahore" autoComplete="address-level2" maxLength={80} />
-        <label className="sm:col-span-2"><span className="mb-2 block text-sm font-bold">How do orders reach you today?</span><textarea className="form-control min-h-32 resize-y" name="message" placeholder="WhatsApp, calls, notebook..." maxLength={600} /></label>
-        <div className="sr-only" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
-        {message && <div role="status" aria-live="polite" className={`rounded-xl p-4 text-sm sm:col-span-2 ${status === 'success' ? 'bg-mint text-forest' : 'bg-red-50 text-red-800'}`}>{message}</div>}
-        <button type="submit" className="button-primary justify-center sm:col-span-2" disabled={status === 'loading'}>{status === 'loading' ? <><LoaderCircle className="animate-spin inline-block mr-2" /> Sending details...</> : 'Send my details'}</button>
-      </form>
-    </div>
-  </section>
+    </section>
+  )
 }
 
 function Field({ label, required, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {

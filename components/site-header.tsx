@@ -18,6 +18,7 @@ const links = [
 export function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => setOpen(false), [pathname])
   useEffect(() => {
@@ -26,11 +27,38 @@ export function SiteHeader() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 40)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 border-b border-forest/10 bg-cream/90 backdrop-blur-xl">
-      <div className="site-shell flex h-24 items-center justify-between">
-        <Link href="/" className="flex min-h-14 items-center py-2" aria-label="OrderPilot home">
-          <Image src="/assets/orderpilot-logo.webp" alt="OrderPilot.pk — Smart Orders Simplified" width={560} height={225} priority sizes="(min-width: 640px) 210px, 180px" className="h-20 w-auto object-contain" />
+    <header
+      className={`sticky top-0 z-50 border-b border-forest/10 transition-colors duration-300 ${
+        isScrolled ? 'bg-cream/95 backdrop-blur-md shadow-sm' : 'bg-cream/90 backdrop-blur-xl'
+      }`}
+    >
+      <div
+        className={`site-shell flex items-center justify-between transition-all duration-300 ease-out ${
+          isScrolled ? 'h-16 sm:h-18' : 'h-24'
+        }`}
+      >
+        <Link href="/" className="flex min-h-12 items-center py-1" aria-label="OrderPilot home">
+          <Image
+            src="/assets/orderpilot-logo.webp"
+            alt="OrderPilot.pk — Smart Orders Simplified"
+            width={560}
+            height={225}
+            priority
+            sizes="(min-width: 640px) 210px, 180px"
+            className={`w-auto object-contain transition-all duration-300 ease-out ${
+              isScrolled ? 'h-12' : 'h-20'
+            }`}
+          />
         </Link>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
           {links.map((link) => (
