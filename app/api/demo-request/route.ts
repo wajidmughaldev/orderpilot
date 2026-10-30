@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 const requests = new Map<string, { count: number; reset: number }>()
-const requiredFields = ['name', 'restaurant', 'phone', 'city'] as const
+const requiredFields = ['name', 'restaurant', 'phone'] as const
 const MAX_BODY_BYTES = 65_536 // 64 KB
 
 /**
@@ -191,7 +191,7 @@ export async function POST(request: Request) {
   if (String(body.restaurant).trim().length > 100) {
     return NextResponse.json({ message: 'Please shorten the restaurant name.' }, { status: 400 })
   }
-  if (String(body.city).trim().length > 80) {
+  if (typeof body.city === 'string' && body.city.trim().length > 80) {
     return NextResponse.json({ message: 'Please shorten the city name.' }, { status: 400 })
   }
   if (!/^\+?[0-9 ()-]{7,20}$/.test(String(body.phone).trim())) {
@@ -234,7 +234,7 @@ export async function POST(request: Request) {
     name: String(body.name).trim(),
     restaurant: String(body.restaurant).trim(),
     phone: String(body.phone).trim(),
-    city: String(body.city).trim(),
+    city: typeof body.city === 'string' && body.city.trim() ? body.city.trim() : undefined,
     type: typeof body.type === 'string' && body.type.trim() ? body.type.trim() : undefined,
     volume: typeof body.volume === 'string' && body.volume.trim() ? body.volume.trim() : undefined,
     interests: typeof body.interests === 'string' && body.interests.trim() ? body.interests.trim() : undefined,

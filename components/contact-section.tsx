@@ -53,10 +53,14 @@ export function ContactSection() {
   return <section id="contact" className="section-pad scroll-mt-20 bg-forest text-white">
     <div className="site-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
       <div>
-        <p className="eyebrow !text-leaf">Talk to us</p>
+        <p className="eyebrow !text-leaf">TALK TO US</p>
         <h2 className="section-title mt-5">Let&apos;s set it up.</h2>
-        <p className="mt-4 text-lg font-medium leading-8 text-white/80">Here&apos;s what happens next:</p>
-        <ol className="mt-5 space-y-3 text-white/80"><li>1. You tell us how orders reach you now.</li><li>2. We set up your menu and your screen.</li><li>3. We show your staff how to use it. Then you go live.</li></ol>
+        <p className="mt-4 text-lg font-medium leading-8 text-white/95">Here&apos;s what happens next:</p>
+        <ol className="mt-5 space-y-3.5 text-base sm:text-lg font-semibold text-white">
+          <li>1. You tell us how orders reach you now.</li>
+          <li>2. We set up your menu and your screen.</li>
+          <li>3. We show your staff how to use it. Then you go live.</li>
+        </ol>
         <a href={whatsappUrl} className="button-primary mt-7 !bg-leaf !text-forest">Chat on WhatsApp</a>
         <div className="mt-10 grid gap-5">
           <ContactDetail icon={Phone} label="WhatsApp" value="+92 336 1815141" href="https://wa.me/923361815141" />
@@ -70,7 +74,7 @@ export function ContactSection() {
         <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="^\+?[0-9 ()-]{7,20}$" aria-describedby="contact-phone-help" />
         <span id="contact-phone-help" className="sr-only">Pakistan +92 or an international number.</span>
         <Field label="Restaurant name" name="restaurant" placeholder="Your restaurant" autoComplete="organization" required maxLength={100} />
-        <Field label="City" name="city" placeholder="Lahore" autoComplete="address-level2" required maxLength={80} />
+        <Field label="City (optional)" name="city" placeholder="Lahore" autoComplete="address-level2" maxLength={80} />
         <label className="sm:col-span-2"><span className="mb-2 block text-sm font-bold">How do orders reach you today?</span><textarea className="form-control min-h-32 resize-y" name="message" placeholder="WhatsApp, calls, notebook..." maxLength={600} /></label>
         <div className="sr-only" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
         {message && <div role="status" aria-live="polite" className={`rounded-xl p-4 text-sm sm:col-span-2 ${status === 'success' ? 'bg-mint text-forest' : 'bg-red-50 text-red-800'}`}>{message}</div>}

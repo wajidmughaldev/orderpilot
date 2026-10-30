@@ -245,7 +245,7 @@ async function runAll() {
       { name: 'Non-numeric phone', ip: '10.0.3.4', payload: { restaurant: 'R', name: 'A', phone: 'abc-def-ghij', city: 'Karachi' } },
       { name: 'Phone too short (<7 chars)', ip: '10.0.3.5', payload: { restaurant: 'R', name: 'A', phone: '12345', city: 'Karachi' } },
       { name: 'Phone too long (>20 chars)', ip: '10.0.3.6', payload: { restaurant: 'R', name: 'A', phone: '123456789012345678901', city: 'Karachi' } },
-      { name: 'Missing city', ip: '10.0.3.7', payload: { restaurant: 'R', name: 'A', phone: '03001234567' } },
+      { name: 'Blank phone', ip: '10.0.3.7', payload: { restaurant: 'R', name: 'A', phone: '   ' } },
       { name: 'Oversized challenge (>400 chars)', ip: '10.0.3.8', payload: { restaurant: 'R', name: 'A', phone: '03001234567', city: 'Karachi', challenge: 'x'.repeat(401) } },
       { name: 'Oversized message (>600 chars)', ip: '10.0.3.9', payload: { restaurant: 'R', name: 'A', phone: '03001234567', city: 'Karachi', message: 'x'.repeat(601) } }
     ]
@@ -503,7 +503,7 @@ async function runAll() {
 
       assert.ok(header.includes('/#how'))
       assert.ok(header.includes('/#product'))
-      assert.ok(header.includes('/pricing'))
+      assert.ok(header.includes('/#pricing'))
       assert.ok(header.includes('/#contact'))
 
       assert.ok(footer.includes('923361815141'))

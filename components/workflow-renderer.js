@@ -53,7 +53,7 @@ function phoneWhatsApp() { return `<div class="device device--whatsapp"><div cla
   ${confirmed()}
   </div></div></div><span class="floating-whatsapp">${ico('whatsapp','',41)}</span>`; }
 function phoneWeb() {return `<div class="device device--web"><div class="device-glass">
- ${statusBar()}<div class="url-bar"><span>♙ &nbsp; orderpilot.co/menu</span><span>↻</span></div><div class="store-header">${brandAvatar()}<span class="store-brand"><b>Zinger Burger</b><small>Burgers · Fries · More</small></span>${ico('search','',21)}${ico('menu','',21)}</div>
+ ${statusBar()}<div class="url-bar"><span>♙ &nbsp; orderpilot.pk</span><span>↻</span></div><div class="store-header">${brandAvatar()}<span class="store-brand"><b>Zinger Burger</b><small>Burgers · Fries · More</small></span>${ico('search','',21)}${ico('menu','',21)}</div>
  <div class="category-pills"><span class="selected">Burgers</span><span>Sides</span><span>Drinks</span><span>Combos</span></div>
  <div class="web-main-item"><img src="${asset('burger.webp')}" alt="Zinger burger"/><span><b>Zinger Burger + Fries</b><small>Crispy chicken burger with fries and signature sauce.</small><strong>Rs. 850</strong>${quantity()}</span></div>
  <div class="cart-heading">${ico('cart','',18)}<b>Your cart</b><span>1</span><strong>Rs. 850</strong></div>
@@ -69,11 +69,11 @@ function phoneQr() {return `${qrSign('showcase-qr-stand')}<div class="device dev
  <div class="qr-menu-item"><img src="${asset('fries.webp')}" alt="Loaded fries"/><span><b>Loaded Fries</b><strong>Rs. 450</strong></span><i>${ico('plus','',17)}</i></div>
  <div class="qr-menu-item"><img src="${asset('wings.webp')}" alt="Chicken wings"/><span><b>Chicken Wings</b><strong>Rs. 690</strong></span><i>${ico('plus','',17)}</i></div>${confirmed()}
  </div></div>`;}
-function leftPanel(mode) {const c=channels[mode];return `<div class="showcase-intro"><span class="eyebrow green-eye">CONCEPT PREVIEW</span><h2>${c.leftTitle}</h2><p>${c.leftDescription}</p></div><div class="showcase-decoration one"></div><div class="showcase-decoration two"></div><div class="showcase-scene">${mode==='whatsapp'?phoneWhatsApp():mode==='web'?phoneWeb():phoneQr()}</div>`;}
+function leftPanel(mode) {const c=channels[mode];return `<div class="showcase-intro"><span class="eyebrow green-eye">EXAMPLE</span><h2>${c.leftTitle}</h2><p>${c.leftDescription}</p></div><div class="showcase-decoration one"></div><div class="showcase-decoration two"></div><div class="showcase-scene">${mode==='whatsapp'?phoneWhatsApp():mode==='web'?phoneWeb():phoneQr()}</div>`;}
 function miniOrderBoard(mode) {return `<div class="mini-board"><div class="mini-sidebar">${ico('store','',12)}${ico('receipt','',12)}${ico('dashboard','',12)}</div><div class="mini-orders"><strong>Orders</strong><div><b>#1042</b><span>${mode==='qr'?'Table 12':'1 Zinger Burger + Fries'}</span><em class="mini-new">New</em></div><div><b>#1041</b><span>${mode==='qr'?'Table 8':'2 Chicken Wraps'}</span><em class="mini-preparing">Preparing</em></div><div><b>#1040</b><span>${mode==='qr'?'Table 3':'1 Beef Burger'}</span><em class="mini-ready">Ready</em></div></div></div>`; }
 function miniFirst(mode) {
  if (mode==='whatsapp') return `<div class="mini-whatsapp"><span class="mini-person">${ico('user','',24)}</span><div class="mini-bubble"><b>1 Zinger Burger<br>+ Fries</b><small>9:41 AM <span>✓✓</span></small></div><span class="mini-spark">〃</span></div>`;
- if(mode==='web')return `<div class="mini-storefront"><div class="mini-browser-bar">‹ &nbsp; ▣ &nbsp; orderpilot.co/menu &nbsp; ↻</div><div class="mini-store-menu"><span>Burgers</span> Sides &nbsp; Drinks</div><div class="mini-store-product"><img src="${asset('burger.webp')}" alt=""/><div><b>Zinger Burger + Fries</b><small>Rs. 850</small><em>Add to cart</em></div></div></div>`;
+ if(mode==='web')return `<div class="mini-storefront"><div class="mini-browser-bar">‹ &nbsp; ▣ &nbsp; orderpilot.pk &nbsp; ↻</div><div class="mini-store-menu"><span>Burgers</span> Sides &nbsp; Drinks</div><div class="mini-store-product"><img src="${asset('burger.webp')}" alt=""/><div><b>Zinger Burger + Fries</b><small>Rs. 850</small><em>Add to cart</em></div></div></div>`;
  return `<div class="mini-qr-order">${qrSign('mini-qr-sign')}<div class="mini-qr-phone"><span class="mini-notch"></span><img src="${asset('burger.webp')}" alt=""/><b>Zinger Burger + Fries</b><span>${quantity()}</span><em>Add to order</em></div></div>`;
 }
 function miniChecked(mode) {return `<div class="mini-check-row"><div class="mini-checked-product"><img src="${asset('burger.webp')}" alt=""/><div><b>Zinger Burger + Fries</b><small>Rs. 850 ${mode==='qr'?'· Table 12':''}</small>${quantity()}</div></div><span class="round-checked">${ico('check','',25)}</span></div>`;}
@@ -83,10 +83,10 @@ function rightPanel(mode) {return `<div class="journey-heading"><span class="eye
  <svg aria-hidden="true" class="connector-track" viewBox="0 0 792 552" preserveAspectRatio="none"><path d="M761 135 H777 Q789 135 789 148 V270 Q789 280 779 280 H292 Q282 280 282 293" stroke="#b8e3d4" stroke-width="1.6" stroke-dasharray="5 5" stroke-linecap="round" fill="none"/></svg>
  <span aria-hidden="true" class="connector-arrow arrow-top">${ico('arrowThin','',32)}</span><span aria-hidden="true" class="connector-arrow arrow-bottom">${ico('arrowThin','',32)}</span>
  <div class="steps-grid">
- ${stepCard('01',miniFirst(mode),'Customer places order.','Via WhatsApp message, your web menu, or table QR code.','step-first')}
- ${stepCard('02',miniChecked(mode),'Order details confirmed.','Items, quantity and total are confirmed with the customer before sending to the kitchen.','step-second')}
- ${stepCard('03',miniOrderBoard(mode),'Restaurant receives order.','The ticket appears on your order board, with all items and customer details written down.','step-third')}
- ${stepCard('04',kitchenProgress(),'Kitchen updates status.','Update status from New to Preparing to Ready so your team knows what to prepare next.','step-fourth')}
+ ${stepCard('01',miniFirst(mode),'Customer orders.','On WhatsApp, on your website, or from the table QR.','step-first')}
+ ${stepCard('02',miniChecked(mode),'The order is checked.','Items, quantity and total are confirmed before it reaches the kitchen.','step-second')}
+ ${stepCard('03',miniOrderBoard(mode),'Your team sees it.','It shows up on your screen, already written down.','step-third')}
+ ${stepCard('04',kitchenProgress(),'Mark it as it moves.','New, preparing, ready. WhatsApp customers get an update automatically.','step-fourth')}
  </div></div>`;}
 
 export {channels, ico, leftPanel, rightPanel};

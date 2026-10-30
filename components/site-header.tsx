@@ -10,7 +10,7 @@ import { trackEvent } from '@/lib/track'
 const links = [
   { label: 'How It Works', href: '/#how' },
   { label: 'Product', href: '/#product' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Pricing', href: '/#pricing' },
   { label: 'FAQ', href: '/#faq' },
   { label: 'Talk to Us', href: '/#contact' },
 ]
@@ -26,13 +26,11 @@ export function SiteHeader() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
-  const demoHref = pathname === '/' ? '#contact' : '/book-demo'
-
   return (
     <header className="sticky top-0 z-50 border-b border-forest/10 bg-cream/90 backdrop-blur-xl">
-      <div className="site-shell flex h-20 items-center justify-between">
-        <Link href="/" className="flex min-h-11 items-center" aria-label="OrderPilot home">
-          <Image src="/assets/orderpilot-logo.webp" alt="OrderPilot.pk — Smart Orders Simplified" width={560} height={225} priority sizes="140px" className="h-14 w-auto object-contain" />
+      <div className="site-shell flex h-24 items-center justify-between">
+        <Link href="/" className="flex min-h-14 items-center py-2" aria-label="OrderPilot home">
+          <Image src="/assets/orderpilot-logo.webp" alt="OrderPilot.pk — Smart Orders Simplified" width={560} height={225} priority sizes="(min-width: 640px) 210px, 180px" className="h-20 w-auto object-contain" />
         </Link>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
           {links.map((link) => (
@@ -40,7 +38,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <Link
-          href={demoHref}
+          href="/book-demo"
           onClick={() => trackEvent('demo_cta_click', { location: 'header_desktop' })}
           className="button-primary desktop-cta"
         >
@@ -55,7 +53,7 @@ export function SiteHeader() {
           <div className="site-shell flex flex-col gap-2">
             {links.map((link) => <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-base font-semibold hover:bg-mint">{link.label}</Link>)}
             <Link
-              href={demoHref}
+              href="/book-demo"
               onClick={() => {
                 setOpen(false)
                 trackEvent('demo_cta_click', { location: 'header_mobile' })

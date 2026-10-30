@@ -9,8 +9,8 @@ const space = Space_Grotesk({ subsets: ['latin'], variable: '--font-space', disp
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://orderpilot.pk'),
-  title: { default: 'OrderPilot — Restaurant Order Management for Pakistan', template: '%s | OrderPilot' },
-  description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen. Built for Pakistani restaurants.',
+  title: { default: 'OrderPilot — Ordering Software for Pakistani Restaurants', template: '%s | OrderPilot' },
+  description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen.',
   applicationName: 'OrderPilot',
   authors: [{ name: 'OrderPilot' }, { name: 'Digipex Solutions LLC' }],
   creator: 'Digipex Solutions LLC',
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: 'OrderPilot — Restaurant Order Management for Pakistan',
-    description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen. Built for Pakistani restaurants.',
+    title: 'OrderPilot — Ordering Software for Pakistani Restaurants',
+    description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen.',
     type: 'website',
     locale: 'en_PK',
     siteName: 'OrderPilot',
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OrderPilot — Restaurant Order Management for Pakistan',
-    description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen. Built for Pakistani restaurants.',
+    title: 'OrderPilot — Ordering Software for Pakistani Restaurants',
+    description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
