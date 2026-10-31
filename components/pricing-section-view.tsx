@@ -32,11 +32,11 @@ export function PricingSectionView() {
             {/* Ambient background shade that intensifies and expands on hover */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-mint via-leaf/25 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-mint group-hover:via-leaf/40 dark:from-emerald-900/30 dark:via-leaf/10 dark:to-transparent"
+              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-mint via-leaf/25 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-mint group-hover:via-leaf/40 dark:from-emerald-900/30 dark:via-leaf/10 dark:to-transparent dark:opacity-30 dark:group-hover:opacity-60 dark:group-hover:from-emerald-900/40 dark:group-hover:via-leaf/20"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 dark:bg-transparent"
+              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 dark:bg-transparent dark:group-hover:bg-transparent"
             />
 
             {/* Subtle decorative geometric shapes in top-right corner that rotate and scale on hover */}
@@ -90,11 +90,11 @@ export function PricingSectionView() {
             {/* Ambient background shade that intensifies and expands on hover */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-leaf/25 via-mint/45 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-leaf/35 group-hover:via-mint/70 dark:from-leaf/20 dark:via-emerald-900/20 dark:to-transparent"
+              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-leaf/25 via-mint/45 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-leaf/35 group-hover:via-mint/70 dark:from-leaf/20 dark:via-emerald-900/20 dark:to-transparent dark:opacity-30 dark:group-hover:opacity-60 dark:group-hover:from-leaf/30 dark:group-hover:via-emerald-900/30"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 dark:bg-transparent"
+              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 dark:bg-transparent dark:group-hover:bg-transparent"
             />
 
             {/* Subtle decorative geometric shapes in top-right corner that rotate and scale on hover */}
