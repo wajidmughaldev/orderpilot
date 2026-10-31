@@ -30,6 +30,9 @@ const ICON_PATHS = {
   battery: '<rect x="2" y="6" width="18" height="12" rx="2"/><path d="M22 10v4"/><rect x="5" y="9" width="12" height="6" rx="1" fill="currentColor" stroke="none"/>',
   wifi: '<path d="M2 9a16 16 0 0 1 20 0M5 12a11 11 0 0 1 14 0M8 15a6 6 0 0 1 8 0M12 19h.01"/>',
   star: '<path d="m12 2 3 6 7 .9-5 5 1.2 7-6.2-3.3L5.8 21 7 14 2 9l7-.9 3-6Z"/>',
+  paperclip: '<path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/>',
+  mic: '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>',
+  smile: '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>',
 };
 function ico(name, className = '', size = 20) {
   return `<svg aria-hidden="true" class="icon ${className}" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON_PATHS[name] || ICON_PATHS.check}</svg>`;
@@ -46,12 +49,16 @@ function quantity() { return `<span class="quantity"><span>${ico('minus','',13)}
 function confirmed(label = 'Ready for the team to review') { return `<div class="confirmed-box"><span class="confirmed-mark">${ico('check','',23)}</span><span><b>Details confirmed</b><small>${label}</small></span></div>`; }
 function phoneWhatsApp() { return `<div class="device device--whatsapp"><div class="device-glass">
   ${statusBar()}<div class="phone-chat-header">${ico('back','go-back',24)}${brandAvatar()}<span class="chat-name"><strong>Zinger Burger</strong><small>Business account</small></span>${ico('camera','call-icon',20)}${ico('phone','call-icon',20)}</div>
-  <div class="chat-wallpaper"><div class="chat-message chat-message--sent">Hi! I'd like to order<br>1 Zinger Burger + Fries <span class="chat-time">9:41 AM <b>✓✓</b></span></div>
-  <div class="chat-message chat-message--received chat-receipt"><span>Here’s your order:</span><div class="order-chat-product"><img src="${asset('burger.webp')}" alt="Zinger burger and fries" /><div class="chat-product-info"><b>Zinger Burger + Fries</b><strong>Rs. 850</strong>${quantity()}</div></div><span class="chat-time">9:41 AM</span></div>
-  <div class="chat-message chat-message--received chat-check-question">Is this correct? <span class="chat-time">9:41 AM</span></div>
-  <div class="chat-message chat-message--sent chat-yes">Yes, that's correct! 🎉 <span class="chat-time">9:41 AM <b>✓✓</b></span></div>
-  ${confirmed()}
-  </div></div></div><span class="floating-whatsapp">${ico('whatsapp','',41)}</span>`; }
+  <div class="chat-wallpaper">
+    <div class="chat-message chat-message--sent">Hi! I'd like to order<br>1 Zinger Burger + Fries <span class="chat-time">9:41 AM <b>✓✓</b></span></div>
+    <div class="chat-message chat-message--received chat-receipt"><span>Here’s your order:</span><div class="order-chat-product"><img src="${asset('burger.webp')}" alt="Zinger burger and fries" /><div class="chat-product-info"><b>Zinger Burger + Fries</b><strong>Rs. 850</strong>${quantity()}</div></div><span class="chat-time">9:41 AM</span></div>
+    <div class="chat-message chat-message--received chat-check-question">Is this correct? <span class="chat-time">9:41 AM</span></div>
+    <div class="chat-message chat-message--sent chat-yes">Yes, that's correct! 🎉 <span class="chat-time">9:41 AM <b>✓✓</b></span></div>
+    ${confirmed()}
+    <div class="chat-message chat-message--received chat-order-ack"><span>Order <b>#1042</b> received! 👨‍🍳</span><small>Sent to kitchen · Preparing now</small><span class="chat-time">9:42 AM</span></div>
+  </div>
+  <div class="chat-input-bar"><div class="chat-input-pill">${ico('smile','chat-bar-icon',17)}<span class="chat-input-placeholder">Message</span>${ico('paperclip','chat-bar-icon',17)}${ico('camera','chat-bar-icon',17)}</div><span class="chat-mic-btn">${ico('mic','',16)}</span></div>
+</div></div><span class="floating-whatsapp">${ico('whatsapp','',41)}</span>`; }
 function phoneWeb() {return `<div class="device device--web"><div class="device-glass">
  ${statusBar()}<div class="url-bar"><span>♙ &nbsp; orderpilot.pk</span><span>↻</span></div><div class="store-header">${brandAvatar()}<span class="store-brand"><b>Zinger Burger</b><small>Burgers · Fries · More</small></span>${ico('search','',21)}${ico('menu','',21)}</div>
  <div class="category-pills"><span class="selected">Burgers</span><span>Sides</span><span>Drinks</span><span>Combos</span></div>
@@ -59,6 +66,8 @@ function phoneWeb() {return `<div class="device device--web"><div class="device-
  <div class="cart-heading">${ico('cart','',18)}<b>Your cart</b><span>1</span><strong>Rs. 850</strong></div>
  <div class="web-cart-row"><img src="${asset('burger.webp')}" alt=""/><span><b>Zinger Burger + Fries</b><small>Rs. 850</small></span>${quantity()}${ico('trash','',17)}</div>
  <div class="checkout-btn">Checkout ${ico('arrow','',18)}</div>${confirmed()}
+ <div class="web-order-status"><span>Order <b>#1042</b> sent to kitchen</span><small>Est. prep time: 15–20 mins</small></div>
+ <div class="web-bottom-bar"><span>OrderPilot Direct Ordering</span><span>Cash on delivery</span></div>
  </div></div>`; }
 function qrSign(className='') {return `<div class="qr-table-sign ${className}"><span class="sign-burger">☰</span><strong>Scan to Order</strong><small>Table 12</small><img src="${asset('sample-qr.svg')}" alt="Demo QR linking to the OrderPilot website" /><span>View our menu<br>and order here.</span></div>`;}
 function phoneQr() {return `${qrSign('showcase-qr-stand')}<div class="device device--qr"><div class="device-glass">${statusBar()}
@@ -68,6 +77,7 @@ function phoneQr() {return `${qrSign('showcase-qr-stand')}<div class="device dev
  <div class="qr-menu-item"><img src="${asset('classic-burger.webp')}" alt="Classic burger"/><span><b>Classic Burger</b><strong>Rs. 750</strong></span><i>${ico('plus','',17)}</i></div>
  <div class="qr-menu-item"><img src="${asset('fries.webp')}" alt="Loaded fries"/><span><b>Loaded Fries</b><strong>Rs. 450</strong></span><i>${ico('plus','',17)}</i></div>
  <div class="qr-menu-item"><img src="${asset('wings.webp')}" alt="Chicken wings"/><span><b>Chicken Wings</b><strong>Rs. 690</strong></span><i>${ico('plus','',17)}</i></div>${confirmed()}
+ <div class="qr-table-footer"><span>Order <b>#1042</b> · Table 12 sent</span><small>Kitchen is preparing your order</small></div>
  </div></div>`;}
 function leftPanel(mode) {const c=channels[mode];return `<div class="showcase-intro"><span class="eyebrow green-eye">EXAMPLE</span><h2>${c.leftTitle}</h2><p>${c.leftDescription}</p></div><div class="showcase-decoration one"></div><div class="showcase-decoration two"></div><div class="showcase-scene">${mode==='whatsapp'?phoneWhatsApp():mode==='web'?phoneWeb():phoneQr()}</div>`;}
 function miniOrderBoard(mode) {return `<div class="mini-board"><div class="mini-sidebar">${ico('store','',12)}${ico('receipt','',12)}${ico('dashboard','',12)}</div><div class="mini-orders"><strong>Orders</strong><div><b>#1042</b><span>${mode==='qr'?'Table 12':'1 Zinger Burger + Fries'}</span><em class="mini-new">New</em></div><div><b>#1041</b><span>${mode==='qr'?'Table 8':'2 Chicken Wraps'}</span><em class="mini-preparing">Preparing</em></div><div><b>#1040</b><span>${mode==='qr'?'Table 3':'1 Beef Burger'}</span><em class="mini-ready">Ready</em></div></div></div>`; }
