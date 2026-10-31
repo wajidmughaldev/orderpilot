@@ -91,6 +91,11 @@ h3 { letter-spacing: -.01em; }
 @keyframes bubble-pop { 0% { transform: scale(1); } 45% { transform: scale(.82); opacity: .55; } 75% { transform: scale(1.08); } 100% { transform: scale(1); } }
 
 /* Dark Mode Scoped Styles - Active ONLY when <html class="dark"> */
+.dark {
+  --background: #0b140d;
+  --foreground: #f2f5f1;
+  --border: rgba(255, 255, 255, 0.05);
+}
 .dark body {
   background: #0b140d;
   color: #f2f5f1;

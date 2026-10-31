@@ -16,11 +16,11 @@ export function PartnersSection() {
           <Image src="/assets/ecosystem-nic.webp" alt="National Incubation Center Hyderabad" width={1115} height={614} loading="lazy" sizes="(min-width: 768px) 180px, 140px" className="h-14 w-auto object-contain transition-opacity duration-200 dark:brightness-0 dark:invert dark:opacity-80 hover:dark:opacity-100" />
         </div>
 
-        <div className="border-y border-forest/15 py-6 md:w-[57%] md:border-x md:border-y-0 md:px-7 md:py-0 lg:px-9 dark:border-white/5">
+        <div className="border-y border-forest/15 py-6 md:w-[57%] md:border-x md:border-y-0 md:px-7 md:py-0 lg:px-9 dark:border-transparent md:dark:border-transparent">
           <p className="partner-label mb-5 text-center md:text-left">National partners</p>
           <div className="grid grid-cols-2 items-center gap-x-5 gap-y-6 sm:grid-cols-4 sm:gap-3 lg:gap-6">
             {ecosystemPartners.map((partner, index) => (
-              <figure key={partner.alt} className={`flex min-h-12 items-center justify-center sm:justify-start ${index > 0 ? 'sm:border-l sm:border-forest/10 sm:pl-3 lg:pl-5 dark:sm:border-white/5' : ''}`}>
+              <figure key={partner.alt} className={`flex min-h-12 items-center justify-center sm:justify-start ${index > 0 ? 'sm:border-l sm:border-forest/10 sm:dark:border-transparent sm:pl-3 lg:pl-5' : ''}`}>
                 <Image src={partner.src} alt={partner.alt} width={partner.width} height={partner.height} loading="lazy" sizes="(min-width: 1024px) 150px, (min-width: 640px) 120px, 140px" className={`max-w-full w-auto object-contain transition-opacity duration-200 dark:brightness-0 dark:invert dark:opacity-80 hover:dark:opacity-100 ${partner.className}`} />
               </figure>
             ))}
