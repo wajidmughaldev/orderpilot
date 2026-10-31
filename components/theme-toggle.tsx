@@ -34,7 +34,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       onClick={toggleTheme}
       aria-label={label}
       title={label}
-      className={`relative inline-flex size-10 items-center justify-center rounded-full border border-forest/15 bg-cream/80 text-forest transition-all duration-200 hover:border-brand/40 hover:bg-mint/60 hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:border-white/15 dark:bg-white/5 dark:text-leaf dark:hover:border-leaf/40 dark:hover:bg-white/10 dark:hover:text-leaf ${className}`}
+      className={`relative inline-flex size-10 items-center justify-center rounded-full border border-forest/15 bg-cream/80 text-forest transition-all duration-200 hover:border-brand/40 hover:bg-mint/60 hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:border-white/10 dark:bg-white/5 dark:text-leaf dark:hover:border-leaf/40 dark:hover:bg-white/10 dark:hover:text-leaf ${className}`}
     >
       <span className="sr-only">{label}</span>
       {mounted ? (

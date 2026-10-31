@@ -67,18 +67,18 @@ export function ProblemSection() {
                   ease: 'easeOut',
                   delay: isClosingLineInView ? index * 0.07 : 0,
                 }}
-                className="group relative overflow-hidden panel flex h-full flex-col p-7 sm:p-8 transition-all duration-300 hover:border-brand/30 hover:shadow-xl"
+                className="group relative overflow-hidden panel flex h-full flex-col p-7 sm:p-8 transition-all duration-300 hover:border-brand/30 hover:shadow-xl dark:hover:border-leaf/30"
               >
                 {/* Ambient corner shade */}
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-8 -top-8 size-32 rounded-full bg-mint/35 blur-xl transition-all duration-500 ease-out group-hover:scale-150 group-hover:bg-mint/80"
+                  className="pointer-events-none absolute -right-8 -top-8 size-32 rounded-full bg-mint/35 blur-xl transition-all duration-500 ease-out group-hover:scale-150 group-hover:bg-mint/80 dark:bg-leaf/10 dark:group-hover:bg-leaf/20"
                 />
 
                 {/* Subtle decorative geometric shape */}
                 <svg
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-3 -top-3 size-24 text-brand/5 transition-all duration-500 ease-out group-hover:scale-125 group-hover:rotate-12 group-hover:text-brand/15"
+                  className="pointer-events-none absolute -right-3 -top-3 size-24 text-brand/5 dark:text-leaf/10 transition-all duration-500 ease-out group-hover:scale-125 group-hover:rotate-12 group-hover:text-brand/15 dark:group-hover:text-leaf/20"
                   viewBox="0 0 100 100"
                   fill="none"
                 >

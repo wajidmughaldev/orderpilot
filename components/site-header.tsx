@@ -39,7 +39,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-forest/10 dark:border-white/10 transition-colors duration-300 ${
+      className={`sticky top-0 z-50 border-b border-forest/10 dark:border-white/5 transition-colors duration-300 ${
         isScrolled
           ? 'bg-cream/95 dark:bg-[#0b140d]/95 backdrop-blur-md shadow-sm'
           : 'bg-cream/90 dark:bg-[#0b140d]/90 backdrop-blur-xl'
@@ -81,7 +81,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <button
-            className="grid size-11 place-items-center rounded-full border border-forest/15 dark:border-white/15 text-ink dark:text-white"
+            className="grid size-11 place-items-center rounded-full border border-forest/15 dark:border-white/10 text-ink dark:text-white"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -92,7 +92,7 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <nav id="mobile-menu" className="border-t border-forest/10 dark:border-white/10 bg-cream dark:bg-[#0e1910] p-5 lg:hidden" aria-label="Mobile navigation">
+        <nav id="mobile-menu" className="border-t border-forest/10 dark:border-white/5 bg-cream dark:bg-[#0e1910] p-5 lg:hidden" aria-label="Mobile navigation">
           <div className="site-shell flex flex-col gap-2">
             {links.map((link) => (
               <Link

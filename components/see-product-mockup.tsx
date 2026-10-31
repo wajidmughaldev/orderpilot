@@ -52,18 +52,18 @@ export function SeeProductMockup() {
             ? { y: { duration: 4.2, repeat: Infinity, ease: 'easeInOut' } }
             : { duration: 0.5, ease: 'easeOut' }
         }
-        className="pointer-events-none absolute -left-6 top-10 z-20 hidden lg:flex flex-col gap-1 rounded-2xl border border-forest/15 bg-white/95 p-4 shadow-xl backdrop-blur-md w-64 dark:border-white/15 dark:bg-[#121f15]/95 dark:border-white/15 dark:bg-[#121f15]/95 dark:border-white/15 dark:bg-[#121f15]/95"
+        className="pointer-events-none absolute -left-6 top-10 z-20 hidden lg:flex flex-col gap-1 rounded-2xl border border-forest/15 bg-white/95 p-4 shadow-xl backdrop-blur-md w-64 dark:border-white/5 dark:bg-[#121f15]/95"
       >
         <div className="flex items-center justify-between">
-          <span className="flex items-center gap-1.5 text-xs font-bold text-forest">
+          <span className="flex items-center gap-1.5 text-xs font-bold text-forest dark:text-leaf">
             <MessageCircle className="size-3.5 text-brand" /> WhatsApp order
           </span>
-          <span className="rounded-md bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-800">
+          <span className="rounded-md bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 px-2 py-0.5 text-[10px] font-bold">
             New
           </span>
         </div>
         <p className="text-sm font-bold text-ink dark:text-white">1 Zinger Burger + Fries</p>
-        <span className="font-mono text-xs font-semibold text-brand">PKR 850</span>
+        <span className="font-mono text-xs font-semibold text-brand dark:text-leaf">PKR 850</span>
       </motion.div>
 
       {/* Card 2: Web Order */}
@@ -77,18 +77,18 @@ export function SeeProductMockup() {
             ? { y: { duration: 5.2, repeat: Infinity, ease: 'easeInOut' } }
             : { duration: 0.5, ease: 'easeOut' }
         }
-        className="pointer-events-none absolute -right-6 top-1/3 z-20 hidden lg:flex flex-col gap-1 rounded-2xl border border-forest/15 bg-white/95 p-4 shadow-xl backdrop-blur-md w-64"
+        className="pointer-events-none absolute -right-6 top-1/3 z-20 hidden lg:flex flex-col gap-1 rounded-2xl border border-forest/15 bg-white/95 p-4 shadow-xl backdrop-blur-md w-64 dark:border-white/5 dark:bg-[#121f15]/95"
       >
         <div className="flex items-center justify-between">
-          <span className="flex items-center gap-1.5 text-xs font-bold text-forest">
+          <span className="flex items-center gap-1.5 text-xs font-bold text-forest dark:text-leaf">
             <Globe className="size-3.5 text-sky-600" /> Web order
           </span>
-          <span className="rounded-md bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-800">
+          <span className="rounded-md bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300 px-2 py-0.5 text-[10px] font-bold">
             Preparing
           </span>
         </div>
         <p className="text-sm font-bold text-ink dark:text-white">2 Chicken Wraps</p>
-        <span className="font-mono text-xs font-semibold text-brand">PKR 1,200</span>
+        <span className="font-mono text-xs font-semibold text-brand dark:text-leaf">PKR 1,200</span>
       </motion.div>
 
       {/* Card 3: Table QR Order */}
@@ -102,18 +102,18 @@ export function SeeProductMockup() {
             ? { y: { duration: 4.6, repeat: Infinity, ease: 'easeInOut' } }
             : { duration: 0.5, ease: 'easeOut' }
         }
-        className="pointer-events-none absolute -bottom-6 left-12 z-20 hidden lg:flex flex-col gap-1 rounded-2xl border border-forest/15 bg-white/95 p-4 shadow-xl backdrop-blur-md w-64"
+        className="pointer-events-none absolute -bottom-6 left-12 z-20 hidden lg:flex flex-col gap-1 rounded-2xl border border-forest/15 bg-white/95 p-4 shadow-xl backdrop-blur-md w-64 dark:border-white/5 dark:bg-[#121f15]/95"
       >
         <div className="flex items-center justify-between">
-          <span className="flex items-center gap-1.5 text-xs font-bold text-forest">
+          <span className="flex items-center gap-1.5 text-xs font-bold text-forest dark:text-leaf">
             <QrCode className="size-3.5 text-emerald-600" /> Table 7 QR order
           </span>
-          <span className="rounded-md bg-mint px-2 py-0.5 text-[10px] font-bold text-forest">
+          <span className="rounded-md bg-mint text-forest dark:bg-emerald-950/60 dark:text-leaf px-2 py-0.5 text-[10px] font-bold">
             Ready
           </span>
         </div>
         <p className="text-sm font-bold text-ink dark:text-white">1 Beef Burger</p>
-        <span className="font-mono text-xs font-semibold text-brand">PKR 950</span>
+        <span className="font-mono text-xs font-semibold text-brand dark:text-leaf">PKR 950</span>
       </motion.div>
     </div>
   )

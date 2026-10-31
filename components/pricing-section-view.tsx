@@ -27,22 +27,22 @@ export function PricingSectionView() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }}
             whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/10 dark:bg-[#121e15]"
+            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/5 dark:bg-[#121e15] dark:hover:border-leaf/30"
           >
             {/* Ambient background shade that intensifies and expands on hover */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-mint via-leaf/25 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-mint group-hover:via-leaf/40"
+              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-mint via-leaf/25 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-mint group-hover:via-leaf/40 dark:from-emerald-900/30 dark:via-leaf/10 dark:to-transparent"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100"
+              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 dark:bg-transparent"
             />
 
             {/* Subtle decorative geometric shapes in top-right corner that rotate and scale on hover */}
             <svg
               aria-hidden="true"
-              className="pointer-events-none absolute -right-4 -top-4 size-36 text-brand/10 transition-all duration-500 ease-out group-hover:scale-115 group-hover:rotate-12 group-hover:text-brand/25"
+              className="pointer-events-none absolute -right-4 -top-4 size-36 text-brand/10 dark:text-leaf/10 transition-all duration-500 ease-out group-hover:scale-115 group-hover:rotate-12 group-hover:text-brand/25 dark:group-hover:text-leaf/25"
               viewBox="0 0 120 120"
               fill="none"
             >
@@ -85,22 +85,22 @@ export function PricingSectionView() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.08 }}
             whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/10 dark:bg-[#121e15]"
+            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/5 dark:bg-[#121e15] dark:hover:border-leaf/30"
           >
             {/* Ambient background shade that intensifies and expands on hover */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-leaf/25 via-mint/45 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-leaf/35 group-hover:via-mint/70"
+              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-leaf/25 via-mint/45 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-leaf/35 group-hover:via-mint/70 dark:from-leaf/20 dark:via-emerald-900/20 dark:to-transparent"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100"
+              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 dark:bg-transparent"
             />
 
             {/* Subtle decorative geometric shapes in top-right corner that rotate and scale on hover */}
             <svg
               aria-hidden="true"
-              className="pointer-events-none absolute -right-4 -top-4 size-36 text-brand/10 transition-all duration-500 ease-out group-hover:scale-115 group-hover:-rotate-12 group-hover:text-brand/25"
+              className="pointer-events-none absolute -right-4 -top-4 size-36 text-brand/10 dark:text-leaf/10 transition-all duration-500 ease-out group-hover:scale-115 group-hover:-rotate-12 group-hover:text-brand/25 dark:group-hover:text-leaf/25"
               viewBox="0 0 120 120"
               fill="none"
             >

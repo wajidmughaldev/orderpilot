@@ -15,7 +15,7 @@ export function FaqList({ items }: { items: FaqItem[] }) {
   }
 
   return (
-    <div className="w-full divide-y divide-forest/15 border-y border-forest/15 dark:divide-white/10 dark:border-white/10">
+    <div className="w-full divide-y divide-forest/15 border-y border-forest/15 dark:divide-white/5 dark:border-white/5">
       {items.map((item, index) => {
         const isOpen = openIndex === index
 

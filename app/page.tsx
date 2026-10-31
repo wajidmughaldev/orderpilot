@@ -122,7 +122,7 @@ export default function HomePage() {
         <ProblemSection />
 
         {/* REPLACE THE ORDERPILOT SOLUTION */}
-        <section className="section-pad bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/10">
+        <section className="section-pad bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/5">
           <div className="site-shell max-w-3xl">
             <h2 className="section-title">You don&apos;t have to change how customers order.</h2>
             <p className="section-description mt-5 max-w-[640px] text-base sm:text-lg">

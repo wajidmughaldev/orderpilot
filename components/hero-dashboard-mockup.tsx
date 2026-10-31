@@ -151,7 +151,7 @@ export function HeroDashboardMockup() {
   return (
     <figure
       ref={containerRef}
-      className="image-frame relative overflow-hidden bg-white text-ink border border-forest/15 dark:bg-[#0c1810] dark:text-white dark:border-white/10 shadow-2xl transition-colors duration-300"
+      className="image-frame relative overflow-hidden bg-white text-ink border border-forest/15 dark:bg-[#0c1810] dark:text-white dark:border-white/5 shadow-2xl transition-colors duration-300"
     >
       {/* Fallback image for no-js / SSR crawl */}
       <noscript>
@@ -169,7 +169,7 @@ export function HeroDashboardMockup() {
       {/* Interactive Mockup Component */}
       <div className="relative flex flex-col p-4 sm:p-6 w-full min-h-[380px] sm:min-h-[440px] select-none justify-between">
         {/* Top Control Bar */}
-        <div className="flex items-center justify-between border-b border-forest/10 dark:border-white/10 pb-3 sm:pb-4">
+        <div className="flex items-center justify-between border-b border-forest/10 dark:border-white/5 pb-3 sm:pb-4">
           <div className="flex items-center gap-2.5">
             <span className="flex size-7 sm:size-8 items-center justify-center rounded-lg bg-mint text-brand dark:bg-leaf/20 dark:text-leaf">
               <ChefHat className="size-4 sm:size-5" />
@@ -179,7 +179,7 @@ export function HeroDashboardMockup() {
               <p className="text-xs text-ink/60 dark:text-white/60 hidden sm:block">Live Order Stream</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 rounded-full border border-forest/15 bg-cream/80 dark:border-white/15 dark:bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5">
+          <div className="flex items-center gap-2 rounded-full border border-forest/15 bg-cream/80 dark:border-white/5 dark:bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5">
             <span className="text-xs font-medium text-ink/75 dark:text-white/75">Orders today</span>
             <span className="font-mono text-sm sm:text-base font-bold text-brand dark:text-leaf">{ordersToday}</span>
           </div>
@@ -243,13 +243,13 @@ export function HeroDashboardMockup() {
         {/* 3 Kitchen Board Columns */}
         <div className="grid grid-cols-3 gap-2.5 sm:gap-4 flex-1">
           {/* COLUMN: NEW */}
-          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/10 dark:bg-white/5 p-2.5 sm:p-3.5 shadow-sm">
-            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/10 pb-2">
+          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/5 dark:bg-white/[0.03] p-2.5 sm:p-3.5 shadow-sm">
+            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/5 pb-2">
               <div className="flex items-center gap-1.5">
                 <span className="size-2 rounded-full bg-amber-500" />
                 <span className="text-xs font-bold uppercase tracking-wider text-ink dark:text-white">New</span>
               </div>
-              <span className="rounded-full bg-forest/10 dark:bg-white/10 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
+              <span className="rounded-full bg-forest/10 dark:bg-white/5 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
                 {(order1Col === 'new' ? 1 : 0) + (order2Col === 'new' ? 1 : 0) + (order3Col === 'new' ? 1 : 0)}
               </span>
             </div>
@@ -262,7 +262,7 @@ export function HeroDashboardMockup() {
                   initial={{ opacity: 0, y: -12, scale: 0.94 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.45, ease: 'easeOut' }}
-                  className="rounded-xl border border-forest/12 bg-white dark:border-white/15 dark:bg-white/10 p-2.5 sm:p-3 shadow-sm"
+                  className="rounded-xl border border-forest/12 bg-white dark:border-white/5 dark:bg-[#132317] p-2.5 sm:p-3 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-1 text-[11px] font-semibold text-ink/80 dark:text-white/80">
@@ -285,7 +285,7 @@ export function HeroDashboardMockup() {
                   initial={{ opacity: 0, y: -12, scale: 0.94 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.45, ease: 'easeOut' }}
-                  className="rounded-xl border border-forest/12 bg-white dark:border-white/15 dark:bg-white/10 p-2.5 sm:p-3 shadow-sm"
+                  className="rounded-xl border border-forest/12 bg-white dark:border-white/5 dark:bg-[#132317] p-2.5 sm:p-3 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-1 text-[11px] font-semibold text-ink/80 dark:text-white/80">
@@ -308,7 +308,7 @@ export function HeroDashboardMockup() {
                   initial={{ opacity: 0, y: -12, scale: 0.94 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.45, ease: 'easeOut' }}
-                  className="rounded-xl border border-forest/12 bg-white dark:border-white/15 dark:bg-white/10 p-2.5 sm:p-3 shadow-sm"
+                  className="rounded-xl border border-forest/12 bg-white dark:border-white/5 dark:bg-[#132317] p-2.5 sm:p-3 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-1 text-[11px] font-semibold text-ink/80 dark:text-white/80">
@@ -327,13 +327,13 @@ export function HeroDashboardMockup() {
           </div>
 
           {/* COLUMN: PREPARING */}
-          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/10 dark:bg-white/5 p-2.5 sm:p-3.5 shadow-sm">
-            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/10 pb-2">
+          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/5 dark:bg-white/[0.03] p-2.5 sm:p-3.5 shadow-sm">
+            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/5 pb-2">
               <div className="flex items-center gap-1.5">
                 <span className="size-2 rounded-full bg-orange-500" />
                 <span className="text-xs font-bold uppercase tracking-wider text-ink dark:text-white">Preparing</span>
               </div>
-              <span className="rounded-full bg-forest/10 dark:bg-white/10 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
+              <span className="rounded-full bg-forest/10 dark:bg-white/5 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
                 {order1Col === 'preparing' ? 1 : 0}
               </span>
             </div>
@@ -365,13 +365,13 @@ export function HeroDashboardMockup() {
           </div>
 
           {/* COLUMN: READY */}
-          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/10 dark:bg-white/5 p-2.5 sm:p-3.5 shadow-sm">
-            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/10 pb-2">
+          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/5 dark:bg-white/[0.03] p-2.5 sm:p-3.5 shadow-sm">
+            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/5 pb-2">
               <div className="flex items-center gap-1.5">
                 <span className="size-2 rounded-full bg-leaf" />
                 <span className="text-xs font-bold uppercase tracking-wider text-ink dark:text-white">Ready</span>
               </div>
-              <span className="rounded-full bg-forest/10 dark:bg-white/10 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
+              <span className="rounded-full bg-forest/10 dark:bg-white/5 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
                 {order1Col === 'ready' ? 1 : 0}
               </span>
             </div>
@@ -404,7 +404,7 @@ export function HeroDashboardMockup() {
         </div>
 
         {/* Bottom Status bar */}
-        <div className="mt-3 flex items-center justify-between border-t border-forest/10 dark:border-white/10 pt-2 text-[11px] text-ink/60 dark:text-white/60">
+        <div className="mt-3 flex items-center justify-between border-t border-forest/10 dark:border-white/5 pt-2 text-[11px] text-ink/60 dark:text-white/60">
           <span className="flex items-center gap-1.5">
             <span className="inline-block size-2 rounded-full bg-brand dark:bg-leaf animate-pulse" /> Live Kitchen Display Connected
           </span>
