@@ -5,16 +5,6 @@ import Image from 'next/image'
 import { motion, useReducedMotion, useInView } from 'motion/react'
 import { MessageCircle, Globe, QrCode, ChefHat } from 'lucide-react'
 
-interface OrderItem {
-  id: string
-  ticketNum: string
-  channel: 'WhatsApp' | 'Web' | 'Table 7 QR'
-  items: string
-  price: string
-  column: 'incoming' | 'new' | 'preparing' | 'ready'
-  status: 'Incoming' | 'New' | 'Preparing' | 'Ready'
-}
-
 export function HeroDashboardMockup() {
   const containerRef = useRef<HTMLDivElement>(null)
   const prefersReduced = useReducedMotion()
@@ -38,15 +28,6 @@ export function HeroDashboardMockup() {
   // 8-second loop timeline
   useEffect(() => {
     if (!mounted || prefersReduced || !isInView || isTabHidden) return
-
-    // Phases:
-    // 0: Initial state (Orders: 24)
-    // 1 (0.8s): Order 1 incoming -> New (Orders: 25)
-    // 2 (2.2s): Order 2 incoming -> New (Orders: 26)
-    // 3 (3.6s): Order 3 incoming -> New (Orders: 27)
-    // 4 (5.0s): Order 1 moves to Preparing
-    // 5 (6.4s): Order 1 moves to Ready
-    // 6 (7.8s): Reset back to 0 at 8.2s
 
     const timeouts: NodeJS.Timeout[] = []
 
@@ -128,11 +109,11 @@ export function HeroDashboardMockup() {
   const getChannelIcon = (ch: string) => {
     switch (ch) {
       case 'WhatsApp':
-        return <MessageCircle className="size-3 text-leaf" />
+        return <MessageCircle className="size-3 text-brand dark:text-leaf" />
       case 'Web':
-        return <Globe className="size-3 text-sky-400" />
+        return <Globe className="size-3 text-sky-600 dark:text-sky-400" />
       case 'Table 7 QR':
-        return <QrCode className="size-3 text-emerald-300" />
+        return <QrCode className="size-3 text-emerald-600 dark:text-emerald-300" />
       default:
         return null
     }
@@ -142,25 +123,25 @@ export function HeroDashboardMockup() {
     switch (status) {
       case 'New':
         return (
-          <span className="inline-flex items-center rounded-md bg-amber-400/20 px-2 py-0.5 text-[11px] font-bold text-amber-300">
+          <span className="inline-flex items-center rounded-md bg-amber-100 text-amber-800 dark:bg-amber-400/20 dark:text-amber-300 px-2 py-0.5 text-[11px] font-bold">
             New
           </span>
         )
       case 'Preparing':
         return (
-          <span className="inline-flex items-center rounded-md bg-orange-500/25 px-2 py-0.5 text-[11px] font-bold text-orange-300">
+          <span className="inline-flex items-center rounded-md bg-orange-100 text-orange-800 dark:bg-orange-500/25 dark:text-orange-300 px-2 py-0.5 text-[11px] font-bold">
             Preparing
           </span>
         )
       case 'Ready':
         return (
-          <span className="inline-flex items-center rounded-md bg-leaf/25 px-2 py-0.5 text-[11px] font-bold text-leaf">
+          <span className="inline-flex items-center rounded-md bg-mint text-forest dark:bg-leaf/25 dark:text-leaf px-2 py-0.5 text-[11px] font-bold">
             Ready
           </span>
         )
       default:
         return (
-          <span className="inline-flex items-center rounded-md bg-white/10 px-2 py-0.5 text-[11px] font-bold text-white/70">
+          <span className="inline-flex items-center rounded-md bg-ink/10 text-ink/70 dark:bg-white/10 dark:text-white/70 px-2 py-0.5 text-[11px] font-bold">
             Incoming
           </span>
         )
@@ -168,7 +149,10 @@ export function HeroDashboardMockup() {
   }
 
   return (
-    <figure ref={containerRef} className="image-frame relative overflow-hidden bg-forest text-white shadow-2xl">
+    <figure
+      ref={containerRef}
+      className="image-frame relative overflow-hidden bg-white text-ink border border-forest/15 dark:bg-[#0c1810] dark:text-white dark:border-white/10 shadow-2xl transition-colors duration-300"
+    >
       {/* Fallback image for no-js / SSR crawl */}
       <noscript>
         <Image
@@ -185,25 +169,25 @@ export function HeroDashboardMockup() {
       {/* Interactive Mockup Component */}
       <div className="relative flex flex-col p-4 sm:p-6 w-full min-h-[380px] sm:min-h-[440px] select-none justify-between">
         {/* Top Control Bar */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4">
+        <div className="flex items-center justify-between border-b border-forest/10 dark:border-white/10 pb-3 sm:pb-4">
           <div className="flex items-center gap-2.5">
-            <span className="flex size-7 sm:size-8 items-center justify-center rounded-lg bg-leaf/20 text-leaf">
+            <span className="flex size-7 sm:size-8 items-center justify-center rounded-lg bg-mint text-brand dark:bg-leaf/20 dark:text-leaf">
               <ChefHat className="size-4 sm:size-5" />
             </span>
             <div>
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-leaf">Kitchen Board</span>
-              <p className="text-xs text-white/60 hidden sm:block">Live Order Stream</p>
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand dark:text-leaf">Kitchen Board</span>
+              <p className="text-xs text-ink/60 dark:text-white/60 hidden sm:block">Live Order Stream</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5">
-            <span className="text-xs font-medium text-white/75">Orders today</span>
-            <span className="font-mono text-sm sm:text-base font-bold text-leaf">{ordersToday}</span>
+          <div className="flex items-center gap-2 rounded-full border border-forest/15 bg-cream/80 dark:border-white/15 dark:bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5">
+            <span className="text-xs font-medium text-ink/75 dark:text-white/75">Orders today</span>
+            <span className="font-mono text-sm sm:text-base font-bold text-brand dark:text-leaf">{ordersToday}</span>
           </div>
         </div>
 
         {/* Incoming Orders Stream Strip (Left / Top alert) */}
         <div className="my-3 min-h-[42px] flex items-center gap-2 overflow-x-auto py-1">
-          <span className="text-[11px] font-mono uppercase tracking-wider text-white/50 shrink-0">Incoming:</span>
+          <span className="text-[11px] font-mono uppercase tracking-wider text-ink/60 dark:text-white/50 shrink-0">Incoming:</span>
           {/* Incoming Chip 1 */}
           {phase === 0 && (
             <motion.div
@@ -211,11 +195,11 @@ export function HeroDashboardMockup() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="flex items-center gap-1.5 rounded-full border border-leaf/30 bg-leaf/10 px-3 py-1 text-xs font-semibold text-white shrink-0"
+              className="flex items-center gap-1.5 rounded-full border border-leaf/40 bg-mint px-3 py-1 text-xs font-semibold text-forest dark:border-leaf/30 dark:bg-leaf/10 dark:text-white shrink-0 shadow-sm"
             >
               {getChannelIcon('WhatsApp')}
               <span>WhatsApp: 1 Zinger Burger + Fries</span>
-              <span className="font-mono text-[10px] text-white/60">PKR 850</span>
+              <span className="font-mono text-[10px] text-forest/70 dark:text-white/60">PKR 850</span>
             </motion.div>
           )}
 
@@ -226,11 +210,11 @@ export function HeroDashboardMockup() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="flex items-center gap-1.5 rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-xs font-semibold text-white shrink-0"
+              className="flex items-center gap-1.5 rounded-full border border-sky-300 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-900 dark:border-sky-400/30 dark:bg-sky-400/10 dark:text-white shrink-0 shadow-sm"
             >
               {getChannelIcon('Web')}
               <span>Web: 2 Chicken Wraps</span>
-              <span className="font-mono text-[10px] text-white/60">PKR 1,200</span>
+              <span className="font-mono text-[10px] text-sky-800/70 dark:text-white/60">PKR 1,200</span>
             </motion.div>
           )}
 
@@ -241,17 +225,17 @@ export function HeroDashboardMockup() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-white shrink-0"
+              className="flex items-center gap-1.5 rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-900 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-white shrink-0 shadow-sm"
             >
               {getChannelIcon('Table 7 QR')}
               <span>Table 7 QR: 1 Beef Burger</span>
-              <span className="font-mono text-[10px] text-white/60">PKR 950</span>
+              <span className="font-mono text-[10px] text-emerald-800/70 dark:text-white/60">PKR 950</span>
             </motion.div>
           )}
 
           {phase >= 3 && (
-            <span className="text-xs font-medium text-leaf flex items-center gap-1">
-              <span className="inline-block size-1.5 rounded-full bg-leaf animate-pulse" /> All orders captured
+            <span className="text-xs font-medium text-brand dark:text-leaf flex items-center gap-1.5 font-semibold">
+              <span className="inline-block size-2 rounded-full bg-brand dark:bg-leaf animate-pulse" /> All orders captured
             </span>
           )}
         </div>
@@ -259,13 +243,13 @@ export function HeroDashboardMockup() {
         {/* 3 Kitchen Board Columns */}
         <div className="grid grid-cols-3 gap-2.5 sm:gap-4 flex-1">
           {/* COLUMN: NEW */}
-          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-2.5 sm:p-3.5">
-            <div className="mb-2.5 flex items-center justify-between border-b border-white/10 pb-2">
+          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/10 dark:bg-white/5 p-2.5 sm:p-3.5 shadow-sm">
+            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/10 pb-2">
               <div className="flex items-center gap-1.5">
-                <span className="size-2 rounded-full bg-amber-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-white">New</span>
+                <span className="size-2 rounded-full bg-amber-500" />
+                <span className="text-xs font-bold uppercase tracking-wider text-ink dark:text-white">New</span>
               </div>
-              <span className="rounded-full bg-white/10 px-1.5 py-0.5 font-mono text-[10px] text-white/70">
+              <span className="rounded-full bg-forest/10 dark:bg-white/10 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
                 {(order1Col === 'new' ? 1 : 0) + (order2Col === 'new' ? 1 : 0) + (order3Col === 'new' ? 1 : 0)}
               </span>
             </div>
@@ -278,18 +262,18 @@ export function HeroDashboardMockup() {
                   initial={{ opacity: 0, y: -12, scale: 0.94 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.45, ease: 'easeOut' }}
-                  className="rounded-xl border border-white/15 bg-white/10 p-2.5 sm:p-3 shadow-md"
+                  className="rounded-xl border border-forest/12 bg-white dark:border-white/15 dark:bg-white/10 p-2.5 sm:p-3 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-[11px] font-semibold text-white/80">
+                    <span className="flex items-center gap-1 text-[11px] font-semibold text-ink/80 dark:text-white/80">
                       {getChannelIcon('WhatsApp')} WhatsApp
                     </span>
                     {getStatusBadge('New')}
                   </div>
-                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-white">1 Zinger Burger + Fries</p>
-                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-white/60">
+                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-ink dark:text-white">1 Zinger Burger + Fries</p>
+                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-ink/60 dark:text-white/60">
                     <span>#1042</span>
-                    <span>PKR 850</span>
+                    <span className="font-semibold text-brand dark:text-leaf">PKR 850</span>
                   </div>
                 </motion.div>
               )}
@@ -301,18 +285,18 @@ export function HeroDashboardMockup() {
                   initial={{ opacity: 0, y: -12, scale: 0.94 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.45, ease: 'easeOut' }}
-                  className="rounded-xl border border-white/15 bg-white/10 p-2.5 sm:p-3 shadow-md"
+                  className="rounded-xl border border-forest/12 bg-white dark:border-white/15 dark:bg-white/10 p-2.5 sm:p-3 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-[11px] font-semibold text-white/80">
+                    <span className="flex items-center gap-1 text-[11px] font-semibold text-ink/80 dark:text-white/80">
                       {getChannelIcon('Web')} Web
                     </span>
                     {getStatusBadge('New')}
                   </div>
-                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-white">2 Chicken Wraps</p>
-                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-white/60">
+                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-ink dark:text-white">2 Chicken Wraps</p>
+                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-ink/60 dark:text-white/60">
                     <span>#1043</span>
-                    <span>PKR 1,200</span>
+                    <span className="font-semibold text-brand dark:text-leaf">PKR 1,200</span>
                   </div>
                 </motion.div>
               )}
@@ -324,18 +308,18 @@ export function HeroDashboardMockup() {
                   initial={{ opacity: 0, y: -12, scale: 0.94 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.45, ease: 'easeOut' }}
-                  className="rounded-xl border border-white/15 bg-white/10 p-2.5 sm:p-3 shadow-md"
+                  className="rounded-xl border border-forest/12 bg-white dark:border-white/15 dark:bg-white/10 p-2.5 sm:p-3 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-[11px] font-semibold text-white/80">
+                    <span className="flex items-center gap-1 text-[11px] font-semibold text-ink/80 dark:text-white/80">
                       {getChannelIcon('Table 7 QR')} Table 7 QR
                     </span>
                     {getStatusBadge('New')}
                   </div>
-                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-white">1 Beef Burger</p>
-                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-white/60">
+                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-ink dark:text-white">1 Beef Burger</p>
+                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-ink/60 dark:text-white/60">
                     <span>#1044</span>
-                    <span>PKR 950</span>
+                    <span className="font-semibold text-brand dark:text-leaf">PKR 950</span>
                   </div>
                 </motion.div>
               )}
@@ -343,13 +327,13 @@ export function HeroDashboardMockup() {
           </div>
 
           {/* COLUMN: PREPARING */}
-          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-2.5 sm:p-3.5">
-            <div className="mb-2.5 flex items-center justify-between border-b border-white/10 pb-2">
+          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/10 dark:bg-white/5 p-2.5 sm:p-3.5 shadow-sm">
+            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/10 pb-2">
               <div className="flex items-center gap-1.5">
-                <span className="size-2 rounded-full bg-orange-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-white">Preparing</span>
+                <span className="size-2 rounded-full bg-orange-500" />
+                <span className="text-xs font-bold uppercase tracking-wider text-ink dark:text-white">Preparing</span>
               </div>
-              <span className="rounded-full bg-white/10 px-1.5 py-0.5 font-mono text-[10px] text-white/70">
+              <span className="rounded-full bg-forest/10 dark:bg-white/10 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
                 {order1Col === 'preparing' ? 1 : 0}
               </span>
             </div>
@@ -362,18 +346,18 @@ export function HeroDashboardMockup() {
                   initial={{ opacity: 0, scale: 0.94 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="rounded-xl border border-orange-400/30 bg-orange-500/10 p-2.5 sm:p-3 shadow-md"
+                  className="rounded-xl border border-orange-200 bg-orange-50/70 dark:border-orange-400/30 dark:bg-orange-500/10 p-2.5 sm:p-3 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-[11px] font-semibold text-white/80">
+                    <span className="flex items-center gap-1 text-[11px] font-semibold text-ink/80 dark:text-white/80">
                       {getChannelIcon('WhatsApp')} WhatsApp
                     </span>
                     {getStatusBadge('Preparing')}
                   </div>
-                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-white">1 Zinger Burger + Fries</p>
-                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-white/60">
+                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-ink dark:text-white">1 Zinger Burger + Fries</p>
+                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-ink/60 dark:text-white/60">
                     <span>#1042</span>
-                    <span>PKR 850</span>
+                    <span className="font-semibold text-brand dark:text-leaf">PKR 850</span>
                   </div>
                 </motion.div>
               )}
@@ -381,13 +365,13 @@ export function HeroDashboardMockup() {
           </div>
 
           {/* COLUMN: READY */}
-          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-2.5 sm:p-3.5">
-            <div className="mb-2.5 flex items-center justify-between border-b border-white/10 pb-2">
+          <div className="flex flex-col rounded-xl sm:rounded-2xl border border-forest/12 bg-cream/60 dark:border-white/10 dark:bg-white/5 p-2.5 sm:p-3.5 shadow-sm">
+            <div className="mb-2.5 flex items-center justify-between border-b border-forest/10 dark:border-white/10 pb-2">
               <div className="flex items-center gap-1.5">
                 <span className="size-2 rounded-full bg-leaf" />
-                <span className="text-xs font-bold uppercase tracking-wider text-white">Ready</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-ink dark:text-white">Ready</span>
               </div>
-              <span className="rounded-full bg-white/10 px-1.5 py-0.5 font-mono text-[10px] text-white/70">
+              <span className="rounded-full bg-forest/10 dark:bg-white/10 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink/70 dark:text-white/70">
                 {order1Col === 'ready' ? 1 : 0}
               </span>
             </div>
@@ -400,18 +384,18 @@ export function HeroDashboardMockup() {
                   initial={{ opacity: 0, scale: 0.94 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="rounded-xl border border-leaf/30 bg-leaf/10 p-2.5 sm:p-3 shadow-md"
+                  className="rounded-xl border border-leaf/40 bg-mint/50 dark:border-leaf/30 dark:bg-leaf/10 p-2.5 sm:p-3 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-[11px] font-semibold text-white/80">
+                    <span className="flex items-center gap-1 text-[11px] font-semibold text-ink/80 dark:text-white/80">
                       {getChannelIcon('WhatsApp')} WhatsApp
                     </span>
                     {getStatusBadge('Ready')}
                   </div>
-                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-white">1 Zinger Burger + Fries</p>
-                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-white/60">
+                  <p className="mt-1.5 text-xs sm:text-sm font-bold text-ink dark:text-white">1 Zinger Burger + Fries</p>
+                  <div className="mt-1 flex items-center justify-between font-mono text-[10px] text-ink/60 dark:text-white/60">
                     <span>#1042</span>
-                    <span>PKR 850</span>
+                    <span className="font-semibold text-brand dark:text-leaf">PKR 850</span>
                   </div>
                 </motion.div>
               )}
@@ -420,14 +404,13 @@ export function HeroDashboardMockup() {
         </div>
 
         {/* Bottom Status bar */}
-        <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-2 text-[11px] text-white/60">
+        <div className="mt-3 flex items-center justify-between border-t border-forest/10 dark:border-white/10 pt-2 text-[11px] text-ink/60 dark:text-white/60">
           <span className="flex items-center gap-1.5">
-            <span className="inline-block size-2 rounded-full bg-leaf animate-pulse" /> Live Kitchen Display Connected
+            <span className="inline-block size-2 rounded-full bg-brand dark:bg-leaf animate-pulse" /> Live Kitchen Display Connected
           </span>
-          <span className="font-mono text-[10px]">OrderPilot.pk</span>
+          <span className="font-mono text-[10px] font-semibold text-brand dark:text-leaf">OrderPilot.pk</span>
         </div>
       </div>
     </figure>
   )
 }
-
