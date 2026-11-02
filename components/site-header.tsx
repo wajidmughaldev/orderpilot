@@ -52,13 +52,24 @@ export function SiteHeader() {
       >
         <Link href="/" className="flex min-h-12 items-center py-1" aria-label="OrderPilot home">
           <Image
-            src="/assets/orderpilot-logo.webp"
+            src="/assets/orderpilot-logo-light.png"
             alt="OrderPilot.pk — Smart Orders Simplified"
-            width={560}
-            height={225}
+            width={1024}
+            height={384}
             priority
             sizes="(min-width: 640px) 210px, 180px"
-            className={`w-auto object-contain transition-all duration-300 ease-out dark:brightness-0 dark:invert ${
+            className={`w-auto object-contain transition-all duration-300 ease-out dark:hidden ${
+              isScrolled ? 'h-12' : 'h-20'
+            }`}
+          />
+          <Image
+            src="/assets/orderpilot-logo-dark.png"
+            alt="OrderPilot.pk — Smart Orders Simplified"
+            width={1024}
+            height={384}
+            priority
+            sizes="(min-width: 640px) 210px, 180px"
+            className={`w-auto object-contain transition-all duration-300 ease-out hidden dark:block ${
               isScrolled ? 'h-12' : 'h-20'
             }`}
           />
