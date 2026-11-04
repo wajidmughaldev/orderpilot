@@ -42,12 +42,69 @@ body { margin: 0; background: var(--background); color: var(--foreground); font-
 a, button, input, select, textarea, summary { outline-offset: 4px; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid #005f00; outline-offset: 2px; }
 .bg-forest a:focus-visible, .bg-forest button:focus-visible, .bg-forest input:focus-visible, .bg-forest textarea:focus-visible, footer a:focus-visible, footer button:focus-visible, .ops-board :focus-visible, .showcase :focus-visible { outline: 2px solid #5ed44f; outline-offset: 2px; }
-.site-shell { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
+/* Fluid responsive container and gutter architecture */
+:root {
+  --gutter: 20px;
+  --container-max: 1360px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 40px;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --gutter: 48px;
+  }
+}
+
+.site-shell {
+  width: 100%;
+  max-width: calc(var(--container-max) + (var(--gutter) * 2));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  box-sizing: border-box;
+}
+
+.site-shell-wide {
+  max-width: calc(1440px + (var(--gutter) * 2));
+}
+
+.site-shell-1280 {
+  max-width: calc(1280px + (var(--gutter) * 2));
+}
+
+.site-shell-1200 {
+  max-width: calc(1200px + (var(--gutter) * 2));
+}
+
+.site-shell-800 {
+  max-width: calc(800px + (var(--gutter) * 2));
+}
 .section-pad { padding-block: clamp(3.5rem, 7vw, 6rem); }
 .hero-section { position: relative; overflow: hidden; padding-block: clamp(3.5rem, 7vw, 6rem); background: linear-gradient(115deg, #faf9f4 0 54%, #ddf4db 100%); }
 .section-heading { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 .section-heading-eyebrow { margin-bottom: 1rem; }
 .section-description { max-width: 640px; font-size: 1.05rem; font-weight: 500; line-height: 1.7; color: color-mix(in srgb, #101820 85%, transparent); }
+.section-heading-centered { display: flex; flex-direction: column; align-items: center; text-align: center; margin-inline: auto; }
+.section-heading-centered .section-heading-eyebrow { margin-bottom: 1rem; }
+.section-heading-centered .section-title { text-wrap: balance; margin-inline: auto; }
+.section-heading-centered .section-description { max-width: 640px; font-size: 1.05rem; font-weight: 500; line-height: 1.7; color: color-mix(in srgb, #101820 85%, transparent); margin-inline: auto; text-wrap: balance; }
+.section-heading-centered .eyebrow::after { content: ''; width: 1.75rem; height: 2px; background: currentColor; }
 .eyebrow { display: inline-flex; align-items: center; gap: .55rem; color: #004500; font: 700 .75rem/1 var(--font-space), sans-serif; letter-spacing: .15em; text-transform: uppercase; }
 .eyebrow::before { content: ''; width: 1.75rem; height: 2px; background: currentColor; }
 .partner-label { color: #004500; font: 700 .7rem/1.2 var(--font-space), sans-serif; letter-spacing: .1em; text-transform: uppercase; }
@@ -124,6 +181,31 @@ h3 { letter-spacing: -.01em; }
   animation: hero-light-trail var(--trail-duration, 7s) cubic-bezier(0.4, 0, 0.2, 1) infinite;
   animation-delay: var(--trail-delay, 0s);
   will-change: transform, opacity;
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  html,
+  body {
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  .hero-section,
+  .hero-section *,
+  [style*="transform"],
+  [style*="opacity"] {
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -269,7 +351,6 @@ h3 { letter-spacing: -.01em; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
-  .site-shell { width: min(100% - 1.25rem, 1180px); }
   .hero-section { background: linear-gradient(180deg, #faf9f4 0 48%, #ddf4db 100%); }
   .dark .hero-section { background: linear-gradient(180deg, #0b140d 0 48%, #122817 100%); }
   .ops-board-grid { grid-template-columns: 1fr; }

@@ -9,7 +9,7 @@ const whatsappUrl = 'https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%2
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const isInView = useInView(sectionRef, { once: true, margin: '0px' })
   const prefersReduced = useReducedMotion()
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'error' | 'success'>('idle')
@@ -57,11 +57,11 @@ export function ContactSection() {
 
   return (
     <section ref={sectionRef} id="contact" className="section-pad scroll-mt-20 bg-forest dark:bg-[#07260c] text-white">
-      <div className="site-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+      <div className="site-shell site-shell-1280 grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
         <motion.div
           initial={prefersReduced ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '0px', amount: 0.05 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
           <p className="eyebrow !text-leaf">TALK TO US</p>
@@ -90,7 +90,7 @@ export function ContactSection() {
         <motion.div
           initial={prefersReduced ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '0px', amount: 0.05 }}
           transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
         >
           <form className="grid gap-5 rounded-[2rem] bg-white p-7 text-ink sm:grid-cols-2 sm:p-9 dark:bg-[#121e15] dark:border dark:border-white/5 dark:text-white" onSubmit={handleSubmit}>

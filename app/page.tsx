@@ -106,18 +106,20 @@ export default function HomePage() {
 
         {/* REASSURANCE: REPLACE THE ORDERPILOT SOLUTION */}
         <section className="section-pad bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/5">
-          <ScrollReveal className="site-shell max-w-3xl">
-            <h2 className="section-title">You don&apos;t have to change how customers order.</h2>
-            <p className="section-description mt-5 max-w-[640px] text-base sm:text-lg">
-              They keep using WhatsApp, your website or table QR codes with no app to download. OrderPilot collects those orders in one view for your team.
-            </p>
-            <p className="mt-6 text-sm font-semibold text-brand dark:text-leaf">
-              Curious how orders travel from customer to kitchen?{' '}
-              <a href="#how" className="underline underline-offset-4 hover:text-forest dark:hover:text-mint">
-                See the 4-step workflow below ↓
-              </a>
-            </p>
-          </ScrollReveal>
+          <div className="site-shell site-shell-800">
+            <ScrollReveal className="mx-auto max-w-3xl text-center flex flex-col items-center">
+              <h2 className="section-title text-balance">You don&apos;t have to change how customers order.</h2>
+              <p className="section-description mt-5 max-w-[640px] text-base sm:text-lg text-balance mx-auto">
+                They keep using WhatsApp, your website or table QR codes with no app to download. OrderPilot collects those orders in one view for your team.
+              </p>
+              <p className="mt-6 text-sm font-semibold text-brand dark:text-leaf text-balance">
+                Curious how orders travel from customer to kitchen?{' '}
+                <a href="#how" className="underline underline-offset-4 hover:text-forest dark:hover:text-mint">
+                  See the 4-step workflow below ↓
+                </a>
+              </p>
+            </ScrollReveal>
+          </div>
         </section>
 
         {/* HOW IT WORKS */}
@@ -135,9 +137,9 @@ export default function HomePage() {
 
         {/* SEE THE PRODUCT */}
         <section id="product" className="section-pad scroll-mt-20 bg-white dark:bg-[#0b140d]">
-          <div className="site-shell">
+          <div className="site-shell site-shell-wide">
             <ScrollReveal>
-              <header className="section-heading">
+              <header className="section-heading-centered mb-12">
                 <p className="eyebrow section-heading-eyebrow">SEE THE PRODUCT</p>
                 <h2 className="section-title">Your kitchen board, up close.</h2>
                 <p className="section-description mt-4">See how your team can follow orders from New to Ready.</p>
@@ -173,31 +175,37 @@ export default function HomePage() {
         {/* PRICING */}
         <PricingSectionView />
 
-        {/* FAQ */}
+                {/* FAQ */}
         <section id="faq" className="section-pad scroll-mt-20 bg-cream dark:bg-[#0c150f]">
-          <div className="site-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
-            <ScrollReveal className="lg:sticky lg:top-28 lg:self-start">
-              <header className="section-heading">
+          <div className="site-shell site-shell-800">
+            <ScrollReveal>
+              <header className="section-heading-centered mb-12 sm:mb-16">
                 <p className="eyebrow section-heading-eyebrow">FAQ</p>
                 <h2 className="section-title">Good questions. Clear answers.</h2>
                 <p className="section-description mt-4">Quick answers about cost, plans and payment.</p>
               </header>
-              <div className="mt-8 border-t border-forest/10 pt-6 dark:border-white/10">
-                <p className="text-base font-bold text-ink dark:text-white">Still have questions?</p>
-                <p className="mt-2 text-sm text-ink/75 dark:text-white/75">
-                  Message us on WhatsApp and we’ll answer them for your specific restaurant setup.
-                </p>
-                <a
-                  href={whatsappHeroUrl}
-                  className="button-secondary mt-4 inline-flex !border-forest/20 text-sm"
-                >
-                  Chat on WhatsApp
-                </a>
-              </div>
             </ScrollReveal>
-            <ScrollReveal delay={0.1} className="w-full">
-              <FaqList items={faqs} />
-            </ScrollReveal>
+
+            <div className="mx-auto max-w-3xl w-full">
+              <ScrollReveal delay={0.1}>
+                <FaqList items={faqs} />
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.15}>
+                <div className="mt-12 rounded-2xl border border-forest/10 bg-white/70 p-6 sm:p-8 text-center dark:border-white/10 dark:bg-white/[0.03]">
+                  <p className="text-base font-bold text-ink dark:text-white">Still have questions?</p>
+                  <p className="mt-2 text-sm text-ink/75 dark:text-white/75 max-w-md mx-auto">
+                    Message us on WhatsApp and we’ll answer them for your specific restaurant setup.
+                  </p>
+                  <a
+                    href={whatsappHeroUrl}
+                    className="button-secondary mt-5 inline-flex !border-forest/20 text-sm"
+                  >
+                    Chat on WhatsApp
+                  </a>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </section>
 

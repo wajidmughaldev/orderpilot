@@ -40,7 +40,7 @@ const STEP_DATA = [
 export default function OrderWorkflow() {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReduced = useReducedMotion();
-  const isInView = useInView(containerRef, { margin: '-80px' });
+  const isInView = useInView(containerRef, { margin: '0px' });
 
   const [channel, setChannel] = useState<WorkflowChannel>('whatsapp');
   const [activeStep, setActiveStep] = useState<number>(0);
@@ -102,9 +102,9 @@ export default function OrderWorkflow() {
       <motion.header
         initial={prefersReduced ? false : { opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: true, margin: '0px', amount: 0.05 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="section-heading mb-10"
+        className="section-heading-centered mb-12"
       >
         <p className="eyebrow section-heading-eyebrow">HOW IT WORKS</p>
         <h2 className="section-title">From order to kitchen, in four steps.</h2>
@@ -114,7 +114,7 @@ export default function OrderWorkflow() {
       <motion.section
         initial={prefersReduced ? false : { opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: true, margin: '0px', amount: 0.05 }}
         transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
         className="workflow-shell"
         aria-label="OrderPilot ordering steps"

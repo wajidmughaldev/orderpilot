@@ -51,9 +51,9 @@ export function WhatYouGetSection() {
         <motion.header
           initial={prefersReduced ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '0px', amount: 0.05 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="section-heading"
+          className="section-heading-centered mb-12"
         >
           <p className="eyebrow section-heading-eyebrow">WHAT YOU GET</p>
           <h2 className="section-title">The tools that keep orders moving.</h2>
@@ -65,7 +65,7 @@ export function WhatYouGetSection() {
           <motion.div
             initial={prefersReduced ? false : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: '0px', amount: 0.05 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: prefersReduced ? 0 : 0.55 }}
             className="ops-board-head"
           >
@@ -81,7 +81,7 @@ export function WhatYouGetSection() {
                   key={tile.title}
                   initial={prefersReduced ? false : { opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
+                  viewport={{ once: true, margin: '0px', amount: 0.05 }}
                   transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.07 }}
                   whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
                   className="ops-card transition-shadow duration-200 hover:shadow-xl"

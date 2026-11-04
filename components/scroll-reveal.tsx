@@ -16,7 +16,7 @@ export function ScrollReveal({ children, className = '', delay = 0, y = 20 }: Sc
     <motion.div
       initial={prefersReduced ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: true, margin: '0px', amount: 0.05 }}
       transition={{ duration: 0.55, ease: 'easeOut', delay }}
       className={className}
     >

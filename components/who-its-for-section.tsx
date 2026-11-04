@@ -64,9 +64,9 @@ export function WhoItsForSection() {
         <motion.header
           initial={prefersReduced ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '0px', amount: 0.05 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="section-heading"
+          className="section-heading-centered mb-12"
         >
           <p className="eyebrow section-heading-eyebrow">WHO IT&apos;S FOR</p>
           <h2 className="section-title">From cafés to cloud kitchens.</h2>
@@ -80,7 +80,7 @@ export function WhoItsForSection() {
                 key={item.title}
                 initial={prefersReduced ? false : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
+                viewport={{ once: true, margin: '0px', amount: 0.05 }}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.07 }}
                 whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
                 className="group relative overflow-hidden panel flex min-h-[15rem] flex-col justify-start p-6 sm:p-7 transition-all duration-300 hover:border-brand/30 hover:shadow-xl dark:hover:border-leaf/30"

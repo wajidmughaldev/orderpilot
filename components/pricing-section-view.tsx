@@ -9,13 +9,13 @@ export function PricingSectionView() {
 
   return (
     <section id="pricing" className="section-pad scroll-mt-20 bg-cream">
-      <div className="site-shell">
+      <div className="site-shell site-shell-1200">
         <motion.header
           initial={prefersReduced ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '0px', amount: 0.05 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="section-heading"
+          className="section-heading-centered mb-12"
         >
           <p className="eyebrow section-heading-eyebrow">PRICING</p>
           <h2 className="section-title">Two ways to pay.</h2>
@@ -30,7 +30,7 @@ export function PricingSectionView() {
           <motion.article
             initial={prefersReduced ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: '0px', amount: 0.05 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }}
             whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
             className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/5 dark:bg-[#121e15] dark:hover:border-leaf/30"
@@ -90,7 +90,7 @@ export function PricingSectionView() {
           <motion.article
             initial={prefersReduced ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: '0px', amount: 0.05 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.08 }}
             whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
             className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/5 dark:bg-[#121e15] dark:hover:border-leaf/30"
@@ -145,7 +145,7 @@ export function PricingSectionView() {
             </div>
           </motion.article>
         </div>
-        <p className="mt-6 text-center text-sm font-medium text-ink/70 dark:text-white/70">
+        <p className="mt-8 max-w-2xl mx-auto text-center text-xs sm:text-sm font-medium text-ink/70 dark:text-white/70">
           Try OrderPilot for 14 days. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes. Monthly plans cover up to 1,000 orders per month.
         </p>
       </div>

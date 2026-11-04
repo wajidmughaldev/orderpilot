@@ -35,9 +35,9 @@ export function ProblemSection() {
         <motion.header
           initial={prefersReduced ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '0px', amount: 0.05 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="section-heading"
+          className="section-heading-centered mb-12"
         >
           <p className="eyebrow section-heading-eyebrow">THE PROBLEM</p>
           <h2 className="section-title">Orders come from too many places.</h2>
@@ -53,7 +53,7 @@ export function ProblemSection() {
                 key={item.title}
                 initial={prefersReduced ? false : { opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
+                viewport={{ once: true, margin: '0px', amount: 0.05 }}
                 transition={{
                   duration: 0.55,
                   ease: 'easeOut',
@@ -92,9 +92,9 @@ export function ProblemSection() {
         <motion.p
           initial={prefersReduced ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '0px', amount: 0.05 }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
-          className="mt-8 max-w-4xl text-lg font-semibold text-brand dark:text-leaf"
+          className="mt-10 max-w-3xl mx-auto text-center text-lg font-semibold text-brand dark:text-leaf text-balance"
         >
           You&apos;re not doing anything wrong. There are just too many places to look. OrderPilot puts them in one.
         </motion.p>

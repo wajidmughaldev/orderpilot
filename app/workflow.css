@@ -11,7 +11,7 @@
   --paper: #ffffff;
   --font: var(--font-jakarta), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-family: var(--font);
-  width: 100%; max-width: 1180px; margin: 0 auto; padding: 20px 13px 13px;
+  width: 100%; max-width: 1360px; margin: 0 auto; padding: 20px 13px 13px;
   border-radius: 31px; border: 1px solid #d6efdc;
   background: linear-gradient(112deg, #f0fbf1 0%, #f3fff2 58%, #edf9ed 100%);
   box-shadow: 0 12px 42px rgba(16, 61, 29, .035); position: relative;
@@ -278,7 +278,7 @@
 /* Responsive design */
 @media (max-width: 1450px) {
   .page-container{padding-block:0;padding-inline:0;}
-  .workflow-shell{max-width:1270px;}
+  .workflow-shell{max-width:100%;}
   .workflow-main{grid-template-columns:minmax(0, 42%) minmax(0,1fr);gap:21px;}
   .showcase-intro{margin-left:37px;}
   .showcase-intro h2{font-size:30px;}

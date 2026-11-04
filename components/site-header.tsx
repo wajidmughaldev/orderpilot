@@ -103,7 +103,7 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <nav id="mobile-menu" className="border-t border-forest/10 dark:border-white/5 bg-cream dark:bg-[#0e1910] p-5 lg:hidden" aria-label="Mobile navigation">
+        <nav id="mobile-menu" className="border-t border-forest/10 dark:border-white/5 bg-cream dark:bg-[#0e1910] py-5 lg:hidden" aria-label="Mobile navigation">
           <div className="site-shell flex flex-col gap-2">
             {links.map((link) => (
               <Link
