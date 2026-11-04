@@ -7,38 +7,38 @@ const whatYouGetTiles = [
   {
     icon: Monitor,
     number: '01',
-    title: 'One screen for every order.',
+    title: 'Live order board.',
     copy: 'WhatsApp, web and table QR orders land on one kitchen board.',
   },
   {
     icon: CreditCard,
     number: '02',
     title: 'Pay the way Pakistan pays.',
-    copy: 'Cash on delivery, JazzCash, EasyPaisa or bank transfer. For transfers, customers upload a receipt and your manager approves it before the kitchen starts.',
+    copy: 'Cash on delivery, JazzCash, EasyPaisa or bank transfer. Customers upload payment receipts so managers verify payment before preparation starts.',
   },
   {
     icon: ChefHat,
     number: '03',
     title: 'A screen for your kitchen.',
-    copy: 'Pair a kitchen display with a code. Your cooks see tickets without logging into your account.',
+    copy: 'Pair a kitchen display with a code so cooks see tickets without logging into your account.',
   },
   {
     icon: QrCode,
     number: '04',
-    title: 'Table QR that stays with the guest.',
-    copy: 'Guests add more orders during their visit, call the waiter, or ask for the bill. Your staff handle each request.',
+    title: 'Table QR ordering.',
+    copy: 'Guests scan at their table to browse and order directly. Floor staff spend less time writing notes.',
   },
   {
     icon: RefreshCw,
     number: '05',
-    title: 'Customers know where their order is.',
-    copy: 'New, preparing, ready. WhatsApp customers get updates automatically.',
+    title: 'Order status tracking.',
+    copy: 'Move orders through New, Preparing, and Ready so the whole team sees what’s next.',
   },
   {
     icon: Users,
     number: '06',
-    title: 'Your customers, in one place.',
-    copy: 'Names, order history and notes for every customer. Filter your VIP and regular customers.',
+    title: 'Your customer list.',
+    copy: 'Names, phone numbers, and past orders in one account. Easy to recognize your repeat guests.',
   },
 ]
 
@@ -48,11 +48,17 @@ export function WhatYouGetSection() {
   return (
     <section id="what-you-get" className="section-pad scroll-mt-20 bg-mint">
       <div className="site-shell">
-        <header className="section-heading">
+        <motion.header
+          initial={prefersReduced ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="section-heading"
+        >
           <p className="eyebrow section-heading-eyebrow">WHAT YOU GET</p>
-          <h2 className="section-title">What you get.</h2>
+          <h2 className="section-title">The tools that keep orders moving.</h2>
           <p className="section-description mt-4">Use all of it, or only the parts you need.</p>
-        </header>
+        </motion.header>
 
         <div className="ops-board mt-10">
           {/* Panel top labels fade in last */}

@@ -150,16 +150,18 @@ async function runAll() {
       assert.equal(delivered.name, 'Ahmed Khan')
       assert.equal(delivered.phone, '03001234567')
       assert.equal(delivered.city, 'Karachi')
+      assert.equal(delivered.intent, 'demo')
       assert.equal(webhook.requests[0].headers.authorization, 'Bearer test_token_secret_123')
     })
 
-    await test('Book Demo submission delivers full metadata to webhook', async () => {
+    await test('Book Demo submission delivers full metadata to webhook with demo intent', async () => {
       webhook.clear()
       const res = await fetch(`${BASE_URL}/api/demo-request`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.2' },
         body: JSON.stringify({
           source: 'book-demo',
+          intent: 'demo',
           restaurant: 'Lahore Grill & BBQ',
           name: 'Usman Ali',
           phone: '+92 321 9876543',
@@ -176,11 +178,69 @@ async function runAll() {
       assert.equal(res.status, 200)
       const data = await res.json()
       assert.equal(data.success, true)
+      assert.equal(data.intent, 'demo')
+      assert.ok(data.message.includes('agree the next step'))
       assert.equal(webhook.requests.length, 1)
       const delivered = webhook.requests[0].body
       assert.equal(delivered.restaurant, 'Lahore Grill & BBQ')
+      assert.equal(delivered.source, 'book-demo')
+      assert.equal(delivered.intent, 'demo')
       assert.equal(delivered.volume, '31–100')
       assert.equal(delivered.billing, 'Monthly')
+    })
+
+    await test('Free Trial submission delivers normalized intent free-trial and communicates activation contact', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.22' },
+        body: JSON.stringify({
+          source: 'book-demo',
+          intent: 'trial',
+          restaurant: 'Islamabad Burger Lab',
+          name: 'Hamza Tariq',
+          phone: '+92 333 5556677',
+          city: 'Islamabad',
+          billing: 'Monthly',
+          challenge: 'Want 14-day trial for WhatsApp orders'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'free-trial')
+      assert.ok(data.message.includes('activate your account'))
+      assert.equal(webhook.requests.length, 1)
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.restaurant, 'Islamabad Burger Lab')
+      assert.equal(delivered.source, 'book-demo')
+      assert.equal(delivered.intent, 'free-trial')
+    })
+
+    await test('Submission with unrecognized intent falls back to demo', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.23' },
+        body: JSON.stringify({
+          source: 'book-demo',
+          intent: 'unknown-random-value',
+          restaurant: 'Fallback Diner',
+          name: 'Ali Raza',
+          phone: '+92 300 1112233',
+          city: 'Rawalpindi'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'demo')
+      assert.equal(webhook.requests.length, 1)
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.intent, 'demo')
+      assert.equal(delivered.source, 'book-demo')
     })
 
     await test('Valid international phone format is accepted with 200', async () => {
@@ -500,14 +560,24 @@ async function runAll() {
       const header = fs.readFileSync(path.join(ROOT_DIR, 'components/site-header.tsx'), 'utf8')
       const footer = fs.readFileSync(path.join(ROOT_DIR, 'components/site-footer.tsx'), 'utf8')
       const pricing = fs.readFileSync(path.join(ROOT_DIR, 'app/pricing/page.tsx'), 'utf8')
+      const home = fs.readFileSync(path.join(ROOT_DIR, 'app/page.tsx'), 'utf8')
 
       assert.ok(header.includes('/#how'))
       assert.ok(header.includes('/#product'))
       assert.ok(header.includes('/#pricing'))
       assert.ok(header.includes('/#contact'))
+      assert.ok(header.includes('/book-demo?intent=demo'))
+
+      assert.ok(home.includes('/book-demo?intent=trial'))
+      assert.ok(home.includes('/book-demo?intent=demo'))
 
       assert.ok(footer.includes('923361815141'))
-      assert.ok(footer.includes('info@digipexsolutions.com'))
+      assert.ok(footer.includes('contact@orderpilot.pk'))
+      assert.ok(footer.includes('/privacy'))
+      assert.ok(footer.includes('/terms'))
+      assert.ok(footer.includes('/data-deletion'))
+      assert.ok(footer.includes('/cookie-policy'))
+      assert.ok(!footer.includes("['Privacy Policy', '#']"))
 
       assert.ok(pricing.includes('wa.me/923361815141'))
       assert.ok(pricing.includes('/book-demo?interest=pricing'))
@@ -521,9 +591,12 @@ async function runAll() {
       const res = await fetch(`${BASE_URL}/pricing`)
       assert.equal(res.status, 200)
       const html = await res.text()
-      assert.ok(html.includes('PKR 9,999'))
-      assert.ok(html.includes('PKR 14,999'))
-      assert.ok(html.includes('10% to 15%'))
+      assert.ok(html.includes('PKR 5,999'))
+      assert.ok(html.includes('PKR 7,999'))
+      assert.ok(html.includes('PKR 12,999'))
+      assert.ok(html.includes('8% to 10%'))
+      assert.ok(html.includes('14-day free trial'))
+      assert.ok(html.includes('1,000 orders'))
       assert.ok(html.includes('<link rel="canonical" href="https://orderpilot.pk/pricing"'))
       assert.ok(html.includes('Pricing Plans — Transparent Subscription'))
     })
@@ -539,6 +612,10 @@ async function runAll() {
       assert.ok(xml.includes('<loc>https://orderpilot.pk/</loc>'))
       assert.ok(xml.includes('<loc>https://orderpilot.pk/pricing</loc>'))
       assert.ok(xml.includes('<loc>https://orderpilot.pk/book-demo</loc>'))
+      assert.ok(xml.includes('<loc>https://orderpilot.pk/privacy</loc>'))
+      assert.ok(xml.includes('<loc>https://orderpilot.pk/terms</loc>'))
+      assert.ok(xml.includes('<loc>https://orderpilot.pk/data-deletion</loc>'))
+      assert.ok(xml.includes('<loc>https://orderpilot.pk/cookie-policy</loc>'))
       assert.ok(!xml.includes('/api/'))
     })
 
@@ -572,6 +649,30 @@ async function runAll() {
       assert.ok(html.includes('<h1'))
       assert.ok(html.includes('<link rel="canonical" href="https://orderpilot.pk/book-demo"'))
     })
+
+    // -------------------------------------------------------------------------
+    // 13. Legal Policy Routes
+    // -------------------------------------------------------------------------
+    console.log('\nSuite 13: Legal Policy Routes')
+    const legalRoutes = [
+      { path: '/privacy', title: 'Privacy Policy' },
+      { path: '/terms', title: 'Terms of Service' },
+      { path: '/data-deletion', title: 'Data Deletion Request' },
+      { path: '/cookie-policy', title: 'Cookie Policy' },
+    ]
+
+    for (const r of legalRoutes) {
+      await test(`Legal route ${r.path} renders 200 with h1, canonical, and entity info`, async () => {
+        const res = await fetch(`${BASE_URL}${r.path}`)
+        assert.equal(res.status, 200)
+        const html = await res.text()
+        assert.ok(html.includes('<h1'))
+        assert.ok(html.includes(r.title))
+        assert.ok(html.includes(`https://orderpilot.pk${r.path}`))
+        assert.ok(html.includes('Digipex Solutions LLC'))
+        assert.ok(html.includes('contact@orderpilot.pk'))
+      })
+    }
 
   } finally {
     console.log('\nTearing down test infrastructure...')

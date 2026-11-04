@@ -82,11 +82,11 @@ export function SiteHeader() {
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
           <Link
-            href="/book-demo"
+            href="/book-demo?intent=demo"
             onClick={() => trackEvent('demo_cta_click', { location: 'header_desktop' })}
             className="button-primary desktop-cta"
           >
-            Book a Demo <ArrowUpRight aria-hidden="true" />
+            Request a Demo <ArrowUpRight aria-hidden="true" />
           </Link>
         </div>
         <div className="flex items-center gap-2 lg:hidden">
@@ -116,14 +116,14 @@ export function SiteHeader() {
               </Link>
             ))}
             <Link
-              href="/book-demo"
+              href="/book-demo?intent=demo"
               onClick={() => {
                 setOpen(false)
                 trackEvent('demo_cta_click', { location: 'header_mobile' })
               }}
               className="button-primary mt-3 justify-center"
             >
-              Book a Demo <ArrowUpRight aria-hidden="true" />
+              Request a Demo <ArrowUpRight aria-hidden="true" />
             </Link>
           </div>
         </nav>

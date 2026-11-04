@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView, useReducedMotion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import { MessageCircle, Files, RefreshCw } from 'lucide-react'
 
 const problemItems = [
@@ -10,63 +10,56 @@ const problemItems = [
     num: '01',
     title: 'Orders get buried in chats.',
     copy: 'A message comes in at 8:40, another at 8:42. By 9:00 you’re scrolling up to find the first one.',
-    jitter: { y: 35, x: 18, rotate: -3 },
   },
   {
     icon: Files,
     num: '02',
     title: 'The kitchen hears it late.',
     copy: 'Someone reads the order out, someone writes it down, and something gets missed.',
-    jitter: { y: -10, x: -14, rotate: 2.5 },
   },
   {
     icon: RefreshCw,
     num: '03',
     title: 'Customers keep calling.',
     copy: '“Bhai, mera order kahan hai?” Your staff stop what they’re doing to check.',
-    jitter: { y: -50, x: 12, rotate: -2 },
   },
 ]
 
 export function ProblemSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const closingLineRef = useRef<HTMLParagraphElement>(null)
   const prefersReduced = useReducedMotion()
-
-  const isClosingLineInView = useInView(closingLineRef, {
-    once: true,
-    margin: '-80px',
-  })
 
   return (
     <section ref={sectionRef} className="section-pad bg-cream">
       <div className="site-shell">
-        <header className="section-heading">
+        <motion.header
+          initial={prefersReduced ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="section-heading"
+        >
           <p className="eyebrow section-heading-eyebrow">THE PROBLEM</p>
           <h2 className="section-title">Orders come from too many places.</h2>
           <p className="section-description mt-4">On a busy night, that gets messy.</p>
-        </header>
+        </motion.header>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {problemItems.map((item, index) => {
             const Icon = item.icon
-            // If reduced motion: no jitter or transform
-            // If closing line is in view: neat position (x: 0, y: 0, rotate: 0)
-            // If initial scroll-in: stacked and overlapping with jitter
-            const targetTransform = prefersReduced || isClosingLineInView
-              ? { x: 0, y: 0, rotate: 0, opacity: 1 }
-              : { ...item.jitter, opacity: 1 }
 
             return (
               <motion.article
                 key={item.title}
-                initial={prefersReduced ? false : { opacity: 0, ...item.jitter }}
-                animate={targetTransform}
+                initial={prefersReduced ? false : { opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
                 transition={{
                   duration: 0.55,
                   ease: 'easeOut',
-                  delay: isClosingLineInView ? index * 0.07 : 0,
+                  delay: index * 0.12,
                 }}
+                whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
                 className="group relative overflow-hidden panel flex h-full flex-col p-7 sm:p-8 transition-all duration-300 hover:border-brand/30 hover:shadow-xl dark:hover:border-leaf/30"
               >
                 {/* Ambient corner shade */}
@@ -96,9 +89,15 @@ export function ProblemSection() {
           })}
         </div>
 
-        <p ref={closingLineRef} className="mt-8 max-w-4xl text-lg font-semibold text-brand">
+        <motion.p
+          initial={prefersReduced ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
+          className="mt-8 max-w-4xl text-lg font-semibold text-brand dark:text-leaf"
+        >
           You&apos;re not doing anything wrong. There are just too many places to look. OrderPilot puts them in one.
-        </p>
+        </motion.p>
       </div>
     </section>
   )

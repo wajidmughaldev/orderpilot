@@ -176,7 +176,7 @@ export function HeroDashboardMockup() {
             </span>
             <div>
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand dark:text-leaf">Kitchen Board</span>
-              <p className="text-xs text-ink/60 dark:text-white/60 hidden sm:block">Live Order Stream</p>
+              <p className="text-xs text-ink/60 dark:text-white/60 hidden sm:block">Interactive Simulation</p>
             </div>
           </div>
           <div className="flex items-center gap-2 rounded-full border border-forest/15 bg-cream/80 dark:border-white/5 dark:bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5">
@@ -406,7 +406,7 @@ export function HeroDashboardMockup() {
         {/* Bottom Status bar */}
         <div className="mt-3 flex items-center justify-between border-t border-forest/10 dark:border-white/5 pt-2 text-[11px] text-ink/60 dark:text-white/60">
           <span className="flex items-center gap-1.5">
-            <span className="inline-block size-2 rounded-full bg-brand dark:bg-leaf animate-pulse" /> Live Kitchen Display Connected
+            <span className="inline-block size-2 rounded-full bg-brand dark:bg-leaf animate-pulse" /> Kitchen Board Preview (Simulation)
           </span>
           <span className="font-mono text-[10px] font-semibold text-brand dark:text-leaf">OrderPilot.pk</span>
         </div>

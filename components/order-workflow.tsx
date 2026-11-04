@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, useReducedMotion, useInView } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
 import {
   channels, ico, leftPanel,
   type WorkflowChannel,
@@ -13,25 +14,25 @@ const STEP_DATA = [
   {
     number: '01',
     title: 'Customer orders.',
-    text: 'On WhatsApp, on your website, or from the table QR.',
+    text: 'On WhatsApp, your website, or from table QR.',
     extraClass: 'step-first',
   },
   {
     number: '02',
     title: 'The order is checked.',
-    text: 'Items, quantity and total are confirmed before it reaches the kitchen.',
+    text: 'Items, quantities and payment are confirmed before cooking begins.',
     extraClass: 'step-second',
   },
   {
     number: '03',
     title: 'Your team sees it.',
-    text: 'It shows up on your screen, already written down.',
+    text: 'It lands on the kitchen board, clearly readable without paper chits.',
     extraClass: 'step-third',
   },
   {
     number: '04',
     title: 'Mark it as it moves.',
-    text: 'New, preparing, ready. WhatsApp customers get an update automatically.',
+    text: 'New, preparing, ready — so the whole team stays in sync.',
     extraClass: 'step-fourth',
   },
 ];
@@ -98,13 +99,27 @@ export default function OrderWorkflow() {
 
   return (
     <div ref={containerRef} className="page-container">
-      <header className="section-heading mb-10">
+      <motion.header
+        initial={prefersReduced ? false : { opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="section-heading mb-10"
+      >
         <p className="eyebrow section-heading-eyebrow">HOW IT WORKS</p>
         <h2 className="section-title">From order to kitchen, in four steps.</h2>
         <p className="section-description mt-4">Customers order the way they already do. Your team sees it all in one place.</p>
-      </header>
+      </motion.header>
 
-      <section className="workflow-shell" aria-label="OrderPilot ordering steps" data-current-channel={channel}>
+      <motion.section
+        initial={prefersReduced ? false : { opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
+        className="workflow-shell"
+        aria-label="OrderPilot ordering steps"
+        data-current-channel={channel}
+      >
         {/* Channel Tab Bar */}
         <div className="channel-tabbar" role="tablist" aria-label="Ordering channel">
           {ORDER_CHANNELS.map((item, i) => (
@@ -146,7 +161,7 @@ export default function OrderWorkflow() {
 
             <div className="steps-wrap relative">
               <svg aria-hidden="true" className="connector-track" viewBox="0 0 792 552" preserveAspectRatio="none">
-                <path d="M761 135 H777 Q789 135 789 148 V270 Q789 280 779 280 H292 Q282 280 282 293" stroke="#b8e3d4" stroke-width="1.6" strokeDasharray="5 5" strokeLinecap="round" fill="none" />
+                <path d="M761 135 H777 Q789 135 789 148 V270 Q789 280 779 280 H292 Q282 280 282 293" stroke="#b8e3d4" strokeWidth="1.6" strokeDasharray="5 5" strokeLinecap="round" fill="none" />
               </svg>
               <span aria-hidden="true" className="connector-arrow arrow-top" dangerouslySetInnerHTML={{ __html: ico('arrowThin', '', 32) }} />
               <span aria-hidden="true" className="connector-arrow arrow-bottom" dangerouslySetInnerHTML={{ __html: ico('arrowThin', '', 32) }} />
@@ -199,9 +214,21 @@ export default function OrderWorkflow() {
                 })}
               </div>
             </div>
+
+            <div className="mt-8 border-t border-forest/10 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 dark:border-white/10">
+              <p className="text-sm font-semibold text-ink/75 dark:text-white/75">
+                Want to see the kitchen board in action?
+              </p>
+              <a
+                href="#product"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-brand hover:underline dark:text-leaf"
+              >
+                Explore the kitchen board up close <ArrowRight className="size-4" />
+              </a>
+            </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

@@ -3,10 +3,11 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { ArrowRight } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
-import { HeroDashboardMockup } from '@/components/hero-dashboard-mockup'
+import { CinematicHero } from '@/components/cinematic-hero'
 import { FaqList } from '@/components/faq-list'
 import { ContactSection } from '@/components/contact-section'
 import { PartnersSection } from '@/components/partners-section'
+import { ScrollReveal } from '@/components/scroll-reveal'
 
 // Lazy-load animated components below the fold
 const ProblemSection = dynamic(() => import('@/components/problem-section').then((mod) => mod.ProblemSection))
@@ -18,18 +19,18 @@ const PricingSectionView = dynamic(() => import('@/components/pricing-section-vi
 
 export const metadata: Metadata = {
   title: 'OrderPilot — Ordering Software for Pakistani Restaurants',
-  description: 'Customers order on WhatsApp, your website or a table QR. Every order shows up on one screen, so your kitchen knows what to make next.',
+  description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'OrderPilot — Every order, on one screen.',
-    description: 'Customers order on WhatsApp, your website or a table QR. Every order shows up on one screen, so your kitchen knows what to make next.',
+    description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
     url: '/',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot restaurant dashboard' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'OrderPilot — Every order, on one screen.',
-    description: 'Customers order on WhatsApp, your website or a table QR. Every order shows up on one screen, so your kitchen knows what to make next.',
+    description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
@@ -42,36 +43,36 @@ const softwareAppJsonLd = {
   operatingSystem: 'Web, WhatsApp',
   description: 'Multi-channel restaurant ordering software for WhatsApp, online web menus, and table QR ordering.',
   offers: [
-    { '@type': 'Offer', name: 'WhatsApp Plan', price: '9999', priceCurrency: 'PKR', billingDuration: 'P1M' },
-    { '@type': 'Offer', name: 'Web + Table Plan', price: '9999', priceCurrency: 'PKR', billingDuration: 'P1M' },
-    { '@type': 'Offer', name: 'Complete Plan', price: '14999', priceCurrency: 'PKR', billingDuration: 'P1M' },
+    { '@type': 'Offer', name: 'WhatsApp Plan', price: '5999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
+    { '@type': 'Offer', name: 'Web + Table Plan', price: '7999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
+    { '@type': 'Offer', name: 'Complete Plan', price: '12999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
   ],
 }
 
 const faqs = [
   {
     question: 'How much does it cost?',
-    answer: 'Plans start at PKR 9,999 a month. Complete, with everything included, is PKR 14,999. Or you can pay 10% to 15% of each order, depending on your usage. Message us on WhatsApp and we’ll tell you which one costs less for you.',
+    answer: 'Subscriptions start at PKR 5,999 a month, or Complete with all channels is PKR 12,999. You can also pay 8% to 10% per order with no fixed monthly fee. Message us on WhatsApp and we’ll tell you which one costs less for you.',
   },
   {
     question: 'Which plan should I pick?',
-    answer: 'If customers order only on WhatsApp, or only through your web menu and table QR, the PKR 9,999 plans cover it. If you want all three ways to order, Complete costs less than buying both. If you’re just starting and your orders are low, pay per order may cost less. Tell us roughly how many orders you get and we’ll work it out with you.',
+    answer: 'If customers only order on WhatsApp, PKR 5,999 covers it. For website and table QR, Web + Table is PKR 7,999. If you want all three, Complete is PKR 12,999. If your order volume is lower or seasonal, pay per order may cost less.',
   },
   {
     question: 'What if my staff can’t use it?',
-    answer: 'We show your team how it works before you start.',
+    answer: 'The interface is simple. We walk your team through receiving orders, updating statuses, and verifying payments before you start.',
   },
   {
     question: 'How do customers pay?',
-    answer: 'You choose what to accept: cash on delivery, JazzCash, EasyPaisa or bank transfer. For transfers, the customer uploads a receipt and your manager approves it before the kitchen starts. Your customers pay you directly.',
+    answer: 'You choose what to accept: cash on delivery, JazzCash, EasyPaisa or bank transfer. For transfers, customers upload a receipt and your manager approves it before cooking starts. Your customers pay you directly.',
   },
   {
     question: 'Can I use it for dine-in, takeaway and delivery?',
-    answer: 'Yes. Table QR for dine-in, plus takeaway and delivery orders, all on one screen. For delivery you can set a fee by area. In the demo we’ll go through which ones suit your restaurant.',
+    answer: 'Yes. Table QR for dine-in, plus takeaway and delivery orders, all on one screen. For delivery you can set custom fees by area.',
   },
   {
     question: 'Do I keep my customer list?',
-    answer: 'Yes. Your customers’ names, contact details and order history are in your account, and only your restaurant can see them.',
+    answer: 'Yes. Your customers’ contact details and order history are in your account, visible only to your restaurant.',
   },
 ]
 
@@ -87,33 +88,15 @@ const hiddenFaqs = [
 void hiddenFaqs
 
 export default function HomePage() {
-  const whatsappHeroUrl = "https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20OrderPilot%20with%20my%20restaurant%27s%20menu."
+  const whatsappHeroUrl = "https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20how%20OrderPilot%20could%20work%20for%20my%20restaurant."
 
   return (
     <AppShell>
       <main>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }} />
 
-        {/* HERO */}
-        <section className="hero-section">
-          <div className="site-shell grid items-center gap-10 lg:grid-cols-[.88fr_1.12fr]">
-            <div>
-              <p className="eyebrow">ORDERING SOFTWARE FOR PAKISTANI RESTAURANTS</p>
-              <h1 className="display mt-6">Every order, <span className="text-brand">on one screen.</span></h1>
-              <p className="section-description mt-5 max-w-[640px] text-base sm:text-lg">
-                Customers order on WhatsApp, your website or a table QR. Every order shows up on one screen, so your kitchen knows what to make next.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/book-demo" className="button-primary">Book a Demo <ArrowRight /></Link>
-                <Link href={whatsappHeroUrl} className="button-secondary">Chat on WhatsApp</Link>
-              </div>
-              <p className="mt-4 text-sm font-medium text-ink/80">
-                Plans from PKR 9,999 a month. We&apos;ll show it with your own menu. No pressure to decide.
-              </p>
-            </div>
-            <HeroDashboardMockup />
-          </div>
-        </section>
+        {/* HERO (Primary CTA: /book-demo?intent=trial) */}
+        <CinematicHero whatsappHeroUrl={whatsappHeroUrl} />
 
         {/* LOGO STRIP */}
         <PartnersSection />
@@ -121,14 +104,20 @@ export default function HomePage() {
         {/* PROBLEM */}
         <ProblemSection />
 
-        {/* REPLACE THE ORDERPILOT SOLUTION */}
+        {/* REASSURANCE: REPLACE THE ORDERPILOT SOLUTION */}
         <section className="section-pad bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/5">
-          <div className="site-shell max-w-3xl">
+          <ScrollReveal className="site-shell max-w-3xl">
             <h2 className="section-title">You don&apos;t have to change how customers order.</h2>
             <p className="section-description mt-5 max-w-[640px] text-base sm:text-lg">
-              Your team already has a way of handling orders. We&apos;re not here to change your menu or your customers. We give every order one place to land, so it&apos;s written down where your whole team can see it.
+              They keep using WhatsApp, your website or table QR codes with no app to download. OrderPilot collects those orders in one view for your team.
             </p>
-          </div>
+            <p className="mt-6 text-sm font-semibold text-brand dark:text-leaf">
+              Curious how orders travel from customer to kitchen?{' '}
+              <a href="#how" className="underline underline-offset-4 hover:text-forest dark:hover:text-mint">
+                See the 4-step workflow below ↓
+              </a>
+            </p>
+          </ScrollReveal>
         </section>
 
         {/* HOW IT WORKS */}
@@ -147,27 +136,29 @@ export default function HomePage() {
         {/* SEE THE PRODUCT */}
         <section id="product" className="section-pad scroll-mt-20 bg-white dark:bg-[#0b140d]">
           <div className="site-shell">
-            <header className="section-heading">
-              <p className="eyebrow section-heading-eyebrow">SEE THE PRODUCT</p>
-              <h2 className="section-title">Take a look.</h2>
-              <p className="section-description mt-4">This is the screen your team uses during service.</p>
-            </header>
+            <ScrollReveal>
+              <header className="section-heading">
+                <p className="eyebrow section-heading-eyebrow">SEE THE PRODUCT</p>
+                <h2 className="section-title">Your kitchen board, up close.</h2>
+                <p className="section-description mt-4">See how your team can follow orders from New to Ready.</p>
+              </header>
+            </ScrollReveal>
             <SeeProductMockup />
           </div>
         </section>
 
         {/* MID-PAGE CTA */}
         <section className="bg-forest py-16 sm:py-20 text-white">
-          <div className="site-shell flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+          <ScrollReveal className="site-shell flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
-              <h3 className="text-3xl sm:text-4xl font-bold">Want to see it with your own menu?</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold">Want to see OrderPilot with your own menu?</h3>
               <p className="mt-3 text-base sm:text-lg text-white/85">
-                Tell us how orders reach you now. We&apos;ll show you how they would look on OrderPilot.
+                Tell us how orders reach you now. We&apos;ll show you how they look on OrderPilot.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
-              <Link href="/book-demo" className="button-primary !bg-leaf !text-forest hover:!bg-white">
-                Book a Demo
+              <Link href="/book-demo?intent=demo" className="button-primary !bg-leaf !text-forest hover:!bg-white">
+                Request a Demo
               </Link>
               <Link
                 href={whatsappHeroUrl}
@@ -176,7 +167,7 @@ export default function HomePage() {
                 Chat on WhatsApp
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
         </section>
 
         {/* PRICING */}
@@ -185,16 +176,28 @@ export default function HomePage() {
         {/* FAQ */}
         <section id="faq" className="section-pad scroll-mt-20 bg-cream dark:bg-[#0c150f]">
           <div className="site-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
-            <div className="lg:sticky lg:top-28 lg:self-start">
+            <ScrollReveal className="lg:sticky lg:top-28 lg:self-start">
               <header className="section-heading">
                 <p className="eyebrow section-heading-eyebrow">FAQ</p>
-                <h2 className="section-title">Questions.</h2>
+                <h2 className="section-title">Good questions. Clear answers.</h2>
                 <p className="section-description mt-4">Quick answers about cost, plans and payment.</p>
               </header>
-            </div>
-            <div className="w-full">
+              <div className="mt-8 border-t border-forest/10 pt-6 dark:border-white/10">
+                <p className="text-base font-bold text-ink dark:text-white">Still have questions?</p>
+                <p className="mt-2 text-sm text-ink/75 dark:text-white/75">
+                  Message us on WhatsApp and we’ll answer them for your specific restaurant setup.
+                </p>
+                <a
+                  href={whatsappHeroUrl}
+                  className="button-secondary mt-4 inline-flex !border-forest/20 text-sm"
+                >
+                  Chat on WhatsApp
+                </a>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1} className="w-full">
               <FaqList items={faqs} />
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 

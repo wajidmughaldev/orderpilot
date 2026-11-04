@@ -218,6 +218,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: 'Please shorten selected interests.' }, { status: 400 })
   }
 
+  // 7.5 Normalize intent (defaults to 'demo' for backward compatibility)
+  let normalizedIntent: 'free-trial' | 'demo' = 'demo'
+  if (typeof body.intent === 'string') {
+    const rawIntent = body.intent.trim().toLowerCase()
+    if (rawIntent === 'free-trial' || rawIntent === 'trial' || rawIntent === 'freetrial') {
+      normalizedIntent = 'free-trial'
+    } else if (rawIntent === 'demo' || rawIntent === 'product-demo') {
+      normalizedIntent = 'demo'
+    }
+  }
+
   // 8. Verify delivery destination configuration
   const deliveryConfig = getDeliveryConfig()
   if (!deliveryConfig) {
@@ -231,6 +242,7 @@ export async function POST(request: Request) {
   const leadPayload = {
     submittedAt: new Date().toISOString(),
     source: typeof body.source === 'string' && body.source ? String(body.source).trim().slice(0, 50) : 'unknown',
+    intent: normalizedIntent,
     name: String(body.name).trim(),
     restaurant: String(body.restaurant).trim(),
     phone: String(body.phone).trim(),
@@ -268,9 +280,13 @@ export async function POST(request: Request) {
       )
     }
 
-    console.info(`[lead-delivery] Lead successfully delivered to configured destination (source: ${leadPayload.source})`)
+    console.info(`[lead-delivery] Lead successfully delivered to configured destination (source: ${leadPayload.source}, intent: ${leadPayload.intent})`)
+    const successMessage =
+      normalizedIntent === 'free-trial'
+        ? 'Your 14-day free trial request was received. Our team will contact you to arrange setup and activate your account.'
+        : 'Your request was sent. Our team will get in touch to agree the next step.'
     return NextResponse.json(
-      { success: true, message: 'Your request was sent. Our team will get in touch to agree the next step.' },
+      { success: true, message: successMessage, intent: normalizedIntent },
       { status: 200 }
     )
   } catch {

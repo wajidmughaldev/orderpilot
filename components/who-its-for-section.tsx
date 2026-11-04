@@ -61,11 +61,17 @@ export function WhoItsForSection() {
   return (
     <section className="section-pad bg-cream">
       <div className="site-shell">
-        <header className="section-heading">
+        <motion.header
+          initial={prefersReduced ? false : { opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="section-heading"
+        >
           <p className="eyebrow section-heading-eyebrow">WHO IT&apos;S FOR</p>
-          <h2 className="section-title">Works for any kind of restaurant.</h2>
+          <h2 className="section-title">From cafés to cloud kitchens.</h2>
           <p className="section-description mt-4">Whatever you serve, orders come from the same places.</p>
-        </header>
+        </motion.header>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {restaurantTypes.map((item, index) => {
             const Icon = item.icon

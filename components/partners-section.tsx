@@ -17,7 +17,7 @@ export function PartnersSection() {
         </div>
 
         <div className="border-y border-forest/15 py-6 md:w-[57%] md:border-x md:border-y-0 md:px-7 md:py-0 lg:px-9 dark:border-transparent md:dark:border-transparent">
-          <p className="partner-label mb-5 text-center md:text-left">National partners</p>
+          <p className="partner-label mb-5 text-center md:text-left">Incubation ecosystem</p>
           <div className="grid grid-cols-2 items-center gap-x-5 gap-y-6 sm:grid-cols-4 sm:gap-3 lg:gap-6">
             {ecosystemPartners.map((partner, index) => (
               <figure key={partner.alt} className={`flex min-h-12 items-center justify-center sm:justify-start ${index > 0 ? 'sm:border-l sm:border-forest/10 sm:dark:border-transparent sm:pl-3 lg:pl-5' : ''}`}>

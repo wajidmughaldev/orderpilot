@@ -93,10 +93,10 @@ function rightPanel(mode) {return `<div class="journey-heading"><span class="eye
  <svg aria-hidden="true" class="connector-track" viewBox="0 0 792 552" preserveAspectRatio="none"><path d="M761 135 H777 Q789 135 789 148 V270 Q789 280 779 280 H292 Q282 280 282 293" stroke="#b8e3d4" stroke-width="1.6" stroke-dasharray="5 5" stroke-linecap="round" fill="none"/></svg>
  <span aria-hidden="true" class="connector-arrow arrow-top">${ico('arrowThin','',32)}</span><span aria-hidden="true" class="connector-arrow arrow-bottom">${ico('arrowThin','',32)}</span>
  <div class="steps-grid">
- ${stepCard('01',miniFirst(mode),'Customer orders.','On WhatsApp, on your website, or from the table QR.','step-first')}
- ${stepCard('02',miniChecked(mode),'The order is checked.','Items, quantity and total are confirmed before it reaches the kitchen.','step-second')}
- ${stepCard('03',miniOrderBoard(mode),'Your team sees it.','It shows up on your screen, already written down.','step-third')}
- ${stepCard('04',kitchenProgress(),'Mark it as it moves.','New, preparing, ready. WhatsApp customers get an update automatically.','step-fourth')}
+ ${stepCard('01',miniFirst(mode),'Customer orders.','The customer places an order on WhatsApp, through your website, or at the table using a QR code.','step-first')}
+ ${stepCard('02',miniChecked(mode),'The order is checked.','Your team reviews the incoming order details, confirming items and payment method before preparation starts.','step-second')}
+ ${stepCard('03',miniOrderBoard(mode),'Your team sees it.','Once confirmed, the order moves to your kitchen board with all items and quantities clearly displayed.','step-third')}
+ ${stepCard('04',kitchenProgress(),'Mark it as it moves.','Your team updates the status from New to Preparing and Ready as food is made.','step-fourth')}
  </div></div>`;}
 
 export {channels, ico, leftPanel, rightPanel};

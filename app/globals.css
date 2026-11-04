@@ -27,8 +27,16 @@
   --radius-2xl: 1.8rem;
 }
 
-:root { --background: #faf9f4; --foreground: #101820; --primary: #005f00; --primary-foreground: #fff; --border: #d9ded7; --ring: #005f00; --input: #d9ded7; --card: #fff; }
+:root { --background: #faf9f4; --foreground: #101820; --primary: #005f00; --primary-foreground: #fff; --border: #d9ded7; --ring: #005f00; --input: #d9ded7; --card: #fff; --hero-trail-1: rgba(0, 95, 0, 0.45); --hero-trail-2: rgba(0, 168, 89, 0.5); --hero-trail-3: rgba(22, 163, 74, 0.55); }
 * { border-color: var(--border); }
+
+/* Lenis smooth scrolling integration */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
 html { scroll-behavior: smooth; overflow-x: clip; }
 body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-jakarta), sans-serif; overflow-x: clip; }
 a, button, input, select, textarea, summary { outline-offset: 4px; }
@@ -90,11 +98,50 @@ h3 { letter-spacing: -.01em; }
 .orbit-bubble-4 { bottom: 3%; right: 5%; }
 @keyframes bubble-pop { 0% { transform: scale(1); } 45% { transform: scale(.82); opacity: .55; } 75% { transform: scale(1.08); } 100% { transform: scale(1); } }
 
+@keyframes hero-light-trail {
+  0% {
+    transform: translateY(-240px);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(115vh);
+    opacity: 0;
+  }
+}
+
+.hero-light-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5px;
+  pointer-events: none;
+  animation: hero-light-trail var(--trail-duration, 7s) cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: var(--trail-delay, 0s);
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-light-trail {
+    animation: none !important;
+    opacity: 0.15 !important;
+    transform: none !important;
+  }
+}
+
 /* Dark Mode Scoped Styles - Active ONLY when <html class="dark"> */
 .dark {
   --background: #0b140d;
   --foreground: #f2f5f1;
   --border: rgba(255, 255, 255, 0.05);
+  --hero-trail-1: rgba(94, 212, 79, 0.7);
+  --hero-trail-2: rgba(74, 222, 128, 0.6);
+  --hero-trail-3: rgba(0, 168, 89, 0.65);
 }
 .dark body {
   background: #0b140d;
