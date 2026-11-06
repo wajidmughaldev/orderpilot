@@ -1,15 +1,20 @@
-name: CI
+name: CI — Five-Layer Test & Quality Gate
 
 on:
   push:
-    branches: [main]
+    branches: [main, production]
   pull_request:
-    branches: [main]
+    branches: [main, production]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
-    name: Build & Test
+    name: Typecheck, Build & Multi-Layer Test
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Check out repository
@@ -29,11 +34,31 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Typecheck
+      - name: 1. Typecheck (TypeScript)
         run: pnpm exec tsc --noEmit
 
-      - name: Build Next.js
+      - name: 2. Unit Testing & Coverage
+        run: pnpm test:unit
+
+      - name: 3. Security Audits & Injection Hardening
+        run: pnpm test:security
+
+      - name: 4. Build Next.js Production Assets
         run: pnpm build
 
-      - name: Run automated regression suite
+      - name: 5. Integration & Regression API Suite
         run: pnpm test
+
+      - name: Install Playwright Browsers & Dependencies
+        run: pnpm exec playwright install --with-deps
+
+      - name: 6. End-to-End Playwright Tests
+        run: pnpm test:e2e
+
+      - name: Upload Playwright Test Report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

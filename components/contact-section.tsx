@@ -98,7 +98,7 @@ export function ContactSection() {
             <input type="hidden" name="intent" value="contact" />
             <h3 className="text-3xl font-bold sm:col-span-2">Contact Us</h3>
             <Field label="Name" name="name" placeholder="Your name" autoComplete="name" required maxLength={80} />
-            <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="^\+?[0-9 ()-]{7,20}$" aria-describedby="contact-phone-help" />
+            <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="^\+?[0-9 \(\)\-]{7,20}$" aria-describedby="contact-phone-help" />
             <span id="contact-phone-help" className="sr-only">Pakistan +92 or an international number.</span>
             <Field label="Restaurant name" name="restaurant" placeholder="Your restaurant" autoComplete="organization" required maxLength={100} />
             <Field label="City (optional)" name="city" placeholder="Lahore" autoComplete="address-level2" maxLength={80} />

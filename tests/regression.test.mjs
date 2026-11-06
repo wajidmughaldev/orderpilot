@@ -755,8 +755,8 @@ async function runAll() {
     })
 
     await test('Both forms enforce client-side phone pattern matching server', async () => {
-      assert.ok(contactCode.includes('pattern="^\\+?[0-9 ()-]{7,20}$"'))
-      assert.ok(demoFormCode.includes('pattern="^\\+?[0-9 ()-]{7,20}$"'))
+      assert.ok(contactCode.includes('pattern="^\\+?[0-9 \\(\\)\\-]{7,20}$"') || contactCode.includes('pattern="^\\+?[0-9 ()-]{7,20}$"'))
+      assert.ok(demoFormCode.includes('pattern="^\\+?[0-9 \\(\\)\\-]{7,20}$"') || demoFormCode.includes('pattern="^\\+?[0-9 ()-]{7,20}$"'))
     })
 
     await test('Both forms disable submit button during loading state', async () => {

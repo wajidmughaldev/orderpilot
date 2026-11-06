@@ -7,7 +7,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node tests/regression.test.mjs"
+    "test": "node tests/regression.test.mjs",
+    "test:unit": "vitest run tests/unit --coverage",
+    "test:integration": "vitest run tests/integration",
+    "test:security": "vitest run tests/security",
+    "test:e2e": "playwright test",
+    "test:all": "vitest run && node tests/regression.test.mjs",
+    "perf:lhci": "lhci autorun"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -20,17 +26,21 @@
     "next": "16.4.3",
     "react": "^19",
     "react-dom": "^19",
-    "shadcn": "^4.11.0",
     "tailwind-merge": "^3.3.1",
     "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.16.0",
+    "@playwright/test": "^1.64.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^5.1.0",
     "postcss": "^8.5",
+    "shadcn": "^4.11.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "vitest": "^5.1.0"
   }
 }

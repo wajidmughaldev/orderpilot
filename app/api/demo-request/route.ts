@@ -1,34 +1,9 @@
 import { NextResponse } from 'next/server'
 import { dispatchLead, LeadIntent, LeadPayload } from '@/lib/email'
+import { checkRateLimit } from '@/lib/rate-limiter'
 
-const requests = new Map<string, { count: number; reset: number }>()
 const requiredFields = ['name', 'restaurant', 'phone'] as const
 const MAX_BODY_BYTES = 65_536 // 64 KB
-
-/**
- * Rate Limiting & Client IP Trust Boundary:
- *
- * Checks platform-authenticated headers first:
- * - `cf-connecting-ip` (Cloudflare edge)
- * - `x-vercel-forwarded-for` (Vercel edge)
- * - `x-real-ip` (Standard reverse proxy)
- * - `x-forwarded-for` (Leftmost client address)
- */
-function getClientIp(request: Request): string {
-  const cfIp = request.headers.get('cf-connecting-ip')?.trim()
-  if (cfIp) return cfIp
-
-  const vercelIp = request.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim()
-  if (vercelIp) return vercelIp
-
-  const realIp = request.headers.get('x-real-ip')?.trim()
-  if (realIp) return realIp
-
-  const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
-  if (forwarded) return forwarded
-
-  return 'unknown'
-}
 
 /**
  * Byte-based Request Body Reader & JSON Parser:
@@ -105,21 +80,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: 'Request payload too large.' }, { status: 413 })
   }
 
-  // 2. Rate limiting (in-memory, single-instance)
-  const ip = getClientIp(request)
-  const now = Date.now()
-
-  if (requests.size > 500) {
-    for (const [k, v] of requests.entries()) {
-      if (v.reset <= now) requests.delete(k)
-    }
-  }
-
-  const current = requests.get(ip)
-  if (current && current.reset > now && current.count >= 5) {
+  // 2. Rate limiting (distributed-ready with memory fallback)
+  const rateLimit = await checkRateLimit(request, 5, 15 * 60_000)
+  if (!rateLimit.success) {
     return NextResponse.json({ message: 'Too many requests. Please wait before trying again.' }, { status: 429 })
   }
-  requests.set(ip, current && current.reset > now ? { ...current, count: current.count + 1 } : { count: 1, reset: now + 15 * 60_000 })
 
   // 3. Streaming body size verification and JSON parsing
   const readResult = await readJsonWithByteLimit(request, MAX_BODY_BYTES)

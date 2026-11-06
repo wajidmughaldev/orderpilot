@@ -102,7 +102,7 @@ export function DemoForm() {
             defaultValue="+92 "
             autoComplete="tel"
             required
-            pattern="^\+?[0-9 ()-]{7,20}$"
+            pattern="^\+?[0-9 \(\)\-]{7,20}$"
             aria-describedby="phone-help"
           />
           <span id="phone-help" className="text-xs text-ink/70 dark:text-white/60">

@@ -17,3 +17,9 @@ node_modules
 .DS_Store
 
 lighthouse*.json
+
+# Test outputs
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
