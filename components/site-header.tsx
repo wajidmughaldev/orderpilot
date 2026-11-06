@@ -82,11 +82,18 @@ export function SiteHeader() {
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
           <Link
-            href="/book-demo?intent=demo"
+            href="https://app.orderpilot.pk"
+            onClick={() => trackEvent('signin_cta_click', { location: 'header_desktop' })}
+            className="px-3.5 py-2 text-sm font-bold text-ink/85 hover:text-brand dark:text-white/85 dark:hover:text-leaf transition-colors rounded-full hover:bg-forest/5 dark:hover:bg-white/5"
+          >
+            Sign In
+          </Link>
+          <Link
+            href="/book-demo"
             onClick={() => trackEvent('demo_cta_click', { location: 'header_desktop' })}
             className="button-primary desktop-cta"
           >
-            Request a Demo <ArrowUpRight aria-hidden="true" />
+            Book Demo <ArrowUpRight aria-hidden="true" />
           </Link>
         </div>
         <div className="flex items-center gap-2 lg:hidden">
@@ -115,16 +122,28 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/book-demo?intent=demo"
-              onClick={() => {
-                setOpen(false)
-                trackEvent('demo_cta_click', { location: 'header_mobile' })
-              }}
-              className="button-primary mt-3 justify-center"
-            >
-              Request a Demo <ArrowUpRight aria-hidden="true" />
-            </Link>
+            <div className="mt-3 flex flex-col gap-2.5 pt-2">
+              <Link
+                href="https://app.orderpilot.pk"
+                onClick={() => {
+                  setOpen(false)
+                  trackEvent('signin_cta_click', { location: 'header_mobile' })
+                }}
+                className="button-secondary justify-center text-center"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/book-demo"
+                onClick={() => {
+                  setOpen(false)
+                  trackEvent('demo_cta_click', { location: 'header_mobile' })
+                }}
+                className="button-primary justify-center text-center"
+              >
+                Book Demo <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </nav>
       )}

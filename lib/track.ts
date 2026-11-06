@@ -1,6 +1,11 @@
 import { track } from '@vercel/analytics'
 
-export type OrderPilotEvent = 'demo_cta_click' | 'pricing_model_select' | 'demo_form_submit_success'
+export type OrderPilotEvent =
+  | 'demo_cta_click'
+  | 'signin_cta_click'
+  | 'pricing_model_select'
+  | 'demo_form_submit_success'
+  | 'contact_form_submit_success'
 
 export function trackEvent(name: OrderPilotEvent, data?: Record<string, string>) {
   if (typeof window === 'undefined') return

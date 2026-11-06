@@ -77,12 +77,13 @@ export function PricingSectionView() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/pricing#monthly"
-                className="button-primary mt-8 self-start"
+              <button
+                type="button"
+                disabled
+                className="button-primary mt-8 self-start opacity-75 cursor-not-allowed"
               >
-                Compare subscription plans <ArrowRight className="size-4" />
-              </Link>
+                Coming Soon
+              </button>
             </div>
           </motion.article>
 
@@ -136,12 +137,13 @@ export function PricingSectionView() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/pricing#pay-per-order"
-                className="button-primary mt-8 self-start"
+              <button
+                type="button"
+                disabled
+                className="button-primary mt-8 self-start opacity-75 cursor-not-allowed"
               >
-                See pay-per-order details <ArrowRight className="size-4" />
-              </Link>
+                Coming Soon
+              </button>
             </div>
           </motion.article>
         </div>

@@ -2,19 +2,18 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Check } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
-import { PricingLink } from '@/components/pricing-link'
 
 export const metadata: Metadata = {
   title: 'Pricing Plans — Transparent Subscription & Pay-Per-Order Options',
   description:
-    'Transparent OrderPilot pricing in PKR for Pakistani restaurants. Monthly subscriptions from PKR 5,999/mo with a 14-day free trial (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+    'Transparent OrderPilot pricing in PKR for Pakistani restaurants. 14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
   alternates: {
     canonical: '/pricing',
   },
   openGraph: {
     title: 'OrderPilot Pricing Plans — Transparent Options in PKR',
     description:
-      'Monthly subscriptions from PKR 5,999/mo with 14-day free trial (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+      '14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
     url: '/pricing',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot pricing plans' }],
   },
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'OrderPilot Pricing Plans — Transparent Options in PKR',
     description:
-      'Monthly subscriptions from PKR 5,999/mo with 14-day free trial (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+      '14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
@@ -74,10 +73,6 @@ const plans = [
   },
 ]
 
-function planLink(plan: string) {
-  return `${whatsapp}?text=${encodeURIComponent(`Hi, I'm interested in the ${plan} plan for my restaurant.`)}`
-}
-
 export default function PricingPage() {
   return (
     <AppShell>
@@ -87,7 +82,7 @@ export default function PricingPage() {
             <p className="eyebrow">Pricing</p>
             <h1 className="display mt-6">Pick the plan that fits <span className="text-brand">how customers order.</span></h1>
             <p className="lede mt-6 max-w-2xl">
-              All prices are in PKR. Monthly plans include a 14-day free trial and cover up to 1,000 orders per month. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes. Pay monthly, save with annual billing, or choose pay per order while your volume is lower.
+              All prices are in PKR. A 14-day free trial is available on all plans. Monthly plans cover up to 1,000 orders per month. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes. Pay monthly, save with annual billing, or choose pay per order while your volume is lower.
             </p>
           </div>
         </section>
@@ -98,7 +93,7 @@ export default function PricingPage() {
               <p className="eyebrow section-heading-eyebrow">Subscriptions</p>
               <h2 className="section-title">Monthly plans with 14-day free trial.</h2>
               <p className="section-description text-ink/75">
-                Choose the channels you need. Every subscription plan includes a 14-day free trial, up to 1,000 orders per month, the kitchen board, and direct access to your customer list. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes.
+                Choose the channels you need. A 14-day free trial is included across all plans. Monthly subscription plans cover up to 1,000 orders per month, the kitchen board, and direct access to your customer list. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes.
               </p>
             </div>
             <div className="mt-10 grid items-stretch gap-5 lg:grid-cols-3">
@@ -141,9 +136,9 @@ export default function PricingPage() {
                         <td className="p-5 sm:p-6 font-bold text-brand">{plan.annual} / year</td>
                         <td className="p-5 sm:p-6 text-ink/70">{plan.saving}</td>
                         <td className="p-5 sm:p-6">
-                          <PricingLink planName={`${plan.name} annual`} className="font-bold text-brand underline underline-offset-4" href={planLink(`${plan.name} annual`)}>
-                            Choose annual
-                          </PricingLink>
+                          <span className="inline-block rounded-full bg-forest/5 dark:bg-white/5 px-3 py-1 text-xs font-semibold text-ink/60 dark:text-white/60">
+                            Coming Soon
+                          </span>
                         </td>
                       </tr>
                     ))}
@@ -171,6 +166,8 @@ export default function PricingPage() {
                   <h2 className="section-title mt-5">Pay per order</h2>
                   <p className="mt-4 text-2xl font-bold text-brand">8% to 10% of each order</p>
                   <div className="mt-2 flex flex-wrap gap-x-2 text-xs font-semibold uppercase tracking-wider text-ink/70 dark:text-white/70">
+                    <span>14-day free trial</span>
+                    <span>•</span>
                     <span>Setup fee: PKR 5,000</span>
                     <span>•</span>
                     <span>Prices exclude applicable taxes</span>
@@ -178,7 +175,7 @@ export default function PricingPage() {
                     <span>No monthly subscription fee</span>
                   </div>
                   <p className="mt-4 max-w-3xl leading-7 text-ink/75">
-                    Your percentage rate (between 8% and 10%) depends on your order volume and restaurant profile. We confirm it with you before you start. Setup fee of PKR 5,000 applies to onboarding. Prices exclude applicable taxes. It includes everything in Complete and is a good fit when you&apos;re starting out or your order volume is lower. Pay per order is an independent billing model—you do not pay a monthly subscription fee alongside it.
+                    Your percentage rate (between 8% and 10%) depends on your order volume and restaurant profile. We confirm it with you before you start. Includes a 14-day free trial. Setup fee of PKR 5,000 applies to onboarding (only if you continue on a paid plan). Prices exclude applicable taxes. It includes everything in Complete and is a good fit when you&apos;re starting out or your order volume is lower. Pay per order is an independent billing model—you do not pay a monthly subscription fee alongside it.
                   </p>
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                     <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />No fixed monthly subscription fee</li>
@@ -187,13 +184,17 @@ export default function PricingPage() {
                     <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Direct customer payment collection</li>
                   </ul>
                 </div>
-                <PricingLink planName="Pay per order" href={planLink('Pay per order')} className="button-primary">
-                  Start pay per order <ArrowRight className="size-4" />
-                </PricingLink>
+                <button
+                  type="button"
+                  disabled
+                  className="button-primary opacity-75 cursor-not-allowed"
+                >
+                  Coming Soon
+                </button>
               </div>
               <div className="mt-8 border-t border-forest/10 pt-6 text-sm leading-6 text-ink/65">
                 <p>
-                  <strong className="text-ink">Which option is right for you?</strong> Choosing between pay-per-order and a fixed subscription depends on your monthly order volume, your agreed percentage rate, and the features your restaurant needs. Fixed subscriptions start at PKR 5,999/month, include a 14-day free trial, and cap your monthly software cost for up to 1,000 orders per month (the one-time PKR 5,000 setup fee applies only if you continue on a paid plan). Pay-per-order (8% to 10% per order) avoids fixed monthly fees when order volume is lower or seasonal. Prices exclude applicable taxes. Contact us with your estimated orders and we will help you compare options.
+                  <strong className="text-ink">Which option is right for you?</strong> Choosing between pay-per-order and a fixed subscription depends on your monthly order volume, your agreed percentage rate, and the features your restaurant needs. A 14-day free trial is available on all plans (the one-time PKR 5,000 setup fee applies only if you continue on a paid plan). Fixed subscriptions start at PKR 5,999/month, include a 14-day free trial, and cap your monthly software cost for up to 1,000 orders per month. Pay-per-order (8% to 10% per order) avoids fixed monthly fees when order volume is lower or seasonal. Prices exclude applicable taxes. Contact us with your estimated orders and we will help you compare options.
                 </p>
               </div>
             </div>
@@ -209,8 +210,11 @@ export default function PricingPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/book-demo?interest=pricing&intent=demo" className="button-primary !bg-leaf !text-forest">
-                Request a Pricing Demo <ArrowRight className="size-4" />
+              <a href="https://app.orderpilot.pk" className="button-primary !bg-leaf !text-forest hover:!bg-white">
+                Start 14-Day Free Trial <ArrowRight className="size-4" />
+              </a>
+              <Link href="/book-demo?interest=pricing" className="button-secondary !border-white/35 !bg-transparent !text-white hover:!bg-white/10">
+                Book a Live Demo
               </Link>
               <Link href={`${whatsapp}?text=${encodeURIComponent("Hi, I'd like help choosing an OrderPilot plan for my restaurant.")}`} className="button-secondary !border-white/35 !bg-transparent !text-white">
                 Chat on WhatsApp
@@ -251,9 +255,13 @@ function PlanCard({ plan }: { plan: typeof plans[number] }) {
         ))}
       </ul>
       <div className="mt-8 flex flex-col gap-2">
-        <PricingLink planName={plan.name} href={planLink(plan.name)} className="button-primary self-start">
-          Get {plan.name} plan <ArrowRight className="size-4" />
-        </PricingLink>
+        <button
+          type="button"
+          disabled
+          className="button-primary self-start opacity-75 cursor-not-allowed"
+        >
+          Coming Soon
+        </button>
         <p className="text-[11px] text-ink/60 dark:text-white/60">
           Includes 14-day free trial. PKR 5,000 setup fee applies only if you continue.
         </p>

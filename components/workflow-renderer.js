@@ -1,8 +1,9 @@
 /* OrderPilot interactive workflow — dependency-free and framework-agnostic.
    Assets are extracted from the three supplied visual references.
 */
+const WHATSAPP_SVG_CONTENT = '<path fill="#FFFFFF" d="M 90.79 0.00 C 42.44 0.00, 3.24 39.20, 3.24 87.56 C 3.24 104.10, 7.83 119.57, 15.80 132.77 L 0.00 179.74 L 48.47 164.22 C 61.02 171.16, 75.44 175.11, 90.79 175.11 C 139.15 175.11, 178.35 135.91, 178.35 87.56 C 178.35 39.20, 139.15 0.00, 90.79 0.00 Z"/><path fill="#25D366" d="M 90.79 160.44 C 75.99 160.44, 62.20 156.00, 50.69 148.39 L 22.68 157.36 L 31.79 130.29 C 23.06 118.27, 17.91 103.51, 17.91 87.56 C 17.91 47.36, 50.60 14.66, 90.79 14.66 C 130.99 14.66, 163.68 47.36, 163.68 87.56 C 163.68 127.75, 130.99 160.44, 90.79 160.44 Z"/><path fill="#FFFFFF" d="M 131.84 107.45 C 129.65 106.25, 118.87 100.43, 116.85 99.61 C 114.83 98.79, 113.35 98.36, 111.77 100.54 C 110.20 102.72, 105.73 107.59, 104.37 109.03 C 103.01 110.48, 101.70 110.61, 99.50 109.41 C 97.31 108.21, 90.20 105.58, 81.95 97.64 C 75.53 91.47, 71.32 83.99, 70.10 81.70 C 68.87 79.42, 70.09 78.25, 71.25 77.18 C 72.29 76.21, 73.58 74.65, 74.75 73.39 C 75.91 72.13, 76.32 71.21, 77.12 69.75 C 77.92 68.28, 77.60 66.96, 77.08 65.83 C 76.56 64.69, 72.51 53.52, 70.81 48.98 C 69.12 44.44, 67.23 45.11, 65.92 45.06 C 64.62 45.01, 63.14 44.77, 61.65 44.71 C 60.16 44.66, 57.71 45.13, 55.58 47.29 C 53.45 49.45, 47.47 54.63, 47.06 65.63 C 46.65 76.63, 54.26 87.56, 55.32 89.09 C 56.38 90.62, 69.85 114.46, 92.23 124.26 C 114.62 134.06, 114.74 131.07, 118.84 130.85 C 122.95 130.64, 132.27 125.94, 134.33 120.79 C 136.39 115.65, 136.55 111.17, 136.03 110.22 C 135.50 109.27, 134.04 108.65, 131.84 107.45 Z"/>';
+
 const ICON_PATHS = {
-  whatsapp: '<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.7 4.9 8.4 8.4 0 0 1-3.8-.9L3 21l1.7-5.6a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 3.9a8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/><path d="M8.5 8.8c.5 2.7 2 4.2 4.8 5.4l1.3-1.1 2 1-.5 2a2 2 0 0 1-2 1.3c-3.7-.4-7.4-4.1-7.8-7.8a2 2 0 0 1 1.3-2l1.9-.5 1 2-1 1.7Z"/>',
   globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15.5 15.5 0 0 1 0 18M12 3a15.5 15.5 0 0 0 0 18"/>',
   qr: '<path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM6 6h1M17 6h1M6 17h1M14 14h3v3h-3zM21 14v3M17 21h4M14 19v2M19 19h2"/>',
   check: '<path d="m5 12 4 4L19 6"/>',
@@ -35,6 +36,9 @@ const ICON_PATHS = {
   smile: '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>',
 };
 function ico(name, className = '', size = 20) {
+  if (name === 'whatsapp') {
+    return `<svg aria-hidden="true" class="icon icon--whatsapp ${className}" viewBox="0 0 178.35 179.74" width="${size}" height="${size}">${WHATSAPP_SVG_CONTENT}</svg>`;
+  }
   return `<svg aria-hidden="true" class="icon ${className}" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON_PATHS[name] || ICON_PATHS.check}</svg>`;
 }
 const channels = {
@@ -44,11 +48,11 @@ const channels = {
 };
 const asset = (name) => `/orderpilot-workflow/${name}`;
 function statusBar() { return `<div class="status-bar"><strong>9:41</strong><span class="status-icons"><span class="signal-bars"><i></i><i></i><i></i><i></i></span>${ico('wifi','',14)}${ico('battery','',20)}</span></div>`; }
-function brandAvatar() { return `<span class="burger-avatar"><img src="${asset('burger.webp')}" alt="" /></span>`; }
+function brandAvatar() { return `<span class="burger-avatar"><img src="${asset('arab-cuisine-avatar.png')}" alt="Arab Cuisine" /></span>`; }
 function quantity() { return `<span class="quantity"><span>${ico('minus','',13)}</span><b>1</b><span>${ico('plus','',13)}</span></span>`; }
 function confirmed(label = 'Ready for the team to review') { return `<div class="confirmed-box"><span class="confirmed-mark">${ico('check','',23)}</span><span><b>Details confirmed</b><small>${label}</small></span></div>`; }
 function phoneWhatsApp() { return `<div class="device device--whatsapp"><div class="device-glass">
-  ${statusBar()}<div class="phone-chat-header">${ico('back','go-back',24)}${brandAvatar()}<span class="chat-name"><strong>Zinger Burger</strong><small>Business account</small></span>${ico('camera','call-icon',20)}${ico('phone','call-icon',20)}</div>
+  ${statusBar()}<div class="phone-chat-header">${ico('back','go-back',24)}${brandAvatar()}<span class="chat-name"><strong>Arab Cuisine</strong><small>Business account</small></span>${ico('camera','call-icon',20)}${ico('phone','call-icon',20)}</div>
   <div class="chat-wallpaper">
     <div class="chat-message chat-message--sent">Hi! I'd like to order<br>1 Zinger Burger + Fries <span class="chat-time">9:41 AM <b>✓✓</b></span></div>
     <div class="chat-message chat-message--received chat-receipt"><span>Here’s your order:</span><div class="order-chat-product"><img src="${asset('burger.webp')}" alt="Zinger burger and fries" /><div class="chat-product-info"><b>Zinger Burger + Fries</b><strong>Rs. 850</strong>${quantity()}</div></div><span class="chat-time">9:41 AM</span></div>
@@ -58,9 +62,9 @@ function phoneWhatsApp() { return `<div class="device device--whatsapp"><div cla
     <div class="chat-message chat-message--received chat-order-ack"><span>Order <b>#1042</b> received! 👨‍🍳</span><small>Sent to kitchen · Preparing now</small><span class="chat-time">9:42 AM</span></div>
   </div>
   <div class="chat-input-bar"><div class="chat-input-pill">${ico('smile','chat-bar-icon',17)}<span class="chat-input-placeholder">Message</span>${ico('paperclip','chat-bar-icon',17)}${ico('camera','chat-bar-icon',17)}</div><span class="chat-mic-btn">${ico('mic','',16)}</span></div>
-</div></div><span class="floating-whatsapp">${ico('whatsapp','',41)}</span>`; }
+</div></div><span class="floating-whatsapp" aria-label="Order on WhatsApp">${ico('whatsapp','',56)}</span>`; }
 function phoneWeb() {return `<div class="device device--web"><div class="device-glass">
- ${statusBar()}<div class="url-bar"><span>♙ &nbsp; orderpilot.pk</span><span>↻</span></div><div class="store-header">${brandAvatar()}<span class="store-brand"><b>Zinger Burger</b><small>Burgers · Fries · More</small></span>${ico('search','',21)}${ico('menu','',21)}</div>
+ ${statusBar()}<div class="url-bar"><span>♙ &nbsp; orderpilot.pk</span><span>↻</span></div><div class="store-header">${brandAvatar()}<span class="store-brand"><b>Arab Cuisine</b><small>Mandi · Shawarma · Grills</small></span>${ico('search','',21)}${ico('menu','',21)}</div>
  <div class="category-pills"><span class="selected">Burgers</span><span>Sides</span><span>Drinks</span><span>Combos</span></div>
  <div class="web-main-item"><img src="${asset('burger.webp')}" alt="Zinger burger"/><span><b>Zinger Burger + Fries</b><small>Crispy chicken burger with fries and signature sauce.</small><strong>Rs. 850</strong>${quantity()}</span></div>
  <div class="cart-heading">${ico('cart','',18)}<b>Your cart</b><span>1</span><strong>Rs. 850</strong></div>
@@ -71,7 +75,7 @@ function phoneWeb() {return `<div class="device device--web"><div class="device-
  </div></div>`; }
 function qrSign(className='') {return `<div class="qr-table-sign ${className}"><span class="sign-burger">☰</span><strong>Scan to Order</strong><small>Table 12</small><img src="${asset('sample-qr.svg')}" alt="Demo QR linking to the OrderPilot website" /><span>View our menu<br>and order here.</span></div>`;}
 function phoneQr() {return `${qrSign('showcase-qr-stand')}<div class="device device--qr"><div class="device-glass">${statusBar()}
- <div class="qr-store-header">${ico('back','',21)}${brandAvatar()}<span><b>Zinger Burger</b><small>Table 12</small></span>${ico('search','',19)}</div>
+ <div class="qr-store-header">${ico('back','',21)}${brandAvatar()}<span><b>Arab Cuisine</b><small>Table 12</small></span>${ico('search','',19)}</div>
  <div class="qr-menu-tabs"><span class="selected">Burgers</span><span>Sides</span><span>Drinks</span><span>Desserts</span></div>
  <div class="qr-feature-product"><img src="${asset('burger-qr.webp')}" alt="Zinger burger and fries"/><span><b>Zinger Burger + Fries</b><strong>Rs. 850</strong><small>Crispy chicken, fresh lettuce, our special sauce, with fries.</small><span class="qr-feature-controls">${quantity()}<em>Add</em></span></span></div>
  <div class="qr-menu-item"><img src="${asset('classic-burger.webp')}" alt="Classic burger"/><span><b>Classic Burger</b><strong>Rs. 750</strong></span><i>${ico('plus','',17)}</i></div>

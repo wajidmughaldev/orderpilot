@@ -1,7 +1,7 @@
 'use client'
 
 import { FormEvent, useRef, useState } from 'react'
-import { Clock3, LoaderCircle, Mail, Phone } from 'lucide-react'
+import { Clock3, LoaderCircle, Mail, Phone, Send } from 'lucide-react'
 import { motion, useInView, useReducedMotion } from 'motion/react'
 import { trackEvent } from '@/lib/track'
 
@@ -26,7 +26,8 @@ export function ContactSection() {
 
     const formData = new FormData(form)
     const payload = {
-      source: 'homepage',
+      source: 'homepage_contact',
+      intent: 'contact',
       name: formData.get('name'),
       phone: formData.get('phone'),
       restaurant: formData.get('restaurant'),
@@ -43,15 +44,15 @@ export function ContactSection() {
       })
       const result = await response.json()
       if (!response.ok) {
-        throw new Error(result.message || 'Your request could not be sent.')
+        throw new Error(result.message || 'Your message could not be sent.')
       }
       setStatus('success')
-      setMessage(result.message || 'Your request has been sent. Our team will contact you to arrange your demo.')
+      setMessage(result.message || 'Your message was received. Our team will get in touch shortly.')
       form.reset()
-      trackEvent('demo_form_submit_success')
+      trackEvent('contact_form_submit_success')
     } catch (error) {
       setStatus('error')
-      setMessage(error instanceof Error ? error.message : 'Your request could not be sent. Please try again.')
+      setMessage(error instanceof Error ? error.message : 'Your message could not be sent. Please try again.')
     }
   }
 
@@ -94,17 +95,55 @@ export function ContactSection() {
           transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
         >
           <form className="grid gap-5 rounded-[2rem] bg-white p-7 text-ink sm:grid-cols-2 sm:p-9 dark:bg-[#121e15] dark:border dark:border-white/5 dark:text-white" onSubmit={handleSubmit}>
-            <h3 className="text-3xl font-bold sm:col-span-2">Request a demo</h3>
+            <input type="hidden" name="intent" value="contact" />
+            <h3 className="text-3xl font-bold sm:col-span-2">Contact Us</h3>
             <Field label="Name" name="name" placeholder="Your name" autoComplete="name" required maxLength={80} />
             <Field label="Phone / WhatsApp" name="phone" type="tel" placeholder="+92 300 0000000" autoComplete="tel" required pattern="^\+?[0-9 ()-]{7,20}$" aria-describedby="contact-phone-help" />
             <span id="contact-phone-help" className="sr-only">Pakistan +92 or an international number.</span>
             <Field label="Restaurant name" name="restaurant" placeholder="Your restaurant" autoComplete="organization" required maxLength={100} />
             <Field label="City (optional)" name="city" placeholder="Lahore" autoComplete="address-level2" maxLength={80} />
-            <label className="sm:col-span-2"><span className="mb-2 block text-sm font-bold">How do orders reach you today?</span><textarea className="form-control min-h-32 resize-y" name="message" placeholder="WhatsApp, calls, notebook..." maxLength={600} /></label>
-            <div className="sr-only" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
-            {message && <div role="status" aria-live="polite" className={`rounded-xl p-4 text-sm sm:col-span-2 ${status === 'success' ? 'bg-mint text-forest' : 'bg-red-50 text-red-800'}`}>{message}</div>}
-            <button type="submit" className="button-primary justify-center sm:col-span-2" disabled={status === 'loading'}>{status === 'loading' ? <><LoaderCircle className="animate-spin inline-block mr-2" /> Sending request...</> : 'Request a demo'}</button>
-            <p className="sm:col-span-2 text-center text-xs text-ink/70 dark:text-white/70">This sends a demo request. Our team will contact you to arrange the next step.</p>
+            <label className="sm:col-span-2">
+              <span className="mb-2 block text-sm font-bold">
+                Your Message<span className="text-brand" aria-hidden="true">*</span>
+              </span>
+              <textarea
+                className="form-control min-h-32 resize-y"
+                name="message"
+                placeholder="How can we help your restaurant? Tell us about your inquiry, menu setup, or questions..."
+                required
+                maxLength={600}
+              />
+            </label>
+            <div className="sr-only" aria-hidden="true">
+              <label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+            </div>
+            {message && (
+              <div
+                role="status"
+                aria-live="polite"
+                className={`rounded-xl p-4 text-sm sm:col-span-2 ${status === 'success' ? 'bg-mint text-forest' : 'bg-red-50 text-red-800'}`}
+              >
+                {message}
+              </div>
+            )}
+            <button
+              type="submit"
+              className="button-primary justify-center sm:col-span-2"
+              disabled={status === 'loading'}
+            >
+              {status === 'loading' ? (
+                <>
+                  <LoaderCircle className="animate-spin inline-block mr-2" /> Sending message...
+                </>
+              ) : (
+                <>
+                  Send Message <Send className="ml-2 size-4" />
+                </>
+              )}
+            </button>
+            <p className="sm:col-span-2 text-center text-xs text-ink/70 dark:text-white/70">
+              This sends a direct inquiry to our team. We&apos;ll get back to you shortly.
+            </p>
           </form>
         </motion.div>
       </div>
@@ -113,10 +152,28 @@ export function ContactSection() {
 }
 
 function Field({ label, required, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
-  return <label><span className="mb-2 block text-sm font-bold">{label}{required && <span className="text-brand" aria-hidden="true">*</span>}</span><input className="form-control" required={required} {...props} /></label>
+  return (
+    <label>
+      <span className="mb-2 block text-sm font-bold">
+        {label}
+        {required && <span className="text-brand" aria-hidden="true">*</span>}
+      </span>
+      <input className="form-control" required={required} {...props} />
+    </label>
+  )
 }
 
 function ContactDetail({ icon: Icon, label, value, href }: { icon: typeof Mail; label: string; value: string; href?: string }) {
   const content = href ? <a href={href} className="font-semibold text-white hover:text-leaf">{value}</a> : <p className="font-semibold leading-6 text-white">{value}</p>
-  return <div className="flex gap-4"><span className="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 text-leaf"><Icon className="size-5" /></span><div><p className="mb-1 text-xs font-bold uppercase tracking-wider text-white/65">{label}</p>{content}</div></div>
+  return (
+    <div className="flex gap-4">
+      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 text-leaf">
+        <Icon className="size-5" />
+      </span>
+      <div>
+        <p className="mb-1 text-xs font-bold uppercase tracking-wider text-white/65">{label}</p>
+        {content}
+      </div>
+    </div>
+  )
 }

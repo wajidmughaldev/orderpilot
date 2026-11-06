@@ -294,6 +294,218 @@ async function runAll() {
       assert.equal(delivered.message, undefined)
     })
 
+    await test('Dedicated Contact Inquiry submission delivers contact intent and distinct email subject', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.5' },
+        body: JSON.stringify({
+          source: 'homepage_contact',
+          intent: 'contact',
+          restaurant: 'Rawalpindi Kebab House',
+          name: 'Zeeshan Malik',
+          phone: '+92 312 3456789',
+          city: 'Rawalpindi',
+          message: 'Interested in setting up OrderPilot for our multi-floor restaurant.'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'contact')
+      assert.ok(data.message.includes('message was received'))
+      assert.equal(webhook.requests.length, 1)
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.restaurant, 'Rawalpindi Kebab House')
+      assert.equal(delivered.name, 'Zeeshan Malik')
+      assert.equal(delivered.intent, 'contact')
+      assert.equal(delivered.emailSubject, '[OrderPilot] New Contact Inquiry — Rawalpindi Kebab House')
+      assert.equal(delivered.emailRecipient, 'contact@orderpilot.pk')
+      assert.equal(delivered.message, 'Interested in setting up OrderPilot for our multi-floor restaurant.')
+      assert.ok(delivered.emailText.includes('CONTACT INQUIRY'))
+      assert.ok(delivered.emailHtml.includes('CONTACT INQUIRY'))
+    })
+
+    await test('Demo Request submission with Current POS filled delivers pos metadata and distinct demo subject', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.6' },
+        body: JSON.stringify({
+          source: 'book-demo',
+          intent: 'demo',
+          restaurant: 'Peshawar Chapli Corner',
+          name: 'Irfan Khan',
+          phone: '+92 333 9998877',
+          city: 'Peshawar',
+          pos: 'Candela POS',
+          billing: 'Monthly'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'demo')
+      assert.equal(webhook.requests.length, 1)
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.restaurant, 'Peshawar Chapli Corner')
+      assert.equal(delivered.pos, 'Candela POS')
+      assert.equal(delivered.emailSubject, '[OrderPilot] New Demo Request — Peshawar Chapli Corner')
+      assert.ok(delivered.emailText.includes('Candela POS'))
+      assert.ok(delivered.emailHtml.includes('Candela POS'))
+    })
+
+    await test('Free Trial Request submission delivers distinct free-trial subject and intent', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.7' },
+        body: JSON.stringify({
+          source: 'book-demo',
+          intent: 'trial',
+          restaurant: 'Quetta Chai & Cafe',
+          name: 'Bilal Ahmed',
+          phone: '+92 300 7776655',
+          city: 'Quetta',
+          pos: 'None'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'free-trial')
+      assert.equal(webhook.requests.length, 1)
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.restaurant, 'Quetta Chai & Cafe')
+      assert.equal(delivered.pos, 'None')
+      assert.equal(delivered.intent, 'free-trial')
+      assert.equal(delivered.emailSubject, '[OrderPilot] New Free Trial Request — Quetta Chai & Cafe')
+      assert.ok(delivered.emailText.includes('14-DAY FREE TRIAL REQUEST'))
+      assert.ok(delivered.emailHtml.includes('14-DAY FREE TRIAL'))
+    })
+
+    await test('Free Trial Request: WhatsApp subscription plan submission', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.8' },
+        body: JSON.stringify({
+          source: 'book-demo',
+          intent: 'free-trial',
+          restaurant: 'Faisalabad Tea Spot',
+          name: 'Ali Raza',
+          phone: '+92 345 1112233',
+          city: 'Faisalabad',
+          billing: 'Monthly',
+          interests: 'WhatsApp ordering',
+          pos: 'Manual register'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'free-trial')
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.restaurant, 'Faisalabad Tea Spot')
+      assert.equal(delivered.billing, 'Monthly')
+      assert.equal(delivered.interests, 'WhatsApp ordering')
+      assert.equal(delivered.emailSubject, '[OrderPilot] New Free Trial Request — Faisalabad Tea Spot')
+    })
+
+    await test('Free Trial Request: Web + Table subscription plan submission', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.9' },
+        body: JSON.stringify({
+          source: 'book-demo',
+          intent: 'trial',
+          restaurant: 'Sialkot Steakhouse',
+          name: 'Danish Tariq',
+          phone: '+92 322 4445566',
+          city: 'Sialkot',
+          billing: 'Monthly',
+          interests: 'Online ordering, QR/table ordering',
+          pos: 'Petpooja'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'free-trial')
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.restaurant, 'Sialkot Steakhouse')
+      assert.equal(delivered.billing, 'Monthly')
+      assert.equal(delivered.pos, 'Petpooja')
+      assert.equal(delivered.emailSubject, '[OrderPilot] New Free Trial Request — Sialkot Steakhouse')
+    })
+
+    await test('Free Trial Request: Complete subscription plan submission', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.10' },
+        body: JSON.stringify({
+          source: 'book-demo',
+          intent: 'trial',
+          restaurant: 'Gujranwala Grand Buffet',
+          name: 'Shahid Butt',
+          phone: '+92 301 8889900',
+          city: 'Gujranwala',
+          billing: 'Monthly',
+          interests: 'WhatsApp ordering, Online ordering, QR/table ordering',
+          pos: 'Candela POS'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'free-trial')
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.restaurant, 'Gujranwala Grand Buffet')
+      assert.equal(delivered.billing, 'Monthly')
+      assert.equal(delivered.emailSubject, '[OrderPilot] New Free Trial Request — Gujranwala Grand Buffet')
+    })
+
+    await test('Free Trial Request: Pay-as-you-go (Pay-per-Order) plan submission', async () => {
+      webhook.clear()
+      const res = await fetch(`${BASE_URL}/api/demo-request`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.2.11' },
+        body: JSON.stringify({
+          source: 'book-demo',
+          intent: 'trial',
+          restaurant: 'Multan Karahi House',
+          name: 'Waqas Qureshi',
+          phone: '+92 331 5554433',
+          city: 'Multan',
+          billing: 'Pay-per-Order',
+          pos: 'None',
+          challenge: 'Starting new cloud kitchen branch'
+        })
+      })
+
+      assert.equal(res.status, 200)
+      const data = await res.json()
+      assert.equal(data.success, true)
+      assert.equal(data.intent, 'free-trial')
+      assert.equal(webhook.requests.length, 1)
+      const delivered = webhook.requests[0].body
+      assert.equal(delivered.restaurant, 'Multan Karahi House')
+      assert.equal(delivered.billing, 'Pay-per-Order')
+      assert.equal(delivered.pos, 'None')
+      assert.equal(delivered.intent, 'free-trial')
+      assert.equal(delivered.emailSubject, '[OrderPilot] New Free Trial Request — Multan Karahi House')
+      assert.ok(delivered.emailText.includes('Pay-per-Order'))
+      assert.ok(delivered.emailHtml.includes('Pay-per-Order'))
+    })
+
     // -------------------------------------------------------------------------
     // 2. Invalid and Missing Form Fields
     // -------------------------------------------------------------------------
@@ -552,6 +764,19 @@ async function runAll() {
       assert.ok(demoFormCode.includes("disabled={status === 'loading'}"))
     })
 
+    await test('ContactSection renders "Contact Us" heading and "Send Message" button with Your Message field', async () => {
+      assert.ok(contactCode.includes('Contact Us'))
+      assert.ok(contactCode.includes('Send Message'))
+      assert.ok(contactCode.includes('Your Message'))
+      assert.ok(contactCode.includes('name="message"'))
+    })
+
+    await test('DemoForm renders "Current POS (optional)" field with approved placeholder', async () => {
+      assert.ok(demoFormCode.includes('Current POS (optional)'))
+      assert.ok(demoFormCode.includes('placeholder="POS name, or None"'))
+      assert.ok(demoFormCode.includes('name="pos"'))
+    })
+
     // -------------------------------------------------------------------------
     // 9. CTA Destinations
     // -------------------------------------------------------------------------
@@ -566,13 +791,19 @@ async function runAll() {
       assert.ok(header.includes('/#product'))
       assert.ok(header.includes('/#pricing'))
       assert.ok(header.includes('/#contact'))
-      assert.ok(header.includes('/book-demo?intent=demo'))
+      assert.ok(header.includes('/book-demo'))
+      assert.ok(header.includes('Book Demo'))
+      assert.ok(header.includes('https://app.orderpilot.pk'))
+      assert.ok(header.includes('Sign In'))
 
-      assert.ok(home.includes('/book-demo?intent=trial'))
-      assert.ok(home.includes('/book-demo?intent=demo'))
+      const hero = fs.readFileSync(path.join(ROOT_DIR, 'components/cinematic-hero.tsx'), 'utf8')
+      assert.ok(hero.includes('https://app.orderpilot.pk'))
+      assert.ok(home.includes('/book-demo'))
 
       assert.ok(footer.includes('923361815141'))
       assert.ok(footer.includes('contact@orderpilot.pk'))
+      assert.ok(footer.includes('14-day free trial on all plans'))
+      assert.ok(!footer.includes('subscription plans'))
       assert.ok(footer.includes('/privacy'))
       assert.ok(footer.includes('/terms'))
       assert.ok(footer.includes('/data-deletion'))
@@ -581,6 +812,7 @@ async function runAll() {
 
       assert.ok(pricing.includes('wa.me/923361815141'))
       assert.ok(pricing.includes('/book-demo?interest=pricing'))
+      assert.ok(pricing.includes('14-day free trial on all plans'))
     })
 
     // -------------------------------------------------------------------------

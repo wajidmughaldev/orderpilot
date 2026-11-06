@@ -159,8 +159,8 @@ export default function HomePage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
-              <Link href="/book-demo?intent=demo" className="button-primary !bg-leaf !text-forest hover:!bg-white">
-                Request a Demo
+              <Link href="/book-demo" className="button-primary !bg-leaf !text-forest hover:!bg-white">
+                Book a Live Demo
               </Link>
               <Link
                 href={whatsappHeroUrl}

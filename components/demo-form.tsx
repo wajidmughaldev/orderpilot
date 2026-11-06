@@ -6,7 +6,13 @@ import { ArrowRight, LoaderCircle } from 'lucide-react'
 import { trackEvent } from '@/lib/track'
 
 const interests = ['WhatsApp ordering', 'Online ordering', 'QR/table ordering', 'Pricing', 'Not sure yet']
-const billingMap: Record<string, string> = { monthly: 'Monthly', 'pay-per-order': 'Pay-per-Order', pricing: 'Help me decide' }
+const billingMap: Record<string, string> = {
+  monthly: 'Monthly',
+  'pay-per-order': 'Pay-per-Order',
+  'pay-as-you-go': 'Pay-per-Order',
+  payasyougo: 'Pay-per-Order',
+  pricing: 'Help me decide',
+}
 
 export function DemoForm() {
   const params = useSearchParams()
@@ -61,14 +67,23 @@ export function DemoForm() {
     >
       <input type="hidden" name="intent" value={normalizedIntent} />
 
+      {/* Direct Trial Alternative Callout */}
+      <div className="mb-6 rounded-2xl border border-forest/15 bg-mint/35 p-4 text-center text-xs sm:text-sm font-medium dark:border-white/10 dark:bg-white/[0.04]">
+        <span className="text-ink/80 dark:text-white/80">Want to start your 14-day free trial right now without waiting for a demo? </span>
+        <a
+          href="https://app.orderpilot.pk"
+          className="font-bold text-brand dark:text-leaf underline underline-offset-4 hover:text-forest whitespace-nowrap"
+        >
+          Sign in &amp; start trial directly →
+        </a>
+      </div>
+
       <div>
         <h2 className="text-3xl font-bold">
-          {isTrial ? 'Request a 14-day free trial' : 'Request a demo'}
+          Book a Live Demo
         </h2>
         <p className="mt-2 text-ink/55 dark:text-white/60">
-          {isTrial
-            ? 'Share a few details so we can prepare your trial account and menu.'
-            : 'Share a few details so we can understand your restaurant.'}
+          Share a few details and our team will get in touch to schedule a live walkthrough showing how OrderPilot works for your restaurant.
         </p>
       </div>
 
@@ -134,10 +149,18 @@ export function DemoForm() {
         <Field label="Billing option">
           <select className="form-control" name="billing" defaultValue={initialBilling}>
             <option value="">Select one</option>
-            <option>Monthly</option>
-            <option>Pay-per-Order</option>
-            <option>Help me decide</option>
+            <option value="Monthly">Monthly subscription (from PKR 5,999)</option>
+            <option value="Pay-per-Order">Pay-as-you-go / Pay-per-Order (8%–10%)</option>
+            <option value="Help me decide">Help me decide</option>
           </select>
+        </Field>
+        <Field label="Current POS (optional)">
+          <input
+            className="form-control"
+            name="pos"
+            placeholder="POS name, or None"
+            maxLength={100}
+          />
         </Field>
         <Field label="What’s your biggest challenge?" wide>
           <textarea className="form-control min-h-28 resize-y" name="challenge" maxLength={400} />
@@ -167,23 +190,17 @@ export function DemoForm() {
       <button className="button-primary mt-6 w-full justify-center" type="submit" disabled={status === 'loading'}>
         {status === 'loading' ? (
           <>
-            <LoaderCircle className="animate-spin" /> Sending request
-          </>
-        ) : isTrial ? (
-          <>
-            Request a Free Trial <ArrowRight />
+            <LoaderCircle className="animate-spin" /> Scheduling walkthrough...
           </>
         ) : (
           <>
-            Request a Demo <ArrowRight />
+            Book a Live Demo <ArrowRight />
           </>
         )}
       </button>
 
       <p className="mt-4 text-center text-xs text-ink/70 dark:text-white/60">
-        {isTrial
-          ? 'This requests a 14-day free trial. Our team will contact you to arrange setup and activate your account.'
-          : 'This sends a demo request. Our team will contact you to arrange the next step.'}
+        This sends a live demo request. Our team will contact you to schedule a walkthrough showing how our system works for your restaurant.
       </p>
     </form>
   )

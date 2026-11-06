@@ -7,12 +7,12 @@ import { DemoForm } from '@/components/demo-form'
 import { FaqList } from '@/components/faq-list'
 
 export const metadata: Metadata = {
-  title: 'Request a Demo — Walkthrough for Your Restaurant',
+  title: 'Book a Live Demo — Walkthrough for Your Restaurant',
   description:
-    'Request a guided OrderPilot demo for your restaurant. Explore WhatsApp and Table QR ordering, kitchen dashboards, the 14-day free trial on monthly plans (from PKR 5,999/mo, up to 1,000 orders/mo), or 8%–10% pay-per-order. One-time PKR 5,000 setup fee applies only if you continue on a paid plan. Prices exclude applicable taxes.',
+    'Request a guided OrderPilot demo for your restaurant. Explore WhatsApp and Table QR ordering, kitchen dashboards, the 14-day free trial available on all plans (monthly subscriptions from PKR 5,999/mo up to 1,000 orders/mo, or flexible 8%–10% pay-per-order). One-time PKR 5,000 setup fee applies only if you continue on a paid plan. Prices exclude applicable taxes.',
   alternates: { canonical: '/book-demo' },
   openGraph: {
-    title: 'Request an OrderPilot Demo — Walkthrough for Your Restaurant',
+    title: 'Book a Live Demo — Walkthrough for Your Restaurant',
     description:
       'Explore WhatsApp, Web, and Table QR ordering, the kitchen board, and pricing options with our team.',
     url: '/book-demo',
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
 }
 
 const faqs = [
-  { question: 'What happens after I request a demo?', answer: 'Our team follows up to agree the next step. Sending this form does not confirm a meeting time.' },
-  { question: 'Do I need to prepare anything?', answer: 'No. Restaurant and menu details can be helpful, but they are not required for the first conversation.' },
-  { question: 'Can we discuss pricing and free trials?', answer: 'Yes. We can explain both the monthly subscription plans (from PKR 5,999/month with a 14-day free trial and up to 1,000 orders/month) and the 8% to 10% pay-per-order model, as well as the one-time PKR 5,000 setup fee (which applies only if you choose to continue on a paid plan after your trial). All prices exclude applicable taxes.' },
+  { question: 'What is this live demo walkthrough?', answer: 'It is a personalized live demo where our team walks you through how OrderPilot works in real time—from WhatsApp, web menu, and table QR ordering to live kitchen board alerts.' },
+  { question: 'How do I start the 14-day free trial directly?', answer: 'If you do not need a walkthrough and want to start immediately, you can go straight to the app at app.orderpilot.pk to sign in and begin your 14-day free trial.' },
+  { question: 'Can we discuss pricing during the live demo?', answer: 'Yes! A 14-day free trial is available on all plans. During the live demo, we can explain both monthly subscription plans (from PKR 5,999/mo, up to 1,000 orders/mo) and the 8% to 10% pay-per-order model. The one-time PKR 5,000 setup fee applies only if you continue on a paid plan after your trial. All prices exclude applicable taxes.' },
 ]
 
 export default function BookDemoPage() {
@@ -40,10 +40,10 @@ export default function BookDemoPage() {
         <section className="section-pad">
           <div className="site-shell grid items-start gap-12 lg:grid-cols-[.82fr_1.18fr]">
             <div className="lg:sticky lg:top-28">
-              <p className="eyebrow">Let&apos;s talk about your restaurant</p>
-              <h1 className="display mt-7">See how OrderPilot could work for you.</h1>
+              <p className="eyebrow">Live Demo Walkthrough</p>
+              <h1 className="display mt-7">See how OrderPilot works for your restaurant.</h1>
               <p className="lede mt-7">
-                Tell us a little about your restaurant and what you&apos;d like to improve. We&apos;ll show you the ordering experience, the restaurant dashboard, and the available pricing options.
+                Book a live demo walkthrough with our team. We&apos;ll show you how customer orders travel from WhatsApp, website, and table QR codes directly into your kitchen screen.
               </p>
               <ul className="mt-8 flex flex-col gap-4">
                 {[
@@ -75,7 +75,7 @@ export default function BookDemoPage() {
         </section>
         <section className="section-pad bg-mint/45 dark:bg-[#0c150f]">
           <div className="site-shell grid gap-10 lg:grid-cols-[.65fr_1.35fr]">
-            <h2 className="section-title">Before you request a demo.</h2>
+            <h2 className="section-title">Before you book a live demo.</h2>
             <FaqList items={faqs} />
           </div>
         </section>

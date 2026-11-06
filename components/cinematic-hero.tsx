@@ -102,14 +102,14 @@ export function CinematicHero({ whatsappHeroUrl }: CinematicHeroProps) {
             Customers order on WhatsApp, your website or at the table. Every order shows up on one screen, so your kitchen knows what&apos;s next.
           </p>
 
-          {/* Action CTAs */}
+          {/* Action CTAs: 14-Day Free Trial -> Sign In/App, Live Demo -> /book-demo */}
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3.5">
-            <Link
-              href="/book-demo?intent=trial"
+            <a
+              href="https://app.orderpilot.pk"
               className="button-primary text-base px-6 sm:px-7 py-3.5 shadow-lg shadow-forest/15 dark:shadow-black/50"
             >
-              Request a 14-Day Free Trial <ArrowRight className="size-4" />
-            </Link>
+              Start 14-Day Free Trial <ArrowRight className="size-4" />
+            </a>
             <Link
               href={whatsappHeroUrl}
               className="button-secondary text-base px-6 sm:px-7 py-3.5"

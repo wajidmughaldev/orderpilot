@@ -97,7 +97,7 @@ export const pricingConfig = {
     href: '/book-demo?interest=monthly',
   },
   perOrder: {
-    publicPrice: '8% to 10% per order',
+    publicPrice: '8% to 10% per order (14-day free trial)',
     href: '/book-demo?interest=pay-per-order',
   },
 } as const

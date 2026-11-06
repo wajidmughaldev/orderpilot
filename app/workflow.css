@@ -122,8 +122,8 @@
 .chat-input-placeholder { flex:1; font-size:13px; color:#8696a0; font-family:Arial,sans-serif; }
 .chat-bar-icon { color:#8696a0; }
 .chat-mic-btn { width:38px; height:38px; border-radius:50%; background:#00a884; color:#fff; display:grid; place-items:center; flex-shrink:0; box-shadow:0 1px 3px rgba(0,0,0,0.15); }
-.floating-whatsapp { position:absolute; top:320px; right:20px; background:#fafffb; border:6px solid #fafffb; width:65px;height:65px;color:#fff;border-radius:20px;transform:rotate(12deg);display:grid;place-items:center;box-shadow:0 8px 20px #002a002c; }
-.floating-whatsapp svg {padding:6px;background:#22c85a;width:100%;height:100%;border-radius:13px;}
+.floating-whatsapp { position:absolute; top:320px; right:20px; background:transparent; border:none; width:62px;height:62px;transform:rotate(12deg);display:grid;place-items:center;filter:drop-shadow(0 10px 22px rgba(0,42,0,0.28)); }
+.floating-whatsapp svg {padding:0;background:transparent;width:100%;height:100%;}
 
 /* Direct web ordering phone */
 .device--web .device-glass {background:#fff; display:flex; flex-direction:column;}
@@ -560,9 +560,9 @@
   color: #fff;
 }
 .dark .floating-whatsapp {
-  background: #142418;
-  border-color: #142418;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: transparent;
+  border: none;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.65));
 }
 
 /* 2. Web Ordering Dark Theme */
