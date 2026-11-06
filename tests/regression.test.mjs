@@ -93,6 +93,8 @@ async function runAll() {
   const nextServer = spawn('npx', ['next', 'start', '-p', '3020'], {
     cwd: ROOT_DIR,
     shell: true,
+    detached: process.platform !== 'win32',
+    stdio: 'ignore',
     env: {
       ...process.env,
       PORT: '3020',
@@ -112,7 +114,11 @@ async function runAll() {
   }
 
   if (!ready) {
-    nextServer.kill()
+    if (process.platform === 'win32' && nextServer.pid) {
+      try { spawn('taskkill', ['/pid', String(nextServer.pid), '/t', '/f']) } catch {}
+    } else if (nextServer.pid) {
+      try { process.kill(-nextServer.pid, 'SIGKILL') } catch { try { nextServer.kill('SIGKILL') } catch {} }
+    }
     await webhook.close()
     throw new Error('Test server failed to start on port 3020. Ensure `npm run build` has been executed.')
   }
@@ -913,8 +919,12 @@ async function runAll() {
         const killer = spawn('taskkill', ['/pid', String(nextServer.pid), '/t', '/f'])
         await new Promise(r => killer.on('close', r))
       } catch {}
-    } else {
-      nextServer.kill('SIGTERM')
+    } else if (nextServer.pid) {
+      try {
+        process.kill(-nextServer.pid, 'SIGKILL')
+      } catch {
+        try { nextServer.kill('SIGKILL') } catch {}
+      }
     }
     await webhook.close()
   }
@@ -929,6 +939,8 @@ async function runAll() {
 
   if (failed > 0) {
     process.exit(1)
+  } else {
+    process.exit(0)
   }
 }
 

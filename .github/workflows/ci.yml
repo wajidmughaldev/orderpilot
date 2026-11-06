@@ -47,7 +47,9 @@ jobs:
         run: pnpm build
 
       - name: 5. Integration & Regression API Suite
-        run: pnpm test
+        run: |
+          pnpm test:integration
+          pnpm test
 
       - name: Install Playwright Browsers & Dependencies
         run: pnpm exec playwright install --with-deps
