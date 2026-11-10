@@ -11,8 +11,26 @@ export function SiteFooter() {
           aria-label="Footer Navigation"
           className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 sm:pb-10 border-b border-forest/10 dark:border-white/5"
         >
-          {/* Core product & action links (4 on the left, centered on mobile) */}
+          {/* Core product & action links */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 sm:gap-x-8 gap-y-2.5 text-xs sm:text-sm font-medium">
+            <Link
+              href="/whatsapp-ordering"
+              className="text-ink/75 dark:text-white/75 hover:text-brand dark:hover:text-leaf transition-colors"
+            >
+              WhatsApp Ordering
+            </Link>
+            <Link
+              href="/qr-table-ordering"
+              className="text-ink/75 dark:text-white/75 hover:text-brand dark:hover:text-leaf transition-colors"
+            >
+              Table QR
+            </Link>
+            <Link
+              href="/online-ordering"
+              className="text-ink/75 dark:text-white/75 hover:text-brand dark:hover:text-leaf transition-colors"
+            >
+              Online Ordering
+            </Link>
             <Link
               href="/pricing"
               className="text-ink/75 dark:text-white/75 hover:text-brand dark:hover:text-leaf transition-colors"

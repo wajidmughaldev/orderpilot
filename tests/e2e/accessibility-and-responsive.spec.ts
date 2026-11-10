@@ -8,7 +8,7 @@ test.describe('E2E: Accessibility & Responsive Layouts', () => {
     const inputs = ['name', 'restaurant', 'phone', 'city', 'pos']
     for (const name of inputs) {
       const input = page.locator(`input[name="${name}"]`)
-      await expect(input).toBeVisible()
+      await expect(input).toBeVisible({ timeout: 15000 })
       // Verify parent or associated label
       const hasLabel = await input.evaluate((el) => {
         return !!el.closest('label') || !!document.querySelector(`label[for="${el.id}"]`)

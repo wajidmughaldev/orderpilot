@@ -11,6 +11,9 @@ import { metadata as layoutMetadata } from '@/app/layout'
 import { metadata as homeMetadata } from '@/app/page'
 import { metadata as pricingMetadata } from '@/app/pricing/page'
 import { metadata as bookDemoMetadata } from '@/app/book-demo/page'
+import { metadata as whatsappMetadata } from '@/app/whatsapp-ordering/page'
+import { metadata as qrTableMetadata } from '@/app/qr-table-ordering/page'
+import { metadata as onlineOrderingMetadata } from '@/app/online-ordering/page'
 import { metadata as privacyMetadata } from '@/app/privacy/page'
 import { metadata as termsMetadata } from '@/app/terms/page'
 import { metadata as dataDeletionMetadata } from '@/app/data-deletion/page'
@@ -24,7 +27,7 @@ describe('Technical SEO — Canonical URL & Signal Consistency', () => {
 
   it('generates sitemap strictly with https://www.orderpilot.pk and valid routes', () => {
     const sitemapEntries = sitemap()
-    expect(sitemapEntries.length).toBe(7)
+    expect(sitemapEntries.length).toBe(10)
 
     for (const entry of sitemapEntries) {
       expect(entry.url).toMatch(/^https:\/\/www\.orderpilot\.pk(\/.*)?$/)
@@ -33,6 +36,9 @@ describe('Technical SEO — Canonical URL & Signal Consistency', () => {
 
     const urls = sitemapEntries.map(e => e.url)
     expect(urls).toContain('https://www.orderpilot.pk/')
+    expect(urls).toContain('https://www.orderpilot.pk/whatsapp-ordering')
+    expect(urls).toContain('https://www.orderpilot.pk/qr-table-ordering')
+    expect(urls).toContain('https://www.orderpilot.pk/online-ordering')
     expect(urls).toContain('https://www.orderpilot.pk/pricing')
     expect(urls).toContain('https://www.orderpilot.pk/book-demo')
     expect(urls).toContain('https://www.orderpilot.pk/privacy')
@@ -85,6 +91,26 @@ describe('Technical SEO — Metadata & Title Template Hygiene', () => {
     // Ensures parameterized queries (?intent=trial) declare /book-demo as canonical
     expect(bookDemoMetadata.alternates?.canonical).toBe('/book-demo')
     expect(bookDemoMetadata.openGraph?.url).toBe('/book-demo')
+  })
+
+  it('dedicated SEO landing pages specify accurate titles, canonicals, and descriptions', () => {
+    // WhatsApp Ordering
+    expect(whatsappMetadata.title).toBe('WhatsApp Food Ordering System for Pakistan')
+    expect(whatsappMetadata.description).toContain('Automate WhatsApp food orders directly to your kitchen')
+    expect(whatsappMetadata.alternates?.canonical).toBe('/whatsapp-ordering')
+    expect(whatsappMetadata.openGraph?.url).toBe('/whatsapp-ordering')
+
+    // QR Table Ordering
+    expect(qrTableMetadata.title).toBe('QR Code Table Ordering for Pakistani Restaurants')
+    expect(qrTableMetadata.description).toContain('Enable contactless QR code table ordering in your restaurant')
+    expect(qrTableMetadata.alternates?.canonical).toBe('/qr-table-ordering')
+    expect(qrTableMetadata.openGraph?.url).toBe('/qr-table-ordering')
+
+    // Online Ordering
+    expect(onlineOrderingMetadata.title).toBe('Online Ordering System for Restaurants in Pakistan')
+    expect(onlineOrderingMetadata.description).toContain("Launch your restaurant's own branded online ordering website")
+    expect(onlineOrderingMetadata.alternates?.canonical).toBe('/online-ordering')
+    expect(onlineOrderingMetadata.openGraph?.url).toBe('/online-ordering')
   })
 
   it('legal routes declare canonical paths matching their routes and avoid title suffix duplication', () => {

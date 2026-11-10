@@ -848,6 +848,9 @@ async function runAll() {
       assert.equal(res.status, 200)
       const xml = await res.text()
       assert.ok(xml.includes('<loc>https://www.orderpilot.pk/</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/whatsapp-ordering</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/qr-table-ordering</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/online-ordering</loc>'))
       assert.ok(xml.includes('<loc>https://www.orderpilot.pk/pricing</loc>'))
       assert.ok(xml.includes('<loc>https://www.orderpilot.pk/book-demo</loc>'))
       assert.ok(xml.includes('<loc>https://www.orderpilot.pk/privacy</loc>'))
@@ -912,6 +915,49 @@ async function runAll() {
         assert.ok(html.includes(`https://www.orderpilot.pk${r.path}`))
         assert.ok(html.includes('Digipex Solutions LLC'))
         assert.ok(html.includes('contact@orderpilot.pk'))
+      })
+    }
+
+    // -------------------------------------------------------------------------
+    // 14. SEO Landing Pages (Phase 2 Routes)
+    // -------------------------------------------------------------------------
+    console.log('\nSuite 14: SEO Landing Pages (Phase 2 Routes)')
+    const seoLandingPages = [
+      {
+        path: '/whatsapp-ordering',
+        title: 'WhatsApp Food Ordering System for Pakistan',
+        h1: 'Turn WhatsApp Chats Into',
+        canonical: 'https://www.orderpilot.pk/whatsapp-ordering',
+        asset: 'orderpilot_kitchen_dashboard.webp',
+      },
+      {
+        path: '/qr-table-ordering',
+        title: 'QR Code Table Ordering for Pakistani Restaurants',
+        h1: 'Let Customers Order',
+        canonical: 'https://www.orderpilot.pk/qr-table-ordering',
+        asset: 'orderpilot_restaurant_dashboard_showcase.webp',
+      },
+      {
+        path: '/online-ordering',
+        title: 'Online Ordering System for Restaurants in Pakistan',
+        h1: 'Your Restaurant. Your Menu.',
+        canonical: 'https://www.orderpilot.pk/online-ordering',
+        asset: 'orderpilot_restaurant_dashboard_showcase.webp',
+      },
+    ]
+
+    for (const page of seoLandingPages) {
+      await test(`SEO landing page ${page.path} renders 200 with h1, canonical, and asset`, async () => {
+        const res = await fetch(`${BASE_URL}${page.path}`)
+        assert.equal(res.status, 200)
+        const html = await res.text()
+        assert.ok(html.includes('<h1'))
+        assert.ok(html.includes(page.h1))
+        assert.ok(html.includes(page.title))
+        assert.ok(html.includes(`<link rel="canonical" href="${page.canonical}"`))
+        assert.ok(html.includes(page.asset))
+        assert.ok(html.includes('FAQPage'))
+        assert.ok(html.includes('BreadcrumbList'))
       })
     }
 
