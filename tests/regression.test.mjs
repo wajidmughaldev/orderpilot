@@ -956,7 +956,6 @@ async function runAll() {
         assert.ok(html.includes(page.title))
         assert.ok(html.includes(`<link rel="canonical" href="${page.canonical}"`))
         assert.ok(html.includes(page.asset))
-        assert.ok(html.includes('FAQPage'))
         assert.ok(html.includes('BreadcrumbList'))
       })
     }

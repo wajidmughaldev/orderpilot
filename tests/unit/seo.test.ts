@@ -96,7 +96,7 @@ describe('Technical SEO — Metadata & Title Template Hygiene', () => {
   it('dedicated SEO landing pages specify accurate titles, canonicals, and descriptions', () => {
     // WhatsApp Ordering
     expect(whatsappMetadata.title).toBe('WhatsApp Food Ordering System for Pakistan')
-    expect(whatsappMetadata.description).toContain('Automate WhatsApp food orders directly to your kitchen')
+    expect(whatsappMetadata.description).toContain('WhatsApp food orders directly for your kitchen')
     expect(whatsappMetadata.alternates?.canonical).toBe('/whatsapp-ordering')
     expect(whatsappMetadata.openGraph?.url).toBe('/whatsapp-ordering')
 

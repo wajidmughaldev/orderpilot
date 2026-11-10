@@ -8,14 +8,14 @@ import { FaqList } from '@/components/faq-list'
 export const metadata: Metadata = {
   title: 'Online Ordering System for Restaurants in Pakistan',
   description:
-    'Launch your restaurant\'s own branded online ordering website. Accept direct delivery and takeaway orders with custom delivery zones, payment receipt verification, and kitchen board routing.',
+    'Launch your restaurant\'s own branded online ordering website. Accept direct delivery and takeaway orders with clear address collection, local payment options, and kitchen board routing.',
   alternates: {
     canonical: '/online-ordering',
   },
   openGraph: {
     title: 'Online Ordering System for Restaurants in Pakistan | OrderPilot',
     description:
-      'Launch your restaurant\'s own branded online ordering website. Accept direct delivery and takeaway orders with custom delivery zones, payment receipt verification, and kitchen board routing.',
+      'Launch your restaurant\'s own branded online ordering website. Accept direct delivery and takeaway orders with clear address collection, local payment options, and kitchen board routing.',
     url: '/online-ordering',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot online web ordering dashboard' }],
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Online Ordering System for Restaurants in Pakistan | OrderPilot',
     description:
-      'Launch your restaurant\'s own branded online ordering website. Accept direct delivery and takeaway orders with custom delivery zones, payment receipt verification, and kitchen board routing.',
+      'Launch your restaurant\'s own branded online ordering website. Accept direct delivery and takeaway orders with clear address collection, local payment options, and kitchen board routing.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
@@ -51,12 +51,12 @@ const faqs = [
   {
     question: 'Can I set different delivery fees for different neighborhoods?',
     answer:
-      'Yes. OrderPilot lets you configure custom delivery fees and minimum order values based on delivery zones (such as DHA, Clifton, Gulberg, Bahria Town, or F/G sectors in Islamabad). You control your own delivery pricing.',
+      'OrderPilot collects complete address and neighborhood details for delivery or takeaway orders, allowing your team to manage local delivery coverage and apply your restaurant’s delivery policies.',
   },
   {
     question: 'What payment methods can customers use on my website?',
     answer:
-      'You can accept Cash on Delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. For digital payments, customers upload their transfer receipt screenshot at checkout, and your manager verifies it before the kitchen starts cooking.',
+      'You can accept Cash on Delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. Diners choose their preferred payment method at checkout, allowing your team to verify payments according to your standard workflow.',
   },
   {
     question: 'Which plan includes direct online web ordering?',
@@ -64,19 +64,6 @@ const faqs = [
       'Online web ordering is included in the Web + Table plan (PKR 7,999/month) and the Complete plan (PKR 12,999/month), both covering up to 1,000 orders per month and kitchen boards. A 14-day free trial is available on all plans. Prices exclude applicable taxes.',
   },
 ]
-
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: f.answer,
-    },
-  })),
-}
 
 export default function OnlineOrderingPage() {
   const whatsappConsultUrl =
@@ -86,7 +73,6 @@ export default function OnlineOrderingPage() {
     <AppShell>
       <main>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
         {/* HERO SECTION */}
         <section className="hero-section !pb-16 sm:!pb-20">
@@ -118,7 +104,7 @@ export default function OnlineOrderingPage() {
                 <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> You own all customer data
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Custom delivery zones &amp; fees
+                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Delivery &amp; takeaway coverage
               </span>
             </div>
           </div>
@@ -163,10 +149,10 @@ export default function OnlineOrderingPage() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
                   <MapPin className="size-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-bold dark:text-white">Control Delivery Zones &amp; Tariffs</h3>
+                <h3 className="mt-5 text-xl font-bold dark:text-white">Delivery &amp; Coverage Flexibility</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Set realistic delivery charges by neighborhood or sector. Configure minimum order amounts to ensure
-                  every delivery run makes operational sense for your kitchen and riders.
+                  Collect accurate neighborhood and delivery address details for every order. Establish minimum order
+                  guidelines and delivery parameters that match your restaurant&apos;s operational coverage.
                 </p>
               </div>
             </div>
@@ -270,10 +256,10 @@ export default function OnlineOrderingPage() {
                   <Banknote className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Payment Receipt Verification</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Flexible Pakistani Payment Methods</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
                     Cash on delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. For online transfers, customers
-                    upload their payment slip during checkout for manager verification before food preparation starts.
+                    can provide transaction confirmation details for staff verification alongside their order.
                   </p>
                 </div>
               </div>
@@ -283,10 +269,10 @@ export default function OnlineOrderingPage() {
                   <MapPin className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Custom Delivery Zones &amp; Minimum Orders</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Delivery Area &amp; Order Policies</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Define fees per sector (Karachi DHA/Clifton, Lahore Gulberg/Model Town, Islamabad F/G/H sectors) with
-                    customizable minimum order thresholds.
+                    Capture complete destination details across your city&apos;s key sectors and towns with transparent order
+                    requirements for delivery and takeaway.
                   </p>
                 </div>
               </div>

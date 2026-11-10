@@ -8,14 +8,14 @@ import { FaqList } from '@/components/faq-list'
 export const metadata: Metadata = {
   title: 'QR Code Table Ordering for Pakistani Restaurants',
   description:
-    'Enable contactless QR code table ordering in your restaurant. Let diners scan, browse the digital menu, and split bills directly from their table without waiting.',
+    'Enable contactless QR code table ordering in your restaurant. Let diners scan, browse the digital menu, and submit orders directly from their table.',
   alternates: {
     canonical: '/qr-table-ordering',
   },
   openGraph: {
     title: 'QR Code Table Ordering for Pakistani Restaurants | OrderPilot',
     description:
-      'Enable contactless QR code table ordering in your restaurant. Let diners scan, browse the digital menu, and split bills directly from their table without waiting.',
+      'Enable contactless QR code table ordering in your restaurant. Let diners scan, browse the digital menu, and submit orders directly from their table.',
     url: '/qr-table-ordering',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot QR table ordering showcase' }],
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'QR Code Table Ordering for Pakistani Restaurants | OrderPilot',
     description:
-      'Enable contactless QR code table ordering in your restaurant. Let diners scan, browse the digital menu, and split bills directly from their table without waiting.',
+      'Enable contactless QR code table ordering in your restaurant. Let diners scan, browse the digital menu, and submit orders directly from their table.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
@@ -49,9 +49,9 @@ const faqs = [
       'Each table has its own unique QR code linked to that specific table number (e.g. Table 4, Family Hall 2, Rooftop 7). When the diner submits their order, it arrives on your live kitchen board clearly marked with their exact table location.',
   },
   {
-    question: 'Can customers at the same table split the bill?',
+    question: 'How does billing work for table QR orders?',
     answer:
-      'Yes. OrderPilot includes built-in Split Bill & Pay functionality. Diners at the same table can easily split items or divide the bill amount without creating bottlenecks at your cashier counter.',
+      'Diners can review their itemized order directly on their phones, making it easy for groups to check their bill and settle payment with the floor staff or cashier.',
   },
   {
     question: 'Can diners still pay the waiter with cash?',
@@ -65,19 +65,6 @@ const faqs = [
   },
 ]
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: f.answer,
-    },
-  })),
-}
-
 export default function QrTableOrderingPage() {
   const whatsappConsultUrl =
     'https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20how%20OrderPilot%20QR%20table%20ordering%20works%20for%20my%20dine-in%20restaurant.'
@@ -86,7 +73,6 @@ export default function QrTableOrderingPage() {
     <AppShell>
       <main>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
         {/* HERO SECTION */}
         <section className="hero-section !pb-16 sm:!pb-20">
@@ -97,7 +83,7 @@ export default function QrTableOrderingPage() {
             </h1>
             <p className="lede mt-6 max-w-3xl text-balance">
               Give dine-in guests an interactive digital menu right at their seat. Diners scan a table QR code to browse
-              food photos, submit orders directly to your kitchen screen, and split their bill with zero app downloads.
+              food photos, submit orders directly to your kitchen screen, and review their order with zero app downloads.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -117,7 +103,7 @@ export default function QrTableOrderingPage() {
                 <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Works on iOS &amp; Android
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Built-in split bill &amp; pay
+                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Itemized table order review
               </span>
             </div>
           </div>
@@ -162,10 +148,10 @@ export default function QrTableOrderingPage() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
                   <SplitSquareVertical className="size-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-bold dark:text-white">Split-Bill Counter Delays</h3>
+                <h3 className="mt-5 text-xl font-bold dark:text-white">Group Bill Review Delays</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Large family gatherings, corporate lunches, and groups often request separate bills. Manual
-                  calculations at the cashier counter cause long lines at departure.
+                  Large family gatherings, corporate lunches, and groups often take time to review items at the table.
+                  An itemized digital menu makes checking table orders straightforward before settling up.
                 </p>
               </div>
             </div>
@@ -243,9 +229,9 @@ export default function QrTableOrderingPage() {
                 <span className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
                   Step 04
                 </span>
-                <h3 className="mt-3 text-lg font-bold dark:text-white">Serve &amp; Split Bill</h3>
+                <h3 className="mt-3 text-lg font-bold dark:text-white">Serve &amp; Settle Check</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Staff deliver hot dishes to Table 5. Diners can split the check or pay cash with the waiter.
+                  Staff deliver hot dishes to Table 5 with clear itemized tickets, allowing guests to pay cash with the waiter or settle at the counter without confusion.
                 </p>
               </div>
             </div>
@@ -269,10 +255,10 @@ export default function QrTableOrderingPage() {
                   <SplitSquareVertical className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Split Bill &amp; Pay Built-In</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Itemized Table Order Review</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Guests at the same table can split their bill by dish or divide total amounts from their own phones,
-                    reducing checkout wait times at the counter.
+                    Guests can review all ordered dishes, quantities, and totals directly from their mobile screen,
+                    helping group tables verify their order and settle their bill smoothly.
                   </p>
                 </div>
               </div>

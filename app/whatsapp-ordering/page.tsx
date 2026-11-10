@@ -8,14 +8,14 @@ import { FaqList } from '@/components/faq-list'
 export const metadata: Metadata = {
   title: 'WhatsApp Food Ordering System for Pakistan',
   description:
-    'Automate WhatsApp food orders directly to your kitchen. OrderPilot lets Pakistani restaurants share interactive digital menus, verify customer orders, and reduce order mistakes.',
+    'Organize WhatsApp food orders directly for your kitchen. OrderPilot lets Pakistani restaurants share interactive digital menus, verify customer orders, and reduce order mistakes.',
   alternates: {
     canonical: '/whatsapp-ordering',
   },
   openGraph: {
     title: 'WhatsApp Food Ordering System for Pakistan | OrderPilot',
     description:
-      'Automate WhatsApp food orders directly to your kitchen. OrderPilot lets Pakistani restaurants share interactive digital menus, verify customer orders, and reduce order mistakes.',
+      'Organize WhatsApp food orders directly for your kitchen. OrderPilot lets Pakistani restaurants share interactive digital menus, verify customer orders, and reduce order mistakes.',
     url: '/whatsapp-ordering',
     images: [{ url: '/assets/orderpilot_kitchen_dashboard.webp', width: 1456, height: 1092, alt: 'OrderPilot WhatsApp kitchen ordering dashboard' }],
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'WhatsApp Food Ordering System for Pakistan | OrderPilot',
     description:
-      'Automate WhatsApp food orders directly to your kitchen. OrderPilot lets Pakistani restaurants share interactive digital menus, verify customer orders, and reduce order mistakes.',
+      'Organize WhatsApp food orders directly for your kitchen. OrderPilot lets Pakistani restaurants share interactive digital menus, verify customer orders, and reduce order mistakes.',
     images: ['/assets/orderpilot_kitchen_dashboard.webp'],
   },
 }
@@ -51,7 +51,7 @@ const faqs = [
   {
     question: 'How do customers pay for WhatsApp orders in Pakistan?',
     answer:
-      'You choose what payment methods your restaurant accepts: Cash on Delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. For digital transfers, customers upload their payment screenshot during checkout, and your manager verifies the transaction before the kitchen starts cooking.',
+      'You choose what payment methods your restaurant accepts: Cash on Delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. For digital transfers, customers can provide payment confirmation details for your team to verify alongside the order.',
   },
   {
     question: 'How do WhatsApp orders reach my kitchen team?',
@@ -65,19 +65,6 @@ const faqs = [
   },
 ]
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: f.answer,
-    },
-  })),
-}
-
 export default function WhatsAppOrderingPage() {
   const whatsappConsultUrl =
     'https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20see%20how%20OrderPilot%20WhatsApp%20ordering%20works%20for%20my%20restaurant.'
@@ -86,7 +73,6 @@ export default function WhatsAppOrderingPage() {
     <AppShell>
       <main>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
         {/* HERO SECTION */}
         <section className="hero-section !pb-16 sm:!pb-20">
@@ -96,9 +82,9 @@ export default function WhatsAppOrderingPage() {
               Turn WhatsApp Chats Into <span className="text-brand">Organized Kitchen Orders.</span>
             </h1>
             <p className="lede mt-6 max-w-3xl text-balance">
-              Pakistani diners love ordering on WhatsApp, but handling voice notes, manual slips, and unverified payment
-              screenshots during dinner rush creates chaos. OrderPilot turns WhatsApp conversations into structured,
-              automated orders that route directly to your kitchen screen.
+              Pakistani diners love ordering on WhatsApp, but handling voice notes and manual paper slips during dinner
+              rush creates chaos. OrderPilot provides a clean digital menu link and structured order flow that customers
+              can open from WhatsApp, keeping order details organized for your kitchen.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -309,10 +295,10 @@ export default function WhatsAppOrderingPage() {
                   <Banknote className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Local Payment Reconciliation</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Local Payment Options</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Accept Cash on Delivery, JazzCash, EasyPaisa, or direct bank transfer. Customers upload transaction
-                    screenshots so managers can verify payments before cooking starts.
+                    Accept Cash on Delivery, JazzCash, EasyPaisa, or direct bank transfer. Customers provide payment confirmation
+                    details so your team can verify transactions before cooking starts.
                   </p>
                 </div>
               </div>
@@ -322,10 +308,10 @@ export default function WhatsAppOrderingPage() {
                   <Sparkles className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Custom Delivery Zones &amp; Fees</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Local Delivery &amp; Address Capture</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Define custom delivery charges by neighborhood or distance (e.g. DHA, Gulberg, Bahria Town). Avoid
-                    awkward phone arguments over rider delivery costs.
+                    Capture complete neighborhood and address details for every order, helping riders fulfill deliveries
+                    accurately across DHA, Gulberg, Bahria Town, or your service area.
                   </p>
                 </div>
               </div>
