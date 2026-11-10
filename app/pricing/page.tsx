@@ -4,24 +4,24 @@ import { ArrowRight, Check } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
 
 export const metadata: Metadata = {
-  title: 'Pricing Plans — Transparent Subscription & Pay-Per-Order Options',
+  title: 'Restaurant Ordering Software Pricing in Pakistan',
   description:
-    'Transparent OrderPilot pricing in PKR for Pakistani restaurants. 14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+    'Compare OrderPilot plans from PKR 5,999/month and pay-per-order options. WhatsApp, website and table QR ordering with a 14-day trial on all plans.',
   alternates: {
     canonical: '/pricing',
   },
   openGraph: {
-    title: 'OrderPilot Pricing Plans — Transparent Options in PKR',
+    title: 'Restaurant Ordering Software Pricing in Pakistan | OrderPilot',
     description:
-      '14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+      'Compare OrderPilot plans from PKR 5,999/month and pay-per-order options. WhatsApp, website and table QR ordering with a 14-day trial on all plans.',
     url: '/pricing',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot pricing plans' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OrderPilot Pricing Plans — Transparent Options in PKR',
+    title: 'Restaurant Ordering Software Pricing in Pakistan | OrderPilot',
     description:
-      '14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+      'Compare OrderPilot plans from PKR 5,999/month and pay-per-order options. WhatsApp, website and table QR ordering with a 14-day trial on all plans.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }

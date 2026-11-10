@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { AppShell } from '@/components/app-shell'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — OrderPilot',
+  title: 'Terms of Service',
   description:
     'These Terms of Service govern the use of OrderPilot, a restaurant ordering automation product built by the OrderPilot team and backed by Digipex Solutions LLC.',
   alternates: {

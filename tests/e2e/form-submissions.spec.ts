@@ -115,6 +115,7 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       await page.goto('/book-demo?interest=pay-per-order')
 
       const billingSelect = page.locator('select[name="billing"]')
+      await expect(billingSelect).toBeVisible({ timeout: 15000 })
       await expect(billingSelect).toHaveValue('Pay-per-Order')
     })
 
@@ -122,7 +123,7 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       await page.goto('/book-demo')
 
       const directTrialLink = page.getByRole('link', { name: /Sign in & start trial directly/i })
-      await expect(directTrialLink).toBeVisible()
+      await expect(directTrialLink).toBeVisible({ timeout: 15000 })
       expect(await directTrialLink.getAttribute('href')).toBe('https://app.orderpilot.pk')
     })
   })

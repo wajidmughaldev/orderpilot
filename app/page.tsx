@@ -18,19 +18,24 @@ const SeeProductMockup = dynamic(() => import('@/components/see-product-mockup')
 const PricingSectionView = dynamic(() => import('@/components/pricing-section-view').then((mod) => mod.PricingSectionView))
 
 export const metadata: Metadata = {
-  title: 'OrderPilot — Ordering Software for Pakistani Restaurants',
-  description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
+  title: {
+    absolute: 'Restaurant Ordering Software for Pakistan | OrderPilot',
+  },
+  description:
+    'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'OrderPilot — Every order, on one screen.',
-    description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
+    title: 'Restaurant Ordering Software for Pakistan | OrderPilot',
+    description:
+      'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
     url: '/',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot restaurant dashboard' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OrderPilot — Every order, on one screen.',
-    description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
+    title: 'Restaurant Ordering Software for Pakistan | OrderPilot',
+    description:
+      'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
@@ -41,11 +46,12 @@ const softwareAppJsonLd = {
   name: 'OrderPilot',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, WhatsApp',
+  url: 'https://www.orderpilot.pk',
   description: 'Multi-channel restaurant ordering software for WhatsApp, online web menus, and table QR ordering.',
   offers: [
-    { '@type': 'Offer', name: 'WhatsApp Plan', price: '5999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
-    { '@type': 'Offer', name: 'Web + Table Plan', price: '7999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
-    { '@type': 'Offer', name: 'Complete Plan', price: '12999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
+    { '@type': 'Offer', name: 'WhatsApp Plan', price: '5999', priceCurrency: 'PKR', billingDuration: 'P1M', url: 'https://www.orderpilot.pk/pricing', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
+    { '@type': 'Offer', name: 'Web + Table Plan', price: '7999', priceCurrency: 'PKR', billingDuration: 'P1M', url: 'https://www.orderpilot.pk/pricing', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
+    { '@type': 'Offer', name: 'Complete Plan', price: '12999', priceCurrency: 'PKR', billingDuration: 'P1M', url: 'https://www.orderpilot.pk/pricing', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
   ],
 }
 

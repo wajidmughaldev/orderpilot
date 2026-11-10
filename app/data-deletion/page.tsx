@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { AppShell } from '@/components/app-shell'
 
 export const metadata: Metadata = {
-  title: 'Data Deletion Request — OrderPilot',
+  title: 'Data Deletion Request',
   description:
     'Users, restaurants, or customers may request deletion of personal or business data associated with OrderPilot, backed by Digipex Solutions LLC.',
   alternates: {
