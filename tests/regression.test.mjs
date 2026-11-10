@@ -818,7 +818,7 @@ async function runAll() {
 
       assert.ok(pricing.includes('wa.me/923361815141'))
       assert.ok(pricing.includes('/book-demo?interest=pricing'))
-      assert.ok(pricing.includes('14-day free trial on all plans'))
+      assert.ok(pricing.includes('14-day trial on all plans') || pricing.includes('14-day free trial is available on all plans'))
     })
 
     // -------------------------------------------------------------------------
@@ -835,8 +835,8 @@ async function runAll() {
       assert.ok(html.includes('8% to 10%'))
       assert.ok(html.includes('14-day free trial'))
       assert.ok(html.includes('1,000 orders'))
-      assert.ok(html.includes('<link rel="canonical" href="https://orderpilot.pk/pricing"'))
-      assert.ok(html.includes('Pricing Plans — Transparent Subscription'))
+      assert.ok(html.includes('<link rel="canonical" href="https://www.orderpilot.pk/pricing"'))
+      assert.ok(html.includes('Restaurant Ordering Software Pricing in Pakistan'))
     })
 
     // -------------------------------------------------------------------------
@@ -847,13 +847,13 @@ async function runAll() {
       const res = await fetch(`${BASE_URL}/sitemap.xml`)
       assert.equal(res.status, 200)
       const xml = await res.text()
-      assert.ok(xml.includes('<loc>https://orderpilot.pk/</loc>'))
-      assert.ok(xml.includes('<loc>https://orderpilot.pk/pricing</loc>'))
-      assert.ok(xml.includes('<loc>https://orderpilot.pk/book-demo</loc>'))
-      assert.ok(xml.includes('<loc>https://orderpilot.pk/privacy</loc>'))
-      assert.ok(xml.includes('<loc>https://orderpilot.pk/terms</loc>'))
-      assert.ok(xml.includes('<loc>https://orderpilot.pk/data-deletion</loc>'))
-      assert.ok(xml.includes('<loc>https://orderpilot.pk/cookie-policy</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/pricing</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/book-demo</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/privacy</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/terms</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/data-deletion</loc>'))
+      assert.ok(xml.includes('<loc>https://www.orderpilot.pk/cookie-policy</loc>'))
       assert.ok(!xml.includes('/api/'))
     })
 
@@ -863,7 +863,7 @@ async function runAll() {
       const txt = await res.text()
       assert.ok(txt.includes('User-Agent: *'))
       assert.ok(txt.includes('Disallow: /api/'))
-      assert.ok(txt.includes('Sitemap: https://orderpilot.pk/sitemap.xml'))
+      assert.ok(txt.includes('Sitemap: https://www.orderpilot.pk/sitemap.xml'))
     })
 
     // -------------------------------------------------------------------------
@@ -875,8 +875,10 @@ async function runAll() {
       assert.equal(res.status, 200)
       const html = await res.text()
       assert.ok(html.includes('<h1'))
+      assert.ok(html.includes('Restaurant Ordering Software for Pakistan | OrderPilot'))
       assert.ok(html.includes('SoftwareApplication'))
       assert.ok(html.includes('Organization'))
+      assert.ok(html.includes('https://www.orderpilot.pk'))
       assert.ok(html.includes('orderpilot_restaurant_dashboard_showcase.webp'))
     })
 
@@ -885,7 +887,8 @@ async function runAll() {
       assert.equal(res.status, 200)
       const html = await res.text()
       assert.ok(html.includes('<h1'))
-      assert.ok(html.includes('<link rel="canonical" href="https://orderpilot.pk/book-demo"'))
+      assert.ok(html.includes('Book a Restaurant Ordering Demo'))
+      assert.ok(html.includes('<link rel="canonical" href="https://www.orderpilot.pk/book-demo"'))
     })
 
     // -------------------------------------------------------------------------
@@ -906,7 +909,7 @@ async function runAll() {
         const html = await res.text()
         assert.ok(html.includes('<h1'))
         assert.ok(html.includes(r.title))
-        assert.ok(html.includes(`https://orderpilot.pk${r.path}`))
+        assert.ok(html.includes(`https://www.orderpilot.pk${r.path}`))
         assert.ok(html.includes('Digipex Solutions LLC'))
         assert.ok(html.includes('contact@orderpilot.pk'))
       })

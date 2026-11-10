@@ -46,7 +46,7 @@ test.describe('E2E: Legal & Pricing Routes', () => {
 
       // Canonical link verification
       const canonical = page.locator('link[rel="canonical"]')
-      await expect(canonical).toHaveAttribute('href', `https://orderpilot.pk${route.path}`)
+      await expect(canonical).toHaveAttribute('href', `https://www.orderpilot.pk${route.path}`)
 
       // Entity identity disclosure
       await expect(page.getByText(/Digipex Solutions/i).first()).toBeVisible()

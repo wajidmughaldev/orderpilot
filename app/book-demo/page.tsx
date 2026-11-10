@@ -7,22 +7,22 @@ import { DemoForm } from '@/components/demo-form'
 import { FaqList } from '@/components/faq-list'
 
 export const metadata: Metadata = {
-  title: 'Book a Live Demo — Walkthrough for Your Restaurant',
+  title: 'Book a Restaurant Ordering Demo',
   description:
-    'Request a guided OrderPilot demo for your restaurant. Explore WhatsApp and Table QR ordering, kitchen dashboards, the 14-day free trial available on all plans (monthly subscriptions from PKR 5,999/mo up to 1,000 orders/mo, or flexible 8%–10% pay-per-order). One-time PKR 5,000 setup fee applies only if you continue on a paid plan. Prices exclude applicable taxes.',
+    'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore the right plan for your restaurant.',
   alternates: { canonical: '/book-demo' },
   openGraph: {
-    title: 'Book a Live Demo — Walkthrough for Your Restaurant',
+    title: 'Book a Restaurant Ordering Demo | OrderPilot',
     description:
-      'Explore WhatsApp, Web, and Table QR ordering, the kitchen board, and pricing options with our team.',
+      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore the right plan for your restaurant.',
     url: '/book-demo',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot demo walkthrough' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Request an OrderPilot Demo — Walkthrough for Your Restaurant',
+    title: 'Book a Restaurant Ordering Demo | OrderPilot',
     description:
-      'Explore WhatsApp, Web, and Table QR ordering, the kitchen board, and pricing options with our team.',
+      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore the right plan for your restaurant.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }

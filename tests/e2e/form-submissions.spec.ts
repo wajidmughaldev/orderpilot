@@ -115,6 +115,7 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       await page.goto('/book-demo?interest=pay-per-order')
 
       const billingSelect = page.locator('select[name="billing"]')
+      await expect(billingSelect).toBeVisible()
       await expect(billingSelect).toHaveValue('Pay-per-Order')
     })
 

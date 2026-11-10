@@ -8,9 +8,9 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakart
 const space = Space_Grotesk({ subsets: ['latin'], variable: '--font-space', display: 'swap' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://orderpilot.pk'),
-  title: { default: 'OrderPilot — Ordering Software for Pakistani Restaurants', template: '%s | OrderPilot' },
-  description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen.',
+  metadataBase: new URL('https://www.orderpilot.pk'),
+  title: { default: 'Restaurant Ordering Software for Pakistan | OrderPilot', template: '%s | OrderPilot' },
+  description: 'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
   applicationName: 'OrderPilot',
   authors: [{ name: 'OrderPilot' }, { name: 'Digipex Solutions LLC' }],
   creator: 'Digipex Solutions LLC',
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: 'OrderPilot — Ordering Software for Pakistani Restaurants',
-    description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen.',
+    title: 'Restaurant Ordering Software for Pakistan | OrderPilot',
+    description: 'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
     type: 'website',
     locale: 'en_PK',
     siteName: 'OrderPilot',
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OrderPilot — Ordering Software for Pakistani Restaurants',
-    description: 'Connect WhatsApp, online web menus, and table QR orders directly to your kitchen.',
+    title: 'Restaurant Ordering Software for Pakistan | OrderPilot',
+    description: 'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
@@ -46,8 +46,8 @@ const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'OrderPilot',
-  url: 'https://orderpilot.pk',
-  logo: 'https://orderpilot.pk/assets/orderpilot-logo.png',
+  url: 'https://www.orderpilot.pk',
+  logo: 'https://www.orderpilot.pk/assets/orderpilot-logo.png',
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+92-336-1815141',
@@ -65,7 +65,7 @@ const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'OrderPilot',
-  url: 'https://orderpilot.pk',
+  url: 'https://www.orderpilot.pk',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
