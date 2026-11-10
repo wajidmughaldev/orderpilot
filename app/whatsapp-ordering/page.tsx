@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'What is the pricing for the WhatsApp ordering plan?',
     answer:
-      'The WhatsApp subscription plan is PKR 5,999 per month and covers up to 1,000 orders per month, the live kitchen board, and full customer list exports. A 14-day free trial is available on all plans. If you prefer, a pay-per-order option (8% to 10% per order) is also available. Prices exclude applicable taxes.',
+      'The WhatsApp subscription plan is PKR 5,999 per month and covers up to 1,000 orders per month, the live kitchen board, and full customer list exports. A 14-day free trial is available on all plans. A pay-per-order option (8% to 10% per order, Coming Soon) is also planned. Prices exclude applicable taxes.',
   },
 ]
 
@@ -135,12 +135,7 @@ export default function WhatsAppOrderingPage() {
                         />
                       </div>
                       <div>
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-sm font-bold text-ink dark:text-white">Arab Cuisine</span>
-                          <span className="rounded-full bg-brand/15 dark:bg-leaf/20 px-1.5 py-0.2 text-[10px] font-semibold text-brand dark:text-leaf">
-                            Verified
-                          </span>
-                        </div>
+                        <span className="text-sm font-bold text-ink dark:text-white">Arab Cuisine</span>
                         <p className="text-xs text-ink/60 dark:text-white/60">WhatsApp Business Account</p>
                       </div>
                     </div>
@@ -210,6 +205,9 @@ export default function WhatsAppOrderingPage() {
                       </div>
                     </div>
                   </div>
+                  <p className="text-center text-[11px] text-ink/60 dark:text-white/60">
+                    Illustrative workflow demonstration. Menus and kitchen tickets are configured for your restaurant.
+                  </p>
                 </div>
               </div>
             </div>
@@ -428,7 +426,7 @@ export default function WhatsAppOrderingPage() {
                 Start WhatsApp ordering with a 14-day free trial.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                PKR 5,999/month (covers up to 1,000 orders) or 8%–10% pay-per-order. Includes 14-day free trial, live
+                PKR 5,999/month (covers up to 1,000 orders) or 8%–10% pay-per-order (Coming Soon). Includes 14-day free trial, live
                 kitchen board, and customer list exports. One-time PKR 5,000 setup fee applies only if you continue. Taxes excluded.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

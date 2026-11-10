@@ -205,6 +205,9 @@ export default function QrTableOrderingPage() {
                       </p>
                     </div>
                   </div>
+                  <p className="text-center text-[11px] text-ink/60 dark:text-white/60">
+                    Illustrative table ordering demonstration. Standees and digital menus are customized for your floor layout.
+                  </p>
                 </div>
               </div>
             </div>
@@ -475,13 +478,13 @@ export default function QrTableOrderingPage() {
                 className="panel p-8 transition-transform hover:-translate-y-1 hover:shadow-lg dark:bg-[#121e15] dark:border-white/5 block group"
               >
                 <p className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
-                  Chat Automation
+                  WhatsApp Food Ordering
                 </p>
                 <h3 className="mt-3 text-xl font-bold dark:text-white group-hover:text-brand dark:group-hover:text-leaf flex items-center justify-between">
-                  WhatsApp Food Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+                  WhatsApp Digital Menu Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Turn messy WhatsApp voice notes and text messages into organized, structured kitchen orders.
+                  Share an interactive digital menu link directly in WhatsApp chats so customers can select dishes and send organized orders to your kitchen board.
                 </p>
               </Link>
 

@@ -41,7 +41,7 @@ const faqs = [
   {
     question: 'How do customers access my restaurant’s online ordering website?',
     answer:
-      'Your restaurant gets its own dedicated, mobile-optimized web ordering link (and custom domain support). You can place this link in your Instagram bio, Facebook page, Google Business Profile, TikTok, and SMS campaigns for diners to order directly.',
+      'Your restaurant gets its own dedicated, mobile-optimized web ordering link. You can place this link in your Instagram bio, Facebook page, Google Business Profile, TikTok, and SMS campaigns for diners to order directly.',
   },
   {
     question: 'How do delivery riders know where to deliver?',
@@ -205,6 +205,9 @@ export default function OnlineOrderingPage() {
                       </div>
                     </div>
                   </div>
+                  <p className="text-center text-[11px] text-ink/60 dark:text-white/60">
+                    Illustrative storefront demonstration. Web menu and kitchen routing are configured for your restaurant.
+                  </p>
                 </div>
               </div>
             </div>
@@ -416,7 +419,7 @@ export default function OnlineOrderingPage() {
                 Predictable subscription plans with a 14-day free trial.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                Included in Web + Table plan (PKR 7,999/month) or 8%–10% pay-per-order. Covers up to 1,000 orders/month,
+                Included in Web + Table plan (PKR 7,999/month) or 8%–10% pay-per-order (Coming Soon). Covers up to 1,000 orders/month,
                 live kitchen boards, and customer exports. 14-day free trial on all plans. One-time PKR 5,000 setup fee
                 applies if continuing. Taxes excluded.
               </p>
@@ -475,13 +478,13 @@ export default function OnlineOrderingPage() {
                 className="panel p-8 transition-transform hover:-translate-y-1 hover:shadow-lg dark:bg-[#121e15] dark:border-white/5 block group"
               >
                 <p className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
-                  Chat Automation
+                  WhatsApp Food Ordering
                 </p>
                 <h3 className="mt-3 text-xl font-bold dark:text-white group-hover:text-brand dark:group-hover:text-leaf flex items-center justify-between">
-                  WhatsApp Food Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+                  WhatsApp Digital Menu Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Turn messy WhatsApp voice notes and text messages into organized, structured kitchen orders.
+                  Share an interactive digital menu link directly in WhatsApp chats so customers can select dishes and send organized orders to your kitchen board.
                 </p>
               </Link>
 
