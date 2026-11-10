@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle2, MessageSquare, QrCode, SplitSquareVertical, Sparkles, ChefHat, Clock } from 'lucide-react'
+import { ArrowRight, CheckCircle2, MessageSquare, QrCode, Sparkles, ChefHat, Clock, Smartphone } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
 import { FaqList } from '@/components/faq-list'
 
@@ -75,36 +75,138 @@ export default function QrTableOrderingPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
         {/* HERO SECTION */}
-        <section className="hero-section !pb-16 sm:!pb-20">
-          <div className="site-shell max-w-5xl">
-            <p className="eyebrow">Dine-In Table QR Ordering</p>
-            <h1 className="display mt-6 max-w-4xl text-balance">
-              Let Customers Order <span className="text-brand">Straight from Their Table.</span>
-            </h1>
-            <p className="lede mt-6 max-w-3xl text-balance">
-              Give dine-in guests an interactive digital menu right at their seat. Diners scan a table QR code to browse
-              food photos, submit orders directly to your kitchen screen, and review their order with zero app downloads.
-            </p>
+        <section className="hero-section !pb-12 sm:!pb-16 lg:!pb-20">
+          <div className="site-shell">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+              {/* Left Column: Value Proposition & CTAs */}
+              <div className="lg:col-span-7">
+                <p className="eyebrow">Dine-In Table QR Ordering</p>
+                <h1 className="display mt-6 max-w-2xl text-balance">
+                  Let Customers Order <span className="text-brand">Straight from Their Table.</span>
+                </h1>
+                <p className="lede mt-6 max-w-xl text-balance">
+                  Give dine-in guests an interactive digital menu right at their seat. Diners scan a table QR standee with
+                  their phone camera to browse food photos, submit orders directly to your kitchen screen, and review their
+                  order with zero app downloads.
+                </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/book-demo?interest=table-qr" className="button-primary">
-                Book Dine-In Demo <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-              <Link href="/pricing" className="button-secondary">
-                View Pricing Plans
-              </Link>
-            </div>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Link href="/book-demo?interest=table-qr" className="button-primary">
+                    Book Table QR Demo <ArrowRight className="size-4" aria-hidden="true" />
+                  </Link>
+                  <Link href="/pricing" className="button-secondary">
+                    View Pricing Plans
+                  </Link>
+                </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-semibold text-ink/75 dark:text-white/75">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Zero app download required
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Works on iOS &amp; Android
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Itemized table order review
-              </span>
+                <div className="mt-8 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-semibold text-ink/75 dark:text-white/75">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> Zero app download required
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> Works on iOS &amp; Android
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> Itemized table order review
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Column: Physical Table QR Standee + Customer Mobile Menu Experience */}
+              <div className="lg:col-span-5">
+                <div className="relative mx-auto max-w-md space-y-4">
+                  {/* Customer Mobile Digital Menu Card */}
+                  <div className="overflow-hidden rounded-2xl border border-forest/15 dark:border-white/10 bg-white dark:bg-[#121e15] shadow-xl">
+                    {/* Table Menu Top Bar */}
+                    <div className="flex items-center justify-between border-b border-forest/10 dark:border-white/10 bg-forest/5 dark:bg-white/5 px-4 py-3">
+                      <div className="flex items-center gap-2.5">
+                        <div className="relative size-8 overflow-hidden rounded-full border border-forest/10 dark:border-white/10">
+                          <Image
+                            src="/orderpilot-workflow/arab-cuisine-avatar.png"
+                            alt="Arab Cuisine Restaurant"
+                            width={32}
+                            height={32}
+                            className="size-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <span className="block text-xs font-bold text-ink dark:text-white">Arab Cuisine</span>
+                          <span className="text-[10px] text-ink/60 dark:text-white/60">Dine-In Menu</span>
+                        </div>
+                      </div>
+                      <span className="rounded-full bg-brand/15 dark:bg-leaf/20 px-2.5 py-0.5 text-xs font-bold text-brand dark:text-leaf">
+                        Table 12
+                      </span>
+                    </div>
+
+                    {/* Category Tabs */}
+                    <div className="flex items-center gap-2 border-b border-forest/5 dark:border-white/5 px-4 py-2 text-[11px] font-semibold text-ink/70 dark:text-white/70 overflow-x-auto">
+                      <span className="rounded-md bg-brand px-2 py-0.5 text-white">Burgers</span>
+                      <span className="px-2 py-0.5">Sides</span>
+                      <span className="px-2 py-0.5">Drinks</span>
+                      <span className="px-2 py-0.5">Desserts</span>
+                    </div>
+
+                    {/* Featured Dish from QR Scan */}
+                    <div className="p-4 space-y-3">
+                      <div className="flex items-center gap-3 rounded-xl border border-forest/10 dark:border-white/10 bg-cream/50 dark:bg-white/5 p-3">
+                        <div className="size-16 shrink-0 overflow-hidden rounded-lg border border-forest/10 dark:border-white/10 bg-white dark:bg-black/20">
+                          <Image
+                            src="/orderpilot-workflow/burger-qr.webp"
+                            alt="Zinger Burger and Fries"
+                            width={64}
+                            height={64}
+                            className="size-full object-cover"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-xs text-ink dark:text-white">Zinger Burger + Fries</span>
+                            <span className="font-mono font-bold text-xs text-brand dark:text-leaf">PKR 850</span>
+                          </div>
+                          <p className="mt-0.5 text-[10px] text-ink/65 dark:text-white/65 line-clamp-1">
+                            Crispy chicken, fresh lettuce, secret sauce, hot fries
+                          </p>
+                          <div className="mt-2 flex items-center justify-between">
+                            <span className="text-[10px] font-semibold text-ink/75 dark:text-white/75">Qty: 1</span>
+                            <span className="rounded-md bg-brand/15 dark:bg-leaf/20 px-2 py-0.5 text-[10px] font-bold text-brand dark:text-leaf">
+                              Added to Order
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Active Table Order Status */}
+                      <div className="rounded-lg bg-forest/5 dark:bg-white/5 px-3 py-2 flex items-center justify-between text-[11px]">
+                        <span className="font-medium text-ink/80 dark:text-white/80">Active Check · Table 12</span>
+                        <span className="font-bold text-brand dark:text-leaf">Sent to Kitchen</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Physical Table QR Standee Preview Card */}
+                  <div className="flex items-center gap-4 rounded-2xl border border-forest/15 dark:border-white/10 bg-white/90 dark:bg-[#121e15] p-3.5 shadow-lg">
+                    <div className="size-14 shrink-0 rounded-xl bg-forest/10 dark:bg-white/10 p-2 flex items-center justify-center">
+                      <Image
+                        src="/orderpilot-workflow/sample-qr.svg"
+                        alt="Table QR Code"
+                        width={40}
+                        height={40}
+                        className="size-full object-contain"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <QrCode className="size-3.5 text-brand dark:text-leaf" aria-hidden="true" />
+                        <span className="text-xs font-bold text-ink dark:text-white">Table QR Standee</span>
+                      </div>
+                      <p className="text-[11px] text-ink/70 dark:text-white/70 mt-0.5">
+                        Unique table code printed on durable acrylic standee. Diners scan with standard camera app.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -146,7 +248,7 @@ export default function QrTableOrderingPage() {
 
               <div className="panel p-7 dark:bg-[#121e15] dark:border-white/5">
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
-                  <SplitSquareVertical className="size-6" aria-hidden="true" />
+                  <Smartphone className="size-6" aria-hidden="true" />
                 </div>
                 <h3 className="mt-5 text-xl font-bold dark:text-white">Group Bill Review Delays</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
@@ -252,7 +354,7 @@ export default function QrTableOrderingPage() {
             <div className="mt-12 grid gap-8 md:grid-cols-2">
               <div className="flex gap-4">
                 <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
-                  <SplitSquareVertical className="size-5" aria-hidden="true" />
+                  <Smartphone className="size-5" aria-hidden="true" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Itemized Table Order Review</h3>
@@ -268,10 +370,10 @@ export default function QrTableOrderingPage() {
                   <ChefHat className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Instant Out-of-Stock (86) Controls</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Centralized Menu Availability</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    When an ingredient or dish runs out mid-shift, managers can toggle it off in seconds. The digital menu
-                    updates across all table QR codes immediately.
+                    When ingredients run short or daily specials sell out, mark items unavailable in your dashboard so
+                    dine-in table menus reflect current offerings without reprinting.
                   </p>
                 </div>
               </div>
@@ -294,10 +396,10 @@ export default function QrTableOrderingPage() {
                   <Clock className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Seamless Reordering During the Meal</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Accurate Table-to-Kitchen Tickets</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Need additional naan, water, or dessert? Diners can scan again and add items to their active table
-                    order without waiting for a waiter to bring back paper slips.
+                    Orders submitted from table QR arrive labeled with the exact table number, helping kitchen and floor
+                    staff avoid ticket mix-ups during crowded dinner shifts.
                   </p>
                 </div>
               </div>
@@ -314,14 +416,13 @@ export default function QrTableOrderingPage() {
                 Included in Web + Table and Complete plans.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                Table QR ordering is included in the Web + Table plan (PKR 7,999/month) and Complete plan (PKR
-                12,999/month), both covering up to 1,000 orders/month, live kitchen boards, and customer exports. A
-                14-day free trial is available on all plans. The one-time PKR 5,000 setup fee applies only if you
-                continue on a paid plan. Prices exclude applicable taxes.
+                Included in Web + Table (PKR 7,999/month) and Complete (PKR 12,999/month) plans. Covers up to 1,000 orders/month,
+                live kitchen boards, and customer list exports. 14-day free trial on all plans. One-time PKR 5,000 setup fee
+                applies if continuing. Taxes excluded.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Link href="/book-demo?interest=table-qr" className="button-primary">
-                  Start Free Trial <ArrowRight className="size-4" aria-hidden="true" />
+                  Book Table QR Demo <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link href="/pricing" className="button-secondary">
                   Compare All Plans
@@ -380,7 +481,7 @@ export default function QrTableOrderingPage() {
                   WhatsApp Food Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Turn messy WhatsApp voice notes and text messages into organized, automated kitchen orders.
+                  Turn messy WhatsApp voice notes and text messages into organized, structured kitchen orders.
                 </p>
               </Link>
 
@@ -395,7 +496,7 @@ export default function QrTableOrderingPage() {
                   Direct Online Web Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Launch your restaurant&apos;s own branded delivery and pickup website with direct kitchen routing.
+                  Set up your restaurant&apos;s own branded delivery and pickup website with direct kitchen routing.
                 </p>
               </Link>
             </div>

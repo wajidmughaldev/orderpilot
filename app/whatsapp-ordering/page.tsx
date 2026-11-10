@@ -41,7 +41,7 @@ const faqs = [
   {
     question: 'Do my customers need to download a separate mobile app?',
     answer:
-      'No. Your customers do not need to download anything from Google Play or the App Store. When they message your restaurant on WhatsApp, they receive an interactive digital menu link that opens instantly in their mobile browser where they can select items and confirm their order.',
+      'No. Your customers do not need to download anything from Google Play or the App Store. When they message your restaurant on WhatsApp, they receive an interactive digital menu link that opens in their mobile browser where they can select items and confirm their order.',
   },
   {
     question: 'Can I keep my restaurant’s existing WhatsApp phone number?',
@@ -56,7 +56,7 @@ const faqs = [
   {
     question: 'How do WhatsApp orders reach my kitchen team?',
     answer:
-      'Every verified WhatsApp order appears automatically on your OrderPilot live kitchen board with an audio notification, order itemization, customer notes, delivery address, and status tracking (New, In Kitchen, Ready, Out for Delivery).',
+      'Every verified WhatsApp order appears on your OrderPilot live kitchen board with an audio notification, order itemization, customer notes, delivery address, and status tracking (New, In Kitchen, Ready, Out for Delivery).',
   },
   {
     question: 'What is the pricing for the WhatsApp ordering plan?',
@@ -75,43 +75,143 @@ export default function WhatsAppOrderingPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
         {/* HERO SECTION */}
-        <section className="hero-section !pb-16 sm:!pb-20">
-          <div className="site-shell max-w-5xl">
-            <p className="eyebrow">WhatsApp Ordering Automation</p>
-            <h1 className="display mt-6 max-w-4xl text-balance">
-              Turn WhatsApp Chats Into <span className="text-brand">Organized Kitchen Orders.</span>
-            </h1>
-            <p className="lede mt-6 max-w-3xl text-balance">
-              Pakistani diners love ordering on WhatsApp, but handling voice notes and manual paper slips during dinner
-              rush creates chaos. OrderPilot provides a clean digital menu link and structured order flow that customers
-              can open from WhatsApp, keeping order details organized for your kitchen.
-            </p>
+        <section className="hero-section !pb-12 sm:!pb-16 lg:!pb-20">
+          <div className="site-shell">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+              {/* Left Column: Value Proposition & CTAs */}
+              <div className="lg:col-span-7">
+                <p className="eyebrow">WhatsApp Ordering System</p>
+                <h1 className="display mt-6 max-w-2xl text-balance">
+                  Turn WhatsApp Chats Into <span className="text-brand">Organized Kitchen Orders.</span>
+                </h1>
+                <p className="lede mt-6 max-w-xl text-balance">
+                  Pakistani diners love ordering on WhatsApp, but handling voice notes and manual paper slips during dinner
+                  rush creates chaos. OrderPilot provides a clean digital menu link and structured order flow that customers
+                  open from WhatsApp, routing clear tickets directly to your kitchen screen.
+                </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/book-demo?interest=whatsapp" className="button-primary">
-                Book WhatsApp Demo <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-              <a
-                href={whatsappConsultUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-secondary"
-              >
-                <MessageSquare className="size-4 text-brand" aria-hidden="true" />
-                Talk on WhatsApp
-              </a>
-            </div>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Link href="/book-demo?interest=whatsapp" className="button-primary">
+                    Book WhatsApp Demo <ArrowRight className="size-4" aria-hidden="true" />
+                  </Link>
+                  <a
+                    href={whatsappConsultUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button-secondary"
+                  >
+                    <MessageSquare className="size-4 text-brand" aria-hidden="true" />
+                    Talk on WhatsApp
+                  </a>
+                </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-semibold text-ink/75 dark:text-white/75">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Works with your existing number
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> 14-day free trial on all plans
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> No customer app download
-              </span>
+                <div className="mt-8 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-semibold text-ink/75 dark:text-white/75">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> Works with your existing number
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> 14-day free trial on all plans
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> No customer app download
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Column: Real Customer Interaction + Kitchen Workflow Preview */}
+              <div className="lg:col-span-5">
+                <div className="relative mx-auto max-w-md space-y-4">
+                  {/* WhatsApp Customer Chat Card */}
+                  <div className="overflow-hidden rounded-2xl border border-forest/15 dark:border-white/10 bg-white dark:bg-[#121e15] shadow-xl">
+                    {/* Chat Header */}
+                    <div className="flex items-center gap-3 border-b border-forest/10 dark:border-white/10 bg-forest/5 dark:bg-white/5 px-4 py-3">
+                      <div className="relative size-10 overflow-hidden rounded-full border border-forest/15 dark:border-white/10">
+                        <Image
+                          src="/orderpilot-workflow/arab-cuisine-avatar.png"
+                          alt="Arab Cuisine Restaurant"
+                          width={40}
+                          height={40}
+                          className="size-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-sm font-bold text-ink dark:text-white">Arab Cuisine</span>
+                          <span className="rounded-full bg-brand/15 dark:bg-leaf/20 px-1.5 py-0.2 text-[10px] font-semibold text-brand dark:text-leaf">
+                            Verified
+                          </span>
+                        </div>
+                        <p className="text-xs text-ink/60 dark:text-white/60">WhatsApp Business Account</p>
+                      </div>
+                    </div>
+
+                    {/* Chat Messages */}
+                    <div className="space-y-3 p-4 text-xs">
+                      {/* Customer Message */}
+                      <div className="flex justify-end">
+                        <div className="max-w-[80%] rounded-2xl rounded-tr-none bg-[#dcf8c6] dark:bg-[#005f00]/40 px-3.5 py-2 text-ink dark:text-white shadow-sm">
+                          <p className="font-medium">Hi! I&apos;d like to order 1 Zinger Burger + Fries</p>
+                          <span className="mt-1 block text-right text-[10px] text-ink/50 dark:text-white/50">9:41 PM ✓✓</span>
+                        </div>
+                      </div>
+
+                      {/* Interactive Product Confirmation from OrderPilot */}
+                      <div className="rounded-xl border border-forest/10 dark:border-white/10 bg-cream/70 dark:bg-white/5 p-3">
+                        <div className="flex items-center gap-3">
+                          <div className="size-14 shrink-0 overflow-hidden rounded-lg border border-forest/10 dark:border-white/10 bg-white dark:bg-black/20">
+                            <Image
+                              src="/orderpilot-workflow/burger.webp"
+                              alt="Zinger Burger + Fries"
+                              width={56}
+                              height={56}
+                              className="size-full object-cover"
+                            />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center justify-between">
+                              <span className="font-bold text-ink dark:text-white">Zinger Burger + Fries</span>
+                              <span className="font-mono font-bold text-brand dark:text-leaf">PKR 850</span>
+                            </div>
+                            <p className="text-[11px] text-ink/65 dark:text-white/65">Crispy fillet, signature sauce, hot fries</p>
+                            <div className="mt-1 flex items-center justify-between text-[11px]">
+                              <span className="font-medium text-ink/75 dark:text-white/75">Qty: 1</span>
+                              <span className="font-semibold text-brand dark:text-leaf">✓ Details Confirmed</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Connected Kitchen Board Ticket */}
+                  <div className="overflow-hidden rounded-2xl border border-brand/20 dark:border-leaf/20 bg-forest text-white shadow-xl">
+                    <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5">
+                      <div className="flex items-center gap-2">
+                        <ChefHat className="size-4 text-leaf" aria-hidden="true" />
+                        <span className="font-mono text-xs font-bold uppercase tracking-wider text-leaf">
+                          Kitchen Screen · Ticket #1042
+                        </span>
+                      </div>
+                      <span className="rounded bg-leaf/20 px-2 py-0.5 text-[10px] font-bold text-leaf">
+                        In Kitchen
+                      </span>
+                    </div>
+                    <div className="p-4 text-xs">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <p className="font-bold text-white text-sm">1× Zinger Burger + Fries</p>
+                          <p className="text-white/70 mt-0.5">Note: Spicy fillet, extra garlic mayo</p>
+                        </div>
+                        <span className="font-mono text-white/90">PKR 850</span>
+                      </div>
+                      <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-2 text-[11px] text-white/70">
+                        <span>Channel: WhatsApp Delivery</span>
+                        <span>Payment: Cash on Delivery (COD)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -173,7 +273,7 @@ export default function WhatsAppOrderingPage() {
               <p className="eyebrow section-heading-eyebrow">Real Kitchen Visibility</p>
               <h2 className="section-title">A live kitchen display board built for WhatsApp order flow.</h2>
               <p className="section-description mt-4">
-                Orders placed through WhatsApp land instantly on your live kitchen board. Your kitchen staff see exactly
+                Orders confirmed through WhatsApp appear clearly on your live kitchen board. Your kitchen staff see exactly
                 what to cook, special instructions, and delivery status without shouting across the counter.
               </p>
             </div>
@@ -198,8 +298,8 @@ export default function WhatsAppOrderingPage() {
               <p className="eyebrow section-heading-eyebrow">How It Works</p>
               <h2 className="section-title">From WhatsApp message to hot meal in four simple steps.</h2>
               <p className="section-description mt-4">
-                Keep the ordering channel your customers already use while giving your restaurant team an automated,
-                error-free fulfillment process.
+                Keep the ordering channel your customers already use while giving your restaurant team an organized,
+                structured kitchen ordering process.
               </p>
             </div>
 
@@ -210,7 +310,7 @@ export default function WhatsAppOrderingPage() {
                 </span>
                 <h3 className="mt-3 text-lg font-bold dark:text-white">Customer Messages WhatsApp</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Diner sends a message to your WhatsApp business number and receives an instant link to your interactive
+                  Diner sends a message to your WhatsApp business number and receives a direct link to your interactive
                   menu.
                 </p>
               </div>
@@ -328,13 +428,12 @@ export default function WhatsAppOrderingPage() {
                 Start WhatsApp ordering with a 14-day free trial.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                The WhatsApp plan is PKR 5,999/month and covers up to 1,000 orders/month, the live kitchen board, and
-                customer list exports. Or choose the 8% to 10% pay-per-order option. The one-time PKR 5,000 setup fee
-                applies only if you continue on a paid plan. Prices exclude applicable taxes.
+                PKR 5,999/month (covers up to 1,000 orders) or 8%–10% pay-per-order. Includes 14-day free trial, live
+                kitchen board, and customer list exports. One-time PKR 5,000 setup fee applies only if you continue. Taxes excluded.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Link href="/book-demo?interest=whatsapp" className="button-primary">
-                  Start Free Trial <ArrowRight className="size-4" aria-hidden="true" />
+                  Book WhatsApp Demo <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link href="/pricing" className="button-secondary">
                   Compare All Plans
@@ -393,7 +492,7 @@ export default function WhatsAppOrderingPage() {
                   QR Code Table Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Let dine-in guests scan a table QR code, browse food photos, and split bills without waiting for a waiter.
+                  Let dine-in guests scan a table QR code, browse food photos, and review orders from their phone.
                 </p>
               </Link>
 
@@ -408,7 +507,7 @@ export default function WhatsAppOrderingPage() {
                   Direct Online Web Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Launch your restaurant&apos;s own branded delivery and pickup website with direct kitchen routing.
+                  Set up your restaurant&apos;s own branded delivery and pickup website with direct kitchen routing.
                 </p>
               </Link>
             </div>
@@ -418,4 +517,3 @@ export default function WhatsAppOrderingPage() {
     </AppShell>
   )
 }
-

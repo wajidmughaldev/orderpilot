@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle2, MessageSquare, Globe, Store, MapPin, Banknote, ShieldCheck, ChefHat } from 'lucide-react'
+import { ArrowRight, CheckCircle2, MessageSquare, Globe, Store, MapPin, Banknote, ShieldCheck, ChefHat, ShoppingBag } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
 import { FaqList } from '@/components/faq-list'
 
@@ -75,37 +75,138 @@ export default function OnlineOrderingPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
         {/* HERO SECTION */}
-        <section className="hero-section !pb-16 sm:!pb-20">
-          <div className="site-shell max-w-5xl">
-            <p className="eyebrow">Direct Web Ordering &amp; Takeaway</p>
-            <h1 className="display mt-6 max-w-4xl text-balance">
-              Your Restaurant. Your Menu. <span className="text-brand">Your Online Orders.</span>
-            </h1>
-            <p className="lede mt-6 max-w-3xl text-balance">
-              Give your customers a direct, mobile-friendly website to browse your full menu and place delivery or
-              takeaway orders. OrderPilot routes every order straight to your kitchen board while keeping your customer
-              relationships in your hands.
-            </p>
+        <section className="hero-section !pb-12 sm:!pb-16 lg:!pb-20">
+          <div className="site-shell">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+              {/* Left Column: Value Proposition & CTAs */}
+              <div className="lg:col-span-7">
+                <p className="eyebrow">Direct Web Ordering &amp; Takeaway</p>
+                <h1 className="display mt-6 max-w-2xl text-balance">
+                  Your Restaurant. Your Menu. <span className="text-brand">Your Online Orders.</span>
+                </h1>
+                <p className="lede mt-6 max-w-xl text-balance">
+                  Give your customers a direct, mobile-friendly website to browse your full menu and place delivery or
+                  takeaway orders. OrderPilot routes every order straight to your kitchen board while keeping your customer
+                  relationships in your hands.
+                </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/book-demo?interest=web-menu" className="button-primary">
-                Launch Web Ordering Demo <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-              <Link href="/pricing" className="button-secondary">
-                View Subscription Plans
-              </Link>
-            </div>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Link href="/book-demo?interest=web-menu" className="button-primary">
+                    Book Online Ordering Demo <ArrowRight className="size-4" aria-hidden="true" />
+                  </Link>
+                  <Link href="/pricing" className="button-secondary">
+                    View Subscription Plans
+                  </Link>
+                </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-semibold text-ink/75 dark:text-white/75">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Direct kitchen routing
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> You own all customer data
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-brand" aria-hidden="true" /> Delivery &amp; takeaway coverage
-              </span>
+                <div className="mt-8 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-semibold text-ink/75 dark:text-white/75">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> Direct kitchen routing
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> You own all customer data
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="size-4 text-brand dark:text-leaf" aria-hidden="true" /> Delivery &amp; takeaway coverage
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Column: Branded Restaurant Storefront Device Preview */}
+              <div className="lg:col-span-5">
+                <div className="relative mx-auto max-w-md space-y-4">
+                  {/* Branded Web Storefront Mockup Card */}
+                  <div className="overflow-hidden rounded-2xl border border-forest/15 dark:border-white/10 bg-white dark:bg-[#121e15] shadow-xl">
+                    {/* Browser Address Bar */}
+                    <div className="flex items-center justify-between border-b border-forest/10 dark:border-white/10 bg-forest/5 dark:bg-white/5 px-4 py-2.5 text-xs text-ink/70 dark:text-white/70">
+                      <div className="flex items-center gap-1.5">
+                        <span className="size-2 rounded-full bg-red-400" />
+                        <span className="size-2 rounded-full bg-yellow-400" />
+                        <span className="size-2 rounded-full bg-green-400" />
+                      </div>
+                      <div className="flex items-center gap-1 font-mono text-[11px] text-ink/80 dark:text-white/80">
+                        <Globe className="size-3 text-brand dark:text-leaf" aria-hidden="true" />
+                        <span>orderpilot.pk/arabcuisine</span>
+                      </div>
+                      <span className="text-[10px] text-brand dark:text-leaf font-bold">SSL 🔒</span>
+                    </div>
+
+                    {/* Storefront Header */}
+                    <div className="flex items-center gap-3 border-b border-forest/5 dark:border-white/5 p-4">
+                      <div className="relative size-12 overflow-hidden rounded-xl border border-forest/10 dark:border-white/10">
+                        <Image
+                          src="/orderpilot-workflow/arab-cuisine-avatar.png"
+                          alt="Arab Cuisine Storefront"
+                          width={48}
+                          height={48}
+                          className="size-full object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-bold text-sm text-ink dark:text-white">Arab Cuisine</h3>
+                        <p className="text-xs text-ink/65 dark:text-white/65">Delivery &amp; Takeaway · Open 12 PM - 12 AM</p>
+                        <div className="mt-1 flex items-center gap-2 text-[10px]">
+                          <span className="rounded bg-brand/15 dark:bg-leaf/20 px-1.5 py-0.2 font-semibold text-brand dark:text-leaf">Direct Menu</span>
+                          <span className="text-ink/60 dark:text-white/60">30–45 min delivery</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Category Filter Pills */}
+                    <div className="flex items-center gap-2 border-b border-forest/5 dark:border-white/5 px-4 py-2 text-[11px] font-semibold text-ink/70 dark:text-white/70">
+                      <span className="rounded-md bg-brand px-2.5 py-0.5 text-white">Burgers</span>
+                      <span className="px-2 py-0.5">Shawarma</span>
+                      <span className="px-2 py-0.5">Sides</span>
+                      <span className="px-2 py-0.5">Drinks</span>
+                    </div>
+
+                    {/* Menu Item Display */}
+                    <div className="p-4 space-y-3">
+                      <div className="flex items-center gap-3 rounded-xl border border-forest/10 dark:border-white/10 bg-cream/50 dark:bg-white/5 p-3">
+                        <div className="size-16 shrink-0 overflow-hidden rounded-lg border border-forest/10 dark:border-white/10 bg-white dark:bg-black/20">
+                          <Image
+                            src="/orderpilot-workflow/burger.webp"
+                            alt="Zinger Burger + Fries"
+                            width={64}
+                            height={64}
+                            className="size-full object-cover"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-xs text-ink dark:text-white">Zinger Burger + Fries</span>
+                            <span className="font-mono font-bold text-xs text-brand dark:text-leaf">PKR 850</span>
+                          </div>
+                          <p className="mt-0.5 text-[10px] text-ink/65 dark:text-white/65 line-clamp-1">
+                            Crispy chicken fillet with fries and signature house sauce.
+                          </p>
+                          <div className="mt-2 flex items-center justify-between">
+                            <span className="text-[10px] text-ink/70 dark:text-white/70">Choice of spice level</span>
+                            <span className="rounded-md bg-brand px-2 py-0.5 text-[10px] font-bold text-white">
+                              Add +
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Active Order Cart Drawer */}
+                      <div className="rounded-xl border border-brand/20 dark:border-leaf/20 bg-forest/5 dark:bg-white/5 p-3 flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-2">
+                          <ShoppingBag className="size-4 text-brand dark:text-leaf" aria-hidden="true" />
+                          <div>
+                            <span className="font-bold text-ink dark:text-white">Your Cart (1 item)</span>
+                            <span className="block text-[10px] text-ink/60 dark:text-white/60">Delivery to DHA / Bahria</span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <span className="font-mono font-bold text-brand dark:text-leaf">PKR 850</span>
+                          <span className="block text-[10px] font-semibold text-ink/75 dark:text-white/75">Routes to Kitchen</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -191,7 +292,7 @@ export default function OnlineOrderingPage() {
               <p className="eyebrow section-heading-eyebrow">How It Works</p>
               <h2 className="section-title">From digital storefront to doorstep delivery in four steps.</h2>
               <p className="section-description mt-4">
-                Launch your direct ordering website without technical complexity or engineering hassle.
+                Start accepting direct orders on your branded website without technical complexity or engineering hassle.
               </p>
             </div>
 
@@ -285,7 +386,7 @@ export default function OnlineOrderingPage() {
                   <h3 className="text-lg font-bold dark:text-white">Live Kitchen Board Integration</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
                     Online orders flow straight into the same live kitchen board as your WhatsApp and table QR orders. One
-                    unified view for all fulfillment.
+                    unified view for all kitchen orders.
                   </p>
                 </div>
               </div>
@@ -315,14 +416,13 @@ export default function OnlineOrderingPage() {
                 Predictable subscription plans with a 14-day free trial.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                Direct online web ordering is included in the Web + Table plan (PKR 7,999/month) and Complete plan (PKR
-                12,999/month), covering up to 1,000 orders/month, live kitchen boards, and customer exports. Or choose
-                the pay-per-order 8% to 10% model. A 14-day free trial is available on all plans. The one-time PKR 5,000
-                setup fee applies only if you continue on a paid plan. Prices exclude applicable taxes.
+                Included in Web + Table plan (PKR 7,999/month) or 8%–10% pay-per-order. Covers up to 1,000 orders/month,
+                live kitchen boards, and customer exports. 14-day free trial on all plans. One-time PKR 5,000 setup fee
+                applies if continuing. Taxes excluded.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Link href="/book-demo?interest=web-menu" className="button-primary">
-                  Start Free Trial <ArrowRight className="size-4" aria-hidden="true" />
+                  Book Online Ordering Demo <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link href="/pricing" className="button-secondary">
                   Compare All Plans
@@ -381,7 +481,7 @@ export default function OnlineOrderingPage() {
                   WhatsApp Food Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Turn messy WhatsApp voice notes and text messages into organized, automated kitchen orders.
+                  Turn messy WhatsApp voice notes and text messages into organized, structured kitchen orders.
                 </p>
               </Link>
 
@@ -396,7 +496,7 @@ export default function OnlineOrderingPage() {
                   QR Code Table Ordering <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Let dine-in guests scan a table QR code, browse food photos, and split bills without waiting for a waiter.
+                  Let dine-in guests scan a table QR code, browse food photos, and review orders from their phone.
                 </p>
               </Link>
             </div>
