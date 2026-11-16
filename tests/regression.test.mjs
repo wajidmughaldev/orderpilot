@@ -881,7 +881,9 @@ async function runAll() {
       assert.ok(html.includes('Restaurant Ordering Software for Pakistan | OrderPilot'))
       assert.ok(html.includes('SoftwareApplication'))
       assert.ok(html.includes('Organization'))
-      assert.ok(html.includes('https://www.orderpilot.pk'))
+      const canonicalHref = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1]
+      assert.ok(canonicalHref, 'Homepage canonical link must exist')
+      assert.equal(new URL(canonicalHref).href, 'https://www.orderpilot.pk/')
       assert.ok(html.includes('orderpilot_restaurant_dashboard_showcase.webp'))
     })
 
