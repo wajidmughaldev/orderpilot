@@ -172,7 +172,7 @@ export function SiteFooter() {
           {/* Business Ownership & Disclosures Area */}
           <div className="pt-4 text-center text-[11px] sm:text-xs leading-relaxed text-ink/60 dark:text-white/50 max-w-4xl mx-auto space-y-2.5">
             <p>
-              <span className="font-semibold text-ink/80 dark:text-white/75">Business Ownership &amp; Entity Disclosure:</span> OrderPilot is engineered and operated by Digipex Solutions LLC, incubated at the National Incubation Center (NIC) Hyderabad · Ministry of Information Technology &amp; Telecommunications · Ignite National Technology Fund. All prices are in PKR and exclude applicable taxes. 14-day free trial on all plans.
+              <span className="font-semibold text-ink/80 dark:text-white/75">Business Ownership &amp; Entity Disclosure:</span> OrderPilot is engineered and operated by Digipex Solutions LLC, incubated at the National Incubation Center (NIC) Hyderabad · Ministry of Information Technology &amp; Telecommunications · Ignite National Technology Fund. All prices are in PKR and exclude applicable taxes. 14-day free trial on approval.
             </p>
             <p>
               For legal, corporate, or operational inquiries, contact us at{' '}

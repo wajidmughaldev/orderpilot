@@ -9,12 +9,12 @@ import { FaqList } from '@/components/faq-list'
 export const metadata: Metadata = {
   title: 'Book a Restaurant Ordering Demo',
   description:
-    'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore the right plan for your restaurant.',
+    'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore our Pay As You Go pricing with a 14-day free trial.',
   alternates: { canonical: '/book-demo' },
   openGraph: {
     title: 'Book a Restaurant Ordering Demo | OrderPilot',
     description:
-      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore the right plan for your restaurant.',
+      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore our Pay As You Go pricing with a 14-day free trial.',
     url: '/book-demo',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot demo walkthrough' }],
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Book a Restaurant Ordering Demo | OrderPilot',
     description:
-      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore the right plan for your restaurant.',
+      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore our Pay As You Go pricing with a 14-day free trial.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: 'Can we discuss pricing options during the walkthrough?',
     answer:
-      'Yes. We explain our fixed monthly plans (from PKR 5,999/mo) and our upcoming Pay As You Go model. Every option includes a 14-day free trial. Taxes excluded.',
+      'Yes. We explain our Pay As You Go model (5% on completed WhatsApp orders with a 14-day free trial on approval, PKR 0 platform fee, and PKR 0 setup fee), plus optional add-ons. Taxes excluded.',
   },
 ]
 
@@ -61,7 +61,7 @@ export default function BookDemoPage() {
                 {[
                   'See a customer order from start to finish.',
                   'Explore the order and kitchen views.',
-                  'Ask about setup, support, and pricing.',
+                  'Ask about setup, support, and Pay As You Go pricing.',
                 ].map(item => (
                   <li key={item} className="flex items-center gap-3 font-semibold">
                     <CheckCircle2 className="size-5 text-brand" />{item}

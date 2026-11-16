@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'Which plan includes direct online web ordering?',
     answer:
-      'Web ordering is included in Web + Table (PKR 7,999/mo) and Complete (PKR 12,999/mo) with a 14-day free trial on all plans. Taxes excluded.',
+      'Web storefront ordering is included as a core operational feature at 0% commission. Only completed WhatsApp AI orders carry a 5% commission. An optional custom domain add-on is available for PKR 2,000/month. Includes a 14-day free trial on approval, zero platform subscription fee, and zero setup fee. Taxes excluded.',
   },
 ]
 
@@ -416,19 +416,17 @@ export default function OnlineOrderingPage() {
             <div className="panel p-8 sm:p-12 text-center dark:bg-[#121e15] dark:border-white/5">
               <p className="eyebrow section-heading-eyebrow justify-center">Transparent Pricing</p>
               <h2 className="section-title mx-auto text-balance">
-                Predictable subscription plans with a 14-day free trial.
+                Web storefront ordering is included at 0% commission.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                Included in Web + Table plan (PKR 7,999/month) or 8%–10% pay-per-order (Coming Soon). Covers up to 1,000 orders/month,
-                live kitchen boards, and customer exports. 14-day free trial on all plans. One-time PKR 5,000 setup fee
-                applies if continuing. Taxes excluded.
+                Web ordering is a core operational feature with 0% platform commission. Only completed WhatsApp orders carry a 5% commission. Connect your own custom domain for PKR 2,000/month (optional add-on). Includes a 14-day free trial upon restaurant approval, zero platform fee, and zero setup fee. Taxes excluded.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <Link href="/book-demo?interest=web-menu" className="button-primary">
-                  Book Online Ordering Demo <ArrowRight className="size-4" aria-hidden="true" />
+                <Link href="/book-demo?intent=trial" className="button-primary">
+                  Start 14-Day Free Trial <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link href="/pricing" className="button-secondary">
-                  Compare All Plans
+                  See Pricing Details
                 </Link>
               </div>
             </div>

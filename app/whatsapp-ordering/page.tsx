@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'What is the pricing for the WhatsApp ordering plan?',
     answer:
-      'The WhatsApp plan is PKR 5,999 per month (covers up to 1,000 orders/month) with a 14-day free trial. A pay-per-order option is coming soon. Taxes excluded.',
+      'OrderPilot charges a 5% commission on eligible completed WhatsApp AI orders only, calculated on the discounted food items subtotal (delivery fees, taxes, and tips are 100% exempt). It includes a 14-day free trial on approval, PKR 0 platform subscription fee, and PKR 0 setup fee. Taxes excluded.',
   },
 ]
 
@@ -420,15 +420,14 @@ export default function WhatsAppOrderingPage() {
                 Start WhatsApp ordering with a 14-day free trial.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                PKR 5,999/month (covers up to 1,000 orders) or 8%–10% pay-per-order (Coming Soon). Includes 14-day free trial, live
-                kitchen board, and customer list exports. One-time PKR 5,000 setup fee applies only if you continue. Taxes excluded.
+                5% commission on eligible completed WhatsApp orders only. Zero platform fee, zero setup fee, and a 14-day free trial starting upon restaurant approval. Taxes excluded.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <Link href="/book-demo?interest=whatsapp" className="button-primary">
-                  Book WhatsApp Demo <ArrowRight className="size-4" aria-hidden="true" />
+                <Link href="/book-demo?intent=trial" className="button-primary">
+                  Start 14-Day Free Trial <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link href="/pricing" className="button-secondary">
-                  Compare All Plans
+                  See Pricing Details
                 </Link>
               </div>
             </div>

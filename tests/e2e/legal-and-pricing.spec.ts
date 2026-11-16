@@ -1,32 +1,36 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('E2E: Legal & Pricing Routes', () => {
-  test('Pricing page renders with approved pricing, Coming Soon buttons, and setup fee terms', async ({ page }) => {
+  test('Pricing page renders with approved PAYG terms, 5% commission rate, zero setup fee, and add-on catalog', async ({ page }) => {
     const response = await page.goto('/pricing')
     expect(response?.status()).toBe(200)
 
     const h1 = page.locator('h1').first()
     await expect(h1).toBeVisible()
-    await expect(h1).toContainText('Pick the plan that fits how customers order.')
+    await expect(h1).toContainText('One plan.')
+    await expect(h1).toContainText('Pay as you go.')
 
-    // Approved plan prices
-    await expect(page.getByText('PKR 5,999').first()).toBeVisible()
-    await expect(page.getByText('PKR 7,999').first()).toBeVisible()
-    await expect(page.getByText('PKR 12,999').first()).toBeVisible()
-    await expect(page.getByText('8% to 10%').first()).toBeVisible()
+    // Core PAYG commission rate
+    await expect(page.getByText('5%').first()).toBeVisible()
 
-    // Setup fee & trial terms
-    await expect(page.getByText(/PKR 5,000 setup fee/i).first()).toBeVisible()
-    await expect(page.getByText(/14-day free trial on all plans/i).first()).toBeVisible()
+    // Transparent calculation example (PKR 2,000 order = PKR 100 commission)
+    await expect(page.getByText('PKR 100').first()).toBeVisible()
+    await expect(page.getByText('PKR 2,420').first()).toBeVisible()
 
-    // Active trial CTAs for currently available monthly subscription plans
+    // Verified zero setup fee & 14-day free trial terms
+    await expect(page.getByText(/PKR 0 Setup Fee/i).first()).toBeVisible()
+    await expect(page.getByText(/14-Day Free Trial/i).first()).toBeVisible()
+    await expect(page.getByText(/PKR 500 Minimum Top-up/i).first()).toBeVisible()
+
+    // Optional add-ons catalog rates
+    await expect(page.getByText('PKR 2,000').first()).toBeVisible()
+    await expect(page.getByText('PKR 500').first()).toBeVisible()
+    await expect(page.getByText('PKR 999').first()).toBeVisible()
+
+    // Active trial CTAs link to trial request
     const trialLinks = page.getByRole('link', { name: /Start 14-Day Free Trial/i })
-    expect(await trialLinks.count()).toBeGreaterThanOrEqual(3)
-
-    // Pay-per-order is clearly marked Coming Soon and disabled
-    const comingSoonButton = page.getByRole('button', { name: 'Coming Soon' })
-    await expect(comingSoonButton).toBeVisible()
-    await expect(comingSoonButton).toBeDisabled()
+    expect(await trialLinks.count()).toBeGreaterThanOrEqual(1)
+    expect(await trialLinks.first().getAttribute('href')).toContain('/book-demo?intent=trial')
   })
 
   test('Pricing page has zero horizontal overflow at 390px and 320px mobile viewports', async ({ page }) => {
@@ -66,4 +70,3 @@ test.describe('E2E: Legal & Pricing Routes', () => {
     })
   }
 })
-

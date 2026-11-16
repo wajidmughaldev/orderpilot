@@ -77,7 +77,7 @@ describe('Technical SEO — Metadata & Title Template Hygiene', () => {
   it('pricing page metadata specifies approved Pakistani pricing target without duplicate suffix', () => {
     expect(pricingMetadata.title).toBe('Restaurant Ordering Software Pricing in Pakistan')
     expect(pricingMetadata.description).toBe(
-      'Compare OrderPilot plans from PKR 5,999/month and pay-per-order options. WhatsApp, website and table QR ordering with a 14-day trial on all plans.'
+      'Transparent Pay As You Go pricing for Pakistani restaurants. 5% commission on completed WhatsApp AI orders with a 14-day free trial. No monthly platform fee.'
     )
     expect(pricingMetadata.alternates?.canonical).toBe('/pricing')
     expect(pricingMetadata.openGraph?.url).toBe('/pricing')
@@ -86,7 +86,7 @@ describe('Technical SEO — Metadata & Title Template Hygiene', () => {
   it('book-demo page metadata specifies canonical demo walkthrough title and description', () => {
     expect(bookDemoMetadata.title).toBe('Book a Restaurant Ordering Demo')
     expect(bookDemoMetadata.description).toBe(
-      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore the right plan for your restaurant.'
+      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore our Pay As You Go pricing with a 14-day free trial.'
     )
     // Ensures parameterized queries (?intent=trial) declare /book-demo as canonical
     expect(bookDemoMetadata.alternates?.canonical).toBe('/book-demo')

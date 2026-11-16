@@ -8,68 +8,86 @@ export function PricingSectionView() {
   const prefersReduced = useReducedMotion()
 
   return (
-    <section id="pricing" className="section-pad scroll-mt-20 bg-cream">
+    <section id="pricing" className="section-pad scroll-mt-20 bg-cream dark:bg-[#0c150f]">
       <div className="site-shell site-shell-1200">
         <motion.header
           initial={prefersReduced ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '0px', amount: 0.05 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="section-heading-centered mb-12"
+          className="section-heading-centered mb-12 sm:mb-14"
         >
           <p className="eyebrow section-heading-eyebrow">PRICING</p>
-          <h2 className="section-title">Two ways to pay.</h2>
+          <h2 className="section-title">Pay as you go. Add more when you need it.</h2>
           <p className="section-description mt-4">
-            Choose a predictable subscription or pay as orders come in. See the full plan comparison on our pricing page.
+            No fixed monthly platform subscriptions. Pay a simple 5% commission only on completed WhatsApp AI orders, with full kitchen tools included from day one.
           </p>
         </motion.header>
 
-        {/* Two cards: Subscription and Pay as you go */}
-        <div className="mt-10 grid items-stretch gap-6 md:grid-cols-2">
-          {/* Card 1: Subscription */}
+        {/* Confident Single PAYG Presentation */}
+        <div className="mx-auto max-w-3xl">
           <motion.article
             initial={prefersReduced ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '0px', amount: 0.05 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
             whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/5 dark:bg-[#121e15] dark:hover:border-leaf/30"
+            className="group relative overflow-hidden flex flex-col rounded-[2.25rem] border border-forest/15 bg-white p-8 sm:p-12 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/5 dark:bg-[#121e15] dark:hover:border-leaf/30"
           >
-            {/* Ambient background shade */}
+            {/* Ambient background glow */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-mint via-leaf/25 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-mint group-hover:via-leaf/40 dark:from-emerald-900/30 dark:via-leaf/10 dark:to-transparent dark:opacity-30 dark:group-hover:opacity-60 dark:group-hover:from-emerald-900/40 dark:group-hover:via-leaf/20"
+              className="pointer-events-none absolute -right-16 -top-16 size-72 rounded-full bg-gradient-to-br from-mint via-leaf/25 to-transparent blur-3xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 dark:from-emerald-900/30 dark:via-leaf/10 dark:to-transparent"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 dark:bg-transparent dark:group-hover:bg-transparent"
+              className="pointer-events-none absolute -left-12 -bottom-12 size-48 rounded-full bg-mint/20 blur-2xl opacity-60 dark:bg-transparent"
             />
 
-            {/* Subtle decorative geometric shapes */}
+            {/* Subtle decorative geometric shape */}
             <svg
               aria-hidden="true"
-              className="pointer-events-none absolute -right-4 -top-4 size-36 text-brand/10 dark:text-leaf/10 transition-all duration-500 ease-out group-hover:scale-115 group-hover:rotate-12 group-hover:text-brand/25 dark:group-hover:text-leaf/25"
+              className="pointer-events-none absolute -right-6 -top-6 size-44 text-brand/10 dark:text-leaf/10 transition-all duration-500 ease-out group-hover:scale-115 group-hover:rotate-12 group-hover:text-brand/20 dark:group-hover:text-leaf/20"
               viewBox="0 0 120 120"
               fill="none"
             >
               <circle cx="60" cy="60" r="54" stroke="currentColor" strokeWidth="1.75" strokeDasharray="6 6" />
-              <circle cx="60" cy="60" r="38" stroke="currentColor" strokeWidth="1.25" />
-              <circle cx="60" cy="60" r="22" fill="currentColor" fillOpacity="0.3" />
+              <circle cx="60" cy="60" r="36" stroke="currentColor" strokeWidth="1.25" />
+              <circle cx="60" cy="60" r="18" fill="currentColor" fillOpacity="0.3" />
             </svg>
 
             {/* Content */}
-            <div className="relative z-10 flex flex-1 flex-col">
-              <h3 className="text-3xl font-bold dark:text-white">Monthly subscription</h3>
-              <p className="mt-4 text-2xl sm:text-3xl font-extrabold text-brand">
-                From PKR 5,999 <span className="text-base font-medium text-ink/70">/ month</span>
+            <div className="relative z-10 flex flex-col">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="rounded-full bg-leaf px-3.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-forest dark:bg-leaf/20 dark:text-leaf">
+                  Pay As You Go
+                </span>
+                <span className="font-mono text-xs font-semibold text-ink/65 dark:text-white/60">
+                  Zero monthly platform fee
+                </span>
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-baseline gap-3">
+                <p className="text-5xl sm:text-6xl font-extrabold tracking-tight text-brand">5%</p>
+                <p className="text-xl sm:text-2xl font-bold text-ink/80 dark:text-white/80">
+                  per completed WhatsApp order
+                </p>
+              </div>
+
+              <p className="mt-3 text-sm text-ink/65 dark:text-white/60">
+                Calculated on discounted food items only. Delivery charges and taxes are 100% exempt. AI costs are covered by OrderPilot.
               </p>
-              <ul className="mt-7 flex flex-1 flex-col gap-3.5">
+
+              <div className="my-8 border-t border-forest/10 dark:border-white/5" />
+
+              <ul className="grid gap-3.5 sm:grid-cols-2">
                 {[
-                  '14-day free trial on all plans',
-                  'Up to 1,000 orders per month',
-                  'Choose WhatsApp, Web + Table, or Complete',
-                  'Predictable monthly billing',
-                  'Annual billing: 2 months included',
+                  '14-day free trial on approval',
+                  'PKR 0 platform subscription',
+                  'Full kitchen display board included',
+                  'Interactive digital menu & order queue',
+                  'Customer phone & order list export',
+                  'Optional add-ons for custom domains',
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink/85 dark:text-white/85">
                     <Check className="mt-0.5 size-4 shrink-0 text-brand" />
@@ -77,81 +95,28 @@ export function PricingSectionView() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/pricing#monthly"
-                className="button-primary mt-8 self-start"
-              >
-                Compare subscription plans <ArrowRight className="size-4" />
-              </Link>
-            </div>
-          </motion.article>
 
-          {/* Card 2: Pay as you go */}
-          <motion.article
-            initial={prefersReduced ? false : { opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '0px', amount: 0.05 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.08 }}
-            whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-            className="group relative overflow-hidden flex h-full flex-col rounded-[2rem] border border-forest/15 bg-white p-8 sm:p-9 shadow-sm transition-all duration-300 hover:border-brand/35 hover:shadow-xl dark:border-white/5 dark:bg-[#121e15] dark:hover:border-leaf/30"
-          >
-            {/* Ambient background shade */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-12 -top-12 size-56 rounded-full bg-gradient-to-br from-leaf/25 via-mint/45 to-transparent blur-2xl opacity-60 transition-all duration-500 ease-out group-hover:scale-125 group-hover:opacity-100 group-hover:from-leaf/35 group-hover:via-mint/70 dark:from-leaf/20 dark:via-emerald-900/20 dark:to-transparent dark:opacity-30 dark:group-hover:opacity-60 dark:group-hover:from-leaf/30 dark:group-hover:via-emerald-900/30"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-10 -bottom-10 size-36 rounded-full bg-cream blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100 dark:bg-transparent dark:group-hover:bg-transparent"
-            />
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/book-demo?intent=trial"
+                  className="button-primary !py-3.5 !px-7 font-bold shadow-sm"
+                >
+                  Start 14-Day Free Trial <ArrowRight className="size-4" />
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="button-secondary !py-3.5 !px-6 font-semibold"
+                >
+                  See Pricing Details
+                </Link>
+              </div>
 
-            {/* Subtle decorative geometric shapes */}
-            <svg
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-4 -top-4 size-36 text-brand/10 dark:text-leaf/10 transition-all duration-500 ease-out group-hover:scale-115 group-hover:-rotate-12 group-hover:text-brand/25 dark:group-hover:text-leaf/25"
-              viewBox="0 0 120 120"
-              fill="none"
-            >
-              <rect x="25" y="25" width="70" height="70" rx="20" stroke="currentColor" strokeWidth="1.75" strokeDasharray="5 5" transform="rotate(45 60 60)" />
-              <rect x="36" y="36" width="48" height="48" rx="14" stroke="currentColor" strokeWidth="1.25" transform="rotate(45 60 60)" />
-              <circle cx="60" cy="60" r="14" fill="currentColor" fillOpacity="0.3" />
-            </svg>
-
-            {/* Content */}
-            <div className="relative z-10 flex flex-1 flex-col">
-              <h3 className="text-3xl font-bold dark:text-white">Pay per order</h3>
-              <p className="mt-1 font-mono text-xs font-bold uppercase tracking-wider text-brand dark:text-leaf">
-                Flexible option
+              <p className="mt-6 text-xs text-ink/55 dark:text-white/50">
+                Trial starts at restaurant approval. Orders during trial incur 0% commission. Minimum wallet top-up after trial is PKR 500. Taxes excluded.
               </p>
-              <p className="mt-3 text-2xl sm:text-3xl font-extrabold text-brand">
-                Pay per order <span className="text-base font-medium text-ink/70">as you grow</span>
-              </p>
-              <ul className="mt-7 flex flex-1 flex-col gap-3.5">
-                {[
-                  'No fixed monthly platform fee',
-                  'Pay only when you receive orders',
-                  '14-day free trial on all plans',
-                  'Core kitchen display and tracking included',
-                ].map((item) => (
-                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink/85 dark:text-white/85">
-                    <Check className="mt-0.5 size-4 shrink-0 text-brand" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <button
-                type="button"
-                disabled
-                className="button-primary mt-8 self-start opacity-75 cursor-not-allowed"
-              >
-                Coming Soon
-              </button>
             </div>
           </motion.article>
         </div>
-        <p className="mt-8 max-w-2xl mx-auto text-center text-xs sm:text-sm font-medium text-ink/70 dark:text-white/70">
-          Try OrderPilot for 14 days. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes. Monthly plans cover up to 1,000 orders per month.
-        </p>
       </div>
     </section>
   )

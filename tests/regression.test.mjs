@@ -105,7 +105,7 @@ async function runAll() {
   })
 
   let ready = false
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 60; i++) {
     await new Promise(r => setTimeout(r, 400))
     if (await isPortOpen(3020)) {
       ready = true
@@ -808,7 +808,7 @@ async function runAll() {
 
       assert.ok(footer.includes('923361815141'))
       assert.ok(footer.includes('contact@orderpilot.pk'))
-      assert.ok(footer.includes('14-day free trial on all plans'))
+      assert.ok(footer.includes('14-day free trial on approval'))
       assert.ok(!footer.includes('subscription plans'))
       assert.ok(footer.includes('/privacy'))
       assert.ok(footer.includes('/terms'))
@@ -817,24 +817,26 @@ async function runAll() {
       assert.ok(!footer.includes("['Privacy Policy', '#']"))
 
       assert.ok(pricing.includes('wa.me/923361815141'))
-      assert.ok(pricing.includes('/book-demo?interest=pricing'))
-      assert.ok(pricing.includes('14-day trial on all plans') || pricing.includes('14-day free trial is available on all plans'))
+      assert.ok(pricing.includes('/book-demo?intent=trial'))
+      assert.ok(pricing.includes('14-day free trial on approval'))
     })
 
     // -------------------------------------------------------------------------
     // 10. Pricing Route & Metadata
     // -------------------------------------------------------------------------
     console.log('\nSuite 10: Pricing Route & Metadata')
-    await test('Pricing page returns 200 with approved pricing numbers and canonical', async () => {
+    await test('Pricing page returns 200 with approved PAYG terms, 5% commission rate, and canonical', async () => {
       const res = await fetch(`${BASE_URL}/pricing`)
       assert.equal(res.status, 200)
       const html = await res.text()
-      assert.ok(html.includes('PKR 5,999'))
-      assert.ok(html.includes('PKR 7,999'))
-      assert.ok(html.includes('PKR 12,999'))
-      assert.ok(html.includes('8% to 10%'))
-      assert.ok(html.includes('14-day free trial'))
-      assert.ok(html.includes('1,000 orders'))
+      assert.ok(html.includes('5%'))
+      assert.ok(html.includes('One plan.') && html.includes('Pay as you go.'))
+      assert.ok(html.includes('14-day free trial on approval'))
+      assert.ok(html.includes('PKR 100'))
+      assert.ok(html.includes('PKR 2,420') || html.includes('2,000'))
+      assert.ok(html.includes('PKR 500'))
+      assert.ok(html.includes('PKR 2,000'))
+      assert.ok(html.includes('PKR 999'))
       assert.ok(html.includes('<link rel="canonical" href="https://www.orderpilot.pk/pricing"'))
       assert.ok(html.includes('Restaurant Ordering Software Pricing in Pakistan'))
     })

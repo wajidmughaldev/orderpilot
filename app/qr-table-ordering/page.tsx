@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'Which OrderPilot subscription plan includes table QR ordering?',
     answer:
-      'Table QR is included in Web + Table (PKR 7,999/mo) and Complete (PKR 12,999/mo) with a 14-day free trial on all plans. Taxes excluded.',
+      'Table QR ordering is included as a core operational feature at 0% commission. Only completed WhatsApp AI orders carry a 5% commission. Includes a 14-day free trial on approval, zero platform subscription fee, and zero setup fee. Taxes excluded.',
   },
 ]
 
@@ -416,19 +416,17 @@ export default function QrTableOrderingPage() {
             <div className="panel p-8 sm:p-12 text-center dark:bg-[#121e15] dark:border-white/5">
               <p className="eyebrow section-heading-eyebrow justify-center">Transparent Pricing</p>
               <h2 className="section-title mx-auto text-balance">
-                Included in Web + Table and Complete plans.
+                Table QR ordering is included at 0% commission.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                Included in Web + Table (PKR 7,999/month) and Complete (PKR 12,999/month) plans. Covers up to 1,000 orders/month,
-                live kitchen boards, and customer list exports. 14-day free trial on all plans. One-time PKR 5,000 setup fee
-                applies if continuing. Taxes excluded.
+                Table QR ordering is a core operational feature with 0% platform commission. Only completed WhatsApp orders carry a 5% commission. Includes a 14-day free trial upon restaurant approval, zero platform fee, and zero setup fee. Taxes excluded.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <Link href="/book-demo?interest=table-qr" className="button-primary">
-                  Book Table QR Demo <ArrowRight className="size-4" aria-hidden="true" />
+                <Link href="/book-demo?intent=trial" className="button-primary">
+                  Start 14-Day Free Trial <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
                 <Link href="/pricing" className="button-secondary">
-                  Compare All Plans
+                  See Pricing Details
                 </Link>
               </div>
             </div>

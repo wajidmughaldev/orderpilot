@@ -202,8 +202,8 @@ describe('Integration: Next.js API Route Handler (app/api/demo-request/route.ts)
         {
           source: 'book-demo',
           intent: 'trial',
-          plan: 'WhatsApp',
-          billing: 'Monthly',
+          plan: 'Pay As You Go',
+          billing: 'Pay As You Go',
           name: 'Hamza Malik',
           restaurant: 'Karachi Chai Khana',
           phone: '03001234567',
@@ -218,11 +218,11 @@ describe('Integration: Next.js API Route Handler (app/api/demo-request/route.ts)
       const data = await res.json()
       expect(data.success).toBe(true)
       expect(dispatchedPayload).not.toBeNull()
-      expect(dispatchedPayload.plan).toBe('WhatsApp')
-      expect(dispatchedPayload.billing).toBe('Monthly')
+      expect(dispatchedPayload.plan).toBe('Pay As You Go')
+      expect(dispatchedPayload.billing).toBe('Pay As You Go')
       expect(dispatchedPayload.intent).toBe('free-trial')
-      expect(dispatchedPayload.emailText).toContain('Selected Plan:    WhatsApp')
-      expect(dispatchedPayload.emailHtml).toContain('WhatsApp')
+      expect(dispatchedPayload.emailText).toContain('Selected Plan:    Pay As You Go')
+      expect(dispatchedPayload.emailHtml).toContain('Pay As You Go')
     })
   })
 

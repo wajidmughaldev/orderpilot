@@ -47,12 +47,15 @@ const softwareAppJsonLd = {
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, WhatsApp',
   url: 'https://www.orderpilot.pk',
-  description: 'Multi-channel restaurant ordering software for WhatsApp, online web menus, and table QR ordering.',
-  offers: [
-    { '@type': 'Offer', name: 'WhatsApp Plan', price: '5999', priceCurrency: 'PKR', billingDuration: 'P1M', url: 'https://www.orderpilot.pk/pricing', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
-    { '@type': 'Offer', name: 'Web + Table Plan', price: '7999', priceCurrency: 'PKR', billingDuration: 'P1M', url: 'https://www.orderpilot.pk/pricing', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
-    { '@type': 'Offer', name: 'Complete Plan', price: '12999', priceCurrency: 'PKR', billingDuration: 'P1M', url: 'https://www.orderpilot.pk/pricing', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
-  ],
+  description: 'Multi-channel restaurant ordering software for WhatsApp, online web menus, and table QR ordering in Pakistan.',
+  offers: {
+    '@type': 'Offer',
+    name: 'Pay As You Go',
+    price: '0',
+    priceCurrency: 'PKR',
+    url: 'https://www.orderpilot.pk/pricing',
+    description: '14-day free trial on approval, followed by 5% commission on eligible completed WhatsApp AI orders. Zero monthly platform subscription. Taxes excluded.',
+  },
 }
 
 const faqs = [

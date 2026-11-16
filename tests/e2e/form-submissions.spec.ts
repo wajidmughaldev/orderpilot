@@ -1,8 +1,13 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('E2E: Form Submissions, Intent Routing & Validation States', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+  })
+
   test.describe('Homepage Contact Us Form', () => {
     test('submits valid contact inquiry and shows loading then success state', async ({ page }) => {
+      test.slow()
       // Mock the API endpoint
       await page.route('**/api/demo-request', async (route) => {
         await route.fulfill({
@@ -17,12 +22,14 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       })
 
       await page.goto('/')
+      await page.waitForLoadState('networkidle')
 
       const contactSection = page.locator('#contact')
-      await contactSection.scrollIntoViewIfNeeded()
+      const nameInput = contactSection.locator('input[name="name"]')
+      await nameInput.waitFor({ state: 'visible' })
 
       // Fill in fields
-      await contactSection.locator('input[name="name"]').fill('Ahmed Khan')
+      await nameInput.fill('Ahmed Khan')
       await contactSection.locator('input[name="restaurant"]').fill('Karachi Biryani House')
       await contactSection.locator('input[name="phone"]').fill('+92 300 1234567')
       await contactSection.locator('input[name="city"]').fill('Karachi')
@@ -42,6 +49,7 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
     })
 
     test('displays error message when API fails with 502', async ({ page }) => {
+      test.slow()
       await page.route('**/api/demo-request', async (route) => {
         await route.fulfill({
           status: 502,
@@ -53,25 +61,30 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       })
 
       await page.goto('/')
+      await page.waitForLoadState('networkidle')
       const contactSection = page.locator('#contact')
-      await contactSection.scrollIntoViewIfNeeded()
+      const nameInput = contactSection.locator('input[name="name"]')
+      await nameInput.waitFor({ state: 'visible' })
 
-      await contactSection.locator('input[name="name"]').fill('Ahmed Khan')
+      await nameInput.fill('Ahmed Khan')
       await contactSection.locator('input[name="restaurant"]').fill('Karachi Biryani House')
       await contactSection.locator('input[name="phone"]').fill('+92 300 1234567')
       await contactSection.locator('input[name="city"]').fill('Karachi')
       await contactSection.locator('textarea[name="message"]').fill('Interested in WhatsApp.')
 
-      await contactSection.getByRole('button', { name: /send message/i }).click()
+      const submitBtn = contactSection.getByRole('button', { name: /send message/i })
+      await expect(submitBtn).toBeEnabled()
+      await submitBtn.click()
 
       const statusBanner = contactSection.locator('[role="status"]')
-      await expect(statusBanner).toBeVisible()
+      await expect(statusBanner).toBeVisible({ timeout: 15000 })
       await expect(statusBanner).toContainText('unable to deliver your request')
     })
   })
 
   test.describe('Request a Demo Page (/book-demo)', () => {
     test('submits demo request with optional Current POS filled and verifies success', async ({ page }) => {
+      test.slow()
       await page.route('**/api/demo-request', async (route) => {
         const body = JSON.parse(route.request().postData() || '{}')
         expect(body.name).toBe('Tariq Butt')
@@ -111,12 +124,12 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       await expect(statusBanner).toContainText('Your request was sent')
     })
 
-    test('preselects Pay-per-Order billing when opened with ?interest=pay-per-order', async ({ page }) => {
-      await page.goto('/book-demo?interest=pay-per-order')
+    test('preselects Pay As You Go billing when opened with ?interest=pay-as-you-go', async ({ page }) => {
+      await page.goto('/book-demo?interest=pay-as-you-go')
 
       const billingSelect = page.locator('select[name="billing"]')
       await expect(billingSelect).toBeVisible({ timeout: 15000 })
-      await expect(billingSelect).toHaveValue('Pay-per-Order')
+      await expect(billingSelect).toHaveValue('Pay As You Go')
     })
 
     test('direct 14-day free trial callout banner links to app.orderpilot.pk', async ({ page }) => {
@@ -127,7 +140,7 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       expect(await directTrialLink.getAttribute('href')).toBe('https://app.orderpilot.pk')
     })
 
-    test('captures selected plan when opened with ?plan=WhatsApp&intent=trial and submits trial request', async ({ page }) => {
+    test('captures Pay As You Go trial request when opened with ?intent=trial and submits trial request', async ({ page }) => {
       let capturedPayload: any = null
       await page.route('**/api/demo-request', async (route) => {
         capturedPayload = JSON.parse(route.request().postData() || '{}')
@@ -142,17 +155,16 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
         })
       })
 
-      // 1. Visit /book-demo with plan=WhatsApp and intent=trial
-      await page.goto('/book-demo?plan=WhatsApp&intent=trial')
+      // 1. Visit /book-demo with intent=trial
+      await page.goto('/book-demo?intent=trial')
 
-      // 2. Verify selected plan is visible and preselected in the demo form
-      const planBadge = page.locator('text=Selected Plan:')
-      await expect(planBadge).toBeVisible({ timeout: 15000 })
-      await expect(page.locator('text=WhatsApp').first()).toBeVisible()
+      // 2. Verify trial header and PAYG plan is preselected
+      const trialBadge = page.locator('text=14-Day Free Trial Request')
+      await expect(trialBadge).toBeVisible({ timeout: 15000 })
 
       const planSelect = page.locator('select[name="plan"]')
       await expect(planSelect).toBeVisible()
-      await expect(planSelect).toHaveValue('WhatsApp')
+      await expect(planSelect).toHaveValue('Pay As You Go')
 
       // 3. Fill required fields
       await page.locator('input[name="name"]').fill('Hamza Malik')
@@ -161,7 +173,7 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       await page.locator('input[name="city"]').fill('Karachi')
 
       // 4. Submit form
-      const submitBtn = page.getByRole('button', { name: /book a live demo/i })
+      const submitBtn = page.getByRole('button', { name: /start 14-day free trial/i })
       await expect(submitBtn).toBeEnabled()
       const reqPromise = page.waitForRequest('**/api/demo-request')
       await submitBtn.click()
@@ -174,7 +186,7 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
 
       // 6. Verify payload captured by API route
       expect(capturedPayload).not.toBeNull()
-      expect(capturedPayload.plan).toBe('WhatsApp')
+      expect(capturedPayload.plan).toBe('Pay As You Go')
       expect(capturedPayload.intent).toBe('free-trial')
       expect(capturedPayload.name).toBe('Hamza Malik')
       expect(capturedPayload.restaurant).toBe('Karachi Grill')
