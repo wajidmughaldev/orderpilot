@@ -12,6 +12,7 @@ test.describe('E2E: Legal & Pricing Routes', () => {
 
     // Core PAYG commission rate
     await expect(page.getByText('5%').first()).toBeVisible()
+    await expect(page.getByText(/Transparent 5% commission on eligible completed WhatsApp AI orders/i)).toBeVisible()
 
     // Transparent calculation example (PKR 2,000 order = PKR 100 commission, PKR 1,900 food sales after fee)
     await expect(page.getByText('PKR 100').first()).toBeVisible()

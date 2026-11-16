@@ -839,6 +839,9 @@ async function runAll() {
       assert.ok(html.includes('PKR 999'))
       assert.ok(html.includes('<link rel="canonical" href="https://www.orderpilot.pk/pricing"'))
       assert.ok(html.includes('Restaurant Ordering Software Pricing in Pakistan'))
+      assert.ok(html.includes('UnitPriceSpecification'))
+      assert.ok(html.includes('Transparent 5% commission on eligible completed WhatsApp AI orders'))
+      assert.ok(!html.includes('"price":"0"'))
     })
 
     // -------------------------------------------------------------------------

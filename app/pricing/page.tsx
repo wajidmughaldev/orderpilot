@@ -40,10 +40,15 @@ const pricingJsonLd = {
   offers: {
     '@type': 'Offer',
     name: 'Pay As You Go',
-    price: '0',
     priceCurrency: 'PKR',
     url: 'https://www.orderpilot.pk/pricing',
-    description: '14-day free trial on approval, followed by 5% commission on eligible completed WhatsApp AI orders. Zero monthly platform subscription. Taxes excluded.',
+    description: '14-day free trial on approval, followed by 5% commission per completed WhatsApp AI order on discounted food items subtotal. Zero monthly platform subscription fee. Zero setup fee. Taxes excluded.',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      priceCurrency: 'PKR',
+      unitText: 'completed WhatsApp order',
+      description: '5% commission on food items subtotal only (excludes delivery, taxes, and tips)',
+    },
   },
 }
 
@@ -104,7 +109,7 @@ export default function PricingPage() {
                   </div>
 
                   <p className="mt-3 text-sm text-ink/70 dark:text-white/65">
-                    Charged only when a customer order placed via WhatsApp is completed by your kitchen. QR and web ordering do not carry extra order commissions.
+                    Charged only when a customer order placed via WhatsApp is completed by your kitchen. Table QR ordering and online web storefront ordering carry 0% platform commission.
                   </p>
 
                   <div className="my-7 border-t border-forest/10 dark:border-white/5" />
@@ -179,7 +184,7 @@ export default function PricingPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <ShieldCheck className="size-4 shrink-0 text-brand mt-0.5" />
-                      <span><strong>No Hidden Caps:</strong> Transparent 5% calculation on all orders with no hidden surcharges.</span>
+                      <span><strong>No Hidden Caps:</strong> Transparent 5% commission on eligible completed WhatsApp AI orders with no hidden surcharges.</span>
                     </li>
                   </ul>
                 </div>
