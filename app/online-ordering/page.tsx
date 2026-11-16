@@ -41,27 +41,27 @@ const faqs = [
   {
     question: 'How do customers access my restaurant’s online ordering website?',
     answer:
-      'Your restaurant gets its own dedicated, mobile-optimized web ordering link. You can place this link in your Instagram bio, Facebook page, Google Business Profile, TikTok, and SMS campaigns for diners to order directly.',
+      'Your restaurant receives a dedicated ordering link (e.g. orderpilot.pk/yourbrand) to share in your Instagram bio, Google Maps, Facebook, and WhatsApp.',
   },
   {
     question: 'How do delivery riders know where to deliver?',
     answer:
-      'When placing an order, customers choose delivery or takeaway and enter their complete delivery address, contact phone number, and special delivery instructions. Orders appear on your kitchen screen with complete address details for your in-house riders or local delivery partners.',
+      'Customers enter their delivery address, landmark, and phone number at checkout. Every ticket appears on your kitchen screen with complete rider delivery details.',
   },
   {
-    question: 'Can I set different delivery fees for different neighborhoods?',
+    question: 'Can I manage delivery coverage and policies?',
     answer:
-      'OrderPilot collects complete address and neighborhood details for delivery or takeaway orders, allowing your team to manage local delivery coverage and apply your restaurant’s delivery policies.',
+      'Yes. You collect neighborhood details for delivery or takeaway orders, allowing your team to organize routes according to your restaurant’s coverage area.',
   },
   {
     question: 'What payment methods can customers use on my website?',
     answer:
-      'You can accept Cash on Delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. Diners choose their preferred payment method at checkout, allowing your team to verify payments according to your standard workflow.',
+      'You can accept Cash on Delivery, JazzCash, EasyPaisa, or direct bank transfer. Customers upload payment receipts for staff review before food is dispatched.',
   },
   {
     question: 'Which plan includes direct online web ordering?',
     answer:
-      'Online web ordering is included in the Web + Table plan (PKR 7,999/month) and the Complete plan (PKR 12,999/month), both covering up to 1,000 orders per month and kitchen boards. A 14-day free trial is available on all plans. Prices exclude applicable taxes.',
+      'Web ordering is included in Web + Table (PKR 7,999/mo) and Complete (PKR 12,999/mo) with a 14-day free trial on all plans. Taxes excluded.',
   },
 ]
 
@@ -218,11 +218,11 @@ export default function OnlineOrderingPage() {
         <section className="section-pad bg-cream dark:bg-[#0b140d]">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">The Direct Ordering Advantage</p>
+              <p className="eyebrow section-heading-eyebrow">Direct Ordering vs Aggregators</p>
               <h2 className="section-title">Why Pakistani restaurants build their own direct ordering channel.</h2>
               <p className="section-description mt-4">
-                Make it simple for loyal diners to order directly from your restaurant without competing brands or
-                unnecessary distractions.
+                Make it simple for loyal diners to order directly from your restaurant without competing brands,
+                aggregator markups, or distractions.
               </p>
             </div>
 
@@ -233,8 +233,8 @@ export default function OnlineOrderingPage() {
                 </div>
                 <h3 className="mt-5 text-xl font-bold dark:text-white">Your Brand Front &amp; Center</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  When diners look for your food online, give them a clean ordering link dedicated entirely to your menu.
-                  No competing restaurants listed above you and no third-party markups on your dishes.
+                  Give diners an ordering link dedicated entirely to your menu. No competing restaurants listed above
+                  you and no third-party commission markups on your dishes.
                 </p>
               </div>
 
@@ -244,8 +244,8 @@ export default function OnlineOrderingPage() {
                 </div>
                 <h3 className="mt-5 text-xl font-bold dark:text-white">Protect Customer Relationships</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Retain your customers&apos; names, phone numbers, and delivery addresses in your private database.
-                  Use your own customer records for direct announcements, menu updates, and repeat orders.
+                  Retain customer phone numbers, delivery addresses, and repeat orders in your private database. Never
+                  masked by third-party delivery marketplaces.
                 </p>
               </div>
 
@@ -255,8 +255,8 @@ export default function OnlineOrderingPage() {
                 </div>
                 <h3 className="mt-5 text-xl font-bold dark:text-white">Delivery &amp; Coverage Flexibility</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Collect accurate neighborhood and delivery address details for every order. Establish minimum order
-                  guidelines and delivery parameters that match your restaurant&apos;s operational coverage.
+                  Collect neighborhood and delivery landmark details for every order. Set delivery rules and minimum
+                  order requirements that match your operational radius.
                 </p>
               </div>
             </div>
@@ -304,9 +304,9 @@ export default function OnlineOrderingPage() {
                 <span className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
                   Step 01
                 </span>
-                <h3 className="mt-3 text-lg font-bold dark:text-white">Configure Your Menu</h3>
+                <h3 className="mt-3 text-lg font-bold dark:text-white">Set Up Digital Menu</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Set up your digital menu with food photography, categories, modifiers, addon choices, and prices.
+                  Configure your digital menu with food photography, categories, dish modifiers, and prices.
                 </p>
               </div>
 
@@ -314,9 +314,9 @@ export default function OnlineOrderingPage() {
                 <span className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
                   Step 02
                 </span>
-                <h3 className="mt-3 text-lg font-bold dark:text-white">Share Your Link</h3>
+                <h3 className="mt-3 text-lg font-bold dark:text-white">Share Your Direct Link</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Add your ordering link to your Instagram bio, Facebook page, Google Maps profile, and WhatsApp status.
+                  Place your ordering link in your Instagram bio, Google Maps listing, Facebook page, and WhatsApp status.
                 </p>
               </div>
 
@@ -326,7 +326,7 @@ export default function OnlineOrderingPage() {
                 </span>
                 <h3 className="mt-3 text-lg font-bold dark:text-white">Diners Order Directly</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Customers pick delivery or takeaway, specify location details, and choose COD or direct mobile transfer.
+                  Customers pick delivery or takeaway, provide address details, and choose COD or direct mobile transfer.
                 </p>
               </div>
 
@@ -334,9 +334,9 @@ export default function OnlineOrderingPage() {
                 <span className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
                   Step 04
                 </span>
-                <h3 className="mt-3 text-lg font-bold dark:text-white">Kitchen Prepares &amp; Dispatches</h3>
+                <h3 className="mt-3 text-lg font-bold dark:text-white">Kitchen Cooks &amp; Dispatches</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  The order rings on your kitchen board. Cooks prepare the food, and your rider delivers hot food on time.
+                  The ticket chimes onto your kitchen display. Staff prepare the meal and dispatch your rider on time.
                 </p>
               </div>
             </div>
@@ -347,10 +347,10 @@ export default function OnlineOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-t border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Engineered for Pakistan</p>
-              <h2 className="section-title">Features designed for real restaurant operations in Pakistan.</h2>
+              <p className="eyebrow section-heading-eyebrow">Built for Direct Delivery &amp; Takeaway</p>
+              <h2 className="section-title">Everything needed to run your own online ordering channel.</h2>
               <p className="section-description mt-4">
-                Everything you need to accept direct orders smoothly without technical headaches.
+                Designed for single restaurants, cloud kitchens, and multi-branch brands across Pakistan.
               </p>
             </div>
 
@@ -362,8 +362,8 @@ export default function OnlineOrderingPage() {
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Flexible Pakistani Payment Methods</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Cash on delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. For online transfers, customers
-                    can provide transaction confirmation details for staff verification alongside their order.
+                    Accept Cash on Delivery, JazzCash, EasyPaisa, or direct bank transfer. Customers upload transaction
+                    receipts for staff verification before food leaves the kitchen.
                   </p>
                 </div>
               </div>
@@ -375,8 +375,8 @@ export default function OnlineOrderingPage() {
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Delivery Area &amp; Order Policies</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Capture complete destination details across your city&apos;s key sectors and towns with transparent order
-                    requirements for delivery and takeaway.
+                    Capture complete neighborhood delivery details across your city&apos;s sectors and towns with clear order
+                    requirements for delivery and pickup.
                   </p>
                 </div>
               </div>
@@ -388,8 +388,8 @@ export default function OnlineOrderingPage() {
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Live Kitchen Board Integration</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Online orders flow straight into the same live kitchen board as your WhatsApp and table QR orders. One
-                    unified view for all kitchen orders.
+                    Web orders flow straight into the same live kitchen screen as your WhatsApp and table QR tickets. One
+                    centralized board for your entire operation.
                   </p>
                 </div>
               </div>
@@ -401,8 +401,8 @@ export default function OnlineOrderingPage() {
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Direct Customer Data Ownership</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    View customer names, phone numbers, delivery addresses, and ordering habits. Export contact lists
-                    anytime for seasonal marketing and VIP promotions.
+                    Access diner names, phone numbers, delivery histories, and ordering habits in your private database
+                    for seasonal marketing and VIP promotions.
                   </p>
                 </div>
               </div>

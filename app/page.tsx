@@ -58,27 +58,27 @@ const softwareAppJsonLd = {
 const faqs = [
   {
     question: 'How much does it cost?',
-    answer: 'Subscriptions start at PKR 5,999 a month, or Complete with all channels is PKR 12,999. You can also pay 8% to 10% per order with no fixed monthly fee. Message us on WhatsApp and we’ll tell you which one costs less for you.',
+    answer: 'Monthly plans start at PKR 5,999, and a pay-per-order option is coming soon. Every plan includes a 14-day free trial so you can test it with your menu first.',
   },
   {
     question: 'Which plan should I pick?',
-    answer: 'If customers only order on WhatsApp, PKR 5,999 covers it. For website and table QR, Web + Table is PKR 7,999. If you want all three, Complete is PKR 12,999. If your order volume is lower or seasonal, pay per order may cost less.',
+    answer: 'Start with WhatsApp (PKR 5,999/mo) if you only take chat orders, or choose Web + Table (PKR 7,999/mo) for dine-in and web orders. Complete (PKR 12,999/mo) covers all channels.',
   },
   {
     question: 'What if my staff can’t use it?',
-    answer: 'The interface is simple. We walk your team through receiving orders, updating statuses, and verifying payments before you start.',
+    answer: 'The board is visual and takes five minutes to learn. We walk your manager and kitchen staff through order statuses and receipt verification before you start.',
   },
   {
     question: 'How do customers pay?',
-    answer: 'You choose what to accept: cash on delivery, JazzCash, EasyPaisa or bank transfer. For transfers, customers upload a receipt and your manager approves it before cooking starts. Your customers pay you directly.',
+    answer: 'Customers pay your restaurant directly via Cash on Delivery, JazzCash, EasyPaisa, or bank transfer. For digital transfers, they upload a payment screenshot for your manager to verify.',
   },
   {
     question: 'Can I use it for dine-in, takeaway and delivery?',
-    answer: 'Yes. Table QR for dine-in, plus takeaway and delivery orders, all on one screen. For delivery you can set custom fees by area.',
+    answer: 'Yes. Table QR orders, takeaway pickups, and doorstep deliveries all appear on the same kitchen board with clear fulfillment labels.',
   },
   {
     question: 'Do I keep my customer list?',
-    answer: 'Yes. Your customers’ contact details and order history are in your account, visible only to your restaurant.',
+    answer: 'Yes. Customer phone numbers, names, and order histories stay in your private dashboard and are never shared or masked.',
   },
 ]
 

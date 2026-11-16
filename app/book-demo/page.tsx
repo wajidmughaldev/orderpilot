@@ -28,9 +28,21 @@ export const metadata: Metadata = {
 }
 
 const faqs = [
-  { question: 'What is this live demo walkthrough?', answer: 'It is a personalized live demo where our team walks you through how OrderPilot works in real time—from WhatsApp, web menu, and table QR ordering to live kitchen board alerts.' },
-  { question: 'How do I start the 14-day free trial directly?', answer: 'If you do not need a walkthrough and want to start immediately, you can go straight to the app at app.orderpilot.pk to sign in and begin your 14-day free trial.' },
-  { question: 'Can we discuss pricing during the live demo?', answer: 'Yes! A 14-day free trial is available on all plans. During the live demo, we can explain both monthly subscription plans (from PKR 5,999/mo, up to 1,000 orders/mo) and the 8% to 10% pay-per-order model. The one-time PKR 5,000 setup fee applies only if you continue on a paid plan after your trial. All prices exclude applicable taxes.' },
+  {
+    question: 'What happens during the live demo walkthrough?',
+    answer:
+      'We walk your team through live order routing—from WhatsApp, table QR, and web menus to real-time kitchen board alerts using your actual menu items.',
+  },
+  {
+    question: 'Can I start the 14-day free trial directly?',
+    answer:
+      'Yes. If you prefer to explore without a scheduled call, visit app.orderpilot.pk to create your account and begin your 14-day free trial immediately.',
+  },
+  {
+    question: 'Can we discuss pricing options during the walkthrough?',
+    answer:
+      'Yes. We explain our fixed monthly plans (from PKR 5,999/mo) and our upcoming Pay As You Go model. Every option includes a 14-day free trial. Taxes excluded.',
+  },
 ]
 
 export default function BookDemoPage() {

@@ -121,15 +121,18 @@ export function PricingSectionView() {
             {/* Content */}
             <div className="relative z-10 flex flex-1 flex-col">
               <h3 className="text-3xl font-bold dark:text-white">Pay as you go</h3>
-              <p className="mt-4 text-2xl sm:text-3xl font-extrabold text-brand">
+              <p className="mt-1 font-mono text-xs font-bold uppercase tracking-wider text-brand dark:text-leaf">
+                Add more when you need it
+              </p>
+              <p className="mt-3 text-2xl sm:text-3xl font-extrabold text-brand">
                 8% to 10% <span className="text-base font-medium text-ink/70">of each order</span>
               </p>
               <ul className="mt-7 flex flex-1 flex-col gap-3.5">
                 {[
-                  'Everything in Complete',
-                  'No fixed monthly fee',
-                  'Pay only when you receive orders',
-                  'Rate confirmed before you start',
+                  '14-day trial beginning at approval',
+                  'Commission only on completed orders',
+                  'No fixed monthly platform fee',
+                  'Core kitchen board and tracking included',
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink/85 dark:text-white/85">
                     <Check className="mt-0.5 size-4 shrink-0 text-brand" />

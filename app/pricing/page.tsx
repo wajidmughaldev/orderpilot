@@ -163,25 +163,28 @@ export default function PricingPage() {
                       No Monthly Fee
                     </span>
                   </div>
-                  <h2 className="section-title mt-5">Pay per order</h2>
-                  <p className="mt-4 text-2xl font-bold text-brand">8% to 10% of each order</p>
+                  <h2 className="section-title mt-5">Pay as you go</h2>
+                  <p className="mt-2 font-mono text-xs font-bold uppercase tracking-wider text-brand dark:text-leaf">
+                    Add more when you need it
+                  </p>
+                  <p className="mt-3 text-2xl font-bold text-brand">8% to 10% of each order</p>
                   <div className="mt-2 flex flex-wrap gap-x-2 text-xs font-semibold uppercase tracking-wider text-ink/70 dark:text-white/70">
-                    <span>14-day free trial</span>
+                    <span>14-day trial begins at approval</span>
                     <span>•</span>
-                    <span>Setup fee: PKR 5,000</span>
+                    <span>No fixed monthly platform fee</span>
+                    <span>•</span>
+                    <span>Verified wallet funding</span>
                     <span>•</span>
                     <span>Prices exclude applicable taxes</span>
-                    <span>•</span>
-                    <span>No monthly subscription fee</span>
                   </div>
                   <p className="mt-4 max-w-3xl leading-7 text-ink/75">
-                    Your percentage rate (between 8% and 10%) depends on your order volume and restaurant profile. We confirm it with you before you start. Includes a 14-day free trial. Setup fee of PKR 5,000 applies to onboarding (only if you continue on a paid plan). Prices exclude applicable taxes. It includes everything in Complete and is a good fit when you&apos;re starting out or your order volume is lower. Pay per order is an independent billing model—you do not pay a monthly subscription fee alongside it.
+                    Our upcoming Pay As You Go model charges a simple percentage fee on eligible completed orders funded from a prepaid wallet. The 14-day trial begins upon restaurant approval with full feature access and zero commission debits. Essential operational tools—including the live kitchen board, status queues, and customer records—remain included as core capabilities. Optional advanced features (like branded web menus and multi-station kitchen routing) can be added as monthly add-ons, while WhatsApp and Meta messaging costs pass through under disclosed carrier rules without arbitrary markups.
                   </p>
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />No fixed monthly subscription fee</li>
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Everything in Complete</li>
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Pay only on orders received</li>
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Direct customer payment collection</li>
+                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />14-day trial with no commission debited</li>
+                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Commission only on eligible completed orders</li>
+                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Prepaid wallet funded with verified money</li>
+                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Core kitchen display and order tracking included</li>
                   </ul>
                 </div>
                 <button
@@ -194,7 +197,7 @@ export default function PricingPage() {
               </div>
               <div className="mt-8 border-t border-forest/10 pt-6 text-sm leading-6 text-ink/65">
                 <p>
-                  <strong className="text-ink">Which option is right for you?</strong> Choosing between pay-per-order and a fixed subscription depends on your monthly order volume, your agreed percentage rate, and the features your restaurant needs. A 14-day free trial is available on all plans (the one-time PKR 5,000 setup fee applies only if you continue on a paid plan). Fixed subscriptions start at PKR 5,999/month, include a 14-day free trial, and cap your monthly software cost for up to 1,000 orders per month. Pay-per-order (8% to 10% per order) avoids fixed monthly fees when order volume is lower or seasonal. Prices exclude applicable taxes. Contact us with your estimated orders and we will help you compare options.
+                  <strong className="text-ink">Which option is right for you?</strong> Choosing between pay-per-order and a fixed subscription depends on your monthly order volume, your agreed percentage rate, and the features your restaurant needs. A 14-day free trial is available on all plans (the one-time PKR 5,000 setup fee applies only if you continue on a paid plan). Fixed subscriptions start at PKR 5,999/month, include a 14-day free trial, and cap your monthly software cost for up to 1,000 orders per month. Pay-per-order (8% to 10% per order, coming soon) avoids fixed monthly fees when order volume is lower or seasonal. Prices exclude applicable taxes. Contact us with your estimated orders and we will help you compare options.
                 </p>
               </div>
             </div>

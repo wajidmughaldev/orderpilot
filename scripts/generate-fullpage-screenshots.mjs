@@ -7,6 +7,8 @@ const PORT = 3025
 const BASE_URL = `http://127.0.0.1:${PORT}`
 
 const PAGES = [
+  { slug: '', name: 'homepage' },
+  { slug: 'pricing', name: 'pricing' },
   { slug: 'whatsapp-ordering', name: 'whatsapp_ordering' },
   { slug: 'qr-table-ordering', name: 'qr_table_ordering' },
   { slug: 'online-ordering', name: 'online_ordering' },

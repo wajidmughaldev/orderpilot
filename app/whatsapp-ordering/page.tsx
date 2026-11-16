@@ -41,27 +41,27 @@ const faqs = [
   {
     question: 'Do my customers need to download a separate mobile app?',
     answer:
-      'No. Your customers do not need to download anything from Google Play or the App Store. When they message your restaurant on WhatsApp, they receive an interactive digital menu link that opens in their mobile browser where they can select items and confirm their order.',
+      'No. Customers open your interactive menu link right inside WhatsApp or their mobile browser—no downloads required.',
   },
   {
     question: 'Can I keep my restaurant’s existing WhatsApp phone number?',
     answer:
-      'Yes. OrderPilot connects to your existing restaurant WhatsApp number. You retain your current number, your customer chat history, and your established brand identity.',
+      'Yes. OrderPilot connects with your existing WhatsApp business number so you keep your established brand identity and chat history.',
   },
   {
     question: 'How do customers pay for WhatsApp orders in Pakistan?',
     answer:
-      'You choose what payment methods your restaurant accepts: Cash on Delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. For digital transfers, customers can provide payment confirmation details for your team to verify alongside the order.',
+      'You can accept Cash on Delivery (COD), JazzCash, EasyPaisa, or direct bank transfer. Customers upload payment receipts for your team to verify.',
   },
   {
     question: 'How do WhatsApp orders reach my kitchen team?',
     answer:
-      'Every verified WhatsApp order appears on your OrderPilot live kitchen board with an audio notification, order itemization, customer notes, delivery address, and status tracking (New, In Kitchen, Ready, Out for Delivery).',
+      'Every order chimes onto your OrderPilot kitchen display with itemized dishes, cooking notes, delivery addresses, and real-time status tracking.',
   },
   {
     question: 'What is the pricing for the WhatsApp ordering plan?',
     answer:
-      'The WhatsApp subscription plan is PKR 5,999 per month and covers up to 1,000 orders per month, the live kitchen board, and full customer list exports. A 14-day free trial is available on all plans. A pay-per-order option (8% to 10% per order, Coming Soon) is also planned. Prices exclude applicable taxes.',
+      'The WhatsApp plan is PKR 5,999 per month (covers up to 1,000 orders/month) with a 14-day free trial. A pay-per-order option is coming soon. Taxes excluded.',
   },
 ]
 
@@ -231,10 +231,10 @@ export default function WhatsAppOrderingPage() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
                   <Clock className="size-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-bold dark:text-white">Unclear Voice Notes</h3>
+                <h3 className="mt-5 text-xl font-bold dark:text-white">Voice Notes in a Noisy Kitchen</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Customers send audio notes with noisy backgrounds. Staff mishear customizations like spice level, extra
-                  sauces, or dietary requests, resulting in customer frustration and remade food.
+                  Customers send audio notes while fryers and grills are running. Staff mishear spice levels, customized
+                  sauces, or landmark directions, leading to customer complaints and wasted food.
                 </p>
               </div>
 
@@ -242,10 +242,10 @@ export default function WhatsAppOrderingPage() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
                   <Banknote className="size-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-bold dark:text-white">Payment Screenshot Delays</h3>
+                <h3 className="mt-5 text-xl font-bold dark:text-white">Scattered Payment Screenshots</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Diners send bank transfer, JazzCash, or EasyPaisa screenshots. Cashiers spend minutes checking bank SMS
-                  alerts before approving the food, slowing down kitchen preparation.
+                  Cashiers scroll through dozens of unread WhatsApp chats trying to match JazzCash, EasyPaisa, or bank
+                  transfer screenshots while delivery riders wait at the counter.
                 </p>
               </div>
 
@@ -253,11 +253,10 @@ export default function WhatsAppOrderingPage() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
                   <ShieldCheck className="size-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-bold dark:text-white">Customer Data Masking</h3>
+                <h3 className="mt-5 text-xl font-bold dark:text-white">Aggregator Fees &amp; Masked Data</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Third-party marketplaces hide your customers&apos; contact details and list competitors right next to
-                  your food. When regular diners order direct on WhatsApp, you keep your customer records and build
-                  direct loyalty.
+                  Third-party food apps take up to 35% commission and hide customer phone numbers. Direct WhatsApp orders
+                  protect your profit and preserve customer contact details for repeat business.
                 </p>
               </div>
             </div>
@@ -306,10 +305,9 @@ export default function WhatsAppOrderingPage() {
                 <span className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
                   Step 01
                 </span>
-                <h3 className="mt-3 text-lg font-bold dark:text-white">Customer Messages WhatsApp</h3>
+                <h3 className="mt-3 text-lg font-bold dark:text-white">Diner Messages WhatsApp</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Diner sends a message to your WhatsApp business number and receives a direct link to your interactive
-                  menu.
+                  Customer texts your WhatsApp business number and receives an instant interactive menu link.
                 </p>
               </div>
 
@@ -317,10 +315,9 @@ export default function WhatsAppOrderingPage() {
                 <span className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
                   Step 02
                 </span>
-                <h3 className="mt-3 text-lg font-bold dark:text-white">Selects Items &amp; Delivery</h3>
+                <h3 className="mt-3 text-lg font-bold dark:text-white">Selects Dishes &amp; Delivery</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Customer selects food items, spicy levels, drinks, inputs their delivery address, and chooses payment
-                  method.
+                  Customer browses dish photos, chooses spice levels, enters their delivery address, and selects a payment method.
                 </p>
               </div>
 
@@ -328,10 +325,9 @@ export default function WhatsAppOrderingPage() {
                 <span className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
                   Step 03
                 </span>
-                <h3 className="mt-3 text-lg font-bold dark:text-white">Kitchen Board Receives Order</h3>
+                <h3 className="mt-3 text-lg font-bold dark:text-white">Kitchen Chimes With Ticket</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  The order appears on your live screen with an audio chime, clear itemized list, and receipt proof if
-                  paying digitally.
+                  The order appears on your live screen with an audio chime, clear itemized list, and payment screenshot proof.
                 </p>
               </div>
 
@@ -341,8 +337,7 @@ export default function WhatsAppOrderingPage() {
                 </span>
                 <h3 className="mt-3 text-lg font-bold dark:text-white">Dispatched to Customer</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Staff move order to ready, assign to your rider, and keep customer contact details saved in your private
-                  database.
+                  Staff mark the order ready, your rider delivers hot food, and customer contact details remain saved in your private database.
                 </p>
               </div>
             </div>
@@ -353,10 +348,10 @@ export default function WhatsAppOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-t border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Real Product Capabilities</p>
-              <h2 className="section-title">Engineered specifically for Pakistani restaurant operations.</h2>
+              <p className="eyebrow section-heading-eyebrow">Built for WhatsApp Dinner Rushes</p>
+              <h2 className="section-title">How OrderPilot keeps your WhatsApp food orders organized.</h2>
               <p className="section-description mt-4">
-                Built to solve the day-to-day challenges of running food delivery and takeaway in Karachi, Lahore,
+                Designed for busy burger joints, biryani kitchens, and casual eateries across Karachi, Lahore,
                 Islamabad, Rawalpindi, and across Pakistan.
               </p>
             </div>
@@ -367,10 +362,10 @@ export default function WhatsAppOrderingPage() {
                   <ChefHat className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Live Kitchen Display &amp; Statuses</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Live Kitchen Display &amp; Chime Alerts</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Keep your kitchen organized with real-time order columns: New, In Kitchen, Ready, Out for Delivery,
-                    and Completed. Audio chimes ensure cooks never miss a ticket.
+                    Keep cooks organized with real-time columns: New, In Kitchen, Ready, and Out for Delivery. Audio
+                    chimes ensure tickets are never missed during peak dinner volume.
                   </p>
                 </div>
               </div>
@@ -380,10 +375,10 @@ export default function WhatsAppOrderingPage() {
                   <ShieldCheck className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">100% Customer List Ownership</h3>
+                  <h3 className="text-lg font-bold dark:text-white">100% Customer Contact Ownership</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Unlike third-party aggregator apps that mask phone numbers, OrderPilot saves customer contact details
-                    in your private dashboard. Export phone numbers anytime for announcements and promos.
+                    Unlike aggregator apps that mask phone numbers, OrderPilot saves customer names and numbers in your
+                    private dashboard for direct promotions and repeat order campaigns.
                   </p>
                 </div>
               </div>
@@ -393,10 +388,10 @@ export default function WhatsAppOrderingPage() {
                   <Banknote className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Local Payment Options</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Verified Local Payment Options</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Accept Cash on Delivery, JazzCash, EasyPaisa, or direct bank transfer. Customers provide payment confirmation
-                    details so your team can verify transactions before cooking starts.
+                    Accept Cash on Delivery, JazzCash, EasyPaisa, or direct bank transfer. Customers upload payment receipts
+                    so your manager can verify funds before preparation starts.
                   </p>
                 </div>
               </div>
@@ -406,10 +401,10 @@ export default function WhatsAppOrderingPage() {
                   <Sparkles className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Local Delivery &amp; Address Capture</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Accurate Neighborhood Delivery Capture</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Capture complete neighborhood and address details for every order, helping riders fulfill deliveries
-                    accurately across DHA, Gulberg, Bahria Town, or your service area.
+                    Capture complete neighborhood addresses and landmark notes for riders in DHA, Bahria, Gulberg, or your
+                    local delivery radius to prevent missed drop-offs.
                   </p>
                 </div>
               </div>

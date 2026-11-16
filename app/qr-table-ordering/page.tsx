@@ -41,27 +41,27 @@ const faqs = [
   {
     question: 'Do customers need to download an application to scan the QR code?',
     answer:
-      'No. Customers simply point their iPhone or Android camera at the table QR code. Your interactive digital menu opens immediately in their default mobile web browser with no app installation or account registration required.',
+      'No. Guests point their phone camera at the QR standee to open your digital menu in their mobile browser—no app download or registration needed.',
   },
   {
     question: 'How do orders know which dining table they belong to?',
     answer:
-      'Each table has its own unique QR code linked to that specific table number (e.g. Table 4, Family Hall 2, Rooftop 7). When the diner submits their order, it arrives on your live kitchen board clearly marked with their exact table location.',
+      'Each table has its own unique QR code. When guests submit their order, it arrives on your kitchen screen labeled with their exact table number.',
   },
   {
     question: 'How does billing work for table QR orders?',
     answer:
-      'Diners can review their itemized order directly on their phones, making it easy for groups to check their bill and settle payment with the floor staff or cashier.',
+      'Diners view an itemized bill on their phones, making group checks easy to verify before settling up with the floor captain or cashier.',
   },
   {
     question: 'Can diners still pay the waiter with cash?',
     answer:
-      'Yes. Your restaurant chooses the payment workflow: guests can pay cash to the captain/waiter at the table, pay at the counter, or complete digital payments (JazzCash, EasyPaisa, or bank transfer).',
+      'Yes. Diners can pay cash to the waiter at the table, pay at the counter, or submit digital payment via JazzCash, EasyPaisa, or bank transfer.',
   },
   {
     question: 'Which OrderPilot subscription plan includes table QR ordering?',
     answer:
-      'Table QR ordering is included in the Web + Table plan (PKR 7,999/month) and the Complete plan (PKR 12,999/month), both covering up to 1,000 orders per month and kitchen boards. A 14-day free trial is available on all plans. Prices exclude applicable taxes.',
+      'Table QR is included in Web + Table (PKR 7,999/mo) and Complete (PKR 12,999/mo) with a 14-day free trial on all plans. Taxes excluded.',
   },
 ]
 
@@ -218,11 +218,11 @@ export default function QrTableOrderingPage() {
         <section className="section-pad bg-cream dark:bg-[#0b140d]">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">The Dine-In Service Flow</p>
-              <h2 className="section-title">Common bottlenecks in traditional floor service.</h2>
+              <p className="eyebrow section-heading-eyebrow">Floor Bottlenecks</p>
+              <h2 className="section-title">Why traditional paper table service slows down busy evenings.</h2>
               <p className="section-description mt-4">
-                During busy evening dinner shifts, floor teams balance multiple tables at once. Manual paper processes
-                often create unnecessary waiting times for guests.
+                During peak dinner shifts, waiters rush across crowded dining rooms. Paper menus create delays and
+                order misunderstandings.
               </p>
             </div>
 
@@ -231,10 +231,10 @@ export default function QrTableOrderingPage() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
                   <Clock className="size-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-bold dark:text-white">Peak Hour Table Waiting</h3>
+                <h3 className="mt-5 text-xl font-bold dark:text-white">Waiting for Paper Menus</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  When the dining hall fills up, staff are busy serving hot food. New tables often wait several minutes
-                  just to catch someone’s eye for a printed menu card.
+                  When the dining hall fills up, guests wait several minutes just to get a waiter&apos;s attention for
+                  printed menu cards.
                 </p>
               </div>
 
@@ -242,10 +242,10 @@ export default function QrTableOrderingPage() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
                   <QrCode className="size-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-bold dark:text-white">Outdated Paper Menus</h3>
+                <h3 className="mt-5 text-xl font-bold dark:text-white">Sold-Out Surprises</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Reprinting paper menus for price updates or seasonal items takes time. When a specialty dish runs out
-                  mid-shift, paper menus cannot reflect it immediately.
+                  Waiters take orders on paper, walk to the kitchen, and discover a dish is sold out, forcing a second
+                  trip back to the table.
                 </p>
               </div>
 
@@ -253,10 +253,10 @@ export default function QrTableOrderingPage() {
                 <div className="flex size-12 items-center justify-center rounded-2xl bg-forest/10 dark:bg-white/10 text-brand dark:text-leaf">
                   <Smartphone className="size-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-xl font-bold dark:text-white">Group Bill Review Delays</h3>
+                <h3 className="mt-5 text-xl font-bold dark:text-white">Group Bill Tally Delays</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Large family gatherings, corporate lunches, and groups often take time to review items at the table.
-                  An itemized digital menu makes checking table orders straightforward before settling up.
+                  Large families and friends take time deciphering handwritten checks. A digital summary makes bill
+                  review fast and transparent.
                 </p>
               </div>
             </div>
@@ -306,7 +306,7 @@ export default function QrTableOrderingPage() {
                 </span>
                 <h3 className="mt-3 text-lg font-bold dark:text-white">Scan Table QR</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Diner sits at Table 5 and scans the customized QR standee using their smartphone camera.
+                  Guest sits down and points their smartphone camera at the customized QR standee on Table 5.
                 </p>
               </div>
 
@@ -316,7 +316,7 @@ export default function QrTableOrderingPage() {
                 </span>
                 <h3 className="mt-3 text-lg font-bold dark:text-white">Browse Digital Menu</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Your digital menu opens in the mobile browser with food photos, dish descriptions, and spice choices.
+                  Your menu opens in their mobile browser with dish photos, ingredient details, and spice options.
                 </p>
               </div>
 
@@ -326,7 +326,7 @@ export default function QrTableOrderingPage() {
                 </span>
                 <h3 className="mt-3 text-lg font-bold dark:text-white">Submit to Kitchen</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Guests submit their order. It appears on the kitchen board labeled with Table 5, ready for preparation.
+                  Guests confirm their choices. The ticket chimes onto the kitchen display labeled with Table 5.
                 </p>
               </div>
 
@@ -334,9 +334,9 @@ export default function QrTableOrderingPage() {
                 <span className="font-mono text-xs font-bold text-brand dark:text-leaf uppercase tracking-wider">
                   Step 04
                 </span>
-                <h3 className="mt-3 text-lg font-bold dark:text-white">Serve &amp; Settle Check</h3>
+                <h3 className="mt-3 text-lg font-bold dark:text-white">Serve &amp; Settle Bill</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                  Staff deliver hot dishes to Table 5 with clear itemized tickets, allowing guests to pay cash with the waiter or settle at the counter without confusion.
+                  Staff deliver hot food to Table 5 with clear tickets, and guests settle with cash or digital transfer.
                 </p>
               </div>
             </div>
@@ -347,10 +347,10 @@ export default function QrTableOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-t border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Operational Tools</p>
-              <h2 className="section-title">Built to support your floor captains and kitchen staff.</h2>
+              <p className="eyebrow section-heading-eyebrow">Smoother Floor Operations</p>
+              <h2 className="section-title">Give guests fast ordering while keeping staff focused on hospitality.</h2>
               <p className="section-description mt-4">
-                Designed to assist your floor staff with real-time digital coordination, not replace personal hospitality.
+                Designed to help floor captains coordinate dining halls across Karachi, Lahore, Islamabad, and across Pakistan.
               </p>
             </div>
 
@@ -362,8 +362,8 @@ export default function QrTableOrderingPage() {
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Itemized Table Order Review</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Guests can review all ordered dishes, quantities, and totals directly from their mobile screen,
-                    helping group tables verify their order and settle their bill smoothly.
+                    Guests review all ordered dishes, quantities, and running totals directly on their phone screen,
+                    making final bill settlement quick and transparent.
                   </p>
                 </div>
               </div>
@@ -373,10 +373,10 @@ export default function QrTableOrderingPage() {
                   <ChefHat className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Centralized Menu Availability</h3>
+                  <h3 className="text-lg font-bold dark:text-white">One-Click Menu Availability</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    When ingredients run short or daily specials sell out, mark items unavailable in your dashboard so
-                    dine-in table menus reflect current offerings without reprinting.
+                    When daily specials sell out, mark items unavailable in your dashboard so dine-in table menus reflect
+                    current offerings immediately without reprinting.
                   </p>
                 </div>
               </div>
@@ -386,10 +386,10 @@ export default function QrTableOrderingPage() {
                   <Sparkles className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Rich Food Presentation</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Photo Menus with Addon Choices</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Guests can view photos of each dish, read ingredient details, and explore appetizers, beverages, and
-                    desserts at their own pace.
+                    Guests browse high-resolution food photography, portion details, and beverage choices so they order
+                    with confidence at their own pace.
                   </p>
                 </div>
               </div>
@@ -399,10 +399,10 @@ export default function QrTableOrderingPage() {
                   <Clock className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Accurate Table-to-Kitchen Tickets</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Table-Specific Kitchen Tickets</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Orders submitted from table QR arrive labeled with the exact table number, helping kitchen and floor
-                    staff avoid ticket mix-ups during crowded dinner shifts.
+                    Every order arriving on your kitchen display is automatically tagged with the table number to avoid
+                    delivery mix-ups during crowded dinner shifts.
                   </p>
                 </div>
               </div>
