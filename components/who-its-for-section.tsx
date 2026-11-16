@@ -10,24 +10,18 @@ import {
 const restaurantScenarios = [
   {
     icon: UtensilsCrossed,
-    tag: 'Table QR & Floor Service',
     title: 'Dine-In Restaurants & Cafés',
-    summary: 'Orders reach the kitchen without floor staff shouting across the hall.',
-    copy: 'Guests scan table QR codes to view food photos, choose spice levels, and send tickets straight to the kitchen. Waiters spend less time writing paper notes and more time attending to guests.',
+    copy: 'Table QR orders reach the kitchen directly, letting floor staff focus on guest hospitality instead of writing paper notes.',
   },
   {
     icon: Sandwich,
-    tag: 'Counter & Takeaway Rush',
     title: 'Fast Food & Takeaway Spots',
-    summary: 'Clear prep queues during the 8 PM to 11 PM dinner rush.',
-    copy: 'Walk-in orders, phone pickups, and direct delivery requests appear in organized New, Preparing, and Ready columns. Cooks see what is next so customers and riders aren’t crowding your counter.',
+    copy: 'Counter orders, phone pickups, and WhatsApp orders flow into one organized kitchen queue so your counter stays clear.',
   },
   {
     icon: Cloud,
-    tag: 'WhatsApp & Direct Delivery',
     title: 'Delivery-First & Cloud Kitchens',
-    summary: 'WhatsApp chats and web orders organized for fast rider dispatch.',
-    copy: 'Turn messy chat messages into structured kitchen tickets with customer phone numbers, delivery addresses, and payment receipts. Fulfill direct orders without giving up steep aggregator commissions.',
+    copy: 'Manage delivery and takeaway volume on one screen with customer addresses, phone numbers, and payment slips.',
   },
 ]
 
@@ -78,20 +72,12 @@ export function WhoItsForSection() {
                   <circle cx="40" cy="40" r="18" fill="currentColor" fillOpacity="0.2" />
                 </svg>
 
-                <div className="relative z-10 flex items-center justify-between gap-3">
-                  <span className="grid size-14 shrink-0 place-items-center rounded-full bg-mint text-brand transition-all duration-300 group-hover:scale-105 group-hover:bg-brand group-hover:text-white dark:bg-emerald-950/60 dark:text-leaf dark:group-hover:bg-leaf dark:group-hover:text-forest">
-                    <Icon className="size-7" />
-                  </span>
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-brand dark:text-leaf">
-                    {item.tag}
-                  </span>
-                </div>
+                <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-full bg-mint text-brand transition-all duration-300 group-hover:scale-105 group-hover:bg-brand group-hover:text-white dark:bg-emerald-950/60 dark:text-leaf dark:group-hover:bg-leaf dark:group-hover:text-forest">
+                  <Icon className="size-7" />
+                </span>
 
                 <div className="relative z-10 mt-6">
                   <h3 className="text-xl font-bold dark:text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm font-semibold text-brand dark:text-leaf leading-snug">
-                    {item.summary}
-                  </p>
                   <p className="mt-3 text-sm leading-relaxed text-ink/80 dark:text-white/75">{item.copy}</p>
                 </div>
               </motion.article>

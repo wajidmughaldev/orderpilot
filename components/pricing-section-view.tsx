@@ -130,9 +130,9 @@ export function PricingSectionView() {
               <ul className="mt-7 flex flex-1 flex-col gap-3.5">
                 {[
                   '14-day trial beginning at approval',
-                  'Commission only on completed orders',
-                  'No fixed monthly platform fee',
-                  'Core kitchen board and tracking included',
+                  'Commission on eligible completed WhatsApp AI orders',
+                  'Verified prepaid wallet funding',
+                  'Core kitchen display and tracking included',
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink/85 dark:text-white/85">
                     <Check className="mt-0.5 size-4 shrink-0 text-brand" />

@@ -58,19 +58,19 @@ const softwareAppJsonLd = {
 const faqs = [
   {
     question: 'How much does it cost?',
-    answer: 'Monthly plans start at PKR 5,999, and a pay-per-order option is coming soon. Every plan includes a 14-day free trial so you can test it with your menu first.',
+    answer: 'Monthly plans start at PKR 5,999 with a 14-day free trial. A pay-per-order option is coming soon. Taxes excluded.',
   },
   {
     question: 'Which plan should I pick?',
-    answer: 'Start with WhatsApp (PKR 5,999/mo) if you only take chat orders, or choose Web + Table (PKR 7,999/mo) for dine-in and web orders. Complete (PKR 12,999/mo) covers all channels.',
+    answer: 'Choose WhatsApp (PKR 5,999/mo) for chat orders, Web + Table (PKR 7,999/mo) for dine-in and web, or Complete (PKR 12,999/mo) for all channels.',
   },
   {
     question: 'What if my staff can’t use it?',
-    answer: 'The board is visual and takes five minutes to learn. We walk your manager and kitchen staff through order statuses and receipt verification before you start.',
+    answer: 'The kitchen display is visual and straightforward. Staff view incoming tickets by status and verify payments directly from any screen.',
   },
   {
     question: 'How do customers pay?',
-    answer: 'Customers pay your restaurant directly via Cash on Delivery, JazzCash, EasyPaisa, or bank transfer. For digital transfers, they upload a payment screenshot for your manager to verify.',
+    answer: 'Customers pay directly using Cash on Delivery, JazzCash, EasyPaisa, or bank transfer. Staff verify uploaded payment receipts on the order.',
   },
   {
     question: 'Can I use it for dine-in, takeaway and delivery?',

@@ -51,7 +51,7 @@ const faqs = [
   {
     question: 'Can I manage delivery coverage and policies?',
     answer:
-      'Yes. You collect neighborhood details for delivery or takeaway orders, allowing your team to organize routes according to your restaurant’s coverage area.',
+      'Yes. You can configure delivery fees, minimum order amounts, and operating hours directly in your restaurant settings.',
   },
   {
     question: 'What payment methods can customers use on my website?',
@@ -350,7 +350,7 @@ export default function OnlineOrderingPage() {
               <p className="eyebrow section-heading-eyebrow">Built for Direct Delivery &amp; Takeaway</p>
               <h2 className="section-title">Everything needed to run your own online ordering channel.</h2>
               <p className="section-description mt-4">
-                Designed for single restaurants, cloud kitchens, and multi-branch brands across Pakistan.
+                Designed for single restaurants, cloud kitchens, and takeaway spots across Pakistan.
               </p>
             </div>
 

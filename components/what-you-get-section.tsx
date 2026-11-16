@@ -13,14 +13,14 @@ const whatYouGetTiles = [
   {
     icon: ChefHat,
     number: '02',
-    title: 'Dedicated kitchen screen pairing.',
-    copy: 'Pair any tablet or display in your kitchen using a simple 6-digit code. Cooks view tickets without sharing passwords.',
+    title: 'Kitchen screen pairing.',
+    copy: 'Connect kitchen tablets or displays using a secure pairing code without sharing account passwords.',
   },
   {
     icon: QrCode,
     number: '03',
-    title: 'Three channels, one queue.',
-    copy: 'WhatsApp chats, table QR scans, and your direct web menu flow into a single live screen. No juggling multiple phones.',
+    title: 'Table QR ordering.',
+    copy: 'Let dine-in guests browse photos and place orders from their table without waiting for paper menus.',
   },
   {
     icon: CreditCard,
@@ -31,14 +31,14 @@ const whatYouGetTiles = [
   {
     icon: RefreshCw,
     number: '05',
-    title: 'Neighborhood delivery routing.',
-    copy: 'Capture complete street addresses, customer phone numbers, and cooking notes on every ticket for fast rider dispatch.',
+    title: 'Delivery & order controls.',
+    copy: 'Set your restaurant delivery fees, minimum order amounts, and store hours directly in settings.',
   },
   {
     icon: Users,
     number: '06',
-    title: '100% customer list ownership.',
-    copy: 'Retain customer names, phone numbers, and past orders in your private dashboard. Never masked by third-party apps.',
+    title: 'Customer contact directory.',
+    copy: 'Retain your customer names, phone numbers, and order histories directly in your private dashboard.',
   },
 ]
 
