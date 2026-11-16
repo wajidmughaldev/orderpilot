@@ -126,6 +126,59 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
       await expect(directTrialLink).toBeVisible({ timeout: 15000 })
       expect(await directTrialLink.getAttribute('href')).toBe('https://app.orderpilot.pk')
     })
+
+    test('captures selected plan when opened with ?plan=WhatsApp&intent=trial and submits trial request', async ({ page }) => {
+      let capturedPayload: any = null
+      await page.route('**/api/demo-request', async (route) => {
+        capturedPayload = JSON.parse(route.request().postData() || '{}')
+        await route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            success: true,
+            message: 'Your 14-day free trial request was received. Our team will contact you to arrange setup and activate your account.',
+            intent: 'free-trial',
+          }),
+        })
+      })
+
+      // 1. Visit /book-demo with plan=WhatsApp and intent=trial
+      await page.goto('/book-demo?plan=WhatsApp&intent=trial')
+
+      // 2. Verify selected plan is visible and preselected in the demo form
+      const planBadge = page.locator('text=Selected Plan:')
+      await expect(planBadge).toBeVisible({ timeout: 15000 })
+      await expect(page.locator('text=WhatsApp').first()).toBeVisible()
+
+      const planSelect = page.locator('select[name="plan"]')
+      await expect(planSelect).toBeVisible()
+      await expect(planSelect).toHaveValue('WhatsApp')
+
+      // 3. Fill required fields
+      await page.locator('input[name="name"]').fill('Hamza Malik')
+      await page.locator('input[name="restaurant"]').fill('Karachi Grill')
+      await page.locator('input[name="phone"]').fill('+92 300 7654321')
+      await page.locator('input[name="city"]').fill('Karachi')
+
+      // 4. Submit form
+      const submitBtn = page.getByRole('button', { name: /book a live demo/i })
+      await expect(submitBtn).toBeEnabled()
+      const reqPromise = page.waitForRequest('**/api/demo-request')
+      await submitBtn.click()
+      await reqPromise
+
+      // 5. Verify confirmation message displayed
+      const statusBanner = page.locator('[role="status"]')
+      await expect(statusBanner).toBeVisible()
+      await expect(statusBanner).toContainText('14-day free trial request was received')
+
+      // 6. Verify payload captured by API route
+      expect(capturedPayload).not.toBeNull()
+      expect(capturedPayload.plan).toBe('WhatsApp')
+      expect(capturedPayload.intent).toBe('free-trial')
+      expect(capturedPayload.name).toBe('Hamza Malik')
+      expect(capturedPayload.restaurant).toBe('Karachi Grill')
+    })
   })
 })
 

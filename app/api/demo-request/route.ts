@@ -158,6 +158,9 @@ export async function POST(request: Request) {
   if (typeof body.billing === 'string' && body.billing.length > 80) {
     return NextResponse.json({ message: 'Please select a valid billing option.' }, { status: 400 })
   }
+  if (typeof body.plan === 'string' && body.plan.length > 80) {
+    return NextResponse.json({ message: 'Please select a valid plan.' }, { status: 400 })
+  }
   if (typeof body.interests === 'string' && body.interests.length > 200) {
     return NextResponse.json({ message: 'Please shorten selected interests.' }, { status: 400 })
   }
@@ -171,6 +174,7 @@ export async function POST(request: Request) {
     restaurant: String(body.restaurant).trim(),
     phone: String(body.phone).trim(),
     city: typeof body.city === 'string' && body.city.trim() ? body.city.trim() : undefined,
+    plan: typeof body.plan === 'string' && body.plan.trim() ? body.plan.trim() : undefined,
     pos: typeof body.pos === 'string' && body.pos.trim() ? body.pos.trim() : undefined,
     type: typeof body.type === 'string' && body.type.trim() ? body.type.trim() : undefined,
     volume: typeof body.volume === 'string' && body.volume.trim() ? body.volume.trim() : undefined,

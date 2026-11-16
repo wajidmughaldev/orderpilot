@@ -64,6 +64,7 @@ describe('Unit: Transactional Email Generation & Escaping', () => {
       expect(text).toContain('Contact Person:   Tariq Butt')
       expect(text).toContain('Phone / WhatsApp: +92 300 1234567')
       expect(text).toContain('City:             Lahore')
+      expect(text).toContain('Selected Plan:    Not specified')
       expect(text).toContain('Current POS:      Candela POS')
       expect(text).toContain('Restaurant Type:  Fine Dining')
       expect(text).toContain('Daily Order Vol:  100–300 orders')
@@ -160,6 +161,21 @@ describe('Unit: Transactional Email Generation & Escaping', () => {
       expect(html).toContain('14-DAY FREE TRIAL')
       expect(html).toContain('background-color: #fef7e0') // Amber badge bg
       expect(html).toContain('color: #b06000') // Amber badge text
+    })
+
+    it('includes Selected Plan row in both text and HTML when provided', () => {
+      const planPayload: LeadPayload = {
+        ...basePayload,
+        plan: 'WhatsApp',
+        intent: 'free-trial',
+      }
+
+      const text = generateEmailText(planPayload)
+      expect(text).toContain('Selected Plan:    WhatsApp')
+
+      const html = generateEmailHtml(planPayload)
+      expect(html).toContain('Selected Plan:')
+      expect(html).toContain('WhatsApp')
     })
   })
 

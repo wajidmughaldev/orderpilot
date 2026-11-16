@@ -14,9 +14,41 @@ const billingMap: Record<string, string> = {
   pricing: 'Help me decide',
 }
 
+const planCanonicalMap: Record<string, string> = {
+  whatsapp: 'WhatsApp',
+  'whatsapp plan': 'WhatsApp',
+  'web + table': 'Web + Table',
+  'web-table': 'Web + Table',
+  'web + table plan': 'Web + Table',
+  'web and table': 'Web + Table',
+  complete: 'Complete',
+  'complete plan': 'Complete',
+  'pay-per-order': 'Pay-per-Order',
+  'pay per order': 'Pay-per-Order',
+  'pay-as-you-go': 'Pay-per-Order',
+  payasyougo: 'Pay-per-Order',
+}
+
 export function DemoForm() {
   const params = useSearchParams()
-  const initialBilling = billingMap[params.get('interest') || ''] || ''
+
+  // Recognize and validate selected plan from URL
+  const rawPlan = (params.get('plan') || '').trim()
+  const initialPlan = planCanonicalMap[rawPlan.toLowerCase()] || (rawPlan.length <= 80 ? rawPlan : '')
+
+  // Normalize billing based on explicit interest/billing or infer from plan
+  const rawBillingParam = (params.get('billing') || '').trim().toLowerCase()
+  let computedBilling = billingMap[params.get('interest') || ''] || ''
+  if (!computedBilling) {
+    if (rawBillingParam === 'annual') {
+      computedBilling = 'Monthly'
+    } else if (initialPlan === 'Pay-per-Order') {
+      computedBilling = 'Pay-per-Order'
+    } else if (initialPlan) {
+      computedBilling = 'Monthly'
+    }
+  }
+  const initialBilling = computedBilling
 
   // Normalize intent: 'trial' / 'free-trial' -> 'free-trial', otherwise default to 'demo'
   const rawIntent = (params.get('intent') || '').trim().toLowerCase()
@@ -77,6 +109,19 @@ export function DemoForm() {
           Sign in &amp; start trial directly →
         </a>
       </div>
+
+      {/* Selected Plan Callout (if plan is specified in URL) */}
+      {initialPlan && (
+        <div className="mb-6 flex items-center justify-between rounded-2xl border border-brand/25 bg-mint/40 p-4 text-sm dark:border-leaf/25 dark:bg-leaf/10">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-bold text-forest dark:text-leaf">Selected Plan:</span>
+            <span className="rounded-lg bg-white px-2.5 py-1 font-bold text-brand shadow-sm dark:bg-[#0c150f] dark:text-leaf">
+              {initialPlan}
+            </span>
+            {isTrial && <span className="text-xs font-semibold text-ink/75 dark:text-white/75">· 14-day free trial</span>}
+          </div>
+        </div>
+      )}
 
       <div>
         <h2 className="text-3xl font-bold">
@@ -146,6 +191,18 @@ export function DemoForm() {
             ))}
           </div>
         </fieldset>
+        <Field label="Selected plan">
+          <select className="form-control" name="plan" defaultValue={initialPlan}>
+            <option value="">No preference / General walkthrough</option>
+            <option value="WhatsApp">WhatsApp (from PKR 5,999/mo)</option>
+            <option value="Web + Table">Web + Table (from PKR 7,999/mo)</option>
+            <option value="Complete">Complete (from PKR 12,999/mo)</option>
+            <option value="Pay-per-Order">Pay-per-Order</option>
+            {initialPlan && !['WhatsApp', 'Web + Table', 'Complete', 'Pay-per-Order'].includes(initialPlan) && (
+              <option value={initialPlan}>{initialPlan}</option>
+            )}
+          </select>
+        </Field>
         <Field label="Billing option">
           <select className="form-control" name="billing" defaultValue={initialBilling}>
             <option value="">Select one</option>
@@ -154,7 +211,7 @@ export function DemoForm() {
             <option value="Help me decide">Help me decide</option>
           </select>
         </Field>
-        <Field label="Current POS (optional)">
+        <Field label="Current POS (optional)" wide>
           <input
             className="form-control"
             name="pos"

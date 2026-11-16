@@ -21,6 +21,7 @@ export interface LeadPayload {
   restaurant: string
   phone: string
   city?: string
+  plan?: string
   pos?: string
   type?: string
   volume?: string
@@ -112,6 +113,7 @@ ${payload.message || 'No message provided'}
     content += `
 RESTAURANT PROFILE
 ------------------------------------------------------------
+Selected Plan:    ${payload.plan || 'Not specified'}
 Current POS:      ${payload.pos || 'Not specified'}
 Restaurant Type:  ${payload.type || 'Not specified'}
 Daily Order Vol:  ${payload.volume || 'Not specified'}
@@ -228,6 +230,14 @@ export function generateEmailHtml(payload: LeadPayload): string {
         Restaurant Profile & Requirements
       </h2>
       <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 14px;">
+        ${
+          payload.plan
+            ? `<tr>
+          <td style="padding: 8px 0; color: #667085; width: 140px; font-weight: 500;">Selected Plan:</td>
+          <td style="padding: 8px 0; font-weight: 700; color: #005f00;">${escapeHtml(payload.plan)}</td>
+        </tr>`
+            : ''
+        }
         <tr>
           <td style="padding: 8px 0; color: #667085; width: 140px; font-weight: 500;">Current POS:</td>
           <td style="padding: 8px 0; font-weight: 600; color: #101820;">${escapeHtml(payload.pos || 'Not specified')}</td>

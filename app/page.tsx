@@ -102,6 +102,18 @@ export default function HomePage() {
         {/* PROBLEM */}
         <ProblemSection />
 
+        {/* OBJECTION-HANDLING BRIDGE */}
+        <section className="bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/5 py-12 sm:py-16">
+          <div className="site-shell site-shell-800">
+            <ScrollReveal className="mx-auto max-w-3xl text-center flex flex-col items-center">
+              <h2 className="section-title text-balance text-2xl sm:text-3xl lg:text-4xl">You don&apos;t have to change how customers order.</h2>
+              <p className="section-description mt-4 max-w-[600px] text-base sm:text-lg text-balance mx-auto">
+                Keep WhatsApp, web and table QR ordering. Give your team one place to manage the orders.
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+
         {/* HOW IT WORKS */}
         <section id="how" className="section-pad scroll-mt-20 bg-white dark:bg-[#0b140d]">
           <div className="site-shell">

@@ -24,6 +24,7 @@ export interface ValidationInput {
   restaurant?: unknown
   phone?: unknown
   city?: unknown
+  plan?: unknown
   pos?: unknown
   challenge?: unknown
   message?: unknown
@@ -91,6 +92,9 @@ export function validateLeadForm(input: ValidationInput): { valid: boolean; erro
   }
   if (typeof input.billing === 'string' && input.billing.length > 80) {
     return { valid: false, error: 'Please select a valid billing option.', status: 400 }
+  }
+  if (typeof input.plan === 'string' && input.plan.length > 80) {
+    return { valid: false, error: 'Please select a valid plan.', status: 400 }
   }
   if (typeof input.interests === 'string' && input.interests.length > 200) {
     return { valid: false, error: 'Please shorten selected interests.', status: 400 }
@@ -206,6 +210,19 @@ describe('Unit: Form Validation Logic', () => {
       expect(result.valid).toBe(false)
       expect(result.error).toBe('Request rejected.')
       expect(result.status).toBe(400)
+    })
+  })
+
+  describe('Selected Plan Validation', () => {
+    it('accepts valid plan values', () => {
+      expect(validateLeadForm({ ...baseValid, plan: 'WhatsApp' }).valid).toBe(true)
+      expect(validateLeadForm({ ...baseValid, plan: 'Web + Table' }).valid).toBe(true)
+      expect(validateLeadForm({ ...baseValid, plan: 'Complete' }).valid).toBe(true)
+    })
+
+    it('rejects plan strings exceeding 80 characters', () => {
+      const longPlan = 'A'.repeat(81)
+      expect(validateLeadForm({ ...baseValid, plan: longPlan }).error).toBe('Please select a valid plan.')
     })
   })
 
