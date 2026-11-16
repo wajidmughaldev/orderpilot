@@ -120,18 +120,18 @@ export function PricingSectionView() {
 
             {/* Content */}
             <div className="relative z-10 flex flex-1 flex-col">
-              <h3 className="text-3xl font-bold dark:text-white">Pay as you go</h3>
+              <h3 className="text-3xl font-bold dark:text-white">Pay per order</h3>
               <p className="mt-1 font-mono text-xs font-bold uppercase tracking-wider text-brand dark:text-leaf">
-                Add more when you need it
+                Flexible option
               </p>
               <p className="mt-3 text-2xl sm:text-3xl font-extrabold text-brand">
-                8% to 10% <span className="text-base font-medium text-ink/70">of each order</span>
+                Pay per order <span className="text-base font-medium text-ink/70">as you grow</span>
               </p>
               <ul className="mt-7 flex flex-1 flex-col gap-3.5">
                 {[
-                  '14-day trial beginning at approval',
-                  'Commission on eligible completed WhatsApp AI orders',
-                  'Verified prepaid wallet funding',
+                  'No fixed monthly platform fee',
+                  'Pay only when you receive orders',
+                  '14-day free trial on all plans',
                   'Core kitchen display and tracking included',
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink/85 dark:text-white/85">

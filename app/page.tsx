@@ -57,14 +57,6 @@ const softwareAppJsonLd = {
 
 const faqs = [
   {
-    question: 'How much does it cost?',
-    answer: 'Monthly plans start at PKR 5,999 with a 14-day free trial. A pay-per-order option is coming soon. Taxes excluded.',
-  },
-  {
-    question: 'Which plan should I pick?',
-    answer: 'Choose WhatsApp (PKR 5,999/mo) for chat orders, Web + Table (PKR 7,999/mo) for dine-in and web, or Complete (PKR 12,999/mo) for all channels.',
-  },
-  {
     question: 'What if my staff can’t use it?',
     answer: 'The kitchen display is visual and straightforward. Staff view incoming tickets by status and verify payments directly from any screen.',
   },

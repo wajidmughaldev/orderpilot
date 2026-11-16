@@ -163,27 +163,24 @@ export default function PricingPage() {
                       No Monthly Fee
                     </span>
                   </div>
-                  <h2 className="section-title mt-5">Pay as you go</h2>
-                  <p className="mt-2 font-mono text-xs font-bold uppercase tracking-wider text-brand dark:text-leaf">
-                    Add more when you need it
-                  </p>
+                  <h2 className="section-title mt-5">Pay per order</h2>
                   <p className="mt-3 text-2xl font-bold text-brand">8% to 10% of each order</p>
                   <div className="mt-2 flex flex-wrap gap-x-2 text-xs font-semibold uppercase tracking-wider text-ink/70 dark:text-white/70">
-                    <span>14-day trial begins at approval</span>
+                    <span>14-day free trial on all plans</span>
                     <span>•</span>
-                    <span>No fixed monthly platform fee</span>
+                    <span>No fixed monthly subscription fee</span>
                     <span>•</span>
-                    <span>Verified wallet funding</span>
+                    <span>Setup fee: PKR 5,000</span>
                     <span>•</span>
                     <span>Prices exclude applicable taxes</span>
                   </div>
                   <p className="mt-4 max-w-3xl leading-7 text-ink/75">
-                    Our upcoming Pay As You Go model charges a simple percentage commission on eligible completed WhatsApp AI orders, funded from a verified prepaid wallet. A 14-day trial begins upon SuperAdmin restaurant approval, with zero commission debited during the trial. Essential operational tools—including the menu catalog, live kitchen display, and customer records—remain included as core capabilities. Optional advanced tools (such as branded web storefronts and multi-station kitchen displays) will be available as optional monthly add-ons, while conditional Meta messaging costs pass through under disclosed carrier rules without platform markups. All proposed rates and add-on terms remain provisional until official launch.
+                    Pay per order avoids fixed monthly software costs when order volume is lower or seasonal. You pay a percentage only on orders received. Includes a 14-day free trial on all plans. A one-time setup fee of PKR 5,000 applies to onboarding (only if you continue on a paid plan). Prices exclude applicable taxes. This flexible option is currently in preparation.
                   </p>
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />14-day trial with no commission debited</li>
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Commission only on eligible completed orders</li>
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Prepaid wallet funded with verified money</li>
+                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />No fixed monthly subscription fee</li>
+                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Pay only on orders received</li>
+                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />14-day free trial on all plans</li>
                     <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Core kitchen display and order tracking included</li>
                   </ul>
                 </div>

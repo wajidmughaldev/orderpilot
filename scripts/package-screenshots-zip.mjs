@@ -73,3 +73,4 @@ fs.copyFileSync(zipPathDocs, zipPathArtifact)
 console.log(`ZIP created successfully at:
 - ${zipPathDocs}
 - ${zipPathArtifact}`)
+

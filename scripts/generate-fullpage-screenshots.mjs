@@ -25,6 +25,29 @@ for (const dir of OUTPUT_DIRS) {
   }
 }
 
+async function preparePageForFullpageScreenshot(page) {
+  const scrollHeight = await page.evaluate(() => document.documentElement.scrollHeight)
+  const step = 450
+  for (let y = 0; y <= scrollHeight; y += step) {
+    await page.evaluate((pos) => window.scrollTo(0, pos), y)
+    await page.waitForTimeout(40)
+  }
+  await page.evaluate(() => window.scrollTo(0, 0))
+  await page.waitForTimeout(600)
+
+  const hiddenCount = await page.evaluate(() => {
+    const els = document.querySelectorAll('article, section, header, .panel')
+    let hidden = 0
+    for (const el of els) {
+      if (window.getComputedStyle(el).opacity === '0') {
+        hidden++
+      }
+    }
+    return hidden
+  })
+  return { scrollHeight, hiddenCount }
+}
+
 async function run() {
   console.log('Starting Next.js production server for fullPage screenshot capture...')
   const nextServer = spawn('npx', ['next', 'start', '-p', String(PORT)], {
@@ -80,11 +103,10 @@ async function run() {
             localStorage.setItem('theme', 'light')
           })
         }
-        await page.waitForTimeout(500)
+        await page.waitForTimeout(200)
 
-        // Verify footer is rendered in the DOM before screenshot
+        const { scrollHeight, hiddenCount } = await preparePageForFullpageScreenshot(page)
         const footerCount = await page.locator('footer').count()
-        const scrollHeight = await page.evaluate(() => document.documentElement.scrollHeight)
 
         const filename = `${pageInfo.name}_desktop_${theme}.png`
         for (const outDir of OUTPUT_DIRS) {
@@ -99,10 +121,11 @@ async function run() {
           theme,
           filename,
           scrollHeight: `${scrollHeight}px`,
+          hiddenCount,
           fileSize: `${(stats.size / (1024 * 1024)).toFixed(2)} MB`,
           footerCaptured: footerCount > 0,
         })
-        console.log(`  ✓ Desktop ${theme}: ${filename} (Document Height: ${scrollHeight}px, Size: ${(stats.size / 1024).toFixed(0)} KB)`)
+        console.log(`  ✓ Desktop ${theme}: ${filename} (Height: ${scrollHeight}px, Hidden: ${hiddenCount}, Size: ${(stats.size / 1024).toFixed(0)} KB)`)
         await context.close()
       }
 
@@ -129,11 +152,10 @@ async function run() {
             localStorage.setItem('theme', 'light')
           })
         }
-        await page.waitForTimeout(500)
+        await page.waitForTimeout(200)
 
-        // Verify footer is rendered in the DOM before screenshot
+        const { scrollHeight, hiddenCount } = await preparePageForFullpageScreenshot(page)
         const footerCount = await page.locator('footer').count()
-        const scrollHeight = await page.evaluate(() => document.documentElement.scrollHeight)
 
         const filename = `${pageInfo.name}_mobile_${theme}.png`
         for (const outDir of OUTPUT_DIRS) {
@@ -148,10 +170,11 @@ async function run() {
           theme,
           filename,
           scrollHeight: `${scrollHeight}px`,
+          hiddenCount,
           fileSize: `${(stats.size / 1024).toFixed(0)} KB`,
           footerCaptured: footerCount > 0,
         })
-        console.log(`  ✓ Mobile ${theme}: ${filename} (Document Height: ${scrollHeight}px, Size: ${(stats.size / 1024).toFixed(0)} KB)`)
+        console.log(`  ✓ Mobile ${theme}: ${filename} (Height: ${scrollHeight}px, Hidden: ${hiddenCount}, Size: ${(stats.size / 1024).toFixed(0)} KB)`)
         await context.close()
       }
     }
