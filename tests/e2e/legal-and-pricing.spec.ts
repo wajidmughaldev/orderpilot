@@ -19,12 +19,24 @@ test.describe('E2E: Legal & Pricing Routes', () => {
     await expect(page.getByText(/PKR 5,000 setup fee/i).first()).toBeVisible()
     await expect(page.getByText(/14-day free trial on all plans/i).first()).toBeVisible()
 
-    // Coming soon buttons
-    const comingSoonButtons = page.getByRole('button', { name: 'Coming Soon' })
-    const count = await comingSoonButtons.count()
-    expect(count).toBeGreaterThanOrEqual(3)
-    for (let i = 0; i < count; i++) {
-      await expect(comingSoonButtons.nth(i)).toBeDisabled()
+    // Active trial CTAs for currently available monthly subscription plans
+    const trialLinks = page.getByRole('link', { name: /Start 14-Day Free Trial/i })
+    expect(await trialLinks.count()).toBeGreaterThanOrEqual(3)
+
+    // Pay-per-order is clearly marked Coming Soon and disabled
+    const comingSoonButton = page.getByRole('button', { name: 'Coming Soon' })
+    await expect(comingSoonButton).toBeVisible()
+    await expect(comingSoonButton).toBeDisabled()
+  })
+
+  test('Pricing page has zero horizontal overflow at 390px and 320px mobile viewports', async ({ page }) => {
+    for (const width of [390, 320]) {
+      await page.setViewportSize({ width, height: 844 })
+      await page.goto('/pricing')
+      const isOverflowFree = await page.evaluate(() => {
+        return document.documentElement.scrollWidth <= window.innerWidth
+      })
+      expect(isOverflowFree).toBe(true)
     }
   })
 

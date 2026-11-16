@@ -267,18 +267,18 @@ export default function QrTableOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-y border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Interactive Dine-In Technology</p>
-              <h2 className="section-title">A complete table management view for your floor.</h2>
+              <p className="eyebrow section-heading-eyebrow">Kitchen Display</p>
+              <h2 className="section-title">Table orders sent straight to your kitchen screen.</h2>
               <p className="section-description mt-4">
-                Watch table orders appear on your manager screen with table numbers, guest requests, and real-time kitchen
-                status updates.
+                When seated guests order from their table, tickets land directly on your kitchen screen with the table
+                number, item notes, and order time.
               </p>
             </div>
 
             <div className="mt-10 overflow-hidden rounded-3xl border border-forest/15 dark:border-white/10 bg-forest/5 shadow-2xl">
               <Image
-                src="/assets/orderpilot_restaurant_dashboard_showcase.webp"
-                alt="OrderPilot restaurant table ordering dashboard showcase"
+                src="/assets/orderpilot_kitchen_dashboard.webp"
+                alt="OrderPilot restaurant table ordering kitchen display"
                 width={1456}
                 height={1092}
                 sizes="(min-width: 1024px) 80vw, 100vw"
@@ -292,10 +292,10 @@ export default function QrTableOrderingPage() {
         <section className="section-pad bg-cream dark:bg-[#0b140d]">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Customer to Kitchen Workflow</p>
-              <h2 className="section-title">How table QR ordering works in four steps.</h2>
+              <p className="eyebrow section-heading-eyebrow">How It Works</p>
+              <h2 className="section-title">From table scan to kitchen ticket in four simple steps.</h2>
               <p className="section-description mt-4">
-                A structured, reliable workflow connecting seated diners directly to your kitchen display.
+                A reliable digital workflow connecting seated diners directly to your kitchen screen.
               </p>
             </div>
 
@@ -347,10 +347,10 @@ export default function QrTableOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-t border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Smoother Floor Operations</p>
-              <h2 className="section-title">Give guests fast ordering while keeping staff focused on hospitality.</h2>
+              <p className="eyebrow section-heading-eyebrow">Floor Operations</p>
+              <h2 className="section-title">Faster table turns while staff focus on hospitality.</h2>
               <p className="section-description mt-4">
-                Designed to help floor captains coordinate dining halls across Karachi, Lahore, Islamabad, and across Pakistan.
+                Designed to help dining halls and cafés seat guests and process orders without paper chit chaos.
               </p>
             </div>
 
@@ -360,10 +360,10 @@ export default function QrTableOrderingPage() {
                   <Smartphone className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Itemized Table Order Review</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Digital Bill &amp; Order Review</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Guests review all ordered dishes, quantities, and running totals directly on their phone screen,
-                    making final bill settlement quick and transparent.
+                    Guests review all ordered dishes, quantities, and running totals directly on their phone screen for
+                    fast and transparent settlement.
                   </p>
                 </div>
               </div>
@@ -373,10 +373,10 @@ export default function QrTableOrderingPage() {
                   <ChefHat className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">One-Click Menu Availability</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Instant Out-of-Stock Controls</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    When daily specials sell out, mark items unavailable in your dashboard so dine-in table menus reflect
-                    current offerings immediately without reprinting.
+                    When dishes sell out, toggle availability in your dashboard so table menus update immediately without
+                    wasted waiter trips.
                   </p>
                 </div>
               </div>
@@ -386,10 +386,10 @@ export default function QrTableOrderingPage() {
                   <Sparkles className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Photo Menus with Addon Choices</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Photo Menus &amp; Modifiers</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Guests browse high-resolution food photography, portion details, and beverage choices so they order
-                    with confidence at their own pace.
+                    Diners browse dish photography, ingredients, and addon options so they can order confidently at their
+                    own pace.
                   </p>
                 </div>
               </div>
@@ -399,10 +399,10 @@ export default function QrTableOrderingPage() {
                   <Clock className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Table-Specific Kitchen Tickets</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Table-Tagged Kitchen Tickets</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Every order arriving on your kitchen display is automatically tagged with the table number to avoid
-                    delivery mix-ups during crowded dinner shifts.
+                    Every order card arriving on the kitchen display is automatically tagged with the table number to avoid
+                    delivery mix-ups.
                   </p>
                 </div>
               </div>

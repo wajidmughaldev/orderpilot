@@ -218,11 +218,11 @@ export default function WhatsAppOrderingPage() {
         <section className="section-pad bg-cream dark:bg-[#0b140d]">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">The Problem in Pakistan</p>
+              <p className="eyebrow section-heading-eyebrow">Dinner Rush Bottlenecks</p>
               <h2 className="section-title">Why manual WhatsApp ordering breaks during dinner rush.</h2>
               <p className="section-description mt-4">
-                Between 8 PM and 11 PM, Pakistani restaurants, burger joints, and cloud kitchens face a flood of chat
-                messages and voice notes. Relying on staff memory and handwritten paper slips leads to costly mistakes.
+                Between 8 PM and 11 PM, busy kitchens face a flood of chat messages and voice notes. Relying on staff
+                memory and handwritten chits leads to costly preparation mistakes.
               </p>
             </div>
 
@@ -267,11 +267,11 @@ export default function WhatsAppOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-y border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Real Kitchen Visibility</p>
+              <p className="eyebrow section-heading-eyebrow">Kitchen Display</p>
               <h2 className="section-title">A live kitchen display board built for WhatsApp order flow.</h2>
               <p className="section-description mt-4">
-                Orders confirmed through WhatsApp appear clearly on your live kitchen board. Your kitchen staff see exactly
-                what to cook, special instructions, and delivery status without shouting across the counter.
+                Orders confirmed through WhatsApp appear clearly on your live kitchen board. Kitchen staff see items,
+                cooking notes, and delivery status without shouting across the counter.
               </p>
             </div>
 
@@ -348,11 +348,10 @@ export default function WhatsAppOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-t border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Built for WhatsApp Dinner Rushes</p>
-              <h2 className="section-title">How OrderPilot keeps your WhatsApp food orders organized.</h2>
+              <p className="eyebrow section-heading-eyebrow">Order Management</p>
+              <h2 className="section-title">Organized order handling for busy Pakistani kitchens.</h2>
               <p className="section-description mt-4">
-                Designed for busy burger joints, biryani kitchens, and casual eateries across Karachi, Lahore,
-                Islamabad, Rawalpindi, and across Pakistan.
+                Designed for burger spots, biryani houses, and takeaway kitchens managing high-volume WhatsApp traffic.
               </p>
             </div>
 
@@ -364,8 +363,8 @@ export default function WhatsAppOrderingPage() {
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Live Kitchen Display &amp; Chime Alerts</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Keep cooks organized with real-time columns: New, In Kitchen, Ready, and Out for Delivery. Audio
-                    chimes ensure tickets are never missed during peak dinner volume.
+                    Order cards advance from New to Preparing and Ready. Audio chimes alert cooks immediately when new
+                    tickets arrive.
                   </p>
                 </div>
               </div>
@@ -375,10 +374,10 @@ export default function WhatsAppOrderingPage() {
                   <ShieldCheck className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">100% Customer Contact Ownership</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Customer Contact Ownership</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Unlike aggregator apps that mask phone numbers, OrderPilot saves customer names and numbers in your
-                    private dashboard for direct promotions and repeat order campaigns.
+                    Customer phone numbers and names save directly to your dashboard for repeat promotions instead of being
+                    hidden behind aggregator platforms.
                   </p>
                 </div>
               </div>
@@ -388,10 +387,10 @@ export default function WhatsAppOrderingPage() {
                   <Banknote className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Verified Local Payment Options</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Local Payment Verification</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Accept Cash on Delivery, JazzCash, EasyPaisa, or direct bank transfer. Customers upload payment receipts
-                    so your manager can verify funds before preparation starts.
+                    Support Cash on Delivery, JazzCash, EasyPaisa, and bank transfers with staff receipt verification before
+                    cooking begins.
                   </p>
                 </div>
               </div>
@@ -401,10 +400,10 @@ export default function WhatsAppOrderingPage() {
                   <Sparkles className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Accurate Neighborhood Delivery Capture</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Neighborhood Delivery Details</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Capture complete neighborhood addresses and landmark notes for riders in DHA, Bahria, Gulberg, or your
-                    local delivery radius to prevent missed drop-offs.
+                    Collect complete street addresses, nearest landmarks, and rider delivery instructions to avoid missed
+                    drop-offs.
                   </p>
                 </div>
               </div>

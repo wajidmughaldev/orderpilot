@@ -218,7 +218,7 @@ export default function OnlineOrderingPage() {
         <section className="section-pad bg-cream dark:bg-[#0b140d]">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Direct Ordering vs Aggregators</p>
+              <p className="eyebrow section-heading-eyebrow">Direct Channel Economics</p>
               <h2 className="section-title">Why Pakistani restaurants build their own direct ordering channel.</h2>
               <p className="section-description mt-4">
                 Make it simple for loyal diners to order directly from your restaurant without competing brands,
@@ -267,7 +267,7 @@ export default function OnlineOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-y border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Your Branded Storefront</p>
+              <p className="eyebrow section-heading-eyebrow">Storefront &amp; Dashboard</p>
               <h2 className="section-title">A unified web storefront connected directly to your kitchen.</h2>
               <p className="section-description mt-4">
                 Give your customers a clean, responsive ordering experience that reflects your restaurant’s brand and
@@ -347,10 +347,10 @@ export default function OnlineOrderingPage() {
         <section className="section-pad bg-white dark:bg-[#0c150f] border-t border-forest/10 dark:border-white/5">
           <div className="site-shell">
             <div className="section-heading max-w-3xl">
-              <p className="eyebrow section-heading-eyebrow">Built for Direct Delivery &amp; Takeaway</p>
-              <h2 className="section-title">Everything needed to run your own online ordering channel.</h2>
+              <p className="eyebrow section-heading-eyebrow">Order Controls</p>
+              <h2 className="section-title">Everything needed to run direct delivery and takeaway.</h2>
               <p className="section-description mt-4">
-                Designed for single restaurants, cloud kitchens, and takeaway spots across Pakistan.
+                Designed for single restaurants, cloud kitchens, and takeaway spots managing direct orders.
               </p>
             </div>
 
@@ -360,10 +360,10 @@ export default function OnlineOrderingPage() {
                   <Banknote className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Flexible Pakistani Payment Methods</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Local Payment Methods</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
                     Accept Cash on Delivery, JazzCash, EasyPaisa, or direct bank transfer. Customers upload transaction
-                    receipts for staff verification before food leaves the kitchen.
+                    receipts for staff review before food is prepared.
                   </p>
                 </div>
               </div>
@@ -375,8 +375,8 @@ export default function OnlineOrderingPage() {
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Delivery Area &amp; Order Policies</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Capture complete neighborhood delivery details across your city&apos;s sectors and towns with clear order
-                    requirements for delivery and pickup.
+                    Capture complete neighborhood delivery details and set custom delivery fees and minimum order
+                    thresholds for your area.
                   </p>
                 </div>
               </div>
@@ -386,10 +386,10 @@ export default function OnlineOrderingPage() {
                   <ChefHat className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold dark:text-white">Live Kitchen Board Integration</h3>
+                  <h3 className="text-lg font-bold dark:text-white">Central Kitchen Screen</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Web orders flow straight into the same live kitchen screen as your WhatsApp and table QR tickets. One
-                    centralized board for your entire operation.
+                    Storefront orders flow straight into the same live kitchen screen as WhatsApp and table QR tickets
+                    without juggling multiple screens.
                   </p>
                 </div>
               </div>
@@ -401,8 +401,8 @@ export default function OnlineOrderingPage() {
                 <div>
                   <h3 className="text-lg font-bold dark:text-white">Direct Customer Data Ownership</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/75">
-                    Access diner names, phone numbers, delivery histories, and ordering habits in your private database
-                    for seasonal marketing and VIP promotions.
+                    Diner phone numbers, names, and past orders remain in your private database for seasonal promotions and
+                    repeat business.
                   </p>
                 </div>
               </div>

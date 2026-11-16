@@ -77,13 +77,12 @@ export function PricingSectionView() {
                   </li>
                 ))}
               </ul>
-              <button
-                type="button"
-                disabled
-                className="button-primary mt-8 self-start opacity-75 cursor-not-allowed"
+              <Link
+                href="/pricing#monthly"
+                className="button-primary mt-8 self-start"
               >
-                Coming Soon
-              </button>
+                Compare subscription plans <ArrowRight className="size-4" />
+              </Link>
             </div>
           </motion.article>
 

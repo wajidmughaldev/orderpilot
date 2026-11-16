@@ -102,24 +102,6 @@ export default function HomePage() {
         {/* PROBLEM */}
         <ProblemSection />
 
-        {/* REASSURANCE: REPLACE THE ORDERPILOT SOLUTION */}
-        <section className="section-pad bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/5">
-          <div className="site-shell site-shell-800">
-            <ScrollReveal className="mx-auto max-w-3xl text-center flex flex-col items-center">
-              <h2 className="section-title text-balance">You don&apos;t have to change how customers order.</h2>
-              <p className="section-description mt-5 max-w-[640px] text-base sm:text-lg text-balance mx-auto">
-                They keep using WhatsApp, your website or table QR codes with no app to download. OrderPilot collects those orders in one view for your team.
-              </p>
-              <p className="mt-6 text-sm font-semibold text-brand dark:text-leaf text-balance">
-                Curious how orders travel from customer to kitchen?{' '}
-                <a href="#how" className="underline underline-offset-4 hover:text-forest dark:hover:text-mint">
-                  See the 4-step workflow below ↓
-                </a>
-              </p>
-            </ScrollReveal>
-          </div>
-        </section>
-
         {/* HOW IT WORKS */}
         <section id="how" className="section-pad scroll-mt-20 bg-white dark:bg-[#0b140d]">
           <div className="site-shell">
@@ -180,7 +162,7 @@ export default function HomePage() {
               <header className="section-heading-centered mb-12 sm:mb-16">
                 <p className="eyebrow section-heading-eyebrow">FAQ</p>
                 <h2 className="section-title">Good questions. Clear answers.</h2>
-                <p className="section-description mt-4">Quick answers about cost, plans and payment.</p>
+                <p className="section-description mt-4">Straightforward answers about daily kitchen operations, hardware, and guest data.</p>
               </header>
             </ScrollReveal>
 

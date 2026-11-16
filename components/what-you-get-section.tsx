@@ -8,37 +8,37 @@ const whatYouGetTiles = [
     icon: Monitor,
     number: '01',
     title: 'Live kitchen display.',
-    copy: 'Track tickets through New, Preparing, and Ready stages with an audible chime so cooks never miss an order.',
+    copy: 'Track incoming tickets through New, Preparing, and Ready stages with audio chimes.',
   },
   {
     icon: ChefHat,
     number: '02',
     title: 'Kitchen screen pairing.',
-    copy: 'Connect kitchen tablets or displays using a secure pairing code without sharing account passwords.',
+    copy: 'Connect kitchen tablets with a secure pairing code without sharing account passwords.',
   },
   {
     icon: QrCode,
     number: '03',
     title: 'Table QR ordering.',
-    copy: 'Let dine-in guests browse photos and place orders from their table without waiting for paper menus.',
+    copy: 'Dine-in guests view photo menus and order from their table without waiting for staff.',
   },
   {
     icon: CreditCard,
     number: '04',
     title: 'Local payment verification.',
-    copy: 'Accept Cash on Delivery, JazzCash, EasyPaisa, or bank transfer with customer receipt verification before cooking starts.',
+    copy: 'Accept Cash on Delivery, JazzCash, EasyPaisa, or bank transfer with staff receipt review.',
   },
   {
     icon: RefreshCw,
     number: '05',
     title: 'Delivery & order controls.',
-    copy: 'Set your restaurant delivery fees, minimum order amounts, and store hours directly in settings.',
+    copy: 'Configure delivery fees, minimum order amounts, and sold-out items directly in settings.',
   },
   {
     icon: Users,
     number: '06',
     title: 'Customer contact directory.',
-    copy: 'Retain your customer names, phone numbers, and order histories directly in your private dashboard.',
+    copy: 'Retain guest phone numbers and order histories in your private dashboard.',
   },
 ]
 
@@ -69,8 +69,8 @@ export function WhatYouGetSection() {
             transition={{ duration: 0.5, ease: 'easeOut', delay: prefersReduced ? 0 : 0.55 }}
             className="ops-board-head"
           >
-            <span>YOUR SCREEN</span>
-            <span>ALL ORDERS IN ONE PLACE</span>
+            <span>CORE CAPABILITIES</span>
+            <span>DAILY OPERATIONS</span>
           </motion.div>
 
           <div className="ops-board-grid">
@@ -96,8 +96,8 @@ export function WhatYouGetSection() {
           </div>
 
           <div className="ops-board-foot">
-            <span>3 WAYS TO ORDER</span>
-            <span>1 SCREEN</span>
+            <span>STANDARD WEB BROWSER</span>
+            <span>NO APP REQUIRED</span>
           </div>
         </div>
       </div>

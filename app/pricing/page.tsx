@@ -28,6 +28,10 @@ export const metadata: Metadata = {
 
 const whatsapp = 'https://wa.me/923361815141'
 
+function planLink(plan: string) {
+  return `/book-demo?plan=${encodeURIComponent(plan)}&intent=trial`
+}
+
 const plans = [
   {
     name: 'WhatsApp',
@@ -116,9 +120,44 @@ export default function PricingPage() {
                 Pay for ten months and use OrderPilot for twelve. That means two full months are included (12 months of access). Covers up to 1,000 orders per month. One-time setup fee of PKR 5,000 applies when you continue on a paid annual subscription. Prices exclude applicable taxes.
               </p>
             </div>
-            <div className="mt-10 max-w-full overflow-hidden rounded-[2rem] border border-forest/15 bg-white dark:border-white/5 dark:bg-[#121e15]">
+            {/* Mobile View (< sm): Responsive stacked cards preventing horizontal overflow */}
+            <div className="mt-8 grid gap-4 sm:hidden">
+              {plans.map((plan) => (
+                <div
+                  key={`annual-mobile-${plan.name}`}
+                  className="rounded-2xl border border-forest/15 bg-white p-5 dark:border-white/5 dark:bg-[#121e15]"
+                >
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xl font-bold">{plan.name}</h3>
+                    <span className="rounded-full bg-mint px-2.5 py-0.5 font-mono text-[11px] font-bold text-forest dark:bg-emerald-900/40 dark:text-leaf">
+                      {plan.saving}
+                    </span>
+                  </div>
+                  <div className="mt-3 flex items-baseline justify-between">
+                    <div>
+                      <p className="text-2xl font-extrabold text-brand">{plan.annual}</p>
+                      <p className="text-xs text-ink/65 dark:text-white/65">billed annually · 2 months included</p>
+                    </div>
+                    <p className="text-sm text-ink/70 dark:text-white/70">
+                      vs {plan.monthly}/mo
+                    </p>
+                  </div>
+                  <div className="mt-4 border-t border-forest/10 pt-3 dark:border-white/5">
+                    <Link
+                      href={`/book-demo?plan=${encodeURIComponent(plan.name)}&billing=annual&intent=trial`}
+                      className="button-primary w-full justify-center !min-h-10 text-xs font-bold"
+                    >
+                      Choose Annual {plan.name} <ArrowRight className="size-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop / Tablet View (sm:block): Contained table */}
+            <div className="mt-10 hidden sm:block max-w-full overflow-hidden rounded-[2rem] border border-forest/15 bg-white dark:border-white/5 dark:bg-[#121e15]">
               <div className="overflow-x-auto max-w-full" tabIndex={0} role="region" aria-label="Annual plans comparison table">
-                <table className="w-full min-w-[720px] text-left">
+                <table className="w-full min-w-[640px] text-left">
                   <thead className="bg-forest text-white">
                     <tr>
                       <th className="p-5 sm:p-6">Plan</th>
@@ -136,9 +175,12 @@ export default function PricingPage() {
                         <td className="p-5 sm:p-6 font-bold text-brand">{plan.annual} / year</td>
                         <td className="p-5 sm:p-6 text-ink/70">{plan.saving}</td>
                         <td className="p-5 sm:p-6">
-                          <span className="inline-block rounded-full bg-forest/5 dark:bg-white/5 px-3 py-1 text-xs font-semibold text-ink/60 dark:text-white/60">
-                            Coming Soon
-                          </span>
+                          <Link
+                            href={`/book-demo?plan=${encodeURIComponent(plan.name)}&billing=annual&intent=trial`}
+                            className="button-secondary text-xs px-3.5 py-1.5 font-semibold"
+                          >
+                            Choose Annual
+                          </Link>
                         </td>
                       </tr>
                     ))}
@@ -255,13 +297,12 @@ function PlanCard({ plan }: { plan: typeof plans[number] }) {
         ))}
       </ul>
       <div className="mt-8 flex flex-col gap-2">
-        <button
-          type="button"
-          disabled
-          className="button-primary self-start opacity-75 cursor-not-allowed"
+        <Link
+          href={planLink(plan.name)}
+          className="button-primary self-start"
         >
-          Coming Soon
-        </button>
+          Start 14-Day Free Trial <ArrowRight className="size-4" />
+        </Link>
         <p className="text-[11px] text-ink/60 dark:text-white/60">
           Includes 14-day free trial. PKR 5,000 setup fee applies only if you continue.
         </p>
