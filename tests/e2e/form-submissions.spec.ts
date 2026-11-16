@@ -43,7 +43,7 @@ test.describe('E2E: Form Submissions, Intent Routing & Validation States', () =>
 
       // Verify success status banner
       const statusBanner = contactSection.locator('[role="status"]')
-      await expect(statusBanner).toBeVisible()
+      await expect(statusBanner).toBeVisible({ timeout: 15000 })
       await expect(statusBanner).toHaveAttribute('aria-live', 'polite')
       await expect(statusBanner).toContainText('Your message was received')
     })

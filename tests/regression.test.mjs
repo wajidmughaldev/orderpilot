@@ -105,7 +105,7 @@ async function runAll() {
   })
 
   let ready = false
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 30; i++) {
     await new Promise(r => setTimeout(r, 400))
     if (await isPortOpen(3020)) {
       ready = true
@@ -833,7 +833,7 @@ async function runAll() {
       assert.ok(html.includes('One plan.') && html.includes('Pay as you go.'))
       assert.ok(html.includes('14-day free trial on approval'))
       assert.ok(html.includes('PKR 100'))
-      assert.ok(html.includes('PKR 2,420') || html.includes('2,000'))
+      assert.ok(html.includes('PKR 1,900') || html.includes('1,900'))
       assert.ok(html.includes('PKR 500'))
       assert.ok(html.includes('PKR 2,000'))
       assert.ok(html.includes('PKR 999'))

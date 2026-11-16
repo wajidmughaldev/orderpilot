@@ -13,9 +13,9 @@ test.describe('E2E: Legal & Pricing Routes', () => {
     // Core PAYG commission rate
     await expect(page.getByText('5%').first()).toBeVisible()
 
-    // Transparent calculation example (PKR 2,000 order = PKR 100 commission)
+    // Transparent calculation example (PKR 2,000 order = PKR 100 commission, PKR 1,900 food sales after fee)
     await expect(page.getByText('PKR 100').first()).toBeVisible()
-    await expect(page.getByText('PKR 2,420').first()).toBeVisible()
+    await expect(page.getByText('PKR 1,900').first()).toBeVisible()
 
     // Verified zero setup fee & 14-day free trial terms
     await expect(page.getByText(/PKR 0 Setup Fee/i).first()).toBeVisible()

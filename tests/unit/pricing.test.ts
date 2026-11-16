@@ -43,8 +43,9 @@ describe('Unit: Pay As You Go Pricing Configuration & Terms', () => {
 
   describe('Meta / WhatsApp Messaging Policy', () => {
     it('discloses transparent at-cost Meta pass-through and zero markup', () => {
-      expect(PAYG_CONFIG.metaMessaging).toContain('At-cost pass-through only')
-      expect(PAYG_CONFIG.metaMessaging).toContain('1,000 free service conversations/month')
+      expect(PAYG_CONFIG.metaMessaging).toContain('Pass-through at exact cost only')
+      expect(PAYG_CONFIG.metaMessaging).toContain('1,000 free service messages per business phone number per month')
+      expect(PAYG_CONFIG.metaMessaging).toContain('Template-message charges')
       expect(PAYG_CONFIG.metaMessaging).toContain('Zero OrderPilot markup')
     })
   })
@@ -58,8 +59,9 @@ describe('Unit: Pay As You Go Pricing Configuration & Terms', () => {
       expect(example.commissionCharged).toBe(100)
       expect(example.deliveryFee).toBe(200)
       expect(example.tax).toBe(320)
-      expect(example.restaurantKeeps).toBe(2420)
-      expect(example.explanation).toContain('incurs exactly PKR 100 commission')
+      expect(example.foodSalesAfterFee).toBe(1900)
+      expect(example.explanation).toContain('incurs exactly PKR 100 OrderPilot commission')
+      expect(example.explanation).toContain('leaving PKR 1,900 in food sales after the fee')
     })
   })
 
@@ -72,18 +74,21 @@ describe('Unit: Pay As You Go Pricing Configuration & Terms', () => {
       expect(webStorefront.price).toBe(2000)
       expect(webStorefront.priceFormatted).toBe('PKR 2,000 / month')
       expect(webStorefront.provisional).toBe(true)
+      expect(webStorefront.status).toBe('planned')
 
       const kitchenRouting = PAYG_CONFIG.addons.find(a => a.name === 'Multi-Station Kitchen Routing (Advanced KDS)')!
       expect(kitchenRouting).toBeDefined()
       expect(kitchenRouting.price).toBe(500)
       expect(kitchenRouting.priceFormatted).toBe('PKR 500 / month')
       expect(kitchenRouting.provisional).toBe(true)
+      expect(kitchenRouting.status).toBe('planned')
 
       const analytics = PAYG_CONFIG.addons.find(a => a.name === 'Advanced Analytics & Data Exports')!
       expect(analytics).toBeDefined()
       expect(analytics.price).toBe(999)
       expect(analytics.priceFormatted).toBe('PKR 999 / month')
       expect(analytics.provisional).toBe(true)
+      expect(analytics.status).toBe('planned')
     })
   })
 

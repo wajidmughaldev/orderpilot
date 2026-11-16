@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'Which plan includes direct online web ordering?',
     answer:
-      'Web storefront ordering is included as a core operational feature at 0% commission. Only completed WhatsApp AI orders carry a 5% commission. An optional custom domain add-on is available for PKR 2,000/month. Includes a 14-day free trial on approval, zero platform subscription fee, and zero setup fee. Taxes excluded.',
+      'Web storefront ordering is included as a core operational feature at 0% commission. Only completed WhatsApp AI orders carry a 5% commission. Custom domain connections are a planned extension with a provisional monthly rate of PKR 2,000/month. Includes a 14-day free trial on approval, zero platform subscription fee, and zero setup fee. Taxes excluded.',
   },
 ]
 
@@ -419,7 +419,7 @@ export default function OnlineOrderingPage() {
                 Web storefront ordering is included at 0% commission.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-ink/75 dark:text-white/75 max-w-2xl mx-auto">
-                Web ordering is a core operational feature with 0% platform commission. Only completed WhatsApp orders carry a 5% commission. Connect your own custom domain for PKR 2,000/month (optional add-on). Includes a 14-day free trial upon restaurant approval, zero platform fee, and zero setup fee. Taxes excluded.
+                Web ordering is a core operational feature with 0% platform commission. Only completed WhatsApp orders carry a 5% commission. Custom domain connections are planned with a provisional PKR 2,000/month rate. Includes a 14-day free trial upon restaurant approval, zero platform fee, and zero setup fee. Taxes excluded.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <Link href="/book-demo?intent=trial" className="button-primary">

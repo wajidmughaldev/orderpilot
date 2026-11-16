@@ -145,28 +145,29 @@ export default function PricingPage() {
                   <div className="mt-6 rounded-2xl border border-forest/10 bg-white p-5 dark:border-white/5 dark:bg-[#121e15]">
                     <div className="space-y-2.5 text-sm">
                       <div className="flex justify-between text-ink/75 dark:text-white/70">
-                        <span>Food items subtotal</span>
+                        <span>Food subtotal</span>
                         <span className="font-semibold text-ink dark:text-white">{`PKR ${example.orderItemsSubtotal.toLocaleString()}`}</span>
                       </div>
-                      <div className="flex justify-between text-ink/75 dark:text-white/70">
-                        <span>Delivery charge (exempt)</span>
-                        <span>{`PKR ${example.deliveryFee.toLocaleString()}`}</span>
-                      </div>
-                      <div className="flex justify-between text-ink/75 dark:text-white/70">
-                        <span>Applicable sales tax (exempt)</span>
-                        <span>{`PKR ${example.tax.toLocaleString()}`}</span>
-                      </div>
-                      <div className="border-t border-forest/10 pt-2 flex justify-between font-bold dark:border-white/5">
-                        <span>Total collected from customer</span>
-                        <span>{`PKR ${(example.orderItemsSubtotal + example.deliveryFee + example.tax).toLocaleString()}`}</span>
-                      </div>
-                      <div className="border-t border-forest/10 pt-2 flex justify-between text-brand font-bold dark:text-leaf">
+                      <div className="flex justify-between text-brand font-bold dark:text-leaf">
                         <span>OrderPilot 5% commission</span>
-                        <span>{`PKR ${example.commissionCharged.toLocaleString()}`}</span>
+                        <span>{`- PKR ${example.commissionCharged.toLocaleString()}`}</span>
                       </div>
-                      <div className="flex justify-between font-bold text-forest dark:text-mint">
-                        <span>Your restaurant keeps</span>
-                        <span>{`PKR ${example.restaurantKeeps.toLocaleString()}`}</span>
+                      <div className="border-t border-forest/10 pt-2 flex justify-between font-bold text-forest dark:text-mint">
+                        <span>Food sales after OrderPilot fee</span>
+                        <span>{`PKR ${example.foodSalesAfterFee.toLocaleString()}`}</span>
+                      </div>
+                      <div className="border-t border-forest/10 pt-2.5 space-y-1.5 text-xs text-ink/65 dark:text-white/60">
+                        <div className="flex justify-between">
+                          <span>Customer delivery fee (exempt)</span>
+                          <span>{`+ PKR ${example.deliveryFee.toLocaleString()}`}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Sales tax collected (exempt)</span>
+                          <span>{`+ PKR ${example.tax.toLocaleString()}`}</span>
+                        </div>
+                        <p className="mt-2 text-[11px] leading-relaxed text-ink/55 dark:text-white/50">
+                          Delivery fees and taxes pass through to riders and tax authorities. Delivery fees, taxes, and operating expenses are separate from the platform commission.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -248,14 +249,14 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* 4. OPTIONAL ADD-ONS: Separate compact feature cards with verified monthly prices */}
+        {/* 4. OPTIONAL ADD-ONS: Planned extensions with provisional pricing */}
         <section id="add-ons" className="section-pad scroll-mt-24 bg-cream dark:bg-[#0b140d]">
           <div className="site-shell">
             <div className="section-heading mb-10 sm:mb-12">
-              <p className="eyebrow section-heading-eyebrow">OPTIONAL EXTENSIONS</p>
-              <h2 className="section-title">Optional add-ons. Add more when you need it.</h2>
+              <p className="eyebrow section-heading-eyebrow">PLANNED EXTENSIONS</p>
+              <h2 className="section-title">Optional add-ons. Available as your needs grow.</h2>
               <p className="section-description text-ink/75 max-w-2xl">
-                Core order management is included with zero monthly fee. If your restaurant requires custom branded domains or multi-station kitchen displays, unlock them on simple monthly terms.
+                Core order management, live kitchen displays, and digital menus are included with zero monthly fee. Additional capabilities below are planned extensions with provisional monthly pricing; they are not yet activated as purchasable add-ons.
               </p>
             </div>
 
@@ -268,10 +269,10 @@ export default function PricingPage() {
                   <div>
                     <div className="flex items-center justify-between gap-2">
                       <span className="font-mono text-xs font-bold uppercase tracking-wider text-forest dark:text-leaf">
-                        Add-on
+                        Planned Add-on
                       </span>
-                      <span className="text-[11px] font-medium text-ink/50 dark:text-white/50">
-                        Billed monthly
+                      <span className="rounded-full bg-forest/5 px-2 py-0.5 text-[10px] font-semibold text-ink/60 dark:bg-white/10 dark:text-white/60">
+                        Provisional Rate
                       </span>
                     </div>
 
@@ -286,7 +287,7 @@ export default function PricingPage() {
 
                   <div className="mt-6 border-t border-forest/10 pt-4 dark:border-white/5">
                     <p className="text-xs text-ink/55 dark:text-white/50">
-                      Purchased optionally from your wallet. Never auto-subscribed.
+                      Provisional launch rate. Add-on purchases are pending commercial activation; core features are active during trial.
                     </p>
                   </div>
                 </div>
@@ -317,7 +318,7 @@ export default function PricingPage() {
               <div className="rounded-2xl border border-forest/10 bg-[#fbfcfb] p-6 dark:border-white/5 dark:bg-[#121e15]">
                 <h3 className="text-base font-bold text-ink dark:text-white">WhatsApp &amp; Meta Messaging</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/70">
-                  The first 1,000 service conversations every month are free per Meta policy. Meta fees beyond that are passed through at exact cost without any OrderPilot markup.
+                  Includes 1,000 free service messages per business phone number per month under Meta&apos;s October 2026 policy. Template-message charges (marketing, utility, authentication) apply separately per Meta rates. Meta fees are passed through at exact cost only if OrderPilot is the party actually billed, without markup or double charging.
                 </p>
               </div>
 

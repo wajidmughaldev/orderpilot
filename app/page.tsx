@@ -51,10 +51,15 @@ const softwareAppJsonLd = {
   offers: {
     '@type': 'Offer',
     name: 'Pay As You Go',
-    price: '0',
     priceCurrency: 'PKR',
     url: 'https://www.orderpilot.pk/pricing',
-    description: '14-day free trial on approval, followed by 5% commission on eligible completed WhatsApp AI orders. Zero monthly platform subscription. Taxes excluded.',
+    description: '14-day free trial on approval, followed by 5% commission per completed WhatsApp AI order on discounted food items subtotal. Zero monthly platform subscription fee. Zero setup fee. Taxes excluded.',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      priceCurrency: 'PKR',
+      unitText: 'completed WhatsApp order',
+      description: '5% commission on food items subtotal only (excludes delivery, taxes, and tips)',
+    },
   },
 }
 
