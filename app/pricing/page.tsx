@@ -1,271 +1,372 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Check, Sparkles, Wallet, Clock, ShieldCheck } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
+import { PAYG_CONFIG } from '@/lib/pricing'
 
 export const metadata: Metadata = {
-  title: 'Pricing Plans — Transparent Subscription & Pay-Per-Order Options',
+  title: 'Restaurant Ordering Software Pricing in Pakistan',
   description:
-    'Transparent OrderPilot pricing in PKR for Pakistani restaurants. 14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+    'Transparent Pay As You Go pricing for Pakistani restaurants. 5% commission on completed WhatsApp AI orders with a 14-day free trial. No monthly platform fee.',
   alternates: {
     canonical: '/pricing',
   },
   openGraph: {
-    title: 'OrderPilot Pricing Plans — Transparent Options in PKR',
+    title: 'Restaurant Ordering Software Pricing in Pakistan | OrderPilot',
     description:
-      '14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+      'Transparent Pay As You Go pricing for Pakistani restaurants. 5% commission on completed WhatsApp AI orders with a 14-day free trial. No monthly platform fee.',
     url: '/pricing',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot pricing plans' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OrderPilot Pricing Plans — Transparent Options in PKR',
+    title: 'Restaurant Ordering Software Pricing in Pakistan | OrderPilot',
     description:
-      '14-day free trial on all plans: monthly subscriptions from PKR 5,999/mo (up to 1,000 orders/mo) or flexible pay-per-order (8%–10%). Setup fee: PKR 5,000. Prices exclude applicable taxes.',
+      'Transparent Pay As You Go pricing for Pakistani restaurants. 5% commission on completed WhatsApp AI orders with a 14-day free trial. No monthly platform fee.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
 
-const whatsapp = 'https://wa.me/923361815141'
+const whatsappUrl = 'https://wa.me/923361815141?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20OrderPilot%20Pay%20As%20You%20Go%20pricing.'
 
-const plans = [
-  {
-    name: 'WhatsApp',
-    monthly: 'PKR 5,999',
-    annual: 'PKR 59,990',
-    saving: 'Save PKR 11,998',
-    features: [
-      '14-day free trial',
-      'Up to 1,000 orders / month',
-      'WhatsApp ordering',
-      'Kitchen board',
-      'Customer list export',
-    ],
+const pricingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'OrderPilot',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, WhatsApp',
+  url: 'https://www.orderpilot.pk/pricing',
+  description: 'Pay As You Go restaurant ordering software for Pakistan. 5% commission on completed WhatsApp AI orders. 14-day free trial.',
+  offers: {
+    '@type': 'Offer',
+    name: 'Pay As You Go',
+    priceCurrency: 'PKR',
+    url: 'https://www.orderpilot.pk/pricing',
+    description: '14-day free trial on approval, followed by 5% commission per completed WhatsApp AI order on discounted food items subtotal. Zero monthly platform subscription fee. Zero setup fee. Taxes excluded.',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      priceCurrency: 'PKR',
+      unitText: 'completed WhatsApp order',
+      description: '5% commission on food items subtotal only (excludes delivery, taxes, and tips)',
+    },
   },
-  {
-    name: 'Web + Table',
-    monthly: 'PKR 7,999',
-    annual: 'PKR 79,990',
-    saving: 'Save PKR 15,998',
-    features: [
-      '14-day free trial',
-      'Up to 1,000 orders / month',
-      'Web menu',
-      'Table QR, with split bill and pay',
-      'Kitchen board',
-      'Customer list export',
-    ],
-  },
-  {
-    name: 'Complete',
-    monthly: 'PKR 12,999',
-    annual: 'PKR 129,990',
-    saving: 'Save PKR 25,998',
-    tag: 'Best value',
-    intro: 'Everything in WhatsApp and Web + Table, plus:',
-    features: [
-      '14-day free trial',
-      'Up to 1,000 orders / month',
-      'Broadcasting',
-      'Win-back offers, loyalty and referrals',
-      'Google review requests',
-    ],
-  },
-]
+}
 
 export default function PricingPage() {
+  const example = PAYG_CONFIG.calculationExample
+
   return (
     <AppShell>
       <main>
-        <section className="hero-section !pb-16">
-          <div className="site-shell max-w-4xl">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }} />
+
+        {/* 1. HERO: One plan. Pay as you go. */}
+        <section className="hero-section !pb-14 sm:!pb-18">
+          <div className="site-shell max-w-4xl text-center flex flex-col items-center">
             <p className="eyebrow">Pricing</p>
-            <h1 className="display mt-6">Pick the plan that fits <span className="text-brand">how customers order.</span></h1>
-            <p className="lede mt-6 max-w-2xl">
-              All prices are in PKR. A 14-day free trial is available on all plans. Monthly plans cover up to 1,000 orders per month. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes. Pay monthly, save with annual billing, or choose pay per order while your volume is lower.
+            <h1 className="display mt-6 text-balance">
+              One plan. <span className="text-brand">Pay as you go.</span>
+            </h1>
+            <p className="lede mt-6 max-w-2xl text-balance">
+              No monthly platform subscriptions and no setup fees. Pay a simple 5% commission only on completed WhatsApp AI orders, with kitchen display tools included from day one.
             </p>
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-ink/75 dark:text-white/70">
+              <span className="rounded-full bg-mint px-3.5 py-1 text-forest dark:bg-emerald-900/40 dark:text-leaf">
+                14-Day Free Trial
+              </span>
+              <span>•</span>
+              <span>PKR 0 Platform Fee</span>
+              <span>•</span>
+              <span>PKR 0 Setup Fee</span>
+              <span>•</span>
+              <span>Excludes Taxes</span>
+            </div>
           </div>
         </section>
 
-        <section id="monthly" className="section-pad scroll-mt-24 bg-cream dark:bg-[#0b140d]">
+        {/* 2. CORE PAYG: Verified commission and what's included */}
+        <section id="payg" className="section-pad scroll-mt-24 bg-cream dark:bg-[#0b140d]">
           <div className="site-shell">
-            <div className="section-heading">
-              <p className="eyebrow section-heading-eyebrow">Subscriptions</p>
-              <h2 className="section-title">Monthly plans with 14-day free trial.</h2>
-              <p className="section-description text-ink/75">
-                Choose the channels you need. A 14-day free trial is included across all plans. Monthly subscription plans cover up to 1,000 orders per month, the kitchen board, and direct access to your customer list. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes.
-              </p>
-            </div>
-            <div className="mt-10 grid items-stretch gap-5 lg:grid-cols-3">
-              {plans.map(plan => (
-                <PlanCard key={plan.name} plan={plan} />
-              ))}
-            </div>
-            <p className="mt-6 text-sm leading-6 text-ink/65">
-              WhatsApp (PKR 5,999) and Web + Table (PKR 7,999) cost PKR 13,998 together. Complete gives you both, plus marketing and review tools, for PKR 12,999 (saves PKR 999 a month). Includes a 14-day free trial and up to 1,000 orders/mo. The one-time PKR 5,000 setup fee applies only if you continue with a paid plan. Prices exclude applicable taxes.
-            </p>
-          </div>
-        </section>
-
-        <section id="annual" className="section-pad scroll-mt-24 bg-white overflow-x-clip dark:bg-[#0c150f]">
-          <div className="site-shell">
-            <div className="section-heading">
-              <p className="eyebrow section-heading-eyebrow">Pay yearly</p>
-              <h2 className="section-title">Annual plans.</h2>
-              <p className="section-description text-ink/75">
-                Pay for ten months and use OrderPilot for twelve. That means two full months are included (12 months of access). Covers up to 1,000 orders per month. One-time setup fee of PKR 5,000 applies when you continue on a paid annual subscription. Prices exclude applicable taxes.
-              </p>
-            </div>
-            <div className="mt-10 max-w-full overflow-hidden rounded-[2rem] border border-forest/15 bg-white dark:border-white/5 dark:bg-[#121e15]">
-              <div className="overflow-x-auto max-w-full" tabIndex={0} role="region" aria-label="Annual plans comparison table">
-                <table className="w-full min-w-[720px] text-left">
-                  <thead className="bg-forest text-white">
-                    <tr>
-                      <th className="p-5 sm:p-6">Plan</th>
-                      <th className="p-5 sm:p-6">Monthly billing</th>
-                      <th className="p-5 sm:p-6">Annual billing</th>
-                      <th className="p-5 sm:p-6">You save</th>
-                      <th className="p-5 sm:p-6"><span className="sr-only">Choose plan</span></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {plans.map((plan, index) => (
-                      <tr key={plan.name} className={index < plans.length - 1 ? 'border-b border-forest/10' : ''}>
-                        <th className="p-5 sm:p-6 text-lg">{plan.name}</th>
-                        <td className="p-5 sm:p-6 text-ink/70">{plan.monthly} / month</td>
-                        <td className="p-5 sm:p-6 font-bold text-brand">{plan.annual} / year</td>
-                        <td className="p-5 sm:p-6 text-ink/70">{plan.saving}</td>
-                        <td className="p-5 sm:p-6">
-                          <span className="inline-block rounded-full bg-forest/5 dark:bg-white/5 px-3 py-1 text-xs font-semibold text-ink/60 dark:text-white/60">
-                            Coming Soon
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <p className="mt-4 text-sm text-ink/65">
-              Annual plans billed upfront for 12 months. Covers up to 1,000 orders per month. One-time setup fee of PKR 5,000 applies with paid subscription. Prices exclude applicable taxes.
-            </p>
-          </div>
-        </section>
-
-        <section id="pay-per-order" className="section-pad scroll-mt-24 bg-mint dark:bg-[#0b140d]">
-          <div className="site-shell">
-            <div className="rounded-[2rem] border border-brand/20 bg-white p-8 sm:p-12 dark:border-white/5 dark:bg-[#121e15]">
-              <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+              {/* Left Column: Core Plan Overview & Inclusions */}
+              <article className="flex flex-col justify-between rounded-[2.25rem] border border-forest/15 bg-white p-7 sm:p-11 shadow-sm dark:border-white/5 dark:bg-[#121e15]">
                 <div>
-                  <div className="flex items-center gap-3">
-                    <p className="eyebrow">Flexible option</p>
-                    <span className="rounded-full bg-mint px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-forest dark:bg-emerald-900/40 dark:text-leaf">
-                      No Monthly Fee
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="rounded-full bg-leaf px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-forest dark:bg-leaf/20 dark:text-leaf">
+                      Core Offering
+                    </span>
+                    <span className="font-mono text-xs font-semibold text-ink/65 dark:text-white/60">
+                      Zero monthly fee
                     </span>
                   </div>
-                  <h2 className="section-title mt-5">Pay per order</h2>
-                  <p className="mt-4 text-2xl font-bold text-brand">8% to 10% of each order</p>
-                  <div className="mt-2 flex flex-wrap gap-x-2 text-xs font-semibold uppercase tracking-wider text-ink/70 dark:text-white/70">
-                    <span>14-day free trial</span>
-                    <span>•</span>
-                    <span>Setup fee: PKR 5,000</span>
-                    <span>•</span>
-                    <span>Prices exclude applicable taxes</span>
-                    <span>•</span>
-                    <span>No monthly subscription fee</span>
+
+                  <div className="mt-6 flex flex-wrap items-baseline gap-3">
+                    <p className="text-5xl sm:text-6xl font-extrabold text-brand">5%</p>
+                    <p className="text-xl sm:text-2xl font-bold text-ink/80 dark:text-white/80">
+                      per completed WhatsApp order
+                    </p>
                   </div>
-                  <p className="mt-4 max-w-3xl leading-7 text-ink/75">
-                    Your percentage rate (between 8% and 10%) depends on your order volume and restaurant profile. We confirm it with you before you start. Includes a 14-day free trial. Setup fee of PKR 5,000 applies to onboarding (only if you continue on a paid plan). Prices exclude applicable taxes. It includes everything in Complete and is a good fit when you&apos;re starting out or your order volume is lower. Pay per order is an independent billing model—you do not pay a monthly subscription fee alongside it.
+
+                  <p className="mt-3 text-sm text-ink/70 dark:text-white/65">
+                    Charged only when a customer order placed via WhatsApp is completed by your kitchen. Table QR ordering and online web storefront ordering carry 0% platform commission.
                   </p>
-                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />No fixed monthly subscription fee</li>
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Everything in Complete</li>
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Pay only on orders received</li>
-                    <li className="flex gap-3"><Check className="mt-1 size-4 text-brand" />Direct customer payment collection</li>
+
+                  <div className="my-7 border-t border-forest/10 dark:border-white/5" />
+
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-forest dark:text-leaf">
+                    What is included in Core:
+                  </h3>
+                  <ul className="mt-4 flex flex-col gap-3">
+                    {PAYG_CONFIG.coreFeatures.map((feature) => (
+                      <li key={feature} className="flex gap-3 text-sm leading-relaxed text-ink/85 dark:text-white/85">
+                        <Check className="mt-0.5 size-4 shrink-0 text-brand" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
-                <button
-                  type="button"
-                  disabled
-                  className="button-primary opacity-75 cursor-not-allowed"
-                >
-                  Coming Soon
-                </button>
+
+                <div className="mt-8 border-t border-forest/10 pt-6 dark:border-white/5">
+                  <Link href="/book-demo?intent=trial" className="button-primary w-full justify-center !py-3.5 font-bold">
+                    Start 14-Day Free Trial <ArrowRight className="size-4" />
+                  </Link>
+                </div>
+              </article>
+
+              {/* Right Column: Exact Commission Calculation Example */}
+              <article className="flex flex-col justify-between rounded-[2.25rem] border border-forest/15 bg-[#f6faf4] p-7 sm:p-11 dark:border-white/5 dark:bg-[#0c170e]">
+                <div>
+                  <div className="flex items-center gap-2 text-forest dark:text-leaf">
+                    <Sparkles className="size-5" />
+                    <h3 className="text-sm font-bold uppercase tracking-wider">How the 5% calculation works</h3>
+                  </div>
+
+                  <p className="mt-4 text-sm leading-relaxed text-ink/75 dark:text-white/70">
+                    Commission applies strictly to the <strong>discounted food items subtotal</strong>. Delivery charges, government taxes, and rider tips are 100% exempt.
+                  </p>
+
+                  {/* Calculation Box */}
+                  <div className="mt-6 rounded-2xl border border-forest/10 bg-white p-5 dark:border-white/5 dark:bg-[#121e15]">
+                    <div className="space-y-2.5 text-sm">
+                      <div className="flex justify-between text-ink/75 dark:text-white/70">
+                        <span>Food subtotal</span>
+                        <span className="font-semibold text-ink dark:text-white">{`PKR ${example.orderItemsSubtotal.toLocaleString()}`}</span>
+                      </div>
+                      <div className="flex justify-between text-brand font-bold dark:text-leaf">
+                        <span>OrderPilot 5% commission</span>
+                        <span>{`- PKR ${example.commissionCharged.toLocaleString()}`}</span>
+                      </div>
+                      <div className="border-t border-forest/10 pt-2 flex justify-between font-bold text-forest dark:text-mint">
+                        <span>Food sales after OrderPilot fee</span>
+                        <span>{`PKR ${example.foodSalesAfterFee.toLocaleString()}`}</span>
+                      </div>
+                      <div className="border-t border-forest/10 pt-2.5 space-y-1.5 text-xs text-ink/65 dark:text-white/60">
+                        <div className="flex justify-between">
+                          <span>Customer delivery fee (exempt)</span>
+                          <span>{`+ PKR ${example.deliveryFee.toLocaleString()}`}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Sales tax collected (exempt)</span>
+                          <span>{`+ PKR ${example.tax.toLocaleString()}`}</span>
+                        </div>
+                        <p className="mt-2 text-[11px] leading-relaxed text-ink/55 dark:text-white/50">
+                          Delivery fees and taxes pass through to riders and tax authorities. Delivery fees, taxes, and operating expenses are separate from the platform commission.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul className="mt-6 space-y-2.5 text-xs text-ink/70 dark:text-white/60 leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <ShieldCheck className="size-4 shrink-0 text-brand mt-0.5" />
+                      <span><strong>AI Costs Included:</strong> All backend AI provider computing costs are absorbed by OrderPilot. Rs. 0 extra charge to your restaurant.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <ShieldCheck className="size-4 shrink-0 text-brand mt-0.5" />
+                      <span><strong>No Hidden Caps:</strong> Transparent 5% commission on eligible completed WhatsApp AI orders with no hidden surcharges.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="mt-8 rounded-xl bg-mint/40 p-4 text-xs font-medium text-forest dark:bg-leaf/10 dark:text-leaf">
+                  Cancelled or rejected orders incur PKR 0. Held commission is automatically released back to your wallet.
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. HOW BILLING WORKS: Trial → Wallet → Completed Order */}
+        <section id="how-billing-works" className="section-pad scroll-mt-24 bg-white dark:bg-[#0c150f]">
+          <div className="site-shell">
+            <div className="section-heading-centered mb-12 sm:mb-16">
+              <p className="eyebrow section-heading-eyebrow">WORKFLOW</p>
+              <h2 className="section-title">How billing works.</h2>
+              <p className="section-description mt-4 max-w-xl mx-auto">
+                Straightforward billing designed around how Pakistani kitchens operate. No surprises.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="panel p-6 sm:p-8 flex flex-col justify-between dark:bg-[#121e15]">
+                <div>
+                  <div className="size-10 rounded-xl bg-mint flex items-center justify-center text-forest dark:bg-leaf/20 dark:text-leaf">
+                    <Clock className="size-5" />
+                  </div>
+                  <p className="mt-5 font-mono text-xs font-bold text-brand uppercase tracking-wider">Step 01</p>
+                  <h3 className="mt-2 text-xl font-bold">14-Day Free Trial</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/70">
+                    Your trial starts when your restaurant is approved. Every core operational feature is active. All orders created during the 14 days incur <strong>0% commission</strong>.
+                  </p>
+                </div>
+                <p className="mt-6 text-xs text-ink/55 dark:text-white/50">No card required to start.</p>
               </div>
-              <div className="mt-8 border-t border-forest/10 pt-6 text-sm leading-6 text-ink/65">
-                <p>
-                  <strong className="text-ink">Which option is right for you?</strong> Choosing between pay-per-order and a fixed subscription depends on your monthly order volume, your agreed percentage rate, and the features your restaurant needs. A 14-day free trial is available on all plans (the one-time PKR 5,000 setup fee applies only if you continue on a paid plan). Fixed subscriptions start at PKR 5,999/month, include a 14-day free trial, and cap your monthly software cost for up to 1,000 orders per month. Pay-per-order (8% to 10% per order) avoids fixed monthly fees when order volume is lower or seasonal. Prices exclude applicable taxes. Contact us with your estimated orders and we will help you compare options.
+
+              <div className="panel p-6 sm:p-8 flex flex-col justify-between dark:bg-[#121e15]">
+                <div>
+                  <div className="size-10 rounded-xl bg-mint flex items-center justify-center text-forest dark:bg-leaf/20 dark:text-leaf">
+                    <Wallet className="size-5" />
+                  </div>
+                  <p className="mt-5 font-mono text-xs font-bold text-brand uppercase tracking-wider">Step 02</p>
+                  <h3 className="mt-2 text-xl font-bold">Prepaid Wallet Top-up</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/70">
+                    Before your trial ends, fund your private balance with as little as <strong>PKR 500</strong>. Top up anytime via standard Bank Transfer, JazzCash, EasyPaisa, or Raast.
+                  </p>
+                </div>
+                <p className="mt-6 text-xs text-ink/55 dark:text-white/50">Funds remain yours until orders complete.</p>
+              </div>
+
+              <div className="panel p-6 sm:p-8 flex flex-col justify-between dark:bg-[#121e15]">
+                <div>
+                  <div className="size-10 rounded-xl bg-mint flex items-center justify-center text-forest dark:bg-leaf/20 dark:text-leaf">
+                    <Check className="size-5" />
+                  </div>
+                  <p className="mt-5 font-mono text-xs font-bold text-brand uppercase tracking-wider">Step 03</p>
+                  <h3 className="mt-2 text-xl font-bold">Deducted on Completion</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/75 dark:text-white/70">
+                    When a WhatsApp AI order is successfully fulfilled, 5% of the food items subtotal settles from your wallet. If an order is cancelled or rejected, no fee is deducted.
+                  </p>
+                </div>
+                <p className="mt-6 text-xs text-ink/55 dark:text-white/50">Full ledger history in your dashboard.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 4. OPTIONAL ADD-ONS: Planned extensions with provisional pricing */}
+        <section id="add-ons" className="section-pad scroll-mt-24 bg-cream dark:bg-[#0b140d]">
+          <div className="site-shell">
+            <div className="section-heading mb-10 sm:mb-12">
+              <p className="eyebrow section-heading-eyebrow">PLANNED EXTENSIONS</p>
+              <h2 className="section-title">Optional add-ons. Available as your needs grow.</h2>
+              <p className="section-description text-ink/75 max-w-2xl">
+                Core order management, live kitchen displays, and digital menus are included with zero monthly fee. Additional capabilities below are planned extensions with provisional monthly pricing; they are not yet activated as purchasable add-ons.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {PAYG_CONFIG.addons.map((addon) => (
+                <div
+                  key={addon.name}
+                  className="panel p-6 sm:p-7 flex flex-col justify-between dark:bg-[#121e15]"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-forest dark:text-leaf">
+                        Planned Add-on
+                      </span>
+                      <span className="rounded-full bg-forest/5 px-2 py-0.5 text-[10px] font-semibold text-ink/60 dark:bg-white/10 dark:text-white/60">
+                        Provisional Rate
+                      </span>
+                    </div>
+
+                    <h3 className="mt-3 text-lg font-bold">{addon.name}</h3>
+                    <p className="mt-3 text-2xl font-extrabold text-brand">
+                      {addon.priceFormatted}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70 dark:text-white/65">
+                      {addon.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 border-t border-forest/10 pt-4 dark:border-white/5">
+                    <p className="text-xs text-ink/55 dark:text-white/50">
+                      Provisional launch rate. Add-on purchases are pending commercial activation; core features are active during trial.
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. TRANSPARENT CHARGES: Meta fees & Zero setup conditions */}
+        <section id="transparent-charges" className="section-pad scroll-mt-24 bg-white dark:bg-[#0c150f]">
+          <div className="site-shell max-w-4xl">
+            <div className="section-heading-centered mb-10">
+              <p className="eyebrow section-heading-eyebrow">TRANSPARENCY</p>
+              <h2 className="section-title">Clear terms. No hidden surprises.</h2>
+              <p className="section-description mt-3">
+                Everything you need to know about fees, messaging costs, and wallet balance.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-forest/10 bg-[#fbfcfb] p-6 dark:border-white/5 dark:bg-[#121e15]">
+                <h3 className="text-base font-bold text-ink dark:text-white">PKR 0 Setup Fee</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/70">
+                  We don&apos;t charge onboarding or setup fees. Getting your menu configured and previewing your live kitchen screen is free during your trial.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-forest/10 bg-[#fbfcfb] p-6 dark:border-white/5 dark:bg-[#121e15]">
+                <h3 className="text-base font-bold text-ink dark:text-white">WhatsApp &amp; Meta Messaging</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/70">
+                  Includes 1,000 free service messages per business phone number per month under Meta&apos;s October 2026 policy. Template-message charges (marketing, utility, authentication) apply separately per Meta rates. Meta fees are passed through at exact cost only if OrderPilot is the party actually billed, without markup or double charging.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-forest/10 bg-[#fbfcfb] p-6 dark:border-white/5 dark:bg-[#121e15]">
+                <h3 className="text-base font-bold text-ink dark:text-white">PKR 500 Minimum Top-up</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/70">
+                  After your 14-day free trial, you can top up your wallet with as little as PKR 500 at a time. Unused funds never expire as long as your account is active.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-forest/10 bg-[#fbfcfb] p-6 dark:border-white/5 dark:bg-[#121e15]">
+                <h3 className="text-base font-bold text-ink dark:text-white">Taxes &amp; Statutory Compliance</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/75 dark:text-white/70">
+                  All listed prices exclude provincial and federal sales taxes where applicable by Pakistani law. Clean business invoices are generated in your dashboard.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* 6. FINAL CTA: Start Free Trial / Book Demo */}
         <section className="section-pad bg-forest text-white">
           <div className="site-shell flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 className="text-3xl font-bold">Not sure which fits?</h2>
-              <p className="mt-2 text-white/75">
-                Talk to our team or message us on WhatsApp and we&apos;ll work it out with your numbers. Setup fee: PKR 5,000. Prices exclude applicable taxes.
+              <h2 className="text-3xl font-bold">Ready to run your restaurant on OrderPilot?</h2>
+              <p className="mt-2 text-white/75 max-w-xl">
+                Start your 14-day free trial today. We&apos;ll configure your kitchen display with your actual menu items. Zero monthly platform subscription.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <a href="https://app.orderpilot.pk" className="button-primary !bg-leaf !text-forest hover:!bg-white">
+              <Link href="/book-demo?intent=trial" className="button-primary !bg-leaf !text-forest hover:!bg-white font-bold">
                 Start 14-Day Free Trial <ArrowRight className="size-4" />
-              </a>
-              <Link href="/book-demo?interest=pricing" className="button-secondary !border-white/35 !bg-transparent !text-white hover:!bg-white/10">
+              </Link>
+              <Link href="/book-demo" className="button-secondary !border-white/35 !bg-transparent !text-white hover:!bg-white/10 font-semibold">
                 Book a Live Demo
               </Link>
-              <Link href={`${whatsapp}?text=${encodeURIComponent("Hi, I'd like help choosing an OrderPilot plan for my restaurant.")}`} className="button-secondary !border-white/35 !bg-transparent !text-white">
+              <a href={whatsappUrl} className="button-secondary !border-white/35 !bg-transparent !text-white hover:!bg-white/10">
                 Chat on WhatsApp
-              </Link>
+              </a>
             </div>
           </div>
         </section>
       </main>
     </AppShell>
-  )
-}
-
-function PlanCard({ plan }: { plan: typeof plans[number] }) {
-  return (
-    <article className={`relative flex h-full min-w-0 flex-col rounded-[2rem] border bg-white p-6 sm:p-9 dark:bg-[#121e15] ${plan.tag ? 'border-brand shadow-xl shadow-forest/10 dark:border-leaf/50' : 'border-forest/15 dark:border-white/5'}`}>
-      {plan.tag && <span className="absolute right-5 top-5 rounded-full bg-leaf px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-forest">{plan.tag}</span>}
-      <h3 className="pr-16 sm:pr-24 text-3xl font-bold">{plan.name}</h3>
-      <p className="mt-4 text-xl font-bold text-brand">{plan.monthly} <span className="text-sm font-medium text-ink/60">/ month</span></p>
-      <div className="mt-2 flex flex-wrap gap-x-2 text-xs font-semibold uppercase tracking-wider text-ink/70 dark:text-white/70">
-        <span>14-day free trial</span>
-        <span>•</span>
-        <span>Up to 1,000 orders/mo</span>
-        <span>•</span>
-        <span>Excludes taxes</span>
-      </div>
-      {plan.name === 'Complete' && (
-        <p className="mt-3 text-sm font-semibold text-ink/65">
-          WhatsApp and Web + Table cost PKR 13,998 together. Complete saves PKR 999 a month.
-        </p>
-      )}
-      {plan.intro && <p className="mt-5 text-sm leading-6 text-ink/70">{plan.intro}</p>}
-      <ul className="mt-6 flex flex-col gap-3">
-        {plan.features.map(feature => (
-          <li key={feature} className="flex gap-3 text-sm leading-6">
-            <Check className="mt-1 size-4 shrink-0 text-brand" />
-            {feature}
-          </li>
-        ))}
-      </ul>
-      <div className="mt-8 flex flex-col gap-2">
-        <button
-          type="button"
-          disabled
-          className="button-primary self-start opacity-75 cursor-not-allowed"
-        >
-          Coming Soon
-        </button>
-        <p className="text-[11px] text-ink/60 dark:text-white/60">
-          Includes 14-day free trial. PKR 5,000 setup fee applies only if you continue.
-        </p>
-      </div>
-    </article>
   )
 }

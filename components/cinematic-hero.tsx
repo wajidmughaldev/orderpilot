@@ -120,7 +120,7 @@ export function CinematicHero({ whatsappHeroUrl }: CinematicHeroProps) {
 
           {/* Subtext pricing note */}
           <p className="mt-4 sm:mt-5 text-center text-xs sm:text-sm font-medium text-ink/70 dark:text-white/65 isolate relative z-10 print:transform-none print:opacity-100">
-            Plans from PKR 5,999 a month with a 14-day free trial. We&apos;ll show it with your menu.
+            5% per completed WhatsApp order with a 14-day free trial. We&apos;ll show it with your menu.
           </p>
         </motion.div>
 

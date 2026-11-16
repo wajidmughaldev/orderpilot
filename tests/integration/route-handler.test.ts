@@ -188,6 +188,42 @@ describe('Integration: Next.js API Route Handler (app/api/demo-request/route.ts)
       expect(data.intent).toBe('free-trial')
       expect(data.message).toContain('14-day free trial request was received')
     })
+
+    it('routes Free Trial request with selected plan and captures plan in dispatched lead payload', async () => {
+      delete process.env.RESEND_API_KEY
+      process.env.LEAD_DELIVERY_WEBHOOK_URL = 'https://webhook.orderpilot.pk/leads'
+      let dispatchedPayload: any = null
+      globalThis.fetch = vi.fn().mockImplementation(async (_url, init) => {
+        dispatchedPayload = JSON.parse(init.body)
+        return new Response(JSON.stringify({ status: 'ok' }), { status: 200 })
+      })
+
+      const req = createJsonRequest(
+        {
+          source: 'book-demo',
+          intent: 'trial',
+          plan: 'Pay As You Go',
+          billing: 'Pay As You Go',
+          name: 'Hamza Malik',
+          restaurant: 'Karachi Chai Khana',
+          phone: '03001234567',
+          city: 'Karachi',
+        },
+        { 'x-forwarded-for': '10.5.3.3' }
+      )
+
+      const res = await POST(req)
+      expect(res.status).toBe(200)
+
+      const data = await res.json()
+      expect(data.success).toBe(true)
+      expect(dispatchedPayload).not.toBeNull()
+      expect(dispatchedPayload.plan).toBe('Pay As You Go')
+      expect(dispatchedPayload.billing).toBe('Pay As You Go')
+      expect(dispatchedPayload.intent).toBe('free-trial')
+      expect(dispatchedPayload.emailText).toContain('Selected Plan:    Pay As You Go')
+      expect(dispatchedPayload.emailHtml).toContain('Pay As You Go')
+    })
   })
 
   describe('Duplicate Submissions & Rate Limiting Enforcement', () => {

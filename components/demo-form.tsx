@@ -5,18 +5,73 @@ import { FormEvent, useState } from 'react'
 import { ArrowRight, LoaderCircle } from 'lucide-react'
 import { trackEvent } from '@/lib/track'
 
-const interests = ['WhatsApp ordering', 'Online ordering', 'QR/table ordering', 'Pricing', 'Not sure yet']
+const interests = [
+  'WhatsApp AI ordering (5% PAYG)',
+  'Branded web storefront & custom domain (Add-on · PKR 2,000/mo)',
+  'Table QR ordering (0% commission)',
+  'Multi-station kitchen routing (Add-on · PKR 500/mo)',
+  'Advanced analytics & data exports (Add-on · PKR 999/mo)',
+  'General walkthrough / Help me get started',
+]
+
 const billingMap: Record<string, string> = {
-  monthly: 'Monthly',
-  'pay-per-order': 'Pay-per-Order',
-  'pay-as-you-go': 'Pay-per-Order',
-  payasyougo: 'Pay-per-Order',
+  'pay-per-order': 'Pay As You Go',
+  'pay-as-you-go': 'Pay As You Go',
+  payasyougo: 'Pay As You Go',
+  payg: 'Pay As You Go',
   pricing: 'Help me decide',
+  trial: 'Pay As You Go',
+}
+
+// Obsolete legacy plans are filtered out and will NOT activate obsolete subscription tiers
+const legacyPlanNames = new Set([
+  'whatsapp',
+  'whatsapp plan',
+  'web + table',
+  'web-table',
+  'web + table plan',
+  'web and table',
+  'complete',
+  'complete plan',
+  'monthly',
+  'annual',
+])
+
+const addonMap: Record<string, string> = {
+  'custom-domain': 'Branded Web Storefront & Custom Domain (PKR 2,000/mo)',
+  web: 'Branded Web Storefront & Custom Domain (PKR 2,000/mo)',
+  storefront: 'Branded Web Storefront & Custom Domain (PKR 2,000/mo)',
+  'kitchen-routing': 'Multi-Station Kitchen Routing (PKR 500/mo)',
+  kds: 'Multi-Station Kitchen Routing (PKR 500/mo)',
+  analytics: 'Advanced Analytics & Data Exports (PKR 999/mo)',
+  reports: 'Advanced Analytics & Data Exports (PKR 999/mo)',
 }
 
 export function DemoForm() {
   const params = useSearchParams()
-  const initialBilling = billingMap[params.get('interest') || ''] || ''
+
+  // Recognize and validate selected plan / model from URL, strictly filtering legacy tiers
+  const rawPlan = (params.get('plan') || '').trim().toLowerCase()
+  let initialPlan = 'Pay As You Go'
+  if (legacyPlanNames.has(rawPlan)) {
+    // Obsolete plan query param ignored: do not select or activate legacy plans
+    initialPlan = 'Pay As You Go'
+  } else if (rawPlan === 'help-me-decide' || rawPlan === 'walkthrough') {
+    initialPlan = 'Help me decide'
+  }
+
+  // Recognize optional add-on interest from URL
+  const rawAddon = (params.get('addon') || '').trim().toLowerCase()
+  const selectedAddon = addonMap[rawAddon] || ''
+
+  // Normalize billing based on explicit interest/billing
+  const rawBillingParam = (params.get('billing') || '').trim().toLowerCase()
+  const interestParam = (params.get('interest') || '').trim().toLowerCase()
+  let computedBilling = billingMap[interestParam] || billingMap[rawBillingParam] || 'Pay As You Go'
+  if (rawBillingParam === 'help-me-decide' || interestParam === 'pricing') {
+    computedBilling = 'Help me decide'
+  }
+  const initialBilling = computedBilling
 
   // Normalize intent: 'trial' / 'free-trial' -> 'free-trial', otherwise default to 'demo'
   const rawIntent = (params.get('intent') || '').trim().toLowerCase()
@@ -66,6 +121,7 @@ export function DemoForm() {
       noValidate={false}
     >
       <input type="hidden" name="intent" value={normalizedIntent} />
+      {selectedAddon && <input type="hidden" name="selectedAddon" value={selectedAddon} />}
 
       {/* Direct Trial Alternative Callout */}
       <div className="mb-6 rounded-2xl border border-forest/15 bg-mint/35 p-4 text-center text-xs sm:text-sm font-medium dark:border-white/10 dark:bg-white/[0.04]">
@@ -78,14 +134,43 @@ export function DemoForm() {
         </a>
       </div>
 
-      <div>
-        <h2 className="text-3xl font-bold">
-          Book a Live Demo
-        </h2>
-        <p className="mt-2 text-ink/55 dark:text-white/60">
-          Share a few details and our team will get in touch to schedule a live walkthrough showing how OrderPilot works for your restaurant.
-        </p>
-      </div>
+      {/* Selected Addon Callout (if addon is specified in URL) */}
+      {selectedAddon && (
+        <div className="mb-6 flex items-center justify-between rounded-2xl border border-brand/25 bg-mint/40 p-4 text-sm dark:border-leaf/25 dark:bg-leaf/10">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-bold text-forest dark:text-leaf">Interested Add-on:</span>
+            <span className="rounded-lg bg-white px-2.5 py-1 font-bold text-brand shadow-sm dark:bg-[#0c150f] dark:text-leaf">
+              {selectedAddon}
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Active 14-Day Free Trial Header */}
+      {isTrial ? (
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full bg-brand/10 dark:bg-leaf/15 px-3 py-1 text-xs font-bold text-brand dark:text-leaf mb-3">
+            <span>14-Day Free Trial Request</span>
+            <span>·</span>
+            <span>0% Commission During Trial</span>
+          </div>
+          <h2 className="text-3xl font-bold">
+            Start Your 14-Day Free Trial
+          </h2>
+          <p className="mt-2 text-ink/75 dark:text-white/70 text-sm leading-relaxed">
+            Fill in your details to activate your 14-day free trial upon approval. 0% commission on orders during your trial, PKR 0 platform fee, and PKR 0 setup fee.
+          </p>
+        </div>
+      ) : (
+        <div>
+          <h2 className="text-3xl font-bold">
+            Book a Live Demo
+          </h2>
+          <p className="mt-2 text-ink/55 dark:text-white/60">
+            Share a few details and our team will get in touch to schedule a live walkthrough showing how OrderPilot works for your restaurant.
+          </p>
+        </div>
+      )}
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
         <Field label="Your name" required>
@@ -140,21 +225,31 @@ export function DemoForm() {
                 key={item}
                 className="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-forest/10 bg-cream px-4 py-2.5 text-sm dark:border-white/5 dark:bg-[#16271a] dark:text-white"
               >
-                <input type="checkbox" name="interests" value={item} className="size-4 accent-brand" />
+                <input
+                  type="checkbox"
+                  name="interests"
+                  value={item}
+                  defaultChecked={Boolean(selectedAddon && item.includes(selectedAddon.split(' (')[0]))}
+                  className="size-4 accent-brand"
+                />
                 {item}
               </label>
             ))}
           </div>
         </fieldset>
-        <Field label="Billing option">
+        <Field label="Commercial model">
+          <select className="form-control" name="plan" defaultValue={initialPlan}>
+            <option value="Pay As You Go">Pay As You Go (5% on completed WhatsApp orders · 14-day free trial)</option>
+            <option value="Help me decide">General walkthrough / Help me decide</option>
+          </select>
+        </Field>
+        <Field label="Billing preference">
           <select className="form-control" name="billing" defaultValue={initialBilling}>
-            <option value="">Select one</option>
-            <option value="Monthly">Monthly subscription (from PKR 5,999)</option>
-            <option value="Pay-per-Order">Pay-as-you-go / Pay-per-Order (8%–10%)</option>
+            <option value="Pay As You Go">Pay As You Go (5% commission · 14-day free trial)</option>
             <option value="Help me decide">Help me decide</option>
           </select>
         </Field>
-        <Field label="Current POS (optional)">
+        <Field label="Current POS (optional)" wide>
           <input
             className="form-control"
             name="pos"
@@ -190,7 +285,11 @@ export function DemoForm() {
       <button className="button-primary mt-6 w-full justify-center" type="submit" disabled={status === 'loading'}>
         {status === 'loading' ? (
           <>
-            <LoaderCircle className="animate-spin" /> Scheduling walkthrough...
+            <LoaderCircle className="animate-spin" /> {isTrial ? 'Requesting 14-day trial...' : 'Scheduling walkthrough...'}
+          </>
+        ) : isTrial ? (
+          <>
+            Start 14-Day Free Trial <ArrowRight />
           </>
         ) : (
           <>
@@ -200,7 +299,9 @@ export function DemoForm() {
       </button>
 
       <p className="mt-4 text-center text-xs text-ink/70 dark:text-white/60">
-        This sends a live demo request. Our team will contact you to schedule a walkthrough showing how our system works for your restaurant.
+        {isTrial
+          ? 'Your 14-day free trial starts at restaurant approval. 0% commission on trial orders with zero setup fee.'
+          : 'This sends a live demo request. Our team will contact you to schedule a walkthrough showing how our system works for your restaurant.'}
       </p>
     </form>
   )

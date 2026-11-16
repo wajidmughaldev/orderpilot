@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { AppShell } from '@/components/app-shell'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy — OrderPilot',
+  title: 'Cookie Policy',
   description:
     'This Cookie Policy explains how OrderPilot, backed by Digipex Solutions LLC, uses cookies and similar technologies on our website, product pages, and dashboard experiences.',
   alternates: {

@@ -3,55 +3,25 @@
 import { motion, useReducedMotion } from 'motion/react'
 import {
   UtensilsCrossed,
-  Soup,
-  Coffee,
   Sandwich,
   Cloud,
-  Building2,
-  Croissant,
-  Martini,
 } from 'lucide-react'
 
-const restaurantTypes = [
+const restaurantScenarios = [
   {
     icon: UtensilsCrossed,
-    title: 'Fine Dining',
-    copy: 'Table orders reach the kitchen without anyone running back and forth.',
-  },
-  {
-    icon: Soup,
-    title: 'Casual Dining',
-    copy: 'Dine-in, takeaway and delivery in one list.',
-  },
-  {
-    icon: Coffee,
-    title: 'Cafés',
-    copy: 'Counter, table and repeat orders in one queue.',
+    title: 'Dine-In Restaurants & Cafés',
+    copy: 'Table QR orders reach the kitchen directly, letting floor staff focus on guest hospitality instead of writing paper notes.',
   },
   {
     icon: Sandwich,
-    title: 'Quick Service / Fast Food',
-    copy: 'Lots of orders, fast. Everyone sees what’s next.',
+    title: 'Fast Food & Takeaway Spots',
+    copy: 'Counter orders, phone pickups, and WhatsApp orders flow into one organized kitchen queue so your counter stays clear.',
   },
   {
     icon: Cloud,
-    title: 'Cloud Kitchens',
-    copy: 'WhatsApp and website orders on one screen.',
-  },
-  {
-    icon: Building2,
-    title: 'Food Courts',
-    copy: 'A small team handling a big rush.',
-  },
-  {
-    icon: Croissant,
-    title: 'Bakeries',
-    copy: 'Pre-orders, custom cakes and pickups, written down.',
-  },
-  {
-    icon: Martini,
-    title: 'Juice Bars / Lounges',
-    copy: 'Guests order, staff keep serving.',
+    title: 'Delivery-First & Cloud Kitchens',
+    copy: 'Manage delivery and takeaway volume on one screen with customer addresses, phone numbers, and payment slips.',
   },
 ]
 
@@ -69,11 +39,11 @@ export function WhoItsForSection() {
           className="section-heading-centered mb-12"
         >
           <p className="eyebrow section-heading-eyebrow">WHO IT&apos;S FOR</p>
-          <h2 className="section-title">From cafés to cloud kitchens.</h2>
-          <p className="section-description mt-4">Whatever you serve, orders come from the same places.</p>
+          <h2 className="section-title">Built for how Pakistani restaurants actually operate.</h2>
+          <p className="section-description mt-4">Whether you seat fifty guests or dispatch eighty deliveries a night.</p>
         </motion.header>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {restaurantTypes.map((item, index) => {
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {restaurantScenarios.map((item, index) => {
             const Icon = item.icon
             return (
               <motion.article
@@ -83,12 +53,12 @@ export function WhoItsForSection() {
                 viewport={{ once: true, margin: '0px', amount: 0.05 }}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.07 }}
                 whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-                className="group relative overflow-hidden panel flex min-h-[15rem] flex-col justify-start p-6 sm:p-7 transition-all duration-300 hover:border-brand/30 hover:shadow-xl dark:hover:border-leaf/30"
+                className="group relative overflow-hidden panel flex flex-col justify-start p-7 sm:p-8 transition-all duration-300 hover:border-brand/30 hover:shadow-xl dark:hover:border-leaf/30"
               >
                 {/* Ambient corner shade */}
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-6 -bottom-6 size-24 rounded-full bg-mint/40 blur-xl transition-all duration-500 ease-out group-hover:scale-150 group-hover:bg-mint/80 dark:bg-leaf/10 dark:group-hover:bg-leaf/20"
+                  className="pointer-events-none absolute -right-6 -bottom-6 size-28 rounded-full bg-mint/40 blur-xl transition-all duration-500 ease-out group-hover:scale-150 group-hover:bg-mint/80 dark:bg-leaf/10 dark:group-hover:bg-leaf/20"
                 />
 
                 {/* Subtle decorative geometric shape */}
@@ -105,9 +75,10 @@ export function WhoItsForSection() {
                 <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-full bg-mint text-brand transition-all duration-300 group-hover:scale-105 group-hover:bg-brand group-hover:text-white dark:bg-emerald-950/60 dark:text-leaf dark:group-hover:bg-leaf dark:group-hover:text-forest">
                   <Icon className="size-7" />
                 </span>
-                <div className="relative z-10">
-                  <h3 className="mt-6 text-xl font-bold">{item.title}</h3>
-                  <p className="mt-3 text-base leading-relaxed text-ink/80">{item.copy}</p>
+
+                <div className="relative z-10 mt-6">
+                  <h3 className="text-xl font-bold dark:text-white">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/80 dark:text-white/75">{item.copy}</p>
                 </div>
               </motion.article>
             )

@@ -23,3 +23,7 @@ coverage/
 playwright-report/
 test-results/
 .lighthouseci/
+
+# Review screenshots & binaries (avoid committing large PNG blobs)
+docs/screenshots/**/*.png
+*.zip

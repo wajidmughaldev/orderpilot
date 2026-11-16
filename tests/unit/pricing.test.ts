@@ -1,117 +1,106 @@
 import { describe, it, expect } from 'vitest'
-import { PRICING_CONFIG, pricingConfig } from '@/lib/pricing'
+import { PAYG_CONFIG, PRICING_CONFIG, pricingConfig } from '@/lib/pricing'
 
-describe('Unit: Pricing Configurations & Calculations', () => {
-  describe('Subscription Plans Calculations', () => {
-    it('contains all 3 approved subscription plans', () => {
-      const planNames = PRICING_CONFIG.plans.map(p => p.name)
-      expect(planNames).toEqual(['WhatsApp', 'Web + Table', 'Complete'])
+describe('Unit: Pay As You Go Pricing Configuration & Terms', () => {
+  describe('Core PAYG Terms & Rates', () => {
+    it('configures exactly 5% commission on completed WhatsApp AI orders', () => {
+      expect(PAYG_CONFIG.commissionRate).toBe(5)
+      expect(PAYG_CONFIG.commissionRateFormatted).toBe('5%')
+      expect(PAYG_CONFIG.eligibleChannel).toBe('Completed WhatsApp AI orders')
     })
 
-    it('validates WhatsApp plan pricing, annual savings, and limits', () => {
-      const plan = PRICING_CONFIG.plans.find(p => p.name === 'WhatsApp')!
-      expect(plan).toBeDefined()
-      expect(plan.monthlyPrice).toBe(5999)
-      expect(plan.monthlyFormatted).toBe('PKR 5,999')
-      expect(plan.annualPrice).toBe(59990)
-      expect(plan.annualFormatted).toBe('PKR 59,990')
-      // 12 months value: 5999 * 12 = 71,988. Annual is 59,990. Savings = 11,998 (exactly 2 months free)
-      const expectedSaving = plan.monthlyPrice * 12 - plan.annualPrice
-      expect(expectedSaving).toBe(11998)
-      expect(plan.annualSaving).toBe(`Save PKR ${expectedSaving.toLocaleString('en-US')}`)
-      expect(plan.orderLimit).toBe(1000)
-      expect(plan.trialDays).toBe(14)
+    it('calculates commission on discounted food items subtotal only and exempts delivery & tax', () => {
+      expect(PAYG_CONFIG.commissionBasis).toContain('Discounted food item subtotal only')
+      expect(PAYG_CONFIG.commissionBasis).toContain('excludes delivery fees, taxes, and tips')
     })
 
-    it('validates Web + Table plan pricing, annual savings, and limits', () => {
-      const plan = PRICING_CONFIG.plans.find(p => p.name === 'Web + Table')!
-      expect(plan).toBeDefined()
-      expect(plan.monthlyPrice).toBe(7999)
-      expect(plan.monthlyFormatted).toBe('PKR 7,999')
-      expect(plan.annualPrice).toBe(79990)
-      expect(plan.annualFormatted).toBe('PKR 79,990')
-      // 12 months value: 7999 * 12 = 95,988. Annual is 79,990. Savings = 15,998 (2 months free)
-      const expectedSaving = plan.monthlyPrice * 12 - plan.annualPrice
-      expect(expectedSaving).toBe(15998)
-      expect(plan.annualSaving).toBe(`Save PKR ${expectedSaving.toLocaleString('en-US')}`)
-      expect(plan.orderLimit).toBe(1000)
-      expect(plan.trialDays).toBe(14)
+    it('guarantees PKR 0 extra AI provider computing expense', () => {
+      expect(PAYG_CONFIG.aiProviderCost).toContain('Rs. 0 extra to restaurant')
+      expect(PAYG_CONFIG.aiProviderCost).toContain('Included in OrderPilot commission')
     })
 
-    it('validates Complete plan pricing, annual savings, and limits', () => {
-      const plan = PRICING_CONFIG.plans.find(p => p.name === 'Complete')!
-      expect(plan).toBeDefined()
-      expect(plan.monthlyPrice).toBe(12999)
-      expect(plan.monthlyFormatted).toBe('PKR 12,999')
-      expect(plan.annualPrice).toBe(129990)
-      expect(plan.annualFormatted).toBe('PKR 129,990')
-      // 12 months value: 12999 * 12 = 155,988. Annual is 129,990. Savings = 25,998 (2 months free)
-      const expectedSaving = plan.monthlyPrice * 12 - plan.annualPrice
-      expect(expectedSaving).toBe(25998)
-      expect(plan.annualSaving).toBe(`Save PKR ${expectedSaving.toLocaleString('en-US')}`)
-      expect(plan.orderLimit).toBe(1000)
-      expect(plan.trialDays).toBe(14)
-      expect(plan.tag).toBe('Best value')
+    it('sets PKR 0 platform fee and PKR 0 onboarding/setup fee', () => {
+      expect(PAYG_CONFIG.platformFee).toBe(0)
+      expect(PAYG_CONFIG.setupFee).toBe(0)
+      expect(PAYG_CONFIG.platformFeeFormatted).toBe('PKR 0 / month')
+      expect(PAYG_CONFIG.setupFeeFormatted).toBe('PKR 0 setup fee')
+    })
+
+    it('enforces PKR 500 minimum wallet top-up requirement', () => {
+      expect(PAYG_CONFIG.minimumWalletTopup).toBe(500)
+      expect(PAYG_CONFIG.minimumWalletTopupFormatted).toBe('PKR 500')
     })
   })
 
-  describe('14-Day Free Trial Eligibility Across ALL Plans', () => {
-    it('guarantees 14-day free trial on EVERY subscription plan without exception', () => {
-      for (const plan of PRICING_CONFIG.plans) {
-        expect(plan.trialDays).toBe(14)
-        expect(plan.features).toContain('14-day free trial')
-      }
-    })
-
-    it('guarantees 14-day free trial on Pay-as-you-go model', () => {
-      expect(pricingConfig.perOrder.publicPrice).toContain('14-day free trial')
-      expect(pricingConfig.monthly.publicPrice).toContain('14-day free trial')
-    })
-
-    it('specifies that setup fee applies only AFTER 14-day trial if continuing', () => {
-      expect(PRICING_CONFIG.setupFee).toBe(5000)
-      expect(PRICING_CONFIG.setupFeeFormatted).toBe('PKR 5,000')
-      expect(PRICING_CONFIG.setupFeeTiming).toContain('applies only if you continue with a paid plan after the 14-day free trial')
+  describe('14-Day Free Trial Terms', () => {
+    it('sets 14-day free trial on restaurant approval with 0% commission', () => {
+      expect(PAYG_CONFIG.trialDays).toBe(14)
+      expect(PAYG_CONFIG.trialFormatted).toBe('14-day free trial')
+      expect(PAYG_CONFIG.trialCondition).toContain('Starts when your restaurant is approved')
+      expect(PAYG_CONFIG.trialCondition).toContain('0% commission on all orders created during the trial')
     })
   })
 
-  describe('Pay-as-you-go Rate Structure', () => {
-    it('sets min and max commission rates accurately between 8% and 10%', () => {
-      expect(PRICING_CONFIG.payAsYouGo.minRate).toBe(8)
-      expect(PRICING_CONFIG.payAsYouGo.maxRate).toBe(10)
-      expect(PRICING_CONFIG.payAsYouGo.rateRangeFormatted).toBe('8% to 10%')
-      expect(PRICING_CONFIG.payAsYouGo.description).toContain('8% to 10%')
-      expect(PRICING_CONFIG.payAsYouGo.description).toContain('No fixed monthly fee')
+  describe('Meta / WhatsApp Messaging Policy', () => {
+    it('discloses transparent at-cost Meta pass-through and zero markup', () => {
+      expect(PAYG_CONFIG.metaMessaging).toContain('Pass-through at exact cost only')
+      expect(PAYG_CONFIG.metaMessaging).toContain('1,000 free service messages per business phone number per month')
+      expect(PAYG_CONFIG.metaMessaging).toContain('Template-message charges')
+      expect(PAYG_CONFIG.metaMessaging).toContain('Zero OrderPilot markup')
     })
   })
 
-  describe('Billing Link & Route Mappings', () => {
-    it('maps monthly interest to book-demo query parameter', () => {
-      expect(pricingConfig.monthly.href).toBe('/book-demo?interest=monthly')
+  describe('Transparent Calculation Example (PKR 2,000 Order)', () => {
+    it('computes exact PKR 100 commission on a PKR 2,000 order food subtotal', () => {
+      const example = PAYG_CONFIG.calculationExample
+      expect(example.orderItemsSubtotal).toBe(2000)
+      expect(example.ratePercent).toBe(5)
+      expect((example.orderItemsSubtotal * example.ratePercent) / 100).toBe(example.commissionCharged)
+      expect(example.commissionCharged).toBe(100)
+      expect(example.deliveryFee).toBe(200)
+      expect(example.tax).toBe(320)
+      expect(example.foodSalesAfterFee).toBe(1900)
+      expect(example.explanation).toContain('incurs exactly PKR 100 OrderPilot commission')
+      expect(example.explanation).toContain('leaving PKR 1,900 in food sales after the fee')
     })
+  })
 
-    it('maps pay-per-order interest to book-demo query parameter', () => {
-      expect(pricingConfig.perOrder.href).toBe('/book-demo?interest=pay-per-order')
+  describe('Optional Monthly Add-ons Catalog', () => {
+    it('includes all 3 verified provisional monthly add-ons with exact rates', () => {
+      expect(PAYG_CONFIG.addons).toHaveLength(3)
+
+      const webStorefront = PAYG_CONFIG.addons.find(a => a.name === 'Branded Web Storefront & Custom Domain')!
+      expect(webStorefront).toBeDefined()
+      expect(webStorefront.price).toBe(2000)
+      expect(webStorefront.priceFormatted).toBe('PKR 2,000 / month')
+      expect(webStorefront.provisional).toBe(true)
+      expect(webStorefront.status).toBe('planned')
+
+      const kitchenRouting = PAYG_CONFIG.addons.find(a => a.name === 'Multi-Station Kitchen Routing (Advanced KDS)')!
+      expect(kitchenRouting).toBeDefined()
+      expect(kitchenRouting.price).toBe(500)
+      expect(kitchenRouting.priceFormatted).toBe('PKR 500 / month')
+      expect(kitchenRouting.provisional).toBe(true)
+      expect(kitchenRouting.status).toBe('planned')
+
+      const analytics = PAYG_CONFIG.addons.find(a => a.name === 'Advanced Analytics & Data Exports')!
+      expect(analytics).toBeDefined()
+      expect(analytics.price).toBe(999)
+      expect(analytics.priceFormatted).toBe('PKR 999 / month')
+      expect(analytics.provisional).toBe(true)
+      expect(analytics.status).toBe('planned')
     })
+  })
 
-    it('resolves proper query parameter mapping helper', () => {
-      function getInterestFromParam(param: string | null): string | undefined {
-        if (!param) return undefined
-        const p = param.toLowerCase()
-        if (p === 'monthly' || p === 'whatsapp' || p === 'complete') return 'monthly'
-        if (p === 'pay-per-order' || p === 'payasyougo' || p === 'per-order') return 'pay-per-order'
-        if (p === 'pricing') return 'pricing'
-        return undefined
-      }
-
-      expect(getInterestFromParam('monthly')).toBe('monthly')
-      expect(getInterestFromParam('whatsapp')).toBe('monthly')
-      expect(getInterestFromParam('pay-per-order')).toBe('pay-per-order')
-      expect(getInterestFromParam('payasyougo')).toBe('pay-per-order')
-      expect(getInterestFromParam('pricing')).toBe('pricing')
-      expect(getInterestFromParam('unknown')).toBeUndefined()
-      expect(getInterestFromParam(null)).toBeUndefined()
+  describe('Compatibility Exports', () => {
+    it('mirrors PAYG config in PRICING_CONFIG and pricingConfig', () => {
+      expect(PRICING_CONFIG.commissionRate).toBe(5)
+      expect(PRICING_CONFIG.setupFee).toBe(0)
+      expect(PRICING_CONFIG.payAsYouGo.rate).toBe(5)
+      expect(PRICING_CONFIG.payAsYouGo.rateRangeFormatted).toBe('5%')
+      expect(pricingConfig.payg.href).toBe('/book-demo?intent=trial')
+      expect(pricingConfig.monthly.href).toBe('/book-demo?intent=trial')
+      expect(pricingConfig.perOrder.href).toBe('/book-demo?intent=trial')
     })
   })
 })
-

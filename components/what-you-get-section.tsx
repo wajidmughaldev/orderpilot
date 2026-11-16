@@ -7,38 +7,38 @@ const whatYouGetTiles = [
   {
     icon: Monitor,
     number: '01',
-    title: 'Live order board.',
-    copy: 'WhatsApp, web and table QR orders land on one kitchen board.',
-  },
-  {
-    icon: CreditCard,
-    number: '02',
-    title: 'Pay the way Pakistan pays.',
-    copy: 'Cash on delivery, JazzCash, EasyPaisa or bank transfer. Customers upload payment receipts so managers verify payment before preparation starts.',
+    title: 'Live kitchen display.',
+    copy: 'Track incoming tickets through New, Preparing, and Ready stages with audio chimes.',
   },
   {
     icon: ChefHat,
-    number: '03',
-    title: 'A screen for your kitchen.',
-    copy: 'Pair a kitchen display with a code so cooks see tickets without logging into your account.',
+    number: '02',
+    title: 'Kitchen screen pairing.',
+    copy: 'Connect kitchen tablets with a secure pairing code without sharing account passwords.',
   },
   {
     icon: QrCode,
-    number: '04',
+    number: '03',
     title: 'Table QR ordering.',
-    copy: 'Guests scan at their table to browse and order directly. Floor staff spend less time writing notes.',
+    copy: 'Dine-in guests view photo menus and order from their table without waiting for staff.',
+  },
+  {
+    icon: CreditCard,
+    number: '04',
+    title: 'Local payment verification.',
+    copy: 'Accept Cash on Delivery, JazzCash, EasyPaisa, or bank transfer with staff receipt review.',
   },
   {
     icon: RefreshCw,
     number: '05',
-    title: 'Order status tracking.',
-    copy: 'Move orders through New, Preparing, and Ready so the whole team sees what’s next.',
+    title: 'Delivery & order controls.',
+    copy: 'Configure delivery fees, minimum order amounts, and sold-out items directly in settings.',
   },
   {
     icon: Users,
     number: '06',
-    title: 'Your customer list.',
-    copy: 'Names, phone numbers, and past orders in one account. Easy to recognize your repeat guests.',
+    title: 'Customer contact directory.',
+    copy: 'Retain guest phone numbers and order histories in your private dashboard.',
   },
 ]
 
@@ -69,8 +69,8 @@ export function WhatYouGetSection() {
             transition={{ duration: 0.5, ease: 'easeOut', delay: prefersReduced ? 0 : 0.55 }}
             className="ops-board-head"
           >
-            <span>YOUR SCREEN</span>
-            <span>ALL ORDERS IN ONE PLACE</span>
+            <span>CORE CAPABILITIES</span>
+            <span>DAILY OPERATIONS</span>
           </motion.div>
 
           <div className="ops-board-grid">
@@ -96,8 +96,8 @@ export function WhatYouGetSection() {
           </div>
 
           <div className="ops-board-foot">
-            <span>3 WAYS TO ORDER</span>
-            <span>1 SCREEN</span>
+            <span>STANDARD WEB BROWSER</span>
+            <span>NO APP REQUIRED</span>
           </div>
         </div>
       </div>

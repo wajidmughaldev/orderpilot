@@ -7,30 +7,42 @@ import { DemoForm } from '@/components/demo-form'
 import { FaqList } from '@/components/faq-list'
 
 export const metadata: Metadata = {
-  title: 'Book a Live Demo — Walkthrough for Your Restaurant',
+  title: 'Book a Restaurant Ordering Demo',
   description:
-    'Request a guided OrderPilot demo for your restaurant. Explore WhatsApp and Table QR ordering, kitchen dashboards, the 14-day free trial available on all plans (monthly subscriptions from PKR 5,999/mo up to 1,000 orders/mo, or flexible 8%–10% pay-per-order). One-time PKR 5,000 setup fee applies only if you continue on a paid plan. Prices exclude applicable taxes.',
+    'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore our Pay As You Go pricing with a 14-day free trial.',
   alternates: { canonical: '/book-demo' },
   openGraph: {
-    title: 'Book a Live Demo — Walkthrough for Your Restaurant',
+    title: 'Book a Restaurant Ordering Demo | OrderPilot',
     description:
-      'Explore WhatsApp, Web, and Table QR ordering, the kitchen board, and pricing options with our team.',
+      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore our Pay As You Go pricing with a 14-day free trial.',
     url: '/book-demo',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot demo walkthrough' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Request an OrderPilot Demo — Walkthrough for Your Restaurant',
+    title: 'Book a Restaurant Ordering Demo | OrderPilot',
     description:
-      'Explore WhatsApp, Web, and Table QR ordering, the kitchen board, and pricing options with our team.',
+      'See how WhatsApp, website and table QR orders reach one OrderPilot dashboard. Book a walkthrough and explore our Pay As You Go pricing with a 14-day free trial.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
 
 const faqs = [
-  { question: 'What is this live demo walkthrough?', answer: 'It is a personalized live demo where our team walks you through how OrderPilot works in real time—from WhatsApp, web menu, and table QR ordering to live kitchen board alerts.' },
-  { question: 'How do I start the 14-day free trial directly?', answer: 'If you do not need a walkthrough and want to start immediately, you can go straight to the app at app.orderpilot.pk to sign in and begin your 14-day free trial.' },
-  { question: 'Can we discuss pricing during the live demo?', answer: 'Yes! A 14-day free trial is available on all plans. During the live demo, we can explain both monthly subscription plans (from PKR 5,999/mo, up to 1,000 orders/mo) and the 8% to 10% pay-per-order model. The one-time PKR 5,000 setup fee applies only if you continue on a paid plan after your trial. All prices exclude applicable taxes.' },
+  {
+    question: 'What happens during the live demo walkthrough?',
+    answer:
+      'We walk your team through live order routing—from WhatsApp, table QR, and web menus to real-time kitchen board alerts using your actual menu items.',
+  },
+  {
+    question: 'Can I start the 14-day free trial directly?',
+    answer:
+      'Yes. If you prefer to explore without a scheduled call, visit app.orderpilot.pk to create your account and begin your 14-day free trial immediately.',
+  },
+  {
+    question: 'Can we discuss pricing options during the walkthrough?',
+    answer:
+      'Yes. We explain our Pay As You Go model (5% on completed WhatsApp orders with a 14-day free trial on approval, PKR 0 platform fee, and PKR 0 setup fee), plus optional add-ons. Taxes excluded.',
+  },
 ]
 
 export default function BookDemoPage() {
@@ -49,7 +61,7 @@ export default function BookDemoPage() {
                 {[
                   'See a customer order from start to finish.',
                   'Explore the order and kitchen views.',
-                  'Ask about setup, support, and pricing.',
+                  'Ask about setup, support, and Pay As You Go pricing.',
                 ].map(item => (
                   <li key={item} className="flex items-center gap-3 font-semibold">
                     <CheckCircle2 className="size-5 text-brand" />{item}

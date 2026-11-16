@@ -18,19 +18,24 @@ const SeeProductMockup = dynamic(() => import('@/components/see-product-mockup')
 const PricingSectionView = dynamic(() => import('@/components/pricing-section-view').then((mod) => mod.PricingSectionView))
 
 export const metadata: Metadata = {
-  title: 'OrderPilot — Ordering Software for Pakistani Restaurants',
-  description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
+  title: {
+    absolute: 'Restaurant Ordering Software for Pakistan | OrderPilot',
+  },
+  description:
+    'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'OrderPilot — Every order, on one screen.',
-    description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
+    title: 'Restaurant Ordering Software for Pakistan | OrderPilot',
+    description:
+      'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
     url: '/',
     images: [{ url: '/assets/orderpilot_restaurant_dashboard_showcase.webp', width: 1456, height: 1092, alt: 'OrderPilot restaurant dashboard' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OrderPilot — Every order, on one screen.',
-    description: 'Orders from WhatsApp, your website, and table QR come together in one place. Your team can see what’s new, what’s being prepared, and what’s ready.',
+    title: 'Restaurant Ordering Software for Pakistan | OrderPilot',
+    description:
+      'Manage WhatsApp, website and table QR orders in one dashboard. OrderPilot helps Pakistani restaurants track orders from new to ready.',
     images: ['/assets/orderpilot_restaurant_dashboard_showcase.webp'],
   },
 }
@@ -41,38 +46,39 @@ const softwareAppJsonLd = {
   name: 'OrderPilot',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, WhatsApp',
-  description: 'Multi-channel restaurant ordering software for WhatsApp, online web menus, and table QR ordering.',
-  offers: [
-    { '@type': 'Offer', name: 'WhatsApp Plan', price: '5999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
-    { '@type': 'Offer', name: 'Web + Table Plan', price: '7999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
-    { '@type': 'Offer', name: 'Complete Plan', price: '12999', priceCurrency: 'PKR', billingDuration: 'P1M', description: 'Includes 14-day free trial, up to 1,000 orders/month. One-time PKR 5,000 setup fee applies if you continue. Prices exclude applicable taxes.' },
-  ],
+  url: 'https://www.orderpilot.pk',
+  description: 'Multi-channel restaurant ordering software for WhatsApp, online web menus, and table QR ordering in Pakistan.',
+  offers: {
+    '@type': 'Offer',
+    name: 'Pay As You Go',
+    priceCurrency: 'PKR',
+    url: 'https://www.orderpilot.pk/pricing',
+    description: '14-day free trial on approval, followed by 5% commission per completed WhatsApp AI order on discounted food items subtotal. Zero monthly platform subscription fee. Zero setup fee. Taxes excluded.',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      priceCurrency: 'PKR',
+      unitText: 'completed WhatsApp order',
+      description: '5% commission on food items subtotal only (excludes delivery, taxes, and tips)',
+    },
+  },
 }
 
 const faqs = [
   {
-    question: 'How much does it cost?',
-    answer: 'Subscriptions start at PKR 5,999 a month, or Complete with all channels is PKR 12,999. You can also pay 8% to 10% per order with no fixed monthly fee. Message us on WhatsApp and we’ll tell you which one costs less for you.',
-  },
-  {
-    question: 'Which plan should I pick?',
-    answer: 'If customers only order on WhatsApp, PKR 5,999 covers it. For website and table QR, Web + Table is PKR 7,999. If you want all three, Complete is PKR 12,999. If your order volume is lower or seasonal, pay per order may cost less.',
-  },
-  {
     question: 'What if my staff can’t use it?',
-    answer: 'The interface is simple. We walk your team through receiving orders, updating statuses, and verifying payments before you start.',
+    answer: 'The kitchen display is visual and straightforward. Staff view incoming tickets by status and verify payments directly from any screen.',
   },
   {
     question: 'How do customers pay?',
-    answer: 'You choose what to accept: cash on delivery, JazzCash, EasyPaisa or bank transfer. For transfers, customers upload a receipt and your manager approves it before cooking starts. Your customers pay you directly.',
+    answer: 'Customers pay directly using Cash on Delivery, JazzCash, EasyPaisa, or bank transfer. Staff verify uploaded payment receipts on the order.',
   },
   {
     question: 'Can I use it for dine-in, takeaway and delivery?',
-    answer: 'Yes. Table QR for dine-in, plus takeaway and delivery orders, all on one screen. For delivery you can set custom fees by area.',
+    answer: 'Yes. Table QR orders, takeaway pickups, and doorstep deliveries all appear on the same kitchen board with clear fulfillment labels.',
   },
   {
     question: 'Do I keep my customer list?',
-    answer: 'Yes. Your customers’ contact details and order history are in your account, visible only to your restaurant.',
+    answer: 'Yes. Customer phone numbers, names, and order histories stay in your private dashboard and are never shared or masked.',
   },
 ]
 
@@ -104,19 +110,13 @@ export default function HomePage() {
         {/* PROBLEM */}
         <ProblemSection />
 
-        {/* REASSURANCE: REPLACE THE ORDERPILOT SOLUTION */}
-        <section className="section-pad bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/5">
+        {/* OBJECTION-HANDLING BRIDGE */}
+        <section className="bg-white border-y border-forest/10 dark:bg-[#0c150f] dark:border-white/5 py-12 sm:py-16">
           <div className="site-shell site-shell-800">
             <ScrollReveal className="mx-auto max-w-3xl text-center flex flex-col items-center">
-              <h2 className="section-title text-balance">You don&apos;t have to change how customers order.</h2>
-              <p className="section-description mt-5 max-w-[640px] text-base sm:text-lg text-balance mx-auto">
-                They keep using WhatsApp, your website or table QR codes with no app to download. OrderPilot collects those orders in one view for your team.
-              </p>
-              <p className="mt-6 text-sm font-semibold text-brand dark:text-leaf text-balance">
-                Curious how orders travel from customer to kitchen?{' '}
-                <a href="#how" className="underline underline-offset-4 hover:text-forest dark:hover:text-mint">
-                  See the 4-step workflow below ↓
-                </a>
+              <h2 className="section-title text-balance text-2xl sm:text-3xl lg:text-4xl">You don&apos;t have to change how customers order.</h2>
+              <p className="section-description mt-4 max-w-[600px] text-base sm:text-lg text-balance mx-auto">
+                Keep WhatsApp, web and table QR ordering. Give your team one place to manage the orders.
               </p>
             </ScrollReveal>
           </div>
@@ -182,7 +182,7 @@ export default function HomePage() {
               <header className="section-heading-centered mb-12 sm:mb-16">
                 <p className="eyebrow section-heading-eyebrow">FAQ</p>
                 <h2 className="section-title">Good questions. Clear answers.</h2>
-                <p className="section-description mt-4">Quick answers about cost, plans and payment.</p>
+                <p className="section-description mt-4">Straightforward answers about daily kitchen operations, hardware, and guest data.</p>
               </header>
             </ScrollReveal>
 

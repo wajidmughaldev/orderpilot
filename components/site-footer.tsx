@@ -11,8 +11,26 @@ export function SiteFooter() {
           aria-label="Footer Navigation"
           className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 sm:pb-10 border-b border-forest/10 dark:border-white/5"
         >
-          {/* Core product & action links (4 on the left, centered on mobile) */}
+          {/* Core product & action links */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 sm:gap-x-8 gap-y-2.5 text-xs sm:text-sm font-medium">
+            <Link
+              href="/whatsapp-ordering"
+              className="text-ink/75 dark:text-white/75 hover:text-brand dark:hover:text-leaf transition-colors"
+            >
+              WhatsApp Ordering
+            </Link>
+            <Link
+              href="/qr-table-ordering"
+              className="text-ink/75 dark:text-white/75 hover:text-brand dark:hover:text-leaf transition-colors"
+            >
+              Table QR
+            </Link>
+            <Link
+              href="/online-ordering"
+              className="text-ink/75 dark:text-white/75 hover:text-brand dark:hover:text-leaf transition-colors"
+            >
+              Online Ordering
+            </Link>
             <Link
               href="/pricing"
               className="text-ink/75 dark:text-white/75 hover:text-brand dark:hover:text-leaf transition-colors"
@@ -154,17 +172,17 @@ export function SiteFooter() {
           {/* Business Ownership & Disclosures Area */}
           <div className="pt-4 text-center text-[11px] sm:text-xs leading-relaxed text-ink/60 dark:text-white/50 max-w-4xl mx-auto space-y-2.5">
             <p>
-              <span className="font-semibold text-ink/80 dark:text-white/75">Business Ownership &amp; Identity Disclosure:</span> Multi-channel restaurant ordering software engineered for Pakistani restaurants. Connect WhatsApp, online web menus, and table QR orders directly into one live kitchen board. Incubated at NIC Hyderabad · Ministry of IT &amp; Telecom · Ignite National Technology Fund. A product of Digipex Solutions LLC. Prices in PKR exclude applicable taxes. 14-day free trial on all plans.
+              <span className="font-semibold text-ink/80 dark:text-white/75">Business Ownership &amp; Entity Disclosure:</span> OrderPilot is engineered and operated by Digipex Solutions LLC, incubated at the National Incubation Center (NIC) Hyderabad · Ministry of Information Technology &amp; Telecommunications · Ignite National Technology Fund. All prices are in PKR and exclude applicable taxes. 14-day free trial on approval.
             </p>
             <p>
-              For questions regarding our company, ownership, or services, please contact us at{' '}
+              For legal, corporate, or operational inquiries, contact us at{' '}
               <a
                 href="mailto:contact@orderpilot.pk"
                 className="underline hover:text-brand dark:hover:text-leaf transition-colors font-medium text-ink/75 dark:text-white/70"
               >
                 contact@orderpilot.pk
               </a>{' '}
-              or WhatsApp{' '}
+              or via WhatsApp at{' '}
               <a
                 href="https://wa.me/923361815141"
                 className="underline hover:text-brand dark:hover:text-leaf transition-colors font-medium text-ink/75 dark:text-white/70"

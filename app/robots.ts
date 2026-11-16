@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://orderpilot.pk/sitemap.xml',
+    sitemap: 'https://www.orderpilot.pk/sitemap.xml',
   }
 }

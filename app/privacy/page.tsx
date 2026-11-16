@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { AppShell } from '@/components/app-shell'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — OrderPilot',
+  title: 'Privacy Policy',
   description:
     'This Privacy Policy explains how OrderPilot, built by the OrderPilot team and backed by Digipex Solutions LLC, collects, uses, stores, and protects information.',
   alternates: {
